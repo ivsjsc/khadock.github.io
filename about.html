@@ -8,11 +8,11 @@
     
     <meta property="og:title" content="About KhaDock - Our Story & Florida's Dock Experts">
     <meta property="og:description" content="KhaDock: Led by the dedicated Đỗ Duy Kha, we are committed to delivering innovative and high-quality dock solutions across Florida.">
-    <meta property="og:image" content="https://placehold.co/1200x630/0284c7/ffffff?text=About+KhaDock"> 
-    <meta property="og:url" content="YOUR_DOMAIN/about.html"> 
+    <meta property="og:image" content="images/logo/logo.jpg"> 
+    <meta property="og:url" content="https://KhaDock.com/about.html"> 
     <meta property="og:type" content="website">
 
-    <link rel="icon" href="https://placehold.co/32x32/0ea5e9/ffffff?text=KD" type="image/png"> 
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,18 +29,19 @@
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            background-color: #f1f5f9; /* slate-100 */
         }
-        .banner-bg { 
-             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/logo/logo.jpg'); 
+        .about-banner-bg { 
+             background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/logo/logo.jpg'); 
              background-size: cover;
              background-position: center;
         }
         .text-shadow {
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
         .profile-image-container { 
-            width: 250px; 
-            height: 250px; 
+            width: 220px; 
+            height: 220px; 
             overflow: hidden; 
         }
         .profile-image-container img {
@@ -50,14 +51,32 @@
             object-position: center; 
         }
 
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .profile-image-container {
-                width: 300px; /* Increased size for desktop */
-                height: 300px;
+                width: 280px; 
+                height: 280px;
             }
         }
+        .value-card {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.06);
+        }
         .value-card:hover .value-icon {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(-5deg);
+            color: #0ea5e9; /* sky-500 */
+        }
+        .value-icon {
+            transition: transform 0.3s ease-out, color 0.3s ease-out;
+        }
+        .feature-item:hover .feature-icon-bg {
+             background-color: #0ea5e9; /* sky-500 */
+             color: white;
+        }
+        .feature-icon-bg {
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
     </style>
 </head>
@@ -65,32 +84,34 @@
 
     <div id="header-placeholder"></div>
 
-    <main class="banner-bg text-white py-32 md:py-44" data-aos="fade-in">
-        <section class="container mx-auto px-4 sm:px-8 lg:px-16 text-center max-w-3xl">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 text-shadow leading-tight" data-aos="fade-down" data-aos-delay="200">
-                About KhaDock.com
-            </h1>
-            <p class="text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto text-slate-200 text-shadow font-medium" data-aos="fade-up" data-aos-delay="400">
-                Building trust and outstanding dock structures, shaping Florida's coastal experience.
-            </p>
+    <main class="pt-20">
+        <section class="about-banner-bg text-white py-24 md:py-36" data-aos="fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-shadow leading-tight" data-aos="fade-down" data-aos-delay="200">
+                    About KhaDock.com
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-100 text-shadow font-medium" data-aos="fade-up" data-aos-delay="400">
+                    Building trust and outstanding dock structures, shaping Florida's coastal experience with passion and precision.
+                </p>
+            </div>
         </section>
 
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    <div data-aos="fade-right" data-aos-delay="100">
-                        <img src="images/albums/dock14.jpg" alt="KhaDock - Team working on a dock project" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div data-aos="fade-right" data-aos-delay="100" class="md:pr-8">
+                        <img src="images/albums/dock14.jpg" alt="KhaDock - Team planning a dock project" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-[4/3]">
                     </div>
                     <div data-aos="fade-left" data-aos-delay="200">
-                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-6">Our Story</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-6">Our Story: Crafting Coastal Dreams</h2>
                         <p class="text-slate-600 leading-relaxed mb-4">
-                            At KhaDock - Design and Remodel, our journey began with a singular passion: to craft exceptional boat dock solutions that elevate Florida's unique coastal lifestyle. We believe a dock is more than a structure; it's the heart of your waterfront experience, a gateway to relaxation, recreation, and lasting memories.
+                            At KhaDock.com, our journey began with a singular passion: to craft exceptional boat dock solutions that elevate Florida's unique coastal lifestyle. We believe a dock is more than a structure; it's the heart of your waterfront experience, a gateway to relaxation, recreation, and lasting memories.
                         </p>
                         <p class="text-slate-600 leading-relaxed mb-4">
                             Our seasoned team brings years of dedicated industry experience to every project. At KhaDock, we are defined by our meticulous attention to detail, unwavering commitment to client satisfaction, and deep expertise in all facets of marine construction.
                         </p>
                         <p class="text-slate-600 leading-relaxed">
-                            From innovative design and robust new builds to transformative remodels and diligent maintenance, we specialize in creating docks, piers, and installing boat lifts that stand the test of time, using only premium materials and cutting-edge techniques. Your vision is our blueprint.
+                            From innovative design and robust new builds to transformative remodels and diligent maintenance, we specialize in creating docks and piers that stand the test of time, using only premium materials and cutting-edge techniques. Your vision is our blueprint.
                         </p>
                     </div>
                 </div>
@@ -100,25 +121,26 @@
         <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-                    <div class="md:w-1/3 flex justify-center md:justify-start" data-aos="fade-right" data-aos-delay="100">
-                        <div class="profile-image-container rounded-full shadow-2xl border-4 border-sky-500">
+                    <div class="md:w-2/5 lg:w-1/3 flex justify-center md:justify-start" data-aos="fade-right" data-aos-delay="100">
+                        <div class="profile-image-container rounded-full shadow-2xl border-4 border-sky-400 p-1 bg-white">
                              <img src="images/logo/doduykha.png" alt="Mr. Đỗ Duy Kha - Director of KhaDock" class="rounded-full">
                         </div>
                     </div>
-                    <div class="md:w-2/3 text-center md:text-left" data-aos="fade-left" data-aos-delay="200">
+                    <div class="md:w-3/5 lg:w-2/3 text-center md:text-left" data-aos="fade-left" data-aos-delay="200">
                         <h2 class="text-3xl md:text-4xl font-bold mb-3">Meet Our Dedicated Leader</h2>
                         <p class="text-2xl md:text-3xl font-semibold text-sky-300 mb-2">Mr. Đỗ Duy Kha</p>
-                        <p class="text-lg font-medium text-sky-200 mb-6">Founder & Director of KhaDock</p>
+                        <p class="text-lg font-medium text-sky-100 mb-6 tracking-wider">Founder & Director of KhaDock.com</p>
                         
                         <p class="text-lg leading-relaxed mb-4 text-slate-100">
                             Behind every successful KhaDock project is the vision and tireless dedication of Director Đỗ Duy Kha. With a fervent passion for the marine construction industry and a desire to deliver outstanding structures, Mr. Kha has led KhaDock to become a trusted name in Florida.
                         </p>
                         <p class="text-lg leading-relaxed mb-4 text-slate-100">
-                            He is not just a leader but an inspiration, always encouraging the team to explore <strong class="font-semibold text-sky-100">breakthrough ideas</strong> and apply the latest technical solutions. Mr. Đỗ Duy Kha's <strong class="font-semibold text-sky-100">dedication and passion</strong> are evident in every detail of each project, from conception and design to completion and handover.
+                            He is not just a leader but an inspiration, always encouraging the team to explore <strong class="font-semibold text-sky-200 hover:text-white transition-colors">breakthrough ideas</strong> and apply the latest technical solutions. Mr. Đỗ Duy Kha's <strong class="font-semibold text-sky-200 hover:text-white transition-colors">dedication and passion</strong> are evident in every detail of each project, from conception and design to completion and handover.
                         </p>
-                        <p class="text-lg leading-relaxed text-slate-100">
-                            "At KhaDock, we don't just build docks; we create vibrant waterfront spaces where every moment becomes precious," shares Mr. Kha. This philosophy guides all company activities, always prioritizing quality and customer satisfaction.
-                        </p>
+                        <blockquote class="text-lg italic leading-relaxed text-sky-200 border-l-4 border-sky-400 pl-6 py-2 my-6">
+                            "At KhaDock, we don't just build docks; we create vibrant waterfront spaces where every moment becomes precious."
+                        </blockquote>
+                        <p class="text-md text-slate-200">- Đỗ Duy Kha</p>
                     </div>
                 </div>
             </div>
@@ -131,8 +153,8 @@
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">The foundation for all of KhaDock's success and sustainable growth.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="value-card bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="value-icon text-sky-500 mb-6 transition-transform duration-300">
+                    <div class="value-card bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="value-icon text-slate-400 mb-6">
                             <i class="fas fa-bullseye fa-4x"></i>
                         </div>
                         <h3 class="text-2xl font-semibold text-slate-800 mb-3">Our Mission</h3>
@@ -140,8 +162,8 @@
                             To provide safe, durable, aesthetic, and convenient dock solutions, from new designs to complete remodels, enhancing the value and waterfront living experience for our clients in Florida.
                         </p>
                     </div>
-                    <div class="value-card bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center" data-aos="zoom-in-up" data-aos-delay="200">
-                        <div class="value-icon text-sky-500 mb-6 transition-transform duration-300">
+                    <div class="value-card bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="value-icon text-slate-400 mb-6">
                             <i class="fas fa-eye fa-4x"></i>
                         </div>
                         <h3 class="text-2xl font-semibold text-slate-800 mb-3">Our Vision</h3>
@@ -149,18 +171,18 @@
                             To be the leading dock design, construction, and remodeling company in Florida, known for superior quality, professional service, and continuous innovation.
                         </p>
                     </div>
-                    <div class="value-card bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="value-icon text-sky-500 mb-6 transition-transform duration-300">
+                    <div class="value-card bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="value-icon text-slate-400 mb-6">
                             <i class="fas fa-heart-pulse fa-4x"></i>
                         </div>
                         <h3 class="text-2xl font-semibold text-slate-800 mb-3">Core Values</h3>
-                        <ul class="text-slate-600 text-sm space-y-2 list-none text-left self-start w-full pl-4">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 fa-sm mr-3"></i>Superior Quality</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 fa-sm mr-3"></i>Absolute Safety</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 fa-sm mr-3"></i>Client Reliability</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 fa-sm mr-3"></i>Utmost Professionalism</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 fa-sm mr-3"></i>Dedicated Service</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 fa-sm mr-3"></i>Creative Innovation</li>
+                        <ul class="text-slate-600 text-sm space-y-2 list-none text-left self-start w-full pl-4 sm:pl-6">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Superior Quality</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Absolute Safety</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Client Reliability</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Utmost Professionalism</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Dedicated Service</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Creative Innovation</li>
                         </ul>
                     </div>
                 </div>
@@ -175,11 +197,11 @@
                         KhaDock doesn't just build or remodel docks; we build trust and peace of mind tailored to Florida's unique environment.
                     </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    <div class="order-last md:order-first" data-aos="fade-right" data-aos-delay="200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="order-last md:order-first md:pr-8" data-aos="fade-right" data-aos-delay="200">
                         <ul class="space-y-6">
-                            <li class="flex items-start p-4 bg-slate-50 rounded-lg hover:shadow-md transition-shadow">
-                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl">
+                            <li class="feature-item flex items-start p-6 bg-slate-50 rounded-xl hover:shadow-lg transition-shadow duration-300">
+                                <div class="feature-icon-bg flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl shadow">
                                     <i class="fas fa-water"></i>
                                 </div>
                                 <div>
@@ -189,8 +211,8 @@
                                     </p>
                                 </div>
                             </li>
-                            <li class="flex items-start p-4 bg-slate-50 rounded-lg hover:shadow-md transition-shadow">
-                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl">
+                            <li class="feature-item flex items-start p-6 bg-slate-50 rounded-xl hover:shadow-lg transition-shadow duration-300">
+                                <div class="feature-icon-bg flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl shadow">
                                     <i class="fas fa-file-contract"></i>
                                 </div>
                                 <div>
@@ -200,8 +222,8 @@
                                     </p>
                                 </div>
                             </li>
-                            <li class="flex items-start p-4 bg-slate-50 rounded-lg hover:shadow-md transition-shadow">
-                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl">
+                            <li class="feature-item flex items-start p-6 bg-slate-50 rounded-xl hover:shadow-lg transition-shadow duration-300">
+                                <div class="feature-icon-bg flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl shadow">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
                                 <div>
@@ -213,8 +235,8 @@
                             </li>
                         </ul>
                     </div>
-                     <div data-aos="fade-left" data-aos-delay="100">
-                        <img src="images/pages/waterways.png" alt="Florida Coastline and Waterways - KhaDock Expertise" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                     <div data-aos="fade-left" data-aos-delay="100" class="md:pl-8">
+                        <img src="images/pages/waterways.png" alt="Florida Coastline and Waterways - KhaDock Expertise" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-square md:aspect-[4/3]">
                     </div>
                 </div>
             </div>
@@ -236,8 +258,8 @@
     <div id="footer-placeholder"></div>
     
     <button id="scrollToTopBtn" title="Go to top" 
-            class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white 
-                   w-12 h-12 rounded-full shadow-xl items-center justify-center 
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
+                   w-14 h-14 rounded-full shadow-xl items-center justify-center 
                    focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
                    transition-all duration-300 z-40 text-xl">
         <i class="fas fa-arrow-up"></i>
@@ -250,7 +272,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             AOS.init({
                 duration: 700,
-                offset: 120,
+                offset: 100, /* Trigger animations a bit earlier */
                 once: true,
                 easing: 'ease-out-quad',
             });
