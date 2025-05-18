@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact KhaDock.com - Florida's Dock Experts</title>
     <meta name="description" content="Contact KhaDock - Design and Remodel for a free consultation and quote for your dock design, construction, or remodeling project in Florida.">
+    
     <meta property="og:title" content="Contact KhaDock - Florida's Dock Experts">
     <meta property="og:description" content="Connect with KhaDock in Lakeland, FL. Phone: +1 813-939-3989, Email: doduykha007@gmail.com.">
-    <meta property="og:image" content="images/pages/khadockbanner.jpeg"> 
-    <meta property="og:url" content="khadock.com/contact.html"> <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo/logo.jpg"> 
+    <meta property="og:url" content="https://KhaDock.com/contact.html"> 
+    <meta property="og:type" content="website">
 
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,102 +18,184 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .contact-banner-bg { /* Custom class for contact page banner */
+             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x600/1e293b/ffffff?text=Contact+KhaDock'); /* Placeholder */
+             background-size: cover;
+             background-position: center 30%; /* Adjust position to focus better */
+        }
+        .text-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+        .contact-icon-circle {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .contact-info-item a:hover .contact-icon-circle,
+        .contact-info-item a:focus .contact-icon-circle {
+            background-color: #0ea5e9; /* sky-500 */
+            color: white;
+        }
+        .social-icon-link i {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .social-icon-link:hover i {
+            transform: scale(1.15) translateY(-2px);
+        }
+        /* Ensure map iframe is responsive */
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
 
     <div id="header-placeholder"></div>
 
-    <main>
-        <section class="bg-slate-50 text-slate-900 py-20 md:py-28" data-aos="fade-in">
+    <main class="pt-20">
+        <section class="contact-banner-bg text-white py-24 md:py-32" data-aos="fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Get In Touch</h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-shadow" data-aos="fade-down" data-aos-delay="200">Get In Touch</h1>
+                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-200 text-shadow" data-aos="fade-up" data-aos-delay="400">
                     We're here to help with all your dock and marine construction needs in Florida. Connect with us today!
                 </p>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-white"></section>
+        <section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto">
+                <div class="max-w-4xl mx-auto">
                     <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
                         <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Connect With KhaDock.com</h2>
-                        <p class="text-lg text-slate-60comcom</p>
+                        <p class="text-lg text-slate-600">
                             We are ready to discuss your project or answer any questions you may have. Reach out to us through your preferred method.
                         </p>
                     </div>
 
-                    <div class="bg-slate-800 p-8 rounded-lg shadow-xl mb-12 md:mb-16" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-2xl font-bold text-white mb-6 text-center md:text-left">Direct Contact Information</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4 shadow">
-                                    <i class="fas fa-map-marker-alt fa-lg"></i>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
+                        <div class="bg-slate-800 p-8 rounded-xl shadow-2xl" data-aos="fade-right" data-aos-delay="100">
+                            <h3 class="text-2xl font-bold text-white mb-8 text-center md:text-left">Direct Contact Information</h3>
+                            <div class="space-y-6">
+                                <div class="contact-info-item flex items-start group">
+                                    <div class="contact-icon-circle flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 shadow-md">
+                                        <i class="fas fa-map-marker-alt fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white">Our Office</h4>
+                                        <p class="text-slate-300">3850 Rollingsford Cir, Lakeland, FL 33810, USA</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="text-md md:text-lg font-semibold text-white">Our Office</h4>
-                                    <p class="text-slate-300">3850 Rollingsford Cir, Lakeland, FL 33810, USA</p>
+                                <div class="contact-info-item flex items-start group">
+                                    <div class="contact-icon-circle flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 shadow-md">
+                                        <i class="fas fa-phone fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white">Phone</h4>
+                                        <a href="tel:+18139393989" class="text-slate-300 hover:text-sky-300 transition-colors duration-300">+1 813-939-3989</a>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item flex items-start group">
+                                    <div class="contact-icon-circle flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 shadow-md">
+                                        <i class="fas fa-envelope fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white">Email</h4>
+                                        <a href="mailto:doduykha007@gmail.com" class="text-slate-300 hover:text-sky-300 transition-colors duration-300">doduykha007@gmail.com</a>
+                                    </div>
+                                </div>
+                                <div class="contact-info-item flex items-start group">
+                                    <div class="contact-icon-circle flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 shadow-md">
+                                        <i class="fas fa-clock fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white">Business Hours</h4>
+                                        <p class="text-slate-300">Monday - Friday: 8:00 AM - 5:00 PM</p>
+                                        <p class="text-slate-300">Saturday - Sunday: By Appointment Only</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4 shadow">
-                                    <i class="fas fa-phone fa-lg"></i>
+                        </div>
+                        
+                        <div class="bg-slate-50 p-8 rounded-xl shadow-2xl" data-aos="fade-left" data-aos-delay="200">
+                            <h3 class="text-2xl font-bold text-slate-800 mb-8 text-center md:text-left">Follow Us & Connect</h3>
+                            <p class="text-slate-600 leading-relaxed mb-8 text-center md:text-left">
+                                Stay updated with our latest projects, news, and offers by connecting with us on social media.
+                            </p>
+                            <div class="flex flex-col items-center mb-8">
+                                <div class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-sky-500 shadow-lg mb-3">
+                                    <img src="images/logo/doduykha.png" alt="Mr. Kha - KhaDock" class="w-full h-full object-cover">
                                 </div>
-                                <div>
-                                    <h4 class="text-md md:text-lg font-semibold text-white">Phone</h4>
-                                    <a href="tel:+18139393989" class="text-slate-300 hover:text-sky-400 transition-colors">+1 813-939-3989</a>
-                                </div>
+                                <span class="text-lg font-semibold text-slate-700">Mr. Kha</span>
+                                <span class="text-sm text-sky-600">Founder & Director</span>
                             </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4 shadow">
-                                    <i class="fas fa-envelope fa-lg"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-md md:text-lg font-semibold text-white">Email</h4>
-                                    <a href="mailto:doduykha007@gmail.com" class="text-slate-300 hover:text-sky-400 transition-colors">doduykha007@gmail.com</a>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4 shadow">
-                                    <i class="fas fa-clock fa-lg"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-md md:text-lg font-semibold text-white">Business Hours</h4>
-                                    <p class="text-slate-300">Monday - Friday: 8:00 AM - 5:00 PM</p>
-                                    <p class="text-slate-300">Saturday - Sunday: By Appointment Only</p>
-                                </div>
+                            <div class="flex justify-center gap-6">
+                                <a href="https://www.facebook.com/profile.php?id=61575043076973" target="_blank" rel="noopener noreferrer" aria-label="KhaDock Facebook" class="social-icon-link text-slate-500 hover:text-blue-600">
+                                    <i class="fab fa-facebook-f fa-3x"></i>
+                                </a>
+                                <a href="https://www.instagram.com/khadock/" target="_blank" rel="noopener noreferrer" aria-label="KhaDock Instagram" class="social-icon-link text-slate-500 hover:text-pink-600">
+                                    <i class="fab fa-instagram fa-3x"></i>
+                                </a>
+                                <a href="https://wa.me/18139393989" target="_blank" rel="noopener noreferrer" aria-label="KhaDock WhatsApp" class="social-icon-link text-slate-500 hover:text-green-500">
+                                    <i class="fab fa-whatsapp fa-3x"></i>
+                                </a>
+                                <a href="mailto:doduykha007@gmail.com" aria-label="Email KhaDock" class="social-icon-link text-slate-500 hover:text-red-500">
+                                    <i class="fas fa-envelope fa-3x"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-slate-800 p-6 md:p-8 rounded-lg shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Follow Us & Connect</h3>
-                        <p class="text-slate-300 leading-relaxed mb-6 text-center">
-                            Stay updated with our latest projects, news, and offers by connecting with us on social media and other platforms.
-                        </p>
-                        <div class="flex flex-col items-center my-8">
-                            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-sky-500 shadow-lg mb-3">
-                                <img src="images/logo/doduykha.png" alt="Mr. Kha Profile" class="w-full h-full object-cover">
+                    <div class="text-center mt-12 md:mt-16" data-aos="fade-up" data-aos-delay="300">
+                         <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Send Us a Message</h2>
+                         <p class="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
+                            Have a specific inquiry? Fill out the form below, and our team will get back to you as soon as possible.
+                         </p>
+                        <form id="contactForm" action="YOUR_FORM_SUBMISSION_ENDPOINT" method="POST" class="space-y-6 bg-white p-8 rounded-xl shadow-2xl max-w-2xl mx-auto">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-700 text-left mb-1">Full Name</label>
+                                <input type="text" name="name" id="name" required class="mt-1 block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" placeholder="John Doe">
                             </div>
-                            <span class="text-lg font-semibold text-white">Mr. Kha</span>
-                        </div>
-                        <div class="flex flex-wrap justify-center gap-8 md:gap-10 mb-2">
-                            <a href="https://www.facebook.com/profile.php?id=61575043076973" target="_blank" rel="noopener noreferrer" aria-label="KhaDock Facebook" class="text-slate-300 hover:text-sky-500 transition-colors flex items-center justify-center">
-                                <i class="fab fa-facebook-f" style="font-size:2.5rem;"></i>
-                            </a>
-                            <a href="https://www.instagram.com/khadock/" target="_blank" rel="noopener noreferrer" aria-label="KhaDock Instagram" class="text-slate-300 hover:text-pink-500 transition-colors flex items-center justify-center">
-                                <i class="fab fa-instagram" style="font-size:2.5rem;"></i>
-                            </a>
-                            <a href="https://wa.me/18139393989" target="_blank" rel="noopener noreferrer" aria-label="KhaDock WhatsApp" class="text-slate-300 hover:text-green-500 transition-colors flex items-center justify-center">
-                                <i class="fab fa-whatsapp" style="font-size:2.5rem;"></i>
-                            </a>
-                            <a href="mailto:doduykha007@gmail.com" aria-label="Email KhaDock" class="text-slate-300 hover:text-red-500 transition-colors flex items-center justify-center"></a>
-                                <i class="fas fa-envelope" style="font-size:2.5rem;"></i>
-                            </a>
-                        </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-700 text-left mb-1">Email Address</label>
+                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" placeholder="you@example.com">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-slate-700 text-left mb-1">Phone Number (Optional)</label>
+                                <input type="tel" name="phone" id="phone" class="mt-1 block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" placeholder="(555) 123-4567">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-slate-700 text-left mb-1">Service of Interest</label>
+                                <select id="service" name="service" class="mt-1 block w-full px-4 py-3 border border-slate-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                                    <option>Select a service</option>
+                                    <option value="custom-design">Custom Dock Design</option>
+                                    <option value="remodeling">Dock Remodeling</option>
+                                    <option value="repair-maintenance">Repair & Maintenance</option>
+                                    <option value="upgrades-accessories">Dock Upgrades & Accessories</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-slate-700 text-left mb-1">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" placeholder="Tell us about your project or question..."></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors duration-300">
+                                    Send Message
+                                </button>
+                            </div>
+                            <div id="form-status" class="mt-4 text-sm"></div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -120,13 +204,11 @@
         <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-slate-800">Find Us On The Map</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Find Us On The Map</h2>
                 </div>
-                <div class="aspect-w-16 aspect-h-9 rounded-lg shadow-xl overflow-hidden">
+                <div class="map-container aspect-w-16 aspect-h-9 rounded-xl shadow-2xl overflow-hidden relative h-[300px] md:h-[450px] lg:h-[550px]">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.5059530340428!2d-81.90497008873096!3d28.40396797569117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dd3b01c60bf56b%3A0x83b6f29dd1995368!2s3850%20Rollingsford%20Cir%2C%20Lakeland%2C%20FL%2033810%2C%20USA!5e0!3m2!1sen!2s!4v1716024702047!5m2!1sen!2s" 
-                        width="100%" 
-                        height="450" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3511.701535081706!2d-81.9008490849238!3d28.11690098250791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dd3f0e4a8b5555%3A0x7e2a724708868711!2s3850%20Rollingsford%20Cir%2C%20Lakeland%2C%20FL%2033810%2C%20USA!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
                         style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy" 
@@ -140,12 +222,77 @@
 
     <div id="footer-placeholder"></div>
     
-    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
+    <button id="scrollToTopBtn" title="Go to top" 
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
+                   w-14 h-14 rounded-full shadow-xl items-center justify-center 
+                   focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
+                   transition-all duration-300 z-40 text-xl">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/script.js" defer></script> 
     <script src="js/loadComponents.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 700,
+                offset: 100,
+                once: true,
+                easing: 'ease-out-quad',
+            });
+
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        scrollToTopBtn.classList.remove('hidden');
+                        scrollToTopBtn.classList.add('flex');
+                    } else {
+                        scrollToTopBtn.classList.add('hidden');
+                        scrollToTopBtn.classList.remove('flex');
+                    }
+                }, { passive: true });
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Contact Form Submission (Example)
+            const contactForm = document.getElementById('contactForm');
+            const formStatus = document.getElementById('form-status');
+            if (contactForm && formStatus) {
+                contactForm.addEventListener('submit', async function(event) {
+                    event.preventDefault();
+                    const formData = new FormData(contactForm);
+                    formStatus.innerHTML = '<p class="text-slate-600">Sending...</p>';
+                    
+                    try {
+                        // IMPORTANT: Replace 'YOUR_FORM_SUBMISSION_ENDPOINT' with your actual backend URL or a service like Formspree
+                        const response = await fetch(contactForm.action, { 
+                            method: 'POST', 
+                            body: formData, 
+                            headers: {'Accept': 'application/json'}
+                        });
+
+                        if (response.ok) {
+                            formStatus.innerHTML = '<p class="text-green-600 bg-green-50 p-3 rounded-md">Thank you! Your message has been sent successfully.</p>';
+                            contactForm.reset();
+                        } else {
+                            response.json().then(data => {
+                                const errorMessage = data.errors ? data.errors.map(error => error.message).join(", ") : "Oops! There was a problem submitting your form.";
+                                formStatus.innerHTML = `<p class="text-red-600 bg-red-50 p-3 rounded-md">${errorMessage}</p>`;
+                            }).catch(() => {
+                                formStatus.innerHTML = '<p class="text-red-600 bg-red-50 p-3 rounded-md">Error processing server response. Please try again.</p>';
+                            });
+                        }
+                    } catch (error) {
+                        console.error("Form submission error:", error);
+                        formStatus.innerHTML = '<p class="text-red-600 bg-red-50 p-3 rounded-md">A network error occurred. Please check your connection and try again.</p>';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
