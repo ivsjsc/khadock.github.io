@@ -52,23 +52,24 @@
 
         @media (min-width: 768px) { /* md breakpoint */
             .profile-image-container {
-                width: 300px; /* Increased size for desktop */
-                height: 300px;
+            width: 300px; /* Increased size for desktop */
+            height: 300px;
             }
         }
         .value-card:hover .value-icon {
             transform: scale(1.1);
         }
-    </style>
-</head>
-<body class="bg-slate-100 text-slate-800 antialiased">
-
-    <div id="header-placeholder"></div>
-
-    <main class="banner-bg text-white py-32 md:py-44" data-aos="fade-in">
-        <section class="container mx-auto px-4 sm:px-8 lg:px-16 text-center max-w-6xl">
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-shadow leading-tight" data-aos="fade-down" data-aos-delay="200">
-                About KhaDock.com
+        /* Banner height smaller */
+        .banner-bg {
+            padding-top: 4rem !important;
+            padding-bottom: 4rem !important;
+        }
+        @media (min-width: 768px) {
+            .banner-bg {
+            padding-top: 6rem !important;
+            padding-bottom: 6rem !important;
+            }
+        }
             </h1>
             <p class="text-2xl md:text-3xl lg:text-4xl max-w-4xl mx-auto text-slate-200 text-shadow font-medium" data-aos="fade-up" data-aos-delay="400">
                 Building trust and outstanding dock structures, shaping Florida's coastal experience.
