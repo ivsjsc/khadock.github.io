@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Dock & Marine Projects - KhaDock Florida</title>
-    <meta name="description" content="Explore a portfolio of completed boat dock designs, new constructions, and remodels by KhaDock - Design and Remodel in Florida.">
+    <meta name="description" content="Explore a portfolio of completed boat dock designs, and remodels by KhaDock - Design and Remodel in Florida.">
     
     <meta property="og:title" content="KhaDock Projects - Florida Marine Construction Excellence">
-    <meta property="og:description" content="View our gallery of high-quality marine construction projects, showcasing our expertise in building and remodeling docks, piers, and seawalls across Florida.">
-    <meta property="og:image" content="https://placehold.co/1200x630/0284c7/ffffff?text=KhaDock+Projects"> <meta property="og:url" content="YOUR_DOMAIN/projects.html"> <meta property="og:type" content="website">
+    <meta property="og:description" content="View our gallery of high-quality marine projects, showcasing our expertise in designing and remodeling docks and piers across Florida.">
+    <meta property="og:image" content="https://placehold.co/1200x630/0284c7/ffffff?text=KhaDock+Projects">
+    <meta property="og:url" content="YOUR_DOMAIN/projects.html"> 
+    <meta property="og:type" content="website">
 
-    <link rel="icon" href="https://placehold.co/32x32/0ea5e9/ffffff?text=KD" type="image/png"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="https://placehold.co/32x32/0ea5e9/ffffff?text=KD" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -20,14 +24,15 @@
     
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/styles.css"> <style>
+    <link rel="stylesheet" href="css/styles.css"> 
+    <style>
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        .banner-bg { /* Ensure this class is defined in styles.css or here */
-             background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/albums/dock15.jpg'); /* TODO: Replace with actual banner image */
+        .banner-bg {
+             background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://placehold.co/1920x700/1e293b/ffffff?text=Our+Work');
              background-size: cover;
              background-position: center;
         }
@@ -35,30 +40,28 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
         }
 
-        /* Filter Buttons Styling */
         .filter-button {
             transition: all 0.3s ease-in-out;
-            border: 1px solid #cbd5e1; /* slate-300 */
+            border: 1px solid #cbd5e1; 
         }
         .filter-button:hover {
-            background-color: #e0f2fe; /* sky-100 */
-            border-color: #38bdf8; /* sky-400 */
-            color: #0369a1; /* sky-700 */
+            background-color: #e0f2fe; 
+            border-color: #38bdf8; 
+            color: #0369a1; 
         }
         .filter-button.active {
-            background-color: #0ea5e9; /* sky-500 */
+            background-color: #0ea5e9; 
             color: white;
-            border-color: #0ea5e9; /* sky-500 */
+            border-color: #0ea5e9; 
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
-        /* Project Card Styling */
         .project-card .project-image-container {
-            height: 280px; /* Consistent height for images */
+            height: 280px; 
             overflow: hidden;
-            background-color: #e2e8f0; /* slate-200 for placeholder bg */
+            background-color: #e2e8f0; 
         }
-        .project-card img {
+        .project-card img { 
             transition: transform 0.4s ease, filter 0.3s ease;
         }
         .project-card:hover img {
@@ -69,40 +72,44 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 180px; /* Ensure consistent card content height */
+            min-height: 180px; 
         }
         .project-tag {
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-        /* Horizontal Album Styling */
-        .album-image-horizontal {
-            height: 180px; /* Increased height */
-            width: auto;
-            object-fit: cover;
-            border-radius: 0.5rem; /* rounded-lg */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .album-image-item { 
+            flex-shrink: 0; 
+            overflow: hidden; 
+            border-radius: 0.5rem; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08); 
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
         }
-        .album-image-horizontal:hover {
-            transform: scale(1.03) translateY(-3px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+        .album-image-item:hover {
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12); 
         }
-        /* Custom scrollbar for webkit browsers */
+        .album-image-horizontal { 
+            height: 200px; 
+            width: 300px;  
+            object-fit: cover;
+            display: block; 
+        }
+
         .scrollbar-thin::-webkit-scrollbar {
-            height: 6px;
+            height: 8px; 
         }
         .scrollbar-thin::-webkit-scrollbar-track {
-            background: #f1f5f9; /* slate-100 */
+            background: #e2e8f0; 
             border-radius: 10px;
         }
         .scrollbar-thin::-webkit-scrollbar-thumb {
-            background: #94a3b8; /* slate-400 */
+            background: #94a3b8; 
             border-radius: 10px;
+            border: 2px solid #e2e8f0; 
         }
         .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-            background: #64748b; /* slate-500 */
+            background: #64748b; 
         }
     </style>
 </head>
@@ -132,51 +139,32 @@
                 <div id="project-filters" class="flex flex-wrap justify-center gap-3 mb-10 md:mb-12" data-aos="fade-up" data-aos-delay="100">
                     <button class="filter-button active px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="all">All Projects</button>
                     <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="design">Custom Design</button>
-                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="construction">New Construction</button>
                     <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="remodel">Remodeling</button>
                     <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="maintenance">Repair & Maintenance</button> 
                 </div>
 
                 <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="design" data-aos="zoom-in-up" data-aos-delay="100">
                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images\pages\DockConstruction.jpeg" alt="Luxury Private Dock in Miami by KhaDock" class="w-full h-full object-cover">
+                                <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=Luxury+Dock+Design" alt="Luxury Private Dock Design in Miami by KhaDock" class="w-full h-full object-cover">
                             </div>
                             <div class="p-6 project-card-content flex-grow">
                                 <div>
-                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Luxury Private Dock - Miami</h3>
-                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Custom-designed fixed dock featuring premium composite decking, integrated LED lighting, and a dual boat lift system for ultimate convenience.</p>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Luxury Private Dock - Miami Design</h3>
+                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Innovative design for a fixed dock featuring premium composite decking, integrated LED lighting, and planning for a dual boat lift system.</p>
                                 </div>
                                 <div class="mt-auto pt-4 border-t border-slate-200">
                                     <span class="project-tag inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1 hover:bg-sky-200">Design</span>
-                                    <span class="project-tag inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full mb-1 hover:bg-emerald-200">Construction</span>
                                 </div>
                             </div>
                         </a>
                     </div>
 
-                    <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="construction" data-aos="zoom-in-up" data-aos-delay="200">
-                         <a href="#" class="block group h-full flex flex-col">
-                            <div class="project-image-container">
-                                <img src="images/albums/dock7.jpg" alt="Commercial Pier Fort Lauderdale by KhaDock" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-6 project-card-content flex-grow">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Commercial Pier - Fort Lauderdale</h3>
-                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Robust construction of a public access pier, engineered for high traffic and harsh marine environments, featuring ADA-compliant ramps and durable materials.</p>
-                                </div>
-                                <div class="mt-auto pt-4 border-t border-slate-200">
-                                    <span class="project-tag inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full hover:bg-emerald-200">Construction</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="remodel" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="remodel" data-aos="zoom-in-up" data-aos-delay="200">
                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                 <img src="images/albums/dock6.jpg" alt="Classic Dock Remodel Palm Beach by KhaDock" class="w-full h-full object-cover">
+                                 <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Classic+Dock+Remodel" alt="Classic Dock Remodel Palm Beach by KhaDock" class="w-full h-full object-cover">
                             </div>
                             <div class="p-6 project-card-content flex-grow">
                                 <div>
@@ -189,10 +177,11 @@
                             </div>
                         </a>
                     </div>
-                     <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="maintenance design" data-aos="zoom-in-up" data-aos-delay="100">
+                    
+                    <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="maintenance design" data-aos="zoom-in-up" data-aos-delay="300">
                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images/pages/Repair&Maintenance.jpeg" alt="Waterfront Deck Repair & Enhancement - Key West" class="w-full h-full object-cover">
+                                <img src="https://placehold.co/600x400/ef4444/ffffff?text=Deck+Repair+Design" alt="Waterfront Deck Repair & Enhancement - Key West" class="w-full h-full object-cover">
                             </div>
                             <div class="p-6 project-card-content flex-grow">
                                 <div>
@@ -202,23 +191,6 @@
                                 <div class="mt-auto pt-4 border-t border-slate-200">
                                     <span class="project-tag inline-block bg-red-100 text-red-700 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1 hover:bg-red-200">Maintenance</span>
                                      <span class="project-tag inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1 hover:bg-sky-200">Design</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                     <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="200">
-                        <a href="#" class="block group h-full flex flex-col">
-                            <div class="project-image-container">
-                                <img src="images/albums/dock8.jpg" alt="Floating Dock System - Naples" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-6 project-card-content flex-grow">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Floating Dock System - Naples</h3>
-                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Installation of a versatile floating dock system, ideal for fluctuating water levels, complete with kayak launch and secure mooring.</p>
-                                </div>
-                                <div class="mt-auto pt-4 border-t border-slate-200">
-                                    <span class="project-tag inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1 hover:bg-sky-200">Design</span>
-                                    <span class="project-tag inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full mb-1 hover:bg-emerald-200">Construction</span>
                                 </div>
                             </div>
                         </a>
@@ -378,14 +350,6 @@
                             <img 
                                 src="images/albums/dock18.jpg" 
                                 alt="Completed KhaDock Project Album Image 18" 
-                                class="album-image-horizontal w-full h-36 object-cover rounded-lg shadow"
-                                loading="lazy"
-                            />
-                        </div>
-                        <div data-aos="fade-up" data-aos-delay="1000">
-                            <img 
-                                src="images/albums/dock19.jpg" 
-                                alt="Completed KhaDock Project Album Image 19" 
                                 class="album-image-horizontal w-full h-36 object-cover rounded-lg shadow"
                                 loading="lazy"
                             />
