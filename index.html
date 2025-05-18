@@ -21,10 +21,17 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* .hero-bg class is no longer used for the main hero image if it's an <img> tag, 
-           but can be kept if you use it for other sections with background images. */
-        .hero-image-display { /* New class for styling the hero image if needed */
-            /* Example: max-width: 400px; */
+        .hero-image-fullwidth-container {
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            /* Bạn có thể đặt chiều cao cố định hoặc tỷ lệ khung hình ở đây nếu muốn */
+            /* Ví dụ: height: 60vh; hoặc aspect-ratio: 16 / 9; */
+            overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài nếu dùng object-fit */
+        }
+        .hero-image-fullwidth-container img {
+            width: 100%;
+            height: auto; /* Hoặc chiều cao cố định, ví dụ: 100% để lấp đầy container nếu container có height */
+            object-fit: cover; /* Đảm bảo ảnh che phủ và không bị méo */
+            display: block; /* Loại bỏ khoảng trống thừa bên dưới ảnh */
         }
         .service-card:hover {
             transform: translateY(-5px);
@@ -37,11 +44,11 @@
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
-        /* Ensure main content is pushed below the sticky header */
-        /* It's better to put this in styles.css */
+        /* Đảm bảo nội dung chính được đẩy xuống dưới header dính (sticky) */
+        /* Tốt hơn là đặt vào styles.css */
         /*
         main {
-            padding-top: 5rem; /* Adjust based on your actual header height (h-20 is 5rem) */
+            padding-top: 5rem; /* Điều chỉnh dựa trên chiều cao thực tế của header (h-20 là 5rem) */
         }
         */
     </style>
@@ -51,29 +58,27 @@
     <div id="header-placeholder"></div>
 
     <main>
-        <section class="bg-slate-700 text-white py-12 md:py-16" data-aos="fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col items-center">
-                    <div class="w-full max-w-xs sm:max-w-sm md:max-w-md mb-8 md:mb-10" data-aos="fade-down" data-aos-delay="100">
-                        <img src="images/logo/logo.jpg" alt="KhaDock - Florida's Premier Boat Dock Solutions" 
-                             class="hero-image-display rounded-lg shadow-2xl w-full h-auto object-contain"> 
-                    </div>
+        <section class="flex flex-col" data-aos="fade-in">
+            <div class="hero-image-fullwidth-container w-full" data-aos="fade-down" data-aos-delay="50">
+                <img src="images/logo/logo.jpg" alt="KhaDock - Florida's Premier Boat Dock Solutions" 
+                     class="shadow-lg"> 
+                     </div>
 
-                    <div class="text-center w-full" data-aos="fade-up" data-aos-delay="200">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                            Building Florida's Finest BoatDock Experiences
-                        </h1>
-                        <p class="text-md sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                            KhaDock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship.
-                        </p>
-                        <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4">
-                            <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg shadow-md transition duration-300 transform hover:scale-105">
-                                View Our Portfolio
-                            </a>
-                            <a href="contact.html" class="w-full sm:w-auto inline-block bg-slate-600 hover:bg-sky-500 text-white font-semibold hover:text-white py-3 px-6 sm:px-8 border-2 border-slate-500 hover:border-sky-500 rounded-lg text-base sm:text-lg shadow-md transition duration-300 transform hover:scale-105">
-                                Get a Free Estimate
-                            </a>
-                        </div>
+            <div class="bg-slate-700 text-white py-10 md:py-12" data-aos="fade-up" data-aos-delay="150">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        Building Florida's Finest BoatDock Experiences
+                    </h1>
+                    <p class="text-md sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+                        KhaDock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship.
+                    </p>
+                    <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4">
+                        <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg shadow-md transition duration-300 transform hover:scale-105">
+                            View Our Portfolio
+                        </a>
+                        <a href="contact.html" class="w-full sm:w-auto inline-block bg-slate-600 hover:bg-sky-500 text-white font-semibold hover:text-white py-3 px-6 sm:px-8 border-2 border-slate-500 hover:border-sky-500 rounded-lg text-base sm:text-lg shadow-md transition duration-300 transform hover:scale-105">
+                            Get a Free Estimate
+                        </a>
                     </div>
                 </div>
             </div>
