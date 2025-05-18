@@ -4,32 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Dock & Marine Projects - KhaDock Florida</title>
-    <meta name="description" content="Explore a portfolio of completed boat dock designs, new constructions, remodels by KhaDock - Design and Remodel in Florida.">
-    <meta property="og:title" content="KhaDock Projects - Florida Marine Construction">
+    <meta name="description" content="Explore a portfolio of completed boat dock designs, new constructions, and remodels by KhaDock - Design and Remodel in Florida.">
+    
+    <meta property="og:title" content="KhaDock Projects - Florida Marine Construction Excellence">
     <meta property="og:description" content="View our gallery of high-quality marine construction projects, showcasing our expertise in building and remodeling docks, piers, and seawalls across Florida.">
-    <meta property="og:image" content="images/pages/khadockbanner.jpeg"> 
-    <meta property="og:url" content="khadock.com/projects.html"> <meta property="og:type" content="website">
+    <meta property="og:image" content="https://placehold.co/1200x630/0284c7/ffffff?text=KhaDock+Projects"> <meta property="og:url" content="YOUR_DOMAIN/projects.html"> <meta property="og:type" content="website">
 
-    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="https://placehold.co/32x32/0ea5e9/ffffff?text=KD" type="image/png"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css"> 
+    
+    <link rel="stylesheet" href="css/styles.css"> <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .banner-bg { /* Ensure this class is defined in styles.css or here */
+             background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://placehold.co/1920x700/1e293b/ffffff?text=Our+Work'); /* TODO: Replace with actual banner image */
+             background-size: cover;
+             background-position: center;
+        }
+        .text-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        /* Filter Buttons Styling */
+        .filter-button {
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #cbd5e1; /* slate-300 */
+        }
+        .filter-button:hover {
+            background-color: #e0f2fe; /* sky-100 */
+            border-color: #38bdf8; /* sky-400 */
+            color: #0369a1; /* sky-700 */
+        }
+        .filter-button.active {
+            background-color: #0ea5e9; /* sky-500 */
+            color: white;
+            border-color: #0ea5e9; /* sky-500 */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Project Card Styling */
+        .project-card .project-image-container {
+            height: 280px; /* Consistent height for images */
+            overflow: hidden;
+            background-color: #e2e8f0; /* slate-200 for placeholder bg */
+        }
+        .project-card img {
+            transition: transform 0.4s ease, filter 0.3s ease;
+        }
+        .project-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.05);
+        }
+        .project-card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 180px; /* Ensure consistent card content height */
+        }
+        .project-tag {
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Horizontal Album Styling */
+        .album-image-horizontal {
+            height: 180px; /* Increased height */
+            width: auto;
+            object-fit: cover;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .album-image-horizontal:hover {
+            transform: scale(1.03) translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+        }
+        /* Custom scrollbar for webkit browsers */
+        .scrollbar-thin::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: #f1f5f9; /* slate-100 */
+            border-radius: 10px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: #94a3b8; /* slate-400 */
+            border-radius: 10px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* slate-500 */
+        }
+    </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
 
     <div id="header-placeholder"></div>
 
-    <main>
-        <section class="banner-bg text-white py-20 md:py-28" data-aos="fade-in">
+    <main class="pt-20">
+        <section class="banner-bg text-white py-24 md:py-32" data-aos="fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Our Portfolio</h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                    Discover the quality and innovation in every KhaDock project across Florida.
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-shadow" data-aos="fade-down" data-aos-delay="200">Our Portfolio</h1>
+                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-200 text-shadow" data-aos="fade-up" data-aos-delay="400">
+                    Discover the quality, innovation, and craftsmanship in every KhaDock project across Florida.
                 </p>
             </div>
         </section>
@@ -37,74 +123,123 @@
         <section class="py-16 md:py-24 bg-slate-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Featured Projects</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Featured Dock & Marine Projects</h2>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Each project showcases our commitment to excellence, durability, and client satisfaction.
+                        Each project showcases our commitment to excellence, durability, and complete client satisfaction.
                     </p>
                 </div>
 
-                <div id="project-filters" class="flex flex-wrap justify-center gap-2 mb-10 md:mb-12" data-aos="fade-up" data-aos-delay="100">
-                    <button class="filter-button active px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="all">All Projects</button>
-                    <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="design">Design</button>
-                    <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="construction">Construction</button>
-                    <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="remodel">Remodeling</button>
-                    <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="maintenance">Repair & Maintenance</button> 
+                <div id="project-filters" class="flex flex-wrap justify-center gap-3 mb-10 md:mb-12" data-aos="fade-up" data-aos-delay="100">
+                    <button class="filter-button active px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="all">All Projects</button>
+                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="design">Custom Design</button>
+                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="construction">New Construction</button>
+                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="remodel">Remodeling</button>
+                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="maintenance">Repair & Maintenance</button> 
                 </div>
 
-                <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="100">
-                        <a href="#" class="block group">
+                <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="100">
+                        <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images/pages/DockDesign.jpeg" alt="Luxury Private Dock in Miami by KhaDock" class="w-full h-full object-cover">
+                                <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=Luxury+Dock" alt="Luxury Private Dock in Miami by KhaDock" class="w-full h-full object-cover">
                             </div>
-                            <div class="p-6 project-card-content">
+                            <div class="p-6 project-card-content flex-grow">
                                 <div>
                                     <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Luxury Private Dock - Miami</h3>
-                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Custom-designed fixed dock featuring premium composite decking, integrated lighting.</p>
+                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Custom-designed fixed dock featuring premium composite decking, integrated LED lighting, and a dual boat lift system for ultimate convenience.</p>
                                 </div>
-                                <div class="mt-auto pt-3 border-t border-slate-100">
-                                    <span class="inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-2.5 py-0.5 rounded-full mr-2">Design</span>
-                                    <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Construction</span>
+                                <div class="mt-auto pt-4 border-t border-slate-200">
+                                    <span class="project-tag inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1 hover:bg-sky-200">Design</span>
+                                    <span class="project-tag inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full mb-1 hover:bg-emerald-200">Construction</span>
                                 </div>
                             </div>
                         </a>
                     </div>
 
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="construction" data-aos="zoom-in-up" data-aos-delay="200">
-                         <a href="#" class="block group">
+                    <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="construction" data-aos="zoom-in-up" data-aos-delay="200">
+                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images/pages/DockConstruction.jpeg" alt="Commercial Pier Fort Lauderdale by KhaDock" class="w-full h-full object-cover">
+                                <img src="https://placehold.co/600x400/10b981/ffffff?text=Commercial+Pier" alt="Commercial Pier Fort Lauderdale by KhaDock" class="w-full h-full object-cover">
                             </div>
-                            <div class="p-6 project-card-content">
+                            <div class="p-6 project-card-content flex-grow">
                                 <div>
                                     <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Commercial Pier - Fort Lauderdale</h3>
-                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Robust construction of a public access pier, engineered for high traffic and harsh marine environments, featuring durable materials.</p>
+                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Robust construction of a public access pier, engineered for high traffic and harsh marine environments, featuring ADA-compliant ramps and durable materials.</p>
                                 </div>
-                                <div class="mt-auto pt-3 border-t border-slate-100">
-                                    <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Construction</span>
+                                <div class="mt-auto pt-4 border-t border-slate-200">
+                                    <span class="project-tag inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full hover:bg-emerald-200">Construction</span>
                                 </div>
                             </div>
                         </a>
                     </div>
 
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="remodel" data-aos="zoom-in-up" data-aos-delay="100">
-                        <a href="#" class="block group">
+                    <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="remodel" data-aos="zoom-in-up" data-aos-delay="300">
+                        <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                 <img src="images/pages/Remodeling&Upgrades.jpeg" alt="Classic Dock Remodel Palm Beach by KhaDock" class="w-full h-full object-cover">
+                                 <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Dock+Remodel" alt="Classic Dock Remodel Palm Beach by KhaDock" class="w-full h-full object-cover">
                             </div>
-                            <div class="p-6 project-card-content">
+                            <div class="p-6 project-card-content flex-grow">
                                 <div>
                                     <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Classic Dock Remodel - Palm Beach</h3>
-                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Complete renovation of an aging wooden dock, upgraded with modern composite materials, new pilings, and enhanced safety features.</p>
+                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Complete renovation of an aging wooden dock, upgraded with modern composite materials, new pilings, custom railings, and enhanced safety features.</p>
                                 </div>
-                                <div class="mt-auto pt-3 border-t border-slate-100">
-                                    <span class="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Remodeling</span>
+                                <div class="mt-auto pt-4 border-t border-slate-200">
+                                    <span class="project-tag inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full hover:bg-amber-200">Remodeling</span>
                                 </div>
                             </div>
                         </a>
                     </div>
-
-                    <!-- Removed the project card with data-category containing "lifts" -->
+                     <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="maintenance design" data-aos="zoom-in-up" data-aos-delay="100">
+                        <a href="#" class="block group h-full flex flex-col">
+                            <div class="project-image-container">
+                                <img src="https://placehold.co/600x400/ef4444/ffffff?text=Dock+Repair" alt="Waterfront Deck Repair & Enhancement - Key West" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6 project-card-content flex-grow">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Deck Repair & Enhancement - Key West</h3>
+                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Structural repairs and aesthetic upgrades to a waterfront deck, including piling reinforcement, new decking, and custom seating areas. Design consultation provided.</p>
+                                </div>
+                                <div class="mt-auto pt-4 border-t border-slate-200">
+                                    <span class="project-tag inline-block bg-red-100 text-red-700 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1 hover:bg-red-200">Maintenance</span>
+                                     <span class="project-tag inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1 hover:bg-sky-200">Design</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                     <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="200">
+                        <a href="#" class="block group h-full flex flex-col">
+                            <div class="project-image-container">
+                                <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Floating+Dock" alt="Floating Dock System - Naples" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6 project-card-content flex-grow">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Floating Dock System - Naples</h3>
+                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Installation of a versatile floating dock system, ideal for fluctuating water levels, complete with kayak launch and secure mooring.</p>
+                                </div>
+                                <div class="mt-auto pt-4 border-t border-slate-200">
+                                    <span class="project-tag inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1 hover:bg-sky-200">Design</span>
+                                    <span class="project-tag inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full mb-1 hover:bg-emerald-200">Construction</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                     <div class="project-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col" data-category="remodel maintenance" data-aos="zoom-in-up" data-aos-delay="300">
+                        <a href="#" class="block group h-full flex flex-col">
+                            <div class="project-image-container">
+                                <img src="https://placehold.co/600x400/ec4899/ffffff?text=Seawall+Upgrade" alt="Seawall Reinforcement & Cap - Sarasota" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6 project-card-content flex-grow">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Seawall Reinforcement & Cap - Sarasota</h3>
+                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Comprehensive seawall repair, including crack sealing, panel replacement, and a new concrete cap to ensure long-term shoreline protection.</p>
+                                </div>
+                                <div class="mt-auto pt-4 border-t border-slate-200">
+                                    <span class="project-tag inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1 hover:bg-amber-200">Remodeling</span>
+                                    <span class="project-tag inline-block bg-red-100 text-red-700 text-xs font-semibold px-3 py-1 rounded-full mb-1 hover:bg-red-200">Maintenance</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -112,43 +247,23 @@
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Completed Projects Album</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">More Completed Projects</h2>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Swipe or scroll to explore more of our successfully delivered boat dock projects.
+                        Swipe or scroll to explore a wider selection of our successfully delivered boat dock projects.
                     </p>
                 </div>
-                <div class="overflow-x-auto whitespace-nowrap py-2 px-1 scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-slate-100">
-                    <div class="flex gap-4">
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="100">
-                            <img src="images/albums/dock1.jpg" alt="Completed KhaDock Project 1" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
+                <div class="overflow-x-auto whitespace-nowrap py-4 px-1 scrollbar-thin">
+                    <div class="flex gap-6">
+                        {[...Array(10)].map((_, i) => ( // Generates 10 placeholder images
+                        <div key={i} class="inline-block" data-aos="fade-right" data-aos-delay={100 + i * 50}>
+                            <img 
+                                src={`https://placehold.co/400x300/475569/ffffff?text=Album+${i+1}`} 
+                                alt={`Completed KhaDock Project Album Image ${i+1}`} 
+                                class="album-image-horizontal"
+                                loading="lazy"
+                            />
                         </div>
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="150">
-                            <img src="images/albums/dock2.jpg" alt="Completed KhaDock Project 2" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
-                        </div>
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="200">
-                            <img src="images/albums/dock3.jpg" alt="Completed KhaDock Project 3" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
-                        </div>
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="250">
-                            <img src="images/albums/dock4.jpg" alt="Completed KhaDock Project 4" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
-                        </div>
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="300">
-                            <img src="images/albums/dock5.jpg" alt="Completed KhaDock Project 5" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
-                        </div>
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="350">
-                            <img src="images/albums/dock6.jpg" alt="Completed KhaDock Project 6" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
-                        </div>
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="400">
-                            <img src="images/albums/dock7.jpg" alt="Completed KhaDock Project 7" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
-                        </div>
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="450">
-                            <img src="images/albums/dock8.jpg" alt="Completed KhaDock Project 8" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
-                        </div>
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="500">
-                            <img src="images/albums/dock9.jpg" alt="Completed KhaDock Project 9" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
-                        </div>
-                        <div class="inline-block" data-aos="fade-right" data-aos-delay="550">
-                            <img src="images/albums/dock10.jpg" alt="Completed KhaDock Project 10" class="h-40 w-auto rounded-lg shadow album-image-horizontal">
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -158,9 +273,9 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Inspired by Our Work?</h2>
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                    Let KhaDock - Design and Remodel bring your waterfront vision to life. Contact us for a detailed consultation.
+                    Let KhaDock - Design and Remodel bring your waterfront vision to life. Contact us for a detailed consultation and a free, no-obligation estimate.
                 </p>
-                <a href="contact.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                <a href="contact.html" class="bg-white text-sky-600 font-bold py-3.5 px-10 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
                     Start Your Project Today
                 </a>
             </div>
@@ -169,7 +284,11 @@
 
     <div id="footer-placeholder"></div>
     
-    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
+    <button id="scrollToTopBtn" title="Go to top" 
+            class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white 
+                   w-12 h-12 rounded-full shadow-xl items-center justify-center 
+                   focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
+                   transition-all duration-300 z-40 text-xl">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -177,27 +296,57 @@
     <script src="js/script.js" defer></script> 
     <script src="js/loadComponents.js" defer></script>
     <script>
-        // Project filtering logic
         document.addEventListener('DOMContentLoaded', () => {
+            // AOS Initialization
+            AOS.init({
+                duration: 700,
+                offset: 100, // Trigger animations a bit sooner
+                once: true,
+                easing: 'ease-out-quad',
+            });
+
+            // Project filtering logic
             const filterButtons = document.querySelectorAll('#project-filters .filter-button');
             const projectCards = document.querySelectorAll('#project-grid .project-card');
 
             if (filterButtons.length > 0 && projectCards.length > 0) {
                 filterButtons.forEach(button => {
                     button.addEventListener('click', () => {
-                        filterButtons.forEach(btn => btn.classList.remove('active'));
-                        button.classList.add('active');
+                        // Update active button state
+                        filterButtons.forEach(btn => btn.classList.remove('active', 'bg-sky-500', 'text-white', 'border-sky-500'));
+                        button.classList.add('active', 'bg-sky-500', 'text-white', 'border-sky-500');
+                        
                         const filterValue = button.getAttribute('data-filter');
 
                         projectCards.forEach(card => {
                             const categories = card.getAttribute('data-category');
+                            // AOS related fade out/in could be added here for smoother transitions
                             if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
-                                card.style.display = 'block';
+                                card.style.display = 'flex'; // Use flex if cards are flex containers
+                                // card.classList.remove('aos-animate'); // Reset AOS for re-trigger if needed
+                                // setTimeout(() => card.classList.add('aos-animate'), 50); // Re-add after a tiny delay
                             } else {
                                 card.style.display = 'none';
                             }
                         });
                     });
+                });
+            }
+
+            // Scroll to Top Button Logic (if not in script.js)
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        scrollToTopBtn.classList.remove('hidden');
+                        scrollToTopBtn.classList.add('flex');
+                    } else {
+                        scrollToTopBtn.classList.add('hidden');
+                        scrollToTopBtn.classList.remove('flex');
+                    }
+                }, { passive: true });
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
         });
