@@ -12,13 +12,13 @@
                     <button id="nav-services-button" aria-haspopup="true" aria-expanded="false" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center">
                         Services <i class="fas fa-chevron-down fa-xs ml-1"></i>
                     </button>
-                    <div class="dropdown-menu hidden">
-                        <a href="services.html" class="block px-4 py-2">Services Overview</a>
-                        <a href="services.html#design" class="block px-4 py-2">Custom Dock Design</a>
-                        <a href="services.html#construction" class="block px-4 py-2">New Dock Construction</a>
-                        <a href="services.html#remodel" class="block px-4 py-2">Dock Remodeling</a>
-                        <a href="services.html#lifts" class="block px-4 py-2">Boat Lift Installation</a>
-                        <a href="services.html#repair" class="block px-4 py-2">Repair & Maintenance</a>
+                    <div class="dropdown-menu hidden absolute bg-slate-700 text-slate-200 mt-2 py-1 rounded-md shadow-lg z-20 min-w-[220px]">
+                        <a href="services.html" class="block px-4 py-2 hover:bg-slate-600">Services Overview</a>
+                        <a href="services.html#design" class="block px-4 py-2 hover:bg-slate-600">Custom Dock Design</a>
+                        <a href="services.html#construction" class="block px-4 py-2 hover:bg-slate-600">New Dock Construction</a>
+                        <a href="services.html#remodel" class="block px-4 py-2 hover:bg-slate-600">Dock Remodeling</a>
+                        <a href="services.html#lifts" class="block px-4 py-2 hover:bg-slate-600">Boat Lift Installation</a>
+                        <a href="services.html#repair" class="block px-4 py-2 hover:bg-slate-600">Repair & Maintenance</a>
                     </div>
                 </div>
                 <a href="projects.html" id="nav-projects" class="hover:text-sky-400 transition-colors duration-300 font-medium">Projects</a>
@@ -27,7 +27,7 @@
                     <button id="desktop-search-button" aria-label="Open search" class="text-slate-200 hover:text-sky-400">
                         <i class="fas fa-search"></i>
                     </button>
-                    <div id="desktop-search-container" class="hidden absolute right-0 mt-2 p-2 bg-slate-700 rounded-md shadow-lg z-30">
+                    <div id="desktop-search-container" class="hidden absolute right-0 mt-2 p-2 bg-slate-700 rounded-md shadow-lg z-30 w-64">
                         <form class="search-form flex items-center">
                             <input type="search" id="desktop-search-input" placeholder="Search site..." class="w-full px-2 py-1 text-sm text-slate-800 rounded-l-md focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none" aria-label="Search input">
                             <button type="submit" aria-label="Submit search" class="bg-sky-500 text-white px-3 py-1 rounded-r-md hover:bg-sky-600 text-sm">
@@ -48,14 +48,14 @@
         </div>
     </div>
     <div id="mobile-menu-panel" class="md:hidden hidden bg-slate-700 absolute w-full z-30 top-20 left-0 right-0 shadow-lg">
-         <nav class="flex flex-col space-y-1 px-4 py-3">
+       <nav class="flex flex-col space-y-1 px-4 py-3">
             <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Home</a>
             <a href="about.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">About Us</a>
             <div>
                 <button aria-expanded="false" aria-controls="mobile-services-submenu" class="w-full text-left px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium flex justify-between items-center mobile-submenu-toggle">
                     <span>Services</span> <i class="fas fa-chevron-down fa-xs mobile-submenu-icon"></i>
                 </button>
-                <div id="mobile-services-submenu" class="hidden pl-4 mt-1 space-y-1 mobile-submenu-content">
+                <div id="mobile-services-submenu" class="pl-4 mt-1 space-y-1 mobile-submenu-content">
                     <a href="services.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Services Overview</a>
                     <a href="services.html#design" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Custom Dock Design</a>
                     <a href="services.html#construction" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">New Dock Construction</a>
