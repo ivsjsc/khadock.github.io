@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Kha Boat Dock - Florida's Dock Experts</title>
+    <meta name="description" content="Learn about Kha Boat Dock - Design and Remodel, our mission, vision, core values, and our team of experts in dock design and construction in Florida.">
+    <meta property="og:title" content="About Kha Boat Dock - Florida's Dock Experts">
+    <meta property="og:description" content="Kha Boat Dock: A trusted company with experience and commitment to delivering optimal dock solutions for clients in Florida.">
+    <meta property="og:image" content="https://placehold.co/1200x630/16A34A/FFFFFF?text=About+Kha+Boat+Dock">
+    <meta property="og:url" content="YOUR_DOMAIN/khadock_about.html"> <meta property="og:type" content="website">
+
+    <link rel="icon" href="https://placehold.co/32x32/0284C7/FFFFFF?text=KD" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .banner-bg {
+            background-image: url('https://placehold.co/1920x600/1E3A8A/FFFFFF?text=About+Kha+Boat+Dock');
+            background-size: cover;
+            background-position: center;
+        }
+        .footer-bg {
+            background-color: #0F172A;
+        }
+        nav a:hover, nav button:hover {
+            color: #38BDF8;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #1E293B;
+            z-index: 50;
+            min-width: 200px;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .dropdown-menu a {
+            padding: 0.75rem 1rem;
+            display: block;
+            color: #CBD5E1;
+        }
+        .dropdown-menu a:hover {
+            background-color: #334155;
+            color: #F1F5F9;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased">
+
+    <header class="bg-slate-800 text-slate-200 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="khadock_index.html" class="flex items-center space-x-2">
+                    <img src="https://placehold.co/50x50/0284C7/FFFFFF?text=KD" alt="Kha Boat Dock Logo" class="h-10 w-10 rounded-full">
+                    <span class="text-2xl font-bold text-sky-400">Kha Boat Dock</span>
+                </a>
+
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <a href="khadock_index.html" id="nav-index" class="hover:text-sky-400 transition-colors duration-300 font-medium">Home</a>
+                    <a href="khadock_about.html" id="nav-about" class="text-sky-400 font-semibold transition-colors duration-300">About Us</a>
+                    <div class="relative dropdown">
+                        <button id="nav-services-button" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center">
+                            Services <i class="fas fa-chevron-down fa-xs ml-1"></i>
+                        </button>
+                        <div class="dropdown-menu mt-2 py-1">
+                            <a href="khadock_services.html">Services Overview</a>
+                            <a href="khadock_services.html#design">Dock Design</a>
+                            <a href="khadock_services.html#construction">Dock Construction</a>
+                            <a href="khadock_services.html#lifts">Boat Lift Installation</a>
+                            <a href="khadock_services.html#repair">Repair & Maintenance</a>
+                            <a href="khadock_services.html#remodel">Dock Remodeling</a>
+                        </div>
+                    </div>
+                    <a href="khadock_projects.html" id="nav-projects" class="hover:text-sky-400 transition-colors duration-300 font-medium">Projects</a>
+                    <a href="khadock_contact.html" id="nav-contact" class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-md font-semibold transition-colors duration-300">Contact Us</a>
+                </nav>
+
+                <button id="mobile-menu-button" class="md:hidden text-slate-200 hover:text-sky-400 focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-slate-700">
+            <nav class="flex flex-col space-y-2 px-4 py-3">
+                <a href="khadock_index.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Home</a>
+                <a href="khadock_about.html" class="block px-3 py-2 rounded-md bg-slate-600 text-sky-400 font-semibold">About Us</a>
+                 <div>
+                    <button class="w-full text-left px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium flex justify-between items-center" onclick="toggleMobileSubmenu()">
+                        Services <i id="mobile-submenu-icon" class="fas fa-chevron-down fa-xs"></i>
+                    </button>
+                    <div id="mobile-submenu" class="hidden pl-4 mt-1">
+                        <a href="khadock_services.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Services Overview</a>
+                        <a href="khadock_services.html#design" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Dock Design</a>
+                        <a href="khadock_services.html#construction" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Dock Construction</a>
+                        <a href="khadock_services.html#lifts" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Boat Lift Installation</a>
+                        <a href="khadock_services.html#repair" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Repair & Maintenance</a>
+                        <a href="khadock_services.html#remodel" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Dock Remodeling</a>
+                    </div>
+                </div>
+                <a href="khadock_projects.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Projects</a>
+                <a href="khadock_contact.html" class="block px-3 py-2 rounded-md bg-sky-500 text-white hover:bg-sky-600 font-semibold text-center">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="banner-bg text-white py-20 md:py-28" data-aos="fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center bg-black bg-opacity-60 p-8 md:p-10 rounded-lg">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">About Kha Boat Dock</h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+                    Your experts for comprehensive dock solutions in Florida.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right" data-aos-delay="100">
+                        <img src="https://placehold.co/600x450/3B82F6/FFFFFF?text=Kha+Boat+Dock+Team" alt="Kha Boat Dock Team" class="rounded-lg shadow-xl w-full">
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="200">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-6">Welcome to Kha Boat Dock - Design and Remodel</h2>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            Kha Boat Dock - Design and Remodel was founded with a passion for delivering outstanding dock solutions to Florida's coastal communities. We understand that a dock is more than just a place to moor your vessel; it's an essential part of your waterfront lifestyle and enjoyment.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            With years of industry experience, our team of experts at Kha Boat Dock prides itself on extensive expertise, meticulous attention to detail, and a commitment to ensuring absolute client satisfaction. We specialize in the design, construction, remodeling, installation, and maintenance of all types of docks, piers, and boat lifts, using high-quality materials and advanced technology.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            At Kha Boat Dock, we continually strive to ensure each project accurately reflects your needs, style, and budget, while also adhering to local safety standards and regulations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-white rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="text-sky-500 mb-4">
+                            <i class="fas fa-bullseye fa-3x"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3">Our Mission</h3>
+                        <p class="text-slate-600 text-sm">
+                            To provide safe, durable, aesthetic, and convenient dock solutions, from new designs to complete remodels, enhancing the value and waterfront living experience for our clients in Florida.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="text-sky-500 mb-4">
+                            <i class="fas fa-eye fa-3x"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3">Our Vision</h3>
+                        <p class="text-slate-600 text-sm">
+                            To be the leading dock design, construction, and remodeling company in Florida, known for superior quality, professional service, and continuous innovation.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="text-sky-500 mb-4">
+                            <i class="fas fa-heart fa-3x"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3">Core Values</h3>
+                        <ul class="text-slate-600 text-sm space-y-1 list-none">
+                            <li><i class="fas fa-check-circle text-green-500 fa-xs mr-1"></i> Quality</li>
+                            <li><i class="fas fa-check-circle text-green-500 fa-xs mr-1"></i> Safety</li>
+                            <li><i class="fas fa-check-circle text-green-500 fa-xs mr-1"></i> Reliability</li>
+                            <li><i class="fas fa-check-circle text-green-500 fa-xs mr-1"></i> Professionalism</li>
+                            <li><i class="fas fa-check-circle text-green-500 fa-xs mr-1"></i> Dedication</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose Us in Florida?</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        Kha Boat Dock doesn't just build or remodel docks; we build trust and peace of mind for you in the unique Florida environment.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div data-aos="fade-right">
+                        <img src="https://placehold.co/600x400/F59E0B/FFFFFF?text=Florida+Coastline" alt="Florida Coastline" class="rounded-lg shadow-lg w-full">
+                    </div>
+                    <div data-aos="fade-left">
+                        <ul class="space-y-6">
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-slate-700 mb-1">Local Expertise</h4>
+                                    <p class="text-slate-600 text-sm">
+                                        We have extensive knowledge of Florida's specific hydrological conditions, climate, and ecosystem, helping optimize design, remodeling, and materials for each project.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-slate-700 mb-1">Regulatory Compliance</h4>
+                                    <p class="text-slate-600 text-sm">
+                                        We are well-versed in and strictly adhere to Florida state and local county building codes and permits, ensuring your project is fully compliant.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-slate-700 mb-1">Hurricane-Resistant Solutions</h4>
+                                    <p class="text-slate-600 text-sm">
+                                        We apply advanced techniques and materials to enhance your dock's resilience against Florida's frequent hurricanes.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-sky-600 text-white" data-aos="zoom-in-up">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-6">Let's Build Your Perfect Dock Together</h2>
+                <p class="text-lg mb-8 max-w-xl mx-auto">
+                    Contact us today for a free consultation and start realizing your dock project in Florida.
+                </p>
+                <a href="khadock_contact.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                    Contact Us Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-bg text-slate-300 py-12 md:py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-sky-400 mb-4">Kha Boat Dock</h3>
+                    <p class="text-sm leading-relaxed mb-4">
+                        Kha Boat Dock - Design and Remodel. Leading experts in boat dock design, construction, remodeling, and installation in Florida.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Kha Boat Dock Facebook" class="text-slate-300 hover:text-sky-400 transition-colors"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" aria-label="Kha Boat Dock Instagram" class="text-slate-300 hover:text-sky-400 transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" aria-label="Kha Boat Dock LinkedIn" class="text-slate-300 hover:text-sky-400 transition-colors"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="khadock_index.html" class="hover:text-sky-400 transition-colors">Home</a></li>
+                        <li><a href="khadock_about.html" class="hover:text-sky-400 transition-colors">About Us</a></li>
+                        <li><a href="khadock_services.html" class="hover:text-sky-400 transition-colors">Services</a></li>
+                        <li><a href="khadock_projects.html" class="hover:text-sky-400 transition-colors">Projects</a></li>
+                        <li><a href="khadock_contact.html" class="hover:text-sky-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Main Services</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="khadock_services.html#design" class="hover:text-sky-400 transition-colors">Dock Design</a></li>
+                        <li><a href="khadock_services.html#construction" class="hover:text-sky-400 transition-colors">Dock Construction</a></li>
+                        <li><a href="khadock_services.html#lifts" class="hover:text-sky-400 transition-colors">Boat Lift Installation</a></li>
+                        <li><a href="khadock_services.html#repair" class="hover:text-sky-400 transition-colors">Repair & Maintenance</a></li>
+                        <li><a href="khadock_services.html#remodel" class="hover:text-sky-400 transition-colors">Dock Remodeling</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Information</h3>
+                    <address class="not-italic text-sm space-y-2">
+                        <p><i class="fas fa-map-marker-alt fa-fw mr-2 text-sky-400"></i>3850 Rollingsford Cir, Lakeland, FL 33810, USA</p>
+                        <p><i class="fas fa-phone fa-fw mr-2 text-sky-400"></i><a href="tel:+18139393989" class="hover:text-sky-400 transition-colors">+1 813-939-3989</a></p>
+                        <p><i class="fas fa-envelope fa-fw mr-2 text-sky-400"></i><a href="mailto:doduykha007@gmail.com" class="hover:text-sky-400 transition-colors">doduykha007@gmail.com</a></p>
+                        <p><i class="fas fa-clock fa-fw mr-2 text-sky-400"></i>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-700 pt-8 text-center text-sm">
+                <p>&copy; <span id="current-year"></span> Kha Boat Dock - Design and Remodel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <button id="scrollToTopBtn" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="khadock_script.js"></script>
+</body>
+</html>

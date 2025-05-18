@@ -1,0 +1,822 @@
+/* ===================================== */
+/* Optimized CSS Styles for IVS JSC     */
+/* Version: Added Search Styles        */
+/* ===================================== */
+
+/* --- 1. Theme Variables --- */
+:root {
+  /* ... (Các biến màu và layout khác giữ nguyên) ... */
+  --header-bg: #f97316;
+  --header-hover-bg: #ea580c;
+  --header-text: white;
+  --submenu-bg: white;
+  --submenu-text: #1f2937;
+  --submenu-hover-bg: #f3f4f6;
+  --submenu-hover-text: #2563eb;
+  --submenu-border: #e5e7eb;
+  --mobile-menu-bg: #f9fafb;
+  --mobile-menu-text: #374151;
+  --mobile-menu-hover-bg: #ffedd5;
+  --mobile-menu-hover-text: #c2410c;
+  --mobile-menu-border: #e5e7eb;
+  --cta-bg: #2563eb;
+  --cta-hover-bg: #1d4ed8;
+  --cta-text: white;
+  --header-arrow-color: #fdba74;
+  --header-arrow-hover-color: white;
+  --header-lang-border: #fb923c;
+  --submenu-nested-arrow: #6b7280;
+  --submenu-nested-arrow-hover: var(--submenu-hover-text);
+  --mobile-menu-arrow-color: var(--mobile-menu-hover-text);
+  --mobile-menu-submenu-bg: #fff7ed;
+  --mobile-menu-submenu-hover-bg: var(--mobile-menu-hover-bg);
+  --mobile-menu-subsubmenu-bg: white;
+  --mobile-menu-subsubmenu-hover-bg: var(--mobile-menu-hover-bg);
+  --mobile-lang-bg: #ffedd5;
+  --mobile-lang-border: #fed7aa;
+  --mobile-lang-text: #c2410c;
+  --mobile-lang-hover-bg: #fed7aa;
+  --mobile-lang-active-bg: #fdba74;
+  --mobile-lang-active-text: #9a3412;
+  --primary-color: #3b82f6;
+  --secondary-color: #10b981;
+  --warning-color: #f59e0b;
+  --purple-color: #8b5cf6;
+  --pink-color: #ec4899;
+  --info-color: #0ea5e9;
+  --text-dark: #1f2937;
+  --text-medium: #4b5563;
+  --text-light: #f9fafb;
+  --header-height-initial: 4rem;
+  --header-height-shrink: 3.5rem;
+  --logo-height-initial: 2.5rem;
+  --logo-height-shrink: 2rem;
+  --menu-transition-duration: 0.3s;
+  --search-highlight-bg: #fef08a; /* yellow-200 for highlighting */
+  --search-highlight-text: #713f12; /* amber-900 for highlighted text */
+}
+
+/* --- 2. General Body & Container Styles --- */
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-medium);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: var(--header-height-initial);
+  background-color: #f9fafb;
+}
+body.overflow-hidden { overflow: hidden; }
+
+/* --- 3. Header & Desktop Navigation Styles --- */
+/* ... (Các style header, nav, menu, submenu giữ nguyên) ... */
+#navbar {
+  background-color: var(--header-bg);
+  height: var(--header-height-initial);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  transition: height var(--menu-transition-duration) ease-in-out, background-color var(--menu-transition-duration) ease-in-out, top var(--menu-transition-duration) ease-in-out;
+}
+#navbar.shrink {
+  height: var(--header-height-shrink);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+#navbar .logo-img {
+  transition: height var(--menu-transition-duration) ease-in-out;
+  height: var(--logo-height-initial);
+}
+#navbar.shrink .logo-img { height: var(--logo-height-shrink); }
+#navbar > .container > div {
+  height: var(--header-height-initial);
+  transition: height var(--menu-transition-duration) ease-in-out;
+}
+#navbar.shrink > .container > div { height: var(--header-height-shrink); }
+.main-menu-item .nav-link {
+  color: var(--header-text);
+  white-space: nowrap;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, padding var(--menu-transition-duration) ease-in-out, font-size var(--menu-transition-duration) ease-in-out;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.375rem;
+  line-height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+}
+#navbar.shrink .nav-link {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  font-size: 0.8125rem;
+}
+.main-menu-item > button svg {
+  color: var(--header-arrow-color);
+  transition: color 0.15s ease-in-out;
+  margin-left: 0.25rem;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+.main-menu-item > button:hover svg { color: var(--header-arrow-hover-color); }
+.main-menu-item > a.nav-link:hover,
+.main-menu-item > button.nav-link:hover { background-color: var(--header-hover-bg); }
+.submenu {
+  background-color: var(--submenu-bg);
+  border: 1px solid var(--submenu-border);
+  position: absolute;
+  left: 0;
+  z-index: 51;
+  margin-top: 0.25rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(0.95);
+  transition: opacity var(--menu-transition-duration) ease, visibility var(--menu-transition-duration) ease, transform var(--menu-transition-duration) ease;
+  min-width: 14rem;
+}
+.main-menu-item:hover > .submenu,
+.main-menu-item:focus-within > .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.submenu a, .submenu button {
+  color: var(--submenu-text);
+  padding: 0.5rem 1rem;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.submenu a:hover, .submenu button:hover,
+.submenu a:focus, .submenu button:focus {
+  background-color: var(--submenu-hover-bg);
+  color: var(--submenu-hover-text);
+  outline: none;
+}
+.submenu hr { border-color: var(--submenu-border); margin: 0.25rem 0; }
+.sub-submenu-container { position: relative; }
+.sub-submenu-container > button svg {
+  color: var(--submenu-nested-arrow);
+  transition: color 0.15s ease-in-out;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+.sub-submenu-container > button:hover svg,
+.sub-submenu-container > button:focus svg { color: var(--submenu-nested-arrow-hover); }
+.sub-submenu {
+  position: absolute;
+  top: -0.25rem;
+  left: 100%;
+  margin-left: 0.25rem;
+  background-color: var(--submenu-bg);
+  border: 1px solid var(--submenu-border);
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  z-index: 52;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px) scale(0.95);
+  transition: opacity var(--menu-transition-duration) ease, visibility var(--menu-transition-duration) ease, transform var(--menu-transition-duration) ease;
+  min-width: 14rem;
+}
+.sub-submenu-container:hover > .sub-submenu,
+.sub-submenu-container:focus-within > .sub-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0) scale(1);
+}
+.sub-submenu a, .sub-submenu button {
+  color: var(--submenu-text);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  white-space: nowrap;
+}
+.sub-submenu a:hover, .sub-submenu button:hover,
+.sub-submenu a:focus, .sub-submenu button:focus {
+  background-color: var(--submenu-hover-bg);
+  color: var(--submenu-hover-text);
+  outline: none;
+}
+
+/* --- Desktop Search Styles --- */
+#desktop-search-container {
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    width: 0; /* Bắt đầu ẩn */
+    opacity: 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.2); /* Màu trắng hơi trong suốt */
+    border-radius: 9999px; /* Hình viên thuốc */
+    display: flex;
+    align-items: center;
+}
+#desktop-search-container.active {
+    width: 250px; /* Chiều rộng khi hiển thị */
+    opacity: 1;
+    padding-left: 0.75rem; /* pl-3 */
+    padding-right: 0.5rem; /* pr-2 */
+}
+.desktop-search-input {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 0.3rem 0; /* Điều chỉnh padding */
+    font-size: 0.875rem; /* text-sm */
+    width: 100%;
+    outline: none;
+    appearance: none;
+}
+.desktop-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+}
+.desktop-search-close-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem; /* Icon đóng lớn hơn */
+    line-height: 1;
+    padding: 0 0.25rem;
+    margin-left: 0.25rem; /* ml-1 */
+    cursor: pointer;
+    transition: color 0.15s ease-in-out;
+}
+.desktop-search-close-btn:hover {
+    color: white;
+}
+
+/* --- 4. Mobile Navigation Styles --- */
+/* ... (Các style mobile giữ nguyên) ... */
+#mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--menu-transition-duration) ease-in-out, visibility var(--menu-transition-duration) ease-in-out;
+}
+#mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+#mobile-menu-panel {
+  background-color: var(--mobile-menu-bg);
+  color: var(--mobile-menu-text);
+  border-left: 1px solid var(--mobile-menu-border);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 80%;
+  max-width: 300px;
+  z-index: 100;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform var(--menu-transition-duration) ease-in-out;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+#mobile-menu-panel.active { transform: translateX(0); }
+#mobile-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--mobile-menu-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+#mobile-header .logo-img-mobile { height: 2rem; width: auto; }
+#mobile-menu-content {
+  padding: 0.5rem 0.5rem;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+#mobile-menu-content > * { margin-bottom: 0.25rem; }
+#mobile-menu-content > *:last-child { margin-bottom: 0; }
+#mobile-footer {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--mobile-menu-border);
+  flex-shrink: 0;
+  background-color: #f3f4f6;
+}
+#mobile-menu-content .nav-link,
+#mobile-menu-content .mobile-submenu-toggle {
+  padding: 0.65rem 0.75rem;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-radius: 0.375rem;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  font-size: 0.9375rem;
+  color: var(--mobile-menu-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+#mobile-menu-content .nav-link:hover,
+#mobile-menu-content .mobile-submenu-toggle:hover,
+#mobile-menu-content .nav-link:focus,
+#mobile-menu-content .mobile-submenu-toggle:focus {
+  background-color: var(--mobile-menu-hover-bg);
+  color: var(--mobile-menu-hover-text);
+  outline: none;
+}
+#mobile-menu-content .mobile-menu-item > button.mobile-submenu-toggle {
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#mobile-menu-content .mobile-menu-item .submenu-arrow {
+  transition: transform var(--menu-transition-duration) ease-in-out;
+  color: #9ca3af;
+  width: 1rem;
+  height: 1rem;
+}
+#mobile-menu-content .mobile-menu-item button:hover .submenu-arrow,
+#mobile-menu-content .mobile-menu-item button:focus .submenu-arrow { color: var(--mobile-menu-hover-text); }
+#mobile-menu-content .mobile-menu-item.open > button .submenu-arrow {
+  transform: rotate(90deg);
+  color: var(--mobile-menu-arrow-color);
+}
+.mobile-submenu {
+  transition: max-height var(--menu-transition-duration) ease-in-out;
+  overflow: hidden;
+  max-height: 0;
+  margin-top: 0.25rem;
+  background-color: var(--mobile-menu-submenu-bg);
+  border-radius: 0.375rem;
+  padding-left: 0.5rem;
+}
+.mobile-menu-item.open > .mobile-submenu {
+  max-height: 1000px;
+  overflow: visible;
+}
+.mobile-submenu > * { margin-bottom: 0.25rem; }
+.mobile-submenu > *:last-child { margin-bottom: 0; }
+.mobile-submenu a,
+.mobile-submenu button.mobile-submenu-toggle {
+  font-size: 0.875rem;
+  color: #4b5563;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+}
+.mobile-submenu a:hover,
+.mobile-submenu button.mobile-submenu-toggle:hover,
+.mobile-submenu a:focus,
+.mobile-submenu button.mobile-submenu-toggle:focus {
+  background-color: var(--mobile-menu-submenu-hover-bg);
+  color: var(--mobile-menu-hover-text);
+  outline: none;
+}
+.mobile-submenu .mobile-submenu {
+  padding-left: 0.75rem;
+  margin-left: 0.25rem;
+  border-left: 2px solid var(--mobile-lang-border);
+  background-color: var(--mobile-menu-subsubmenu-bg);
+}
+.mobile-submenu .mobile-submenu a {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.375rem;
+}
+.mobile-submenu .mobile-submenu a:hover,
+.mobile-submenu .mobile-submenu a:focus {
+  background-color: var(--mobile-menu-subsubmenu-hover-bg);
+  color: var(--mobile-menu-hover-text);
+  outline: none;
+}
+#mobile-menu-content hr { border-color: var(--mobile-menu-border); margin: 0.5rem 0; }
+
+/* --- 5. Language Dropdown Styles --- */
+/* ... (Các style language dropdown giữ nguyên) ... */
+.language-dropdown-content { display: none; }
+.language-dropdown.open .language-dropdown-content { display: block; }
+#desktop-language-dropdown {
+  position: relative;
+  border-left: 1px solid var(--header-lang-border);
+  padding-left: 0.75rem;
+  margin-left: 0.25rem;
+}
+#desktop-language-dropdown .dropdown-toggle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  color: var(--header-text);
+  transition: background-color 0.15s ease-in-out;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+#desktop-language-dropdown .dropdown-toggle:hover,
+#desktop-language-dropdown .dropdown-toggle:focus { background-color: var(--header-hover-bg); outline: none; }
+#desktop-language-dropdown .dropdown-toggle span { margin-right: 0.25rem; }
+#desktop-language-dropdown .dropdown-toggle svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  transition: transform var(--menu-transition-duration) ease-in-out;
+}
+#desktop-language-dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
+#desktop-language-dropdown .language-dropdown-content {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 5rem;
+  z-index: 55;
+  background-color: var(--submenu-bg);
+  border: 1px solid var(--submenu-border);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-radius: 0.375rem;
+  padding: 0.25rem 0;
+}
+#desktop-language-dropdown .lang-button {
+  color: var(--submenu-text);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+#desktop-language-dropdown .lang-button:hover,
+#desktop-language-dropdown .lang-button:focus {
+  background-color: var(--submenu-hover-bg);
+  color: var(--submenu-hover-text);
+  outline: none;
+}
+#desktop-language-dropdown .lang-button:disabled {
+  background-color: var(--submenu-hover-bg);
+  color: var(--submenu-hover-text);
+  opacity: 1;
+  cursor: default;
+  font-weight: 500;
+}
+#mobile-language-dropdown .dropdown-toggle {
+  color: var(--mobile-menu-text);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+#mobile-language-dropdown .dropdown-toggle:hover,
+#mobile-language-dropdown .dropdown-toggle:focus {
+  background-color: var(--mobile-menu-hover-bg);
+  color: var(--mobile-menu-hover-text);
+  outline: none;
+}
+#mobile-language-dropdown .dropdown-toggle span { margin-right: 0.5rem; }
+#mobile-language-dropdown .dropdown-toggle svg {
+  width: 1rem;
+  height: 1rem;
+  color: #9ca3af;
+  transition: transform var(--menu-transition-duration) ease-in-out;
+}
+#mobile-language-dropdown.open .dropdown-toggle svg { transform: rotate(180deg); }
+#mobile-language-dropdown .language-dropdown-content {
+  box-shadow: none;
+  margin-top: 0.5rem;
+  background-color: white;
+  border-radius: 0.375rem;
+  border: 1px solid var(--mobile-menu-border);
+  padding: 0.5rem 0;
+  overflow: hidden;
+}
+#mobile-language-dropdown .lang-button {
+  color: var(--submenu-text);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+#mobile-language-dropdown .lang-button:hover,
+#mobile-language-dropdown .lang-button:focus {
+  background-color: var(--submenu-hover-bg);
+  color: var(--submenu-hover-text);
+  outline: none;
+}
+#mobile-language-dropdown .lang-button:disabled {
+  background-color: var(--mobile-lang-active-bg);
+  color: var(--mobile-lang-active-text);
+  opacity: 1;
+  cursor: default;
+  font-weight: 500;
+}
+
+/* --- 6. Active Menu Item Highlighting --- */
+/* ... (Các style active menu giữ nguyên) ... */
+#navbar .main-menu-item > a.nav-link.active-menu-item,
+#navbar .main-menu-item > button.nav-link.active-menu-item { background-color: var(--header-hover-bg) !important; }
+#navbar .main-menu-item > button.nav-link.active-parent-item { background-color: var(--header-hover-bg) !important; }
+#navbar .submenu a.active-menu-item,
+#navbar .submenu button.active-menu-item {
+  background-color: #e0f2fe !important;
+  color: #0ea5e9 !important;
+  font-weight: 600 !important;
+}
+#navbar .sub-submenu-container > button.active-parent-item {
+  background-color: var(--submenu-hover-bg) !important;
+  color: var(--submenu-hover-text) !important;
+}
+#mobile-menu-panel .mobile-menu-item > a.nav-link.active-menu-item,
+#mobile-menu-panel .mobile-menu-item > button.mobile-submenu-toggle.active-menu-item {
+  background-color: #fed7aa !important;
+  color: #9a3412 !important;
+  font-weight: 600 !important;
+}
+#mobile-menu-panel .mobile-menu-item > button.mobile-submenu-toggle.active-parent-item {
+  background-color: var(--mobile-menu-hover-bg) !important;
+  color: var(--mobile-menu-hover-text) !important;
+  font-weight: 600 !important;
+}
+#mobile-menu-panel .mobile-submenu a.active-menu-item,
+#mobile-menu-panel .mobile-submenu button.mobile-submenu-toggle.active-menu-item {
+  background-color: #fed7aa !important;
+  color: #9a3412 !important;
+  font-weight: 600 !important;
+}
+#mobile-menu-panel .mobile-submenu .mobile-submenu a.active-menu-item {
+  background-color: #fdba74 !important;
+  color: #7c2d12 !important;
+  font-weight: 600 !important;
+}
+
+/* --- 7. General Component & Page Specific Styles --- */
+/* ... (Các style video, button disabled, scrollbar, card, timeline, etc. giữ nguyên) ... */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  background-color: #e5e7eb;
+  border-radius: 0.5rem;
+}
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+#news-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#news-container::-webkit-scrollbar { height: 8px; }
+#news-container::-webkit-scrollbar-track { background: #f3f4f6; border-radius: 10px; }
+#news-container::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 10px; border: 2px solid #f3f4f6; }
+#news-container::-webkit-scrollbar-thumb:hover { background-color: #9ca3af; }
+.service-card-upgraded { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.service-card-upgraded:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+.timeline { list-style: none; padding: 0; position: relative; }
+.timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 1.5rem; width: 2px; background-color: #cbd5e1; margin-left: -1px; }
+.timeline li { position: relative; margin-bottom: 2rem; padding-left: 3.5rem; }
+.timeline li::before { content: ''; position: absolute; left: 1.5rem; top: 0.25rem; width: 1rem; height: 1rem; border-radius: 50%; background-color: var(--primary-color); margin-left: -0.5rem; z-index: 1; }
+.horizontal-scroll-gallery { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.horizontal-scroll-gallery::-webkit-scrollbar { height: 8px; }
+.horizontal-scroll-gallery::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 10px; }
+.horizontal-scroll-gallery::-webkit-scrollbar-thumb { background-color: #9ca3af; border-radius: 10px; border: 2px solid #e5e7eb; }
+.horizontal-scroll-gallery::-webkit-scrollbar-thumb:hover { background-color: #6b7280; }
+.commitment-list li { padding-left: 1.75rem; position: relative; margin-bottom: 0.75rem; }
+.commitment-list li::before { content: '🤝'; position: absolute; left: 0; color: var(--secondary-color); font-size: 1em; top: 0.1em; }
+
+/* --- Action Buttons on Index (Moved from index.html) --- */
+.large-action-button {
+  position: relative; display: block; border-radius: 0.75rem; padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition-property: box-shadow, transform, background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; color: white; min-height: 200px; overflow: hidden;
+}
+.large-action-button:hover {
+  --tw-translate-y: -0.25rem;
+  transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.large-action-button::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.25); z-index: 1; transition: background-color 0.3s ease;
+}
+.large-action-button:hover::before { background-color: rgba(0, 0, 0, 0.15); }
+.large-action-button > * { position: relative; z-index: 2; }
+@media (min-width: 768px) { .large-action-button { min-height: 250px; } }
+.small-action-button {
+  display: block; border-radius: 0.5rem; background-color: white; padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition-property: box-shadow, transform, background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; color: #374151; min-height: 100px;
+}
+.small-action-button:hover {
+  --tw-translate-y: -0.25rem;
+  transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background-color: #f3f4f6;
+}
+
+/* --- 8. Utility Classes --- */
+.hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+
+/* --- 9. Search Highlight Style --- */
+mark.search-highlight {
+    background-color: var(--search-highlight-bg);
+    color: var(--search-highlight-text);
+    padding: 0.1em 0; /* Thêm padding nhỏ */
+    border-radius: 0.2em;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* --- 10. CTA Button Style (Example - Adjust as needed) --- */
+.cta-button {
+    display: inline-block; /* Hoặc inline-flex nếu dùng icon */
+    background-color: var(--cta-bg);
+    color: var(--cta-text);
+    padding: 0.375rem 1rem; /* Điều chỉnh padding (py-1.5 px-4) */
+    border-radius: 9999px; /* rounded-full */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 600; /* font-semibold */
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+    background-color: var(--cta-hover-bg);
+}
+.cta-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--cta-bg), 0.5); /* Ví dụ viền focus */
+}
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark-mode {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.theme-toggle-btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.theme-toggle-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Định nghĩa animation fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Bắt đầu với độ mờ hoàn toàn */
+    }
+    to {
+        opacity: 1; /* Kết thúc với độ hiển thị đầy đủ */
+    }
+}
+
+/* Áp dụng animation cho phần tử chứa nội dung chính */
+.fade-in-content {
+    animation: fadeIn 0.8s ease-in-out forwards; /* Tên animation, thời gian, kiểu tăng tốc, giữ trạng thái cuối */
+    opacity: 0; /* Đảm bảo phần tử ban đầu bị ẩn trước khi animation chạy */
+}
+
+/* Tùy chọn: Hiệu ứng trượt nhẹ từ dưới lên kết hợp với fade-in */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Bắt đầu từ dưới lên 20px */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Kết thúc ở vị trí ban đầu */
+    }
+}
+
+.fade-in-content.slide-up {
+    animation: fadeInSlideUp 0.8s ease-in-out forwards;
+    opacity: 0;
+}
+
+.mobile-menu.open { 
+  z-index: 1000; /
+}
+
+.mobile-menu.open + .quick-contact-icons {
+ 
+  opacity: 0.2; 
+  pointer-events: none;
+  /* Hoặc transform: translateY(100px); */
+}
+
+
+.mobile-menu .submenu {
+  width: auto; 
+  max-width: 100%;
+}
+/* Thêm vào cuối tệp css/styles.css */
+
+/* Định kiểu cho container chứa các nút bấm nhanh (FAB - Floating Action Buttons) */
+.fab-container {
+  position: fixed;
+  bottom: 1.5rem; /* bottom-6 */
+  right: 1.5rem;  /* right-6 */
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* items-end */
+}
+
+/* Định kiểu cho từng nút bấm nhanh bên trong container */
+.fab-container > * {
+  /* Các class Tailwind gốc: flex items-center justify-center w-12 h-12 rounded-full shadow-lg transition-colors duration-200 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem; /* w-12 */
+  height: 3rem; /* h-12 */
+  border-radius: 9999px; /* rounded-full */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  transition-property: background-color, color, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Thêm khoảng cách giữa các nút, trừ nút cuối cùng */
+.fab-container > *:not(:last-child) {
+  margin-bottom: 0.75rem; /* tương đương space-y-3 của Tailwind, bạn có thể tăng lên 1rem nếu cần */
+                          /* ví dụ: margin-bottom: 1rem; */
+}
+
+/* Giữ lại các style màu nền và hover cụ thể cho từng nút nếu bạn đã định nghĩa bằng class Tailwind */
+/* Ví dụ cho nút Messenger */
+.fab-container a[href*="m.me"] {
+  background-color: #006AFF; /* Màu của Messenger, hoặc dùng class bg-blue-600 */
+  color: white;
+}
+.fab-container a[href*="m.me"]:hover {
+  background-color: #0052CC; /* Màu hover, hoặc dùng class hover:bg-blue-700 */
+}
+
+/* Ví dụ cho nút Điện thoại */
+.fab-container a[href^="tel:"] {
+  background-color: #10B981; /* Màu xanh lá, hoặc dùng class bg-green-600 */
+  color: white;
+}
+.fab-container a[href^="tel:"]:hover {
+  background-color: #059669; /* Màu hover, hoặc dùng class hover:bg-green-700 */
+}
+
+/* Ví dụ cho các nút Zalo */
+.fab-container a[href*="zalo.me"] {
+  background-color: #0068FF; /* Màu của Zalo, hoặc dùng class bg-blue-500 */
+  color: white;
+}
+.fab-container a[href*="zalo.me"]:hover {
+  background-color: #0058E6; /* Màu hover, hoặc dùng class hover:bg-blue-600 */
+}
+
+/* Ví dụ cho nút Scroll to Top */
+.fab-container button#scrollToTopBtn {
+  background-color: #374151; /* Màu xám, hoặc dùng class bg-gray-700 */
+  color: white;
+}
+.fab-container button#scrollToTopBtn:hover {
+  background-color: #4B5563; /* Màu hover, hoặc dùng class hover:bg-gray-600 */
+}
