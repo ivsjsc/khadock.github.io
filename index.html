@@ -18,30 +18,24 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* These specific styles were in your original HTML. */
-        /* Consider moving them to styles.css if they are not page-specific overrides. */
-        /* body {
+        body {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        } */
-        /* .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/logo/logo.jpg');
+        }
+        .hero-bg {
+            background-image: url('images/pages/hero-bg.jpg');
             background-size: cover;
             background-position: center;
-        } */
-        /* .service-card:hover {
+        }
+        .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-        } */
-        /* .dropdown .dropdown-menu { ... } */ /* Should be in styles.css */
-        /* .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { ... } */ /* Should be in styles.css */
-        /* .dropdown-menu a { ... } */ /* Should be in styles.css */
-        /* .dropdown-menu a:hover { ... } */ /* Should be in styles.css */
-        
-        /* Ensure search container is styled if not using Tailwind utility classes directly in header */
-        /* #desktop-search-container {
-            width: 250px; 
-        } */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-menu {
+            display: none;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
@@ -49,6 +43,7 @@
     <div id="header-placeholder"></div>
 
     <main>
+        <!-- Banner Section -->
         <section class="hero-bg text-white min-h-[70vh] md:min-h-[80vh] flex items-center justify-center py-20 md:py-32" data-aos="fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight" data-aos="fade-down" data-aos-delay="200">
@@ -66,6 +61,11 @@
                     </a>
                 </div>
             </div>
+        </section>
+
+        <!-- Main Content Section -->
+        <section class="bg-slate-100">
+            <!-- Place your main content here if needed, or leave empty if content is below -->
         </section>
 
         <section class="py-16 md:py-24 bg-slate-50" id="services-overview" data-aos="fade-up">
