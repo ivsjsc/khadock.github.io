@@ -12,9 +12,10 @@
                     <button id="nav-services-button" aria-haspopup="true" aria-expanded="false" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center">
                         Services <i class="fas fa-chevron-down fa-xs ml-1"></i>
                     </button>
-                    <div class="dropdown-menu hidden absolute bg-slate-700 text-slate-200 mt-2 py-1 rounded-md shadow-lg z-20 min-w-[220px]">
-                        <a href="services.html" class="block px-4 py-2 hover:bg-slate-600">Services Overview</a>
+                    <div class="dropdown-menu hidden absolute bg-slate-700 text-slate-200 mt-2 py-1 rounded-md shadow-lg z-20 min-w-[230px]"> <a href="services.html" class="block px-4 py-2 hover:bg-slate-600">Services Overview</a>
                         <a href="services.html#design" class="block px-4 py-2 hover:bg-slate-600">Custom Dock Design</a>
+                        <a href="services.html#construction" class="block px-4 py-2 hover:bg-slate-600">New Dock Construction</a>
+                        <a href="services.html#lifts" class="block px-4 py-2 hover:bg-slate-600">Boat Lift Installation</a>
                         <a href="services.html#remodel" class="block px-4 py-2 hover:bg-slate-600">Dock Remodeling</a>
                         <a href="services.html#repair" class="block px-4 py-2 hover:bg-slate-600">Repair & Maintenance</a>
                     </div>
@@ -49,17 +50,19 @@
        <nav class="flex flex-col space-y-1 px-4 py-3">
             <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Home</a>
             <a href="about.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">About Us</a>
+            
             <div>
-                <button aria-expanded="true" aria-controls="mobile-services-submenu" class="w-full text-left px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium flex justify-between items-center mobile-submenu-toggle" tabindex="-1">
-                    <span>Services</span> <i class="fas fa-chevron-down fa-xs mobile-submenu-icon"></i>
-                </button>
-                <div id="mobile-services-submenu" class="pl-4 mt-1 space-y-1 mobile-submenu-content block"></div>
-                    <a href="services.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Services Overview</a>
-                    <a href="services.html#design" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Custom Dock Design</a>
-                    <a href="services.html#remodel" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Dock Remodeling</a>
-                    <a href="services.html#repair" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Repair & Maintenance</a>
+                <div class="px-3 py-2 font-semibold text-sky-400"> Services
+                </div>
+                <div id="mobile-services-submenu-items" class="pl-6 pr-3 pb-1 space-y-1"> <a href="services.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm font-medium">Services Overview</a>
+                    <a href="services.html#design" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm font-medium">Custom Dock Design</a>
+                    <a href="services.html#construction" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm font-medium">New Dock Construction</a>
+                    <a href="services.html#lifts" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm font-medium">Boat Lift Installation</a>
+                    <a href="services.html#remodel" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm font-medium">Dock Remodeling</a>
+                    <a href="services.html#repair" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm font-medium">Repair & Maintenance</a>
                 </div>
             </div>
+
             <a href="projects.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Projects</a>
             <a href="contact.html" class="block px-3 py-2 rounded-md bg-sky-500 text-white hover:bg-sky-600 font-semibold text-center">Contact Us</a>
             <form class="search-form mt-3 px-3">
