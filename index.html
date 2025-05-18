@@ -5,50 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KhaDock - Florida's Premier Dock Design, Construction & Remodel</title>
     <meta name="description" content="Kha Boat Dock - Design and Remodel: Your trusted experts for custom boat docks, durable construction, professional remodeling in Florida.">
+    
     <meta property="og:title" content="Kha Boat Dock - Florida's Premier Dock Solutions">
     <meta property="og:description" content="Offering expert design, construction, and remodeling services for boat docks, piers, and lifts across Florida. Quality craftsmanship guaranteed.">
-    <meta property="og:image" content="images/logo/logo.jpg"> <meta property="og:url" content="YOUR_ACTUAL_DOMAIN/index.html"> <meta property="og:type" content="website">
+    <meta property="og:image" content="https://placehold.co/1200x630/0ea5e9/ffffff?text=KhaDock+Preview"> <meta property="og:url" content="YOUR_ACTUAL_DOMAIN/index.html"> <meta property="og:type" content="website">
 
-    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="https://placehold.co/32x32/0ea5e9/ffffff?text=KD" type="image/png"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/styles.css">
+    
     <style>
+        /* Custom styles that complement Tailwind */
         body {
             font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
+
         .hero-image-fullwidth-container {
-            width: 100%; /* Chiếm toàn bộ chiều rộng */
-            /* Bạn có thể đặt chiều cao cố định hoặc tỷ lệ khung hình ở đây nếu muốn */
-            /* Ví dụ: height: 60vh; hoặc aspect-ratio: 16 / 9; */
-            overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài nếu dùng object-fit */
+            width: 100%;
+            max-height: 75vh; /* Limit hero image height for better viewport fit */
+            overflow: hidden; 
         }
+
         .hero-image-fullwidth-container img {
             width: 100%;
-            height: auto; /* Hoặc chiều cao cố định, ví dụ: 100% để lấp đầy container nếu container có height */
-            object-fit: cover; /* Đảm bảo ảnh che phủ và không bị méo */
-            display: block; /* Loại bỏ khoảng trống thừa bên dưới ảnh */
+            height: 100%; /* Make image fill container height */
+            object-fit: cover; 
+            object-position: center; /* Ensure center of image is shown */
+            display: block; 
+        }
+
+        .service-card { /* Ensure this class is on the card element */
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); 
         }
+
         .album-image {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
         }
         .album-image:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            filter: brightness(1.1);
         }
-        /* Đảm bảo nội dung chính được đẩy xuống dưới header dính (sticky) */
-        /* Tốt hơn là đặt vào styles.css */
-        /*
-        main {
-            padding-top: 5rem; /* Điều chỉnh dựa trên chiều cao thực tế của header (h-20 là 5rem) */
+
+        /* Add a subtle overlay to images in the album for text contrast if you ever add text over them */
+        .album-image-wrapper {
+            position: relative;
+        }
+        /* Example overlay (optional)
+        .album-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .album-image-wrapper:hover::after {
+            opacity: 1;
+        }
         */
     </style>
 </head>
@@ -56,26 +84,26 @@
 
     <div id="header-placeholder"></div>
 
-    <main>
-        <section class="flex flex-col" data-aos="fade-in">
-            <div class="hero-image-fullwidth-container w-full" data-aos="fade-down" data-aos-delay="50">
-                <img src="images/logo/logo.jpg" alt="KhaDock - Florida's Premier Boat Dock Solutions" 
-                     class="shadow-lg"> 
-                     </div>
-
-            <div class="bg-slate-700 text-white py-10 md:py-12" data-aos="fade-up" data-aos-delay="150">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                        Building Florida's Finest BoatDock Experiences
+    <main class="pt-20"> 
+        <section class="relative text-white" data-aos="fade-in">
+            <div class="hero-image-fullwidth-container w-full">
+                <img src="https://placehold.co/1920x1080/1e293b/ffffff?text=KhaDock+Hero+Image" 
+                     alt="KhaDock - Florida's Premier Boat Dock Solutions with a stunning waterfront view" 
+                     class="shadow-lg">
+            </div>
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up" data-aos-delay="150">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
+                        Building Florida's Finest Boat Dock Experiences
                     </h1>
-                    <p class="text-md sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                        KhaDock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship.
+                    <p class="text-md sm:text-lg md:text-xl mb-8 max-w-3xl mx-auto text-slate-200 text-shadow-md">
+                        KhaDock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship, creating lasting waterfront memories.
                     </p>
                     <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4">
-                        <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg shadow-md transition duration-300 transform hover:scale-105">
+                        <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
                             View Our Portfolio
                         </a>
-                        <a href="contact.html" class="w-full sm:w-auto inline-block bg-slate-600 hover:bg-sky-500 text-white font-semibold hover:text-white py-3 px-6 sm:px-8 border-2 border-slate-500 hover:border-sky-500 rounded-lg text-base sm:text-lg shadow-md transition duration-300 transform hover:scale-105">
+                        <a href="contact.html" class="w-full sm:w-auto inline-block bg-slate-100 hover:bg-sky-500 text-slate-700 font-semibold hover:text-white py-3 px-6 sm:px-8 border-2 border-transparent hover:border-sky-500 rounded-lg text-base sm:text-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
                             Get a Free Estimate
                         </a>
                     </div>
@@ -85,46 +113,52 @@
 
         <section class="py-16 md:py-24 bg-slate-50" id="services-overview" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10 md:mb-14">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">Our Core Services</h2>
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Core Services</h2>
                     <p class="text-base md:text-lg text-slate-600 max-w-xl mx-auto">
-                        From concept to completion, we provide a full range of dock and marine construction services.
+                        From concept to completion, we provide a full range of dock and marine construction services tailored to your needs.
                     </p>
                 </div>
-                <div class="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-6"></div>
+                <div class="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center transition duration-300 flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="text-sky-500 mb-4 md:mb-6">
-                            <i class="fas fa-drafting-compass fa-2x md:fa-3x"></i>
+                            <i class="fas fa-drafting-compass fa-3x"></i>
                         </div>
-                        <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2 md:mb-3">Custom Dock Design & Remodeling</h3>
-                        <p class="text-slate-600 text-sm md:text-base mb-3 md:mb-4">
-                            Tailored designs and expert remodeling to perfectly suit your boat dock property and lifestyle.
+                        <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Custom Dock Design & Remodeling</h3>
+                        <p class="text-slate-600 text-sm md:text-base mb-4 flex-grow">
+                            Tailored designs and expert remodeling to perfectly suit your boat dock property and lifestyle, enhancing both beauty and functionality.
                         </p>
-                        <a href="services.html#design" class="text-sky-500 hover:text-sky-600 font-medium mt-auto">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
+                        <a href="services.html#design" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group">
+                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                     <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center transition duration-300 flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="text-sky-500 mb-4 md:mb-6">
-                            <i class="fas fa-tools fa-2x md:fa-3x"></i>
+                            <i class="fas fa-tools fa-3x"></i>
                         </div>
-                        <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2 md:mb-3">Repair & Maintenance</h3>
-                        <p class="text-slate-600 text-sm md:text-base mb-3 md:mb-4">
-                            Comprehensive repair and maintenance to keep your dock in top condition and extend its lifespan.
+                        <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Repair & Maintenance</h3>
+                        <p class="text-slate-600 text-sm md:text-base mb-4 flex-grow">
+                            Comprehensive repair and maintenance to keep your dock in top condition, ensuring safety and extending its lifespan.
                         </p>
-                        <a href="services.html#repair" class="text-sky-500 hover:text-sky-600 font-medium mt-auto">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
+                        <a href="services.html#repair" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group">
+                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                     <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center transition duration-300 flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="300">
                         <div class="text-sky-500 mb-4 md:mb-6">
-                            <i class="fas fa-water fa-2x md:fa-3x"></i>
+                            <i class="fas fa-water fa-3x"></i>
                         </div>
-                        <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2 md:mb-3">Dock Upgrades</h3>
-                        <p class="text-slate-600 text-sm md:text-base mb-3 md:mb-4">
-                            Upgrade materials, add new amenities, and enhance your dock for better functionality and style.
+                        <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Dock Upgrades & Accessories</h3>
+                        <p class="text-slate-600 text-sm md:text-base mb-4 flex-grow">
+                            Upgrade materials and enhance your dock for better functionality and style.
                         </p>
-                        <a href="services.html#upgrades" class="text-sky-500 hover:text-sky-600 font-medium mt-auto">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
+                        <a href="services.html#upgrades" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group">
+                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="text-center mt-8">
-                    <a href="services.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2.5 px-6 md:py-3 md:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+                <div class="text-center mt-12 md:mt-16">
+                    <a href="services.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">
                         Explore All Services
                     </a>
                 </div>
@@ -136,35 +170,35 @@
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose KhaDock?</h2>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        We are committed to delivering superior quality, exceptional service, and lasting value to every client.
+                        We are committed to delivering superior quality, exceptional service, and lasting value to every client in Florida.
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-right" data-aos-delay="100">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-medal fa-2x text-sky-500 mr-3"></i>
+                    <div class="p-6 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-right" data-aos-delay="100">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-medal fa-2x text-sky-500 mr-4"></i>
                             <h3 class="text-xl font-semibold text-slate-700">Florida Marine Expertise</h3>
                         </div>
                         <p class="text-slate-600 text-sm">
-                            Deep understanding of Florida's unique coastal conditions, permitting, and building codes.
+                            Deep understanding of Florida's unique coastal conditions, permitting processes, and stringent building codes.
                         </p>
                     </div>
-                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-gem fa-2x text-sky-500 mr-3"></i>
+                    <div class="p-6 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-gem fa-2x text-sky-500 mr-4"></i>
                             <h3 class="text-xl font-semibold text-slate-700">Premium Quality Materials</h3>
                         </div>
                         <p class="text-slate-600 text-sm">
-                            We use only the best marine-grade materials to ensure longevity and resilience against the elements.
+                            We use only the best marine-grade lumber, composite decking, and hardware to ensure longevity and resilience.
                         </p>
                     </div>
-                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-left" data-aos-delay="300">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-handshake fa-2x text-sky-500 mr-3"></i>
+                    <div class="p-6 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-left" data-aos-delay="300">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-handshake fa-2x text-sky-500 mr-4"></i>
                             <h3 class="text-xl font-semibold text-slate-700">Customer-Focused Approach</h3>
                         </div>
                         <p class="text-slate-600 text-sm">
-                            Your satisfaction is our priority. We work closely with you from start to finish.
+                            Your satisfaction is our priority. We collaborate closely with you from initial design to final walkthrough.
                         </p>
                     </div>
                 </div>
@@ -173,87 +207,182 @@
 
         <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Project Album</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        A glimpse into the quality and diversity of boat docks we've crafted for our clients.
-                    </p>
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Project Showcase</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                A glimpse into the quality and diversity of boat docks, piers, and marine structures we've crafted.
+                </p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- 19 album images -->
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="100">
+                <img 
+                    src="images/albums/dock1.jpg" 
+                    alt="KhaDock Project Album Image 1 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="images/albums/dock1.jpg" alt="KhaDock Project Album Image 1 - Custom Dock" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="images/albums/dock2.jpg" alt="KhaDock Project Album Image 2 - Dock 2" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="images/albums/dock3.jpg" alt="KhaDock Project Album Image 3 - Dock Remodel" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="images/albums/dock4.jpg" alt="KhaDock Project Album Image 4 - Dock Repair" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="images/albums/dock5.jpg" alt="KhaDock Project Album Image 5 - New Construction" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="350">
-                        <img src="images/albums/dock6.jpg" alt="KhaDock Project Album Image 6 - Waterfront View" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="images/albums/dock7.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
-                        <img src="images/albums/dock8.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="images/albums/dock9.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
-                        <img src="images/albums/dock10.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
-                        <img src="images/albums/dock11.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="images/albums/dock12.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
-                        <img src="images/albums/dock13.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="images/albums/dock14.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
-                        <img src="images/albums/dock15.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
-                        <img src="images/albums/dock16.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="images/albums/dock17.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
-                        <img src="images/albums/dock18.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
-                        <img src="images/albums/dock19.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
-                    </div>
-
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="150">
+                <img 
+                    src="images/albums/dock2.jpg" 
+                    alt="KhaDock Project Album Image 2 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
                 </div>
-                <div class="text-center mt-12">
-                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
-                        View Full Portfolio
-                    </a>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="200">
+                <img 
+                    src="images/albums/dock3.jpg" 
+                    alt="KhaDock Project Album Image 3 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
                 </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="250">
+                <img 
+                    src="images/albums/dock4.jpg" 
+                    alt="KhaDock Project Album Image 4 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="300">
+                <img 
+                    src="images/albums/dock5.jpg" 
+                    alt="KhaDock Project Album Image 5 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="350">
+                <img 
+                    src="images/albums/dock6.jpg" 
+                    alt="KhaDock Project Album Image 6 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="400">
+                <img 
+                    src="images/albums/dock7.jpg" 
+                    alt="KhaDock Project Album Image 7 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="450">
+                <img 
+                    src="images/albums/dock8.jpg" 
+                    alt="KhaDock Project Album Image 8 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="500">
+                <img 
+                    src="images/albums/dock9.jpg" 
+                    alt="KhaDock Project Album Image 9 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="550">
+                <img 
+                    src="images/albums/dock10.jpg" 
+                    alt="KhaDock Project Album Image 10 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="600">
+                <img 
+                    src="images/albums/dock11.jpg" 
+                    alt="KhaDock Project Album Image 11 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="650">
+                <img 
+                    src="images/albums/dock12.jpg" 
+                    alt="KhaDock Project Album Image 12 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="700">
+                <img 
+                    src="images/albums/dock13.jpg" 
+                    alt="KhaDock Project Album Image 13 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="750">
+                <img 
+                    src="images/albums/dock14.jpg" 
+                    alt="KhaDock Project Album Image 14 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="800">
+                <img 
+                    src="images/albums/dock15.jpg" 
+                    alt="KhaDock Project Album Image 15 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="850">
+                <img 
+                    src="images/albums/dock16.jpg" 
+                    alt="KhaDock Project Album Image 16 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="900">
+                <img 
+                    src="images/albums/dock17.jpg" 
+                    alt="KhaDock Project Album Image 17 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="950">
+                <img 
+                    src="images/albums/dock18.jpg" 
+                    alt="KhaDock Project Album Image 18 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+                <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg group" data-aos="zoom-in" data-aos-delay="1000">
+                <img 
+                    src="images/albums/dock19.jpg" 
+                    alt="KhaDock Project Album Image 19 - Example Dock Construction" 
+                    class="album-image w-full h-48 sm:h-56 md:h-64 object-cover"
+                    loading="lazy"
+                />
+                </div>
+            </div>
+            <div class="text-center mt-12 md:mt-16">
+                <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">
+                View Full Portfolio
+                </a>
+            </div>
             </div>
         </section>
 
         <section class="py-16 md:py-24 bg-sky-600 text-white" data-aos="zoom-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your BoatDock Project?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Dream Dock Project?</h2>
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                    Let's discuss your vision. Contact KhaDock today for a personalized consultation and free estimate.
+                    Let's discuss your vision. Contact KhaDock today for a personalized consultation and a no-obligation, free estimate.
                 </p>
-                <a href="contact.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                <a href="contact.html" class="bg-white text-sky-600 font-bold py-3.5 px-10 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
                     Schedule Your Consultation
                 </a>
             </div>
@@ -262,12 +391,45 @@
 
     <div id="footer-placeholder"></div>
     
-    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
+    <button id="scrollToTopBtn" title="Go to top" 
+            class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white 
+                   w-12 h-12 rounded-full shadow-lg items-center justify-center 
+                   focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
+                   transition-all duration-300 z-40">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/script.js" defer></script> 
     <script src="js/loadComponents.js" defer></script>
+    <script>
+        // Initialize AOS after DOM content is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 700, // values from 0 to 3000, with step 50ms
+                offset: 120, // offset (in px) from the original trigger point
+                once: true, // whether animation should happen only once - while scrolling down
+                easing: 'ease-out-quad', // default easing for AOS animations
+            });
+
+            // Placeholder for other initializations if not in script.js
+            // For example, if scrollToTopBtn logic is not in script.js:
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        scrollToTopBtn.classList.remove('hidden');
+                        scrollToTopBtn.classList.add('flex'); // Ensure it's flex if that's how it's centered
+                    } else {
+                        scrollToTopBtn.classList.add('hidden');
+                        scrollToTopBtn.classList.remove('flex');
+                    }
+                }, { passive: true });
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
