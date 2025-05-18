@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dịch Vụ Bến Tàu Toàn Diện - Kha Boat Dock Florida</title>
-    <meta name="description" content="Kha Boat Dock - Design and Remodel cung cấp dịch vụ thiết kế bến tàu, thi công, lắp đặt thang nâng tàu, sửa chữa và bảo trì chuyên nghiệp tại Florida.">
-    <meta property="og:title" content="Dịch Vụ Bến Tàu Toàn Diện - Kha Boat Dock Florida">
-    <meta property="og:description" content="Khám phá các dịch vụ bến tàu chuyên nghiệp của Kha Boat Dock: từ thiết kế tùy chỉnh đến thi công bền vững và bảo trì định kỳ tại Florida.">
-    <meta property="og:image" content="https://placehold.co/1200x630/D97706/FFFFFF?text=D%E1%BB%8Bch+V%E1%BB%A5+Kha+Boat+Dock">
-    <meta property="og:url" content="YOUR_DOMAIN/khadock_services.html"> <meta property="og:type" content="website">
+    <title>KhaDock - Florida's Premier Dock Design, Construction & Remodel</title>
+    <meta name="description" content="Kha Boat Dock - Design and Remodel: Your trusted experts for custom boat docks, durable construction, professional remodeling, and boat lift installations in Florida.">
+    <meta property="og:title" content="Kha Boat Dock - Florida's Premier Dock Solutions">
+    <meta property="og:description" content="Offering expert design, construction, and remodeling services for boat docks, piers, and lifts across Florida. Quality craftsmanship guaranteed.">
+    <meta property="og:image" content="images\logo\logo.jpg"> <meta property="og:url" content="YOUR_ACTUAL_DOMAIN/index.html"> <meta property="og:type" content="website">
 
-    <link rel="icon" href="https://placehold.co/32x32/0284C7/FFFFFF?text=KD" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -21,263 +19,335 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
-        .banner-bg {
-            background-image: url('https://placehold.co/1920x600/059669/FFFFFF?text=D%E1%BB%8Bch+V%E1%BB%A5+B%E1%BA%BFn+T%C3%A0u');
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/logo/logo.jpg');
             background-size: cover;
             background-position: center;
         }
-        .service-section {
-            scroll-margin-top: 90px; /* Offset for sticky header, adjust if header height changes */
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
         }
-        .footer-bg {
-            background-color: #0F172A; /* Màu nền xanh đậm cho footer */
-        }
-        nav a:hover, nav button:hover {
-            color: #38BDF8;
-        }
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        .dropdown-menu {
+        .dropdown .dropdown-menu {
             display: none;
             position: absolute;
-            background-color: #1E293B;
+            background-color: #1e293b; /* slate-800 */
             z-index: 50;
-            min-width: 200px;
-            border-radius: 0.375rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-width: 220px;
+            border-radius: 0.375rem; /* rounded-md */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            margin-top: 0.5rem; /* mt-2 */
+        }
+        .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { 
+            display: block;
         }
         .dropdown-menu a {
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 1rem; 
             display: block;
-            color: #CBD5E1;
+            color: #cbd5e1; /* slate-300 */
         }
         .dropdown-menu a:hover {
-            background-color: #334155;
-            color: #F1F5F9;
+            background-color: #334155; /* slate-700 */
+            color: #f1f5f9; /* slate-100 */
+        }
+        /* Ensure search container is styled if not using Tailwind utility classes directly in header */
+        #desktop-search-container {
+            /* Basic styling, can be enhanced */
+            width: 250px; 
         }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
 
-    <header id="header-placeholder"></header>
+    <header class="bg-slate-800 text-slate-200 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="images/logo/logo.jpg" alt="Kha Boat Dock Logo" class="h-10 w-10 rounded-full">
+                    <span class="text-2xl font-bold text-sky-400">KhaDock</span>
+                </a>
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <a href="index.html" id="nav-index" class="hover:text-sky-400 transition-colors duration-300 font-medium">Home</a>
+                    <a href="about.html" id="nav-about" class="hover:text-sky-400 transition-colors duration-300 font-medium">About Us</a>
+                    <div class="relative dropdown">
+                        <button id="nav-services-button" aria-haspopup="true" aria-expanded="false" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center">
+                            Services <i class="fas fa-chevron-down fa-xs ml-1"></i>
+                        </button>
+                        <div class="dropdown-menu hidden">
+                            <a href="services.html" class="block px-4 py-2">Services Overview</a>
+                            <a href="services.html#design" class="block px-4 py-2">Custom Dock Design</a>
+                            <a href="services.html#construction" class="block px-4 py-2">New Dock Construction</a>
+                            <a href="services.html#remodel" class="block px-4 py-2">Dock Remodeling</a>
+                            <a href="services.html#lifts" class="block px-4 py-2">Boat Lift Installation</a>
+                            <a href="services.html#repair" class="block px-4 py-2">Repair & Maintenance</a>
+                        </div>
+                    </div>
+                    <a href="projects.html" id="nav-projects" class="hover:text-sky-400 transition-colors duration-300 font-medium">Projects</a>
+                    <a href="contact.html" id="nav-contact" class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-md font-semibold transition-colors duration-300">Contact Us</a>
+                    <div class="relative" id="desktop-search-wrapper">
+                        <button id="desktop-search-button" aria-label="Open search" class="text-slate-200 hover:text-sky-400">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div id="desktop-search-container" class="hidden absolute right-0 mt-2 p-2 bg-slate-700 rounded-md shadow-lg z-30">
+                            <form class="search-form flex items-center">
+                                <input type="search" id="desktop-search-input" placeholder="Search site..." class="w-full px-2 py-1 text-sm text-slate-800 rounded-l-md focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none" aria-label="Search input">
+                                <button type="submit" aria-label="Submit search" class="bg-sky-500 text-white px-3 py-1 rounded-r-md hover:bg-sky-600 text-sm">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button type="button" id="desktop-search-close" aria-label="Close search" class="ml-1 text-slate-400 hover:text-white absolute top-1 right-1 text-xs p-1">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu-panel" class="md:hidden text-slate-200 hover:text-sky-400 focus:outline-none">
+                    <span class="sr-only">Open main menu</span>
+                    <i class="fas fa-bars fa-lg" id="icon-menu-open"></i>
+                    <i class="fas fa-times fa-lg hidden" id="icon-menu-close"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu-panel" class="md:hidden hidden bg-slate-700 absolute w-full z-30 top-20 left-0 right-0 shadow-lg">
+             <nav class="flex flex-col space-y-1 px-4 py-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Home</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">About Us</a>
+                <div>
+                    <button aria-expanded="false" aria-controls="mobile-services-submenu" class="w-full text-left px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium flex justify-between items-center mobile-submenu-toggle">
+                        <span>Services</span> <i class="fas fa-chevron-down fa-xs mobile-submenu-icon"></i>
+                    </button>
+                    <div id="mobile-services-submenu" class="hidden pl-4 mt-1 space-y-1 mobile-submenu-content">
+                        <a href="services.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Services Overview</a>
+                        <a href="services.html#design" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Custom Dock Design</a>
+                        <a href="services.html#construction" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">New Dock Construction</a>
+                        <a href="services.html#remodel" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Dock Remodeling</a>
+                        <a href="services.html#lifts" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Boat Lift Installation</a>
+                        <a href="services.html#repair" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Repair & Maintenance</a>
+                    </div>
+                </div>
+                <a href="projects.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Projects</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md bg-sky-500 text-white hover:bg-sky-600 font-semibold text-center">Contact Us</a>
+                <form class="search-form mt-3 px-3">
+                     <input type="search" id="mobile-search-input" placeholder="Search..." class="w-full px-3 py-2 text-sm text-slate-800 rounded-md focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none" aria-label="Search input mobile">
+                </form>
+            </nav>
+        </div>
+    </header>
 
     <main>
-        <section class="banner-bg text-white py-20 md:py-28" data-aos="fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center bg-black bg-opacity-60 p-8 md:p-10 rounded-lg">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Dịch Vụ Bến Tàu Toàn Diện</h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                    Kha Boat Dock - Design and Remodel: Giải pháp chuyên nghiệp cho mọi nhu cầu về bến tàu của bạn tại Florida.
+        <section class="hero-bg text-white min-h-[70vh] md:min-h-[80vh] flex items-center justify-center py-20 md:py-32" data-aos="fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight" data-aos="fade-down" data-aos-delay="200">
+                    Building Florida's Finest Waterfront Experiences
+                </h1>
+                <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+                    Kha Boat Dock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship.
                 </p>
+                <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4" data-aos="fade-up" data-aos-delay="600">
+                    <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-lg shadow-md transition duration-300 transform hover:scale-105">
+                        View Our Portfolio
+                    </a>
+                    <a href="contact.html" class="w-full sm:w-auto inline-block bg-transparent hover:bg-sky-500 text-white font-semibold hover:text-white py-3 px-8 border-2 border-sky-500 hover:border-transparent rounded-lg text-lg shadow-md transition duration-300 transform hover:scale-105">
+                        Get a Free Estimate
+                    </a>
+                </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-white">
+        <section class="py-16 md:py-24 bg-slate-50" id="services-overview" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Chúng Tôi Cung Cấp</h2>
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Core Services</h2>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Từ ý tưởng ban đầu đến hoàn thiện và bảo dưỡng, Kha Boat Dock đồng hành cùng bạn.
+                        From concept to completion, we provide a full range of dock and marine construction services.
                     </p>
                 </div>
-
-                <article id="design" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
-                    <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="100">
-                        <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Thiết Kế</span>
-                        <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Thiết Kế Bến Tàu Tùy Chỉnh & Sáng Tạo</h3>
-                        <p class="text-slate-600 leading-relaxed mb-4">
-                            Đội ngũ thiết kế của chúng tôi làm việc chặt chẽ với bạn để tạo ra một bến tàu không chỉ đáp ứng công năng mà còn phản ánh phong cách riêng của bạn. Chúng tôi xem xét mọi yếu tố:
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg text-center transition duration-300" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="text-sky-500 mb-6">
+                            <i class="fas fa-drafting-compass fa-3x"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-3">Custom Dock Design & Remodeling</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Tailored designs and expert remodeling to perfectly suit your waterfront property and lifestyle.
                         </p>
-                        <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
-                            <li>Phân tích địa điểm, điều kiện thủy văn và môi trường.</li>
-                            <li>Tối ưu hóa không gian và công năng sử dụng.</li>
-                            <li>Lựa chọn vật liệu phù hợp, bền vững và thẩm mỹ.</li>
-                            <li>Thiết kế 3D trực quan giúp bạn hình dung rõ ràng công trình.</li>
-                            <li>Tuân thủ các quy định và tiêu chuẩn an toàn của Florida.</li>
-                        </ul>
-                        <a href="khadock_contact.html?service=design" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
-                            Yêu Cầu Tư Vấn Thiết Kế
-                        </a>
+                        <a href="services.html#design" class="text-sky-500 hover:text-sky-600 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
                     </div>
-                    <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
-                        <img src="https://placehold.co/600x450/0EA5E9/FFFFFF?text=Thi%E1%BA%BFt+K%E1%BA%BF+B%E1%BA%BFn+T%C3%A0u" alt="Thiết kế bến tàu chuyên nghiệp" class="rounded-lg shadow-xl w-full">
-                    </div>
-                </article>
-
-                <article id="construction" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
-                    <div data-aos="fade-left" data-aos-delay="100">
-                        <img src="https://placehold.co/600x450/22D3EE/0F172A?text=Thi+C%C3%B4ng+B%E1%BA%BFn+T%C3%A0u" alt="Thi công bến tàu chất lượng cao" class="rounded-lg shadow-xl w-full">
-                    </div>
-                    <div data-aos="fade-right" data-aos-delay="200">
-                        <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Thi Công</span>
-                        <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Thi Công Bến Tàu Chính Xác & Bền Vững</h3>
-                        <p class="text-slate-600 leading-relaxed mb-4">
-                            Với đội ngũ thợ lành nghề và quy trình quản lý dự án chuyên nghiệp, Kha Boat Dock đảm bảo công trình của bạn được thi công với chất lượng cao nhất, đúng tiến độ và ngân sách.
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg text-center transition duration-300" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="text-sky-500 mb-6">
+                            <i class="fas fa-hard-hat fa-3x"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-3">New Dock Construction</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Built with the highest quality materials and craftsmanship for lasting durability and safety.
                         </p>
-                        <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
-                            <li>Sử dụng vật liệu cao cấp: gỗ xử lý, composite, nhôm hàng hải.</li>
-                            <li>Kỹ thuật thi công tiên tiến, đảm bảo độ chính xác và an toàn.</li>
-                            <li>Giám sát chặt chẽ mọi giai đoạn thi công.</li>
-                            <li>Tuân thủ các tiêu chuẩn xây dựng và môi trường của Florida.</li>
-                            <li>Hoàn thiện tỉ mỉ, mang lại vẻ đẹp và độ bền lâu dài.</li>
-                        </ul>
-                        <a href="khadock_contact.html?service=construction" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
-                            Bắt Đầu Dự Án Thi Công
-                        </a>
+                        <a href="services.html#construction" class="text-sky-500 hover:text-sky-600 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
                     </div>
-                </article>
-
-                <article id="lifts" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
-                     <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="100">
-                        <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Lắp Đặt</span>
-                        <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Lắp Đặt Thang Nâng Tàu Hiện Đại</h3>
-                        <p class="text-slate-600 leading-relaxed mb-4">
-                            Bảo vệ chiếc tàu yêu quý của bạn và tối ưu hóa không gian bến với hệ thống thang nâng tàu chất lượng cao. Chúng tôi cung cấp và lắp đặt:
+                    <div class="service-card bg-white p-8 rounded-xl shadow-lg text-center transition duration-300" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="text-sky-500 mb-6">
+                            <i class="fas fa-anchor fa-3x"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-3">Boat Lifts & Accessories</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Professional installation of boat lifts and a wide range of dock accessories to enhance functionality.
                         </p>
-                        <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
-                            <li>Thang nâng đáy chữ V (Bottom Standing Lifts).</li>
-                            <li>Thang nâng treo (Overhead Lifts / Suspended Lifts).</li>
-                            <li>Thang nâng cho PWC (Personal Watercraft Lifts).</li>
-                            <li>Giải pháp tùy chỉnh cho các loại tàu và tải trọng khác nhau.</li>
-                            <li>Lắp đặt chuyên nghiệp, đảm bảo an toàn và vận hành trơn tru.</li>
-                        </ul>
-                        <a href="khadock_contact.html?service=lifts" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
-                            Tìm Hiểu Về Thang Nâng
-                        </a>
+                        <a href="services.html#lifts" class="text-sky-500 hover:text-sky-600 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
                     </div>
-                    <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
-                        <img src="https://placehold.co/600x450/67E8F9/0F172A?text=L%E1%BA%AFp+%C4%90%E1%BA%B7t+Thang+N%C3%A2ng" alt="Lắp đặt thang nâng tàu" class="rounded-lg shadow-xl w-full">
-                    </div>
-                </article>
+                </div>
+                 <div class="text-center mt-12">
+                    <a href="services.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+                        Explore All Our Services
+                    </a>
+                </div>
+            </div>
+        </section>
 
-                <article id="repair" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
-                    <div data-aos="fade-left" data-aos-delay="100">
-                        <img src="https://placehold.co/600x450/A5F3FC/0F172A?text=S%E1%BB%ADa+Ch%E1%BB%AFa+B%E1%BA%BFn+T%C3%A0u" alt="Sửa chữa và bảo trì bến tàu" class="rounded-lg shadow-xl w-full">
-                    </div>
-                    <div data-aos="fade-right" data-aos-delay="200">
-                        <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Bảo Trì</span>
-                        <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Sửa Chữa & Bảo Trì Bến Tàu Định Kỳ</h3>
-                        <p class="text-slate-600 leading-relaxed mb-4">
-                            Để bến tàu của bạn luôn trong tình trạng tốt nhất và kéo dài tuổi thọ, Kha Boat Dock cung cấp dịch vụ sửa chữa và bảo trì toàn diện:
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose Kha Boat Dock?</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        We are committed to delivering superior quality, exceptional service, and lasting value to every client.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-right" data-aos-delay="100">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-medal fa-2x text-sky-500 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-slate-700">Florida Marine Expertise</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Deep understanding of Florida's unique coastal conditions, permitting, and building codes.
                         </p>
-                        <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
-                            <li>Kiểm tra định kỳ và đánh giá tình trạng bến tàu.</li>
-                            <li>Sửa chữa kết cấu, thay thế ván sàn, cọc bị hư hỏng.</li>
-                            <li>Bảo dưỡng hệ thống điện, nước tại bến.</li>
-                            <li>Vệ sinh, xử lý rong rêu, hà bám.</li>
-                            <li>Nâng cấp, cải tạo bến tàu hiện có.</li>
-                        </ul>
-                        <a href="khadock_contact.html?service=repair" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
-                            Đặt Lịch Bảo Trì
-                        </a>
                     </div>
-                </article>
-
-                <article id="remodel" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
-                    <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="100">
-                        <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Cải Tạo</span>
-                        <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Remodel & Nâng Cấp Bến Tàu</h3>
-                        <p class="text-slate-600 leading-relaxed mb-4">
-                            Nếu bến tàu hiện tại của bạn không còn đáp ứng nhu cầu hoặc bạn muốn một diện mạo mới, dịch vụ remodel của Kha Boat Dock là giải pháp hoàn hảo. Chúng tôi giúp bạn:
+                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-gem fa-2x text-sky-500 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-slate-700">Premium Quality Materials</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            We use only the best marine-grade materials to ensure longevity and resilience against the elements.
                         </p>
-                        <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
-                            <li>Đánh giá hiện trạng và tư vấn giải pháp cải tạo tối ưu.</li>
-                            <li>Mở rộng, thay đổi cấu trúc hoặc bố cục bến tàu.</li>
-                            <li>Nâng cấp vật liệu, thêm tiện ích mới (ghế ngồi, đèn, mái che).</li>
-                            <li>Hiện đại hóa bến tàu, tăng tính thẩm mỹ và giá trị.</li>
-                            <li>Biến bến tàu cũ thành không gian mới tiện nghi và đẳng cấp hơn.</li>
-                        </ul>
-                        <a href="khadock_contact.html?service=remodel" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
-                            Thảo Luận Về Dự Án Remodel
-                        </a>
                     </div>
-                    <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
-                        <img src="https://placehold.co/600x450/0284C7/FFFFFF?text=Remodel+B%E1%BA%BFn+T%C3%A0u" alt="Remodel bến tàu chuyên nghiệp" class="rounded-lg shadow-xl w-full">
+                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-left" data-aos-delay="300">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-handshake fa-2x text-sky-500 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-slate-700">Customer-Focused Approach</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Your satisfaction is our priority. We work closely with you from start to finish.
+                        </p>
                     </div>
-                </article>
+                </div>
+            </div>
+        </section>
 
+        <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">See Our Craftsmanship</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        A showcase of our dedication to quality and attention to detail in every project.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="images\pages\miamidock.jpg" alt="Custom Dock Build Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-white text-xl font-semibold">Residential Dock - Miami Beach</h3>
+                        </div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="images\pages\Marinadock.webp" alt="Commercial Pier Construction Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-white text-xl font-semibold">Marina Pier - Fort Lauderdale</h3>
+                        </div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="images\pages\Waterfrontdock.jpg" alt="Dock Remodel Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-white text-xl font-semibold">Waterfront Remodel - Palm Beach</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+                        View Full Portfolio
+                    </a>
+                </div>
             </div>
         </section>
 
         <section class="py-16 md:py-24 bg-sky-600 text-white" data-aos="zoom-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Bạn Đã Sẵn Sàng Nâng Cấp Bến Tàu?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Waterfront Project?</h2>
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                    Liên hệ Kha Boat Dock - Design and Remodel ngay hôm nay để nhận tư vấn miễn phí và bắt đầu dự án của bạn.
+                    Let's discuss your vision. Contact Kha Boat Dock today for a personalized consultation and free estimate.
                 </p>
-                <a href="khadock_contact.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
-                    Yêu Cầu Báo Giá
+                <a href="contact.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                    Schedule Your Consultation
                 </a>
             </div>
         </section>
     </main>
 
-    <footer id="footer-placeholder"></footer>
+    <footer class="bg-slate-900 text-slate-300 py-12 md:py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-sky-400 mb-4">Kha Boat Dock</h3>
+                    <p class="text-sm leading-relaxed mb-4">
+                        Kha Boat Dock - Design and Remodel. Leading experts in boat dock design, construction, remodeling, and installation in Florida.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Kha Boat Dock Facebook" class="text-slate-300 hover:text-sky-400 transition-colors"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" aria-label="Kha Boat Dock Instagram" class="text-slate-300 hover:text-sky-400 transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" aria-label="Kha Boat Dock LinkedIn" class="text-slate-300 hover:text-sky-400 transition-colors"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-sky-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-sky-400 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-sky-400 transition-colors">Services</a></li>
+                        <li><a href="projects.html" class="hover:text-sky-400 transition-colors">Projects</a></li>
+                        <li><a href="contact.html" class="hover:text-sky-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Main Services</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="services.html#design" class="hover:text-sky-400 transition-colors">Dock Design</a></li>
+                        <li><a href="services.html#construction" class="hover:text-sky-400 transition-colors">Dock Construction</a></li>
+                        <li><a href="services.html#lifts" class="hover:text-sky-400 transition-colors">Boat Lift Installation</a></li>
+                        <li><a href="services.html#repair" class="hover:text-sky-400 transition-colors">Repair & Maintenance</a></li>
+                        <li><a href="services.html#remodel" class="hover:text-sky-400 transition-colors">Dock Remodeling</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Information</h3>
+                    <address class="not-italic text-sm space-y-2">
+                        <p><i class="fas fa-map-marker-alt fa-fw mr-2 text-sky-400"></i>3850 Rollingsford Cir, Lakeland, FL 33810, USA</p>
+                        <p><i class="fas fa-phone fa-fw mr-2 text-sky-400"></i><a href="tel:+18139393989" class="hover:text-sky-400 transition-colors">+1 813-939-3989</a></p>
+                        <p><i class="fas fa-envelope fa-fw mr-2 text-sky-400"></i><a href="mailto:doduykha007@gmail.com" class="hover:text-sky-400 transition-colors">doduykha007@gmail.com</a></p>
+                        <p><i class="fas fa-clock fa-fw mr-2 text-sky-400"></i>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 pt-8 text-center text-sm">
+                <p>&copy; <span id="current-year">2024</span> Kha Boat Dock - Design and Remodel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
     
-    <button id="scrollToTopBtn" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center focus:outline-none transition-opacity duration-300">
+    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            offset: 100,
-            duration: 700,
-            easing: 'ease-out-quad',
-            once: true,
-        });
-
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-        
-        function toggleMobileSubmenu() {
-            const submenu = document.getElementById('mobile-submenu');
-            const icon = document.getElementById('mobile-submenu-icon');
-            submenu.classList.toggle('hidden'); // Toggle visibility
-            // Toggle icon: if submenu is now hidden, icon should be down, else up
-            if (submenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            } else {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            }
-        }
-        // Ensure submenu icon is correct on page load if submenu is shown by default
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileSubmenu = document.getElementById('mobile-submenu');
-            const mobileSubmenuIcon = document.getElementById('mobile-submenu-icon');
-            if (mobileSubmenu && mobileSubmenuIcon && !mobileSubmenu.classList.contains('hidden')) {
-                 mobileSubmenuIcon.classList.remove('fa-chevron-down');
-                 mobileSubmenuIcon.classList.add('fa-chevron-up');
-            }
-        });
-
-
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        if (scrollToTopBtn) {
-            window.addEventListener('scroll', () => {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    scrollToTopBtn.classList.remove('hidden');
-                } else {
-                    scrollToTopBtn.classList.add('hidden');
-                }
-            });
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-        
-        const yearSpan = document.getElementById('current-year');
-        if (yearSpan) {
-            yearSpan.textContent = new Date().getFullYear();
-        }
-    </script>
+    <script src="js/script.js" defer></script> 
 </body>
 </html>

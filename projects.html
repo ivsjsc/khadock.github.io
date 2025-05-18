@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Featured Dock Projects - Kha Boat Dock Florida</title>
-    <meta name="description" content="Explore completed dock design, construction, and remodeling projects by Kha Boat Dock - Design and Remodel in Florida.">
-    <meta property="og:title" content="Featured Dock Projects - Kha Boat Dock Florida">
-    <meta property="og:description" content="View high-quality dock works, from private docks to commercial projects, executed by Kha Boat Dock in Florida.">
-    <meta property="og:image" content="https://placehold.co/1200x630/EC4899/FFFFFF?text=Kha+Boat+Dock+Projects">
-    <meta property="og:url" content="YOUR_DOMAIN/khadock_projects.html"> <meta property="og:type" content="website">
+    <title>Our Dock & Marine Projects - Kha Boat Dock Florida</title>
+    <meta name="description" content="Explore a portfolio of completed boat dock designs, new constructions, remodels, and boat lift installations by Kha Boat Dock - Design and Remodel in Florida.">
+    <meta property="og:title" content="Kha Boat Dock Projects - Florida Marine Construction">
+    <meta property="og:description" content="View our gallery of high-quality marine construction projects, showcasing our expertise in building and remodeling docks, piers, and seawalls across Florida.">
+    <meta property="og:image" content="https://placehold.co/1200x630/EC4899/FFFFFF?text=Kha+Boat+Dock+Showcase"> <meta property="og:url" content="YOUR_DOMAIN/projects.html"> <meta property="og:type" content="website">
 
-    <link rel="icon" href="https://placehold.co/32x32/0284C7/FFFFFF?text=KD" type="image/x-icon">
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,51 +20,63 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
         .banner-bg {
-            background-image: url('https://placehold.co/1920x500/6D28D9/FFFFFF?text=Our+Projects');
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/logo/khadock.jpg'); /* Placeholder Banner Image */
             background-size: cover;
             background-position: center;
         }
         .project-card .project-image-container {
-            height: 250px; /* Fixed height for project images */
+            height: 250px; 
             overflow: hidden;
+            background-color: #e2e8f0; /* Light gray background for image container */
         }
         .project-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease, filter 0.3s ease;
         }
         .project-card:hover img {
             transform: scale(1.05);
+            filter: brightness(1.1);
         }
-        .footer-bg {
-            background-color: #0F172A; /* Dark blue background for footer */
+        .project-card-content {
+            min-height: 160px; /* Ensure consistent card height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        nav a:hover, nav button:hover {
-            color: #38BDF8;
-        }
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        .dropdown-menu {
+        .dropdown .dropdown-menu {
             display: none;
             position: absolute;
-            background-color: #1E293B;
+            background-color: #1e293b; 
             z-index: 50;
-            min-width: 200px;
-            border-radius: 0.375rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-width: 220px; 
+            border-radius: 0.375rem; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-top: 0.5rem; 
+        }
+        .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { 
+            display: block;
         }
         .dropdown-menu a {
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 1rem; 
             display: block;
-            color: #CBD5E1;
+            color: #cbd5e1; 
         }
         .dropdown-menu a:hover {
-            background-color: #334155;
-            color: #F1F5F9;
+            background-color: #334155; 
+            color: #f1f5f9; 
+        }
+        .filter-button {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .filter-button.active {
+            background-color: #0ea5e9; /* sky-500 */
+            color: white;
+            border-color: #0ea5e9;
         }
     </style>
 </head>
@@ -74,65 +85,84 @@
     <header class="bg-slate-800 text-slate-200 shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <a href="khadock_index.html" class="flex items-center space-x-2">
-                    <img src="https://placehold.co/50x50/0284C7/FFFFFF?text=KD" alt="Kha Boat Dock Logo" class="h-10 w-10 rounded-full">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="images/logo/logo.jpg" alt="Kha Boat Dock Logo" class="h-10 w-10 rounded-full">
                     <span class="text-2xl font-bold text-sky-400">Kha Boat Dock</span>
                 </a>
-
                 <nav class="hidden md:flex space-x-6 items-center">
-                    <a href="khadock_index.html" id="nav-index" class="hover:text-sky-400 transition-colors duration-300 font-medium">Home</a>
-                    <a href="khadock_about.html" id="nav-about" class="hover:text-sky-400 transition-colors duration-300 font-medium">About Us</a>
+                    <a href="index.html" id="nav-index" class="hover:text-sky-400 transition-colors duration-300 font-medium">Home</a>
+                    <a href="about.html" id="nav-about" class="hover:text-sky-400 transition-colors duration-300 font-medium">About Us</a>
                     <div class="relative dropdown">
-                        <button id="nav-services-button" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center">
+                        <button id="nav-services-button" aria-haspopup="true" aria-expanded="false" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center">
                             Services <i class="fas fa-chevron-down fa-xs ml-1"></i>
                         </button>
-                        <div class="dropdown-menu mt-2 py-1">
-                            <a href="khadock_services.html">Services Overview</a>
-                            <a href="khadock_services.html#design">Dock Design</a>
-                            <a href="khadock_services.html#construction">Dock Construction</a>
-                            <a href="khadock_services.html#lifts">Boat Lift Installation</a>
-                            <a href="khadock_services.html#repair">Repair & Maintenance</a>
-                            <a href="khadock_services.html#remodel">Dock Remodeling</a>
+                        <div class="dropdown-menu hidden">
+                            <a href="services.html" class="block px-4 py-2">Services Overview</a>
+                            <a href="services.html#design" class="block px-4 py-2">Custom Dock Design</a>
+                            <a href="services.html#construction" class="block px-4 py-2">New Dock Construction</a>
+                            <a href="services.html#remodel" class="block px-4 py-2">Dock Remodeling</a>
+                            <a href="services.html#lifts" class="block px-4 py-2">Boat Lift Installation</a>
+                            <a href="services.html#repair" class="block px-4 py-2">Repair & Maintenance</a>
                         </div>
                     </div>
-                    <a href="khadock_projects.html" id="nav-projects" class="text-sky-400 font-semibold transition-colors duration-300">Projects</a>
-                    <a href="khadock_contact.html" id="nav-contact" class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-md font-semibold transition-colors duration-300">Contact Us</a>
+                    <a href="projects.html" id="nav-projects" class="hover:text-sky-400 transition-colors duration-300 font-medium">Projects</a>
+                    <a href="contact.html" id="nav-contact" class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-md font-semibold transition-colors duration-300">Contact Us</a>
+                     <div class="relative" id="desktop-search-wrapper">
+                        <button id="desktop-search-button" aria-label="Open search" class="text-slate-200 hover:text-sky-400">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div id="desktop-search-container" class="hidden absolute right-0 mt-2 p-2 bg-slate-700 rounded-md shadow-lg z-30 w-64">
+                            <form class="search-form flex items-center">
+                                <input type="search" id="desktop-search-input" placeholder="Search site..." class="w-full px-2 py-1 text-sm text-slate-800 rounded-l-md focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none" aria-label="Search input">
+                                <button type="submit" aria-label="Submit search" class="bg-sky-500 text-white px-3 py-1 rounded-r-md hover:bg-sky-600 text-sm">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button type="button" id="desktop-search-close" aria-label="Close search" class="ml-1 text-slate-400 hover:text-white absolute top-1 right-1 text-xs p-1">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </nav>
-
-                <button id="mobile-menu-button" class="md:hidden text-slate-200 hover:text-sky-400 focus:outline-none">
-                    <i class="fas fa-bars fa-lg"></i>
+                <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu-panel" class="md:hidden text-slate-200 hover:text-sky-400 focus:outline-none">
+                    <span class="sr-only">Open main menu</span>
+                    <i class="fas fa-bars fa-lg" id="icon-menu-open"></i>
+                    <i class="fas fa-times fa-lg hidden" id="icon-menu-close"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-slate-700">
-            <nav class="flex flex-col space-y-2 px-4 py-3">
-                <a href="khadock_index.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Home</a>
-                <a href="khadock_about.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">About Us</a>
-                 <div>
-                    <button class="w-full text-left px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium flex justify-between items-center" onclick="toggleMobileSubmenu()">
-                        Services <i id="mobile-submenu-icon" class="fas fa-chevron-down fa-xs"></i>
+        <div id="mobile-menu-panel" class="md:hidden hidden bg-slate-700 absolute w-full z-30 top-20 left-0 right-0 shadow-lg">
+             <nav class="flex flex-col space-y-1 px-4 py-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Home</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">About Us</a>
+                <div>
+                    <button aria-expanded="false" aria-controls="mobile-services-submenu" class="w-full text-left px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium flex justify-between items-center mobile-submenu-toggle">
+                        <span>Services</span> <i class="fas fa-chevron-down fa-xs mobile-submenu-icon"></i>
                     </button>
-                    <div id="mobile-submenu" class="hidden pl-4 mt-1">
-                        <a href="khadock_services.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Services Overview</a>
-                        <a href="khadock_services.html#design" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Dock Design</a>
-                        <a href="khadock_services.html#construction" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Dock Construction</a>
-                        <a href="khadock_services.html#lifts" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Boat Lift Installation</a>
-                        <a href="khadock_services.html#repair" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Repair & Maintenance</a>
-                        <a href="khadock_services.html#remodel" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Dock Remodeling</a>
+                    <div id="mobile-services-submenu" class="hidden pl-4 mt-1 space-y-1 mobile-submenu-content">
+                        <a href="services.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Services Overview</a>
+                        <a href="services.html#design" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Custom Dock Design</a>
+                        <a href="services.html#construction" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">New Dock Construction</a>
+                        <a href="services.html#remodel" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Dock Remodeling</a>
+                        <a href="services.html#lifts" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Boat Lift Installation</a>
+                        <a href="services.html#repair" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 text-sm">Repair & Maintenance</a>
                     </div>
                 </div>
-                <a href="khadock_projects.html" class="block px-3 py-2 rounded-md bg-slate-600 text-sky-400 font-semibold">Projects</a>
-                <a href="khadock_contact.html" class="block px-3 py-2 rounded-md bg-sky-500 text-white hover:bg-sky-600 font-semibold text-center">Contact Us</a>
+                <a href="projects.html" class="block px-3 py-2 rounded-md hover:bg-slate-600 hover:text-sky-400 font-medium">Projects</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md bg-sky-500 text-white hover:bg-sky-600 font-semibold text-center">Contact Us</a>
+                 <form class="search-form mt-3 px-3">
+                     <input type="search" id="mobile-search-input" placeholder="Search..." class="w-full px-3 py-2 text-sm text-slate-800 rounded-md focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none" aria-label="Search input mobile">
+                </form>
             </nav>
         </div>
     </header>
 
     <main>
         <section class="banner-bg text-white py-20 md:py-28" data-aos="fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center bg-black bg-opacity-60 p-8 md:p-10 rounded-lg">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Our Projects</h1>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Our Portfolio</h1>
                 <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                    Discover the quality and creative dock works Kha Boat Dock - Design and Remodel has completed in Florida.
+                    Discover the quality and innovation in every Kha Boat Dock project across Florida.
                 </p>
             </div>
         </section>
@@ -140,97 +170,143 @@
         <section class="py-16 md:py-24 bg-slate-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Project Showcase</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Featured Projects</h2>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Each project is a testament to our commitment to quality, aesthetics, and client satisfaction.
+                        Each project showcases our commitment to excellence, durability, and client satisfaction.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/0EA5E9/FFFFFF?text=Miami+Coastal+Dock" alt="Miami Coastal Dock Project" class="w-full">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Luxury Private Dock - Miami</h3>
-                            <p class="text-slate-600 text-sm mb-3">Design and construction of a fixed dock combining composite materials and natural wood, integrated with a modern boat lift.</p>
-                            <span class="inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Design & Construction</span>
-                        </div>
+                <div id="project-filters" class="flex flex-wrap justify-center gap-2 mb-10 md:mb-12" data-aos="fade-up" data-aos-delay="100">
+                    <button class="filter-button active px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="all">All Projects</button>
+                    <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="design">Design</button>
+                    <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="construction">Construction</button>
+                    <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="remodel">Remodeling</button>
+                    <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="lifts">Boat Lifts</button>
+                </div>
+
+                <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="100">
+                        <a href="#" class="block group">
+                            <div class="project-image-container">
+                                <img src="https://placehold.co/600x400/0EA5E9/FFFFFF?text=Luxury+Private+Dock" alt="Luxury Private Dock in Miami" class="w-full">
+                            </div>
+                            <div class="p-6 project-card-content">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Luxury Private Dock - Miami</h3>
+                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Custom-designed fixed dock featuring premium composite decking, integrated lighting, and a high-capacity boat lift.</p>
+                                </div>
+                                <div class="mt-auto pt-3 border-t border-slate-100">
+                                    <span class="inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-2.5 py-0.5 rounded-full mr-2">Design</span>
+                                    <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Construction</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in-up" data-aos-delay="200">
-                         <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/38BDF8/FFFFFF?text=Commercial+Pier+FL" alt="Commercial Pier Project Fort Lauderdale" class="w-full">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Commercial Pier - Fort Lauderdale</h3>
-                            <p class="text-slate-600 text-sm mb-3">Construction of a public pier with high load capacity, ensuring safety and convenience for multiple users.</p>
-                            <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Construction</span>
-                        </div>
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="construction" data-aos="zoom-in-up" data-aos-delay="200">
+                         <a href="#" class="block group">
+                            <div class="project-image-container">
+                                <img src="https://placehold.co/600x400/38BDF8/FFFFFF?text=Commercial+Pier+FL" alt="Commercial Pier Fort Lauderdale">
+                            </div>
+                            <div class="p-6 project-card-content">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Commercial Pier - Fort Lauderdale</h3>
+                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Robust construction of a public access pier, engineered for high traffic and harsh marine environments, featuring durable materials.</p>
+                                </div>
+                                <div class="mt-auto pt-3 border-t border-slate-100">
+                                    <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Construction</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="project-image-container">
-                             <img src="https://placehold.co/600x400/7DD3FC/FFFFFF?text=Dock+Remodel+Palm+Beach" alt="Dock Remodel Project Palm Beach" class="w-full">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Classic Dock Remodel - Palm Beach</h3>
-                            <p class="text-slate-600 text-sm mb-3">Renovation and upgrade of an old dock, giving it a modern look while preserving its original charm.</p>
-                            <span class="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Remodeling</span>
-                        </div>
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="remodel" data-aos="zoom-in-up" data-aos-delay="300">
+                        <a href="#" class="block group">
+                            <div class="project-image-container">
+                                 <img src="https://placehold.co/600x400/7DD3FC/FFFFFF?text=Classic+Dock+Remodel" alt="Classic Dock Remodel Palm Beach">
+                            </div>
+                            <div class="p-6 project-card-content">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Classic Dock Remodel - Palm Beach</h3>
+                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Complete renovation of an aging wooden dock, upgraded with modern composite materials, new pilings, and enhanced safety features.</p>
+                                </div>
+                                <div class="mt-auto pt-3 border-t border-slate-100">
+                                    <span class="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Remodeling</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/F0ABFC/0F172A?text=Floating+Dock+Key+West" alt="Floating Dock Project Key West" class="w-full">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Floating Dock System - Key West</h3>
-                            <p class="text-slate-600 text-sm mb-3">Installation of a flexible floating dock system, suitable for varying water levels, optimizing mooring space.</p>
-                            <span class="inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Design & Installation</span>
-                        </div>
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="design lifts" data-aos="zoom-in-up" data-aos-delay="100">
+                        <a href="#" class="block group">
+                            <div class="project-image-container">
+                                <img src="https://placehold.co/600x400/F0ABFC/0F172A?text=Floating+Dock+System" alt="Floating Dock System Key West">
+                            </div>
+                            <div class="p-6 project-card-content">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Floating Dock System - Key West</h3>
+                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Design and installation of a versatile floating dock system, ideal for fluctuating water levels, complete with kayak launch and PWC lifts.</p>
+                                </div>
+                                 <div class="mt-auto pt-3 border-t border-slate-100">
+                                    <span class="inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-2.5 py-0.5 rounded-full mr-2">Design</span>
+                                    <span class="inline-block bg-purple-100 text-purple-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Boat Lifts</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in-up" data-aos-delay="200">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/A78BFA/FFFFFF?text=Personal+Boat+Lift" alt="Personal Boat Lift Installation" class="w-full">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Personal Boat Lift - Sarasota</h3>
-                            <p class="text-slate-600 text-sm mb-3">Supply and installation of a convenient and safe boat lift for private boat owners, providing optimal vessel protection.</p>
-                            <span class="inline-block bg-violet-100 text-violet-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Lift Installation</span>
-                        </div>
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="lifts" data-aos="zoom-in-up" data-aos-delay="200">
+                        <a href="#" class="block group">
+                            <div class="project-image-container">
+                                <img src="https://placehold.co/600x400/A78BFA/FFFFFF?text=Dual+Boat+Lift+Install" alt="Dual Boat Lift Installation Sarasota">
+                            </div>
+                            <div class="p-6 project-card-content">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Dual Boat Lift Installation - Sarasota</h3>
+                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Supply and professional installation of two heavy-duty boat lifts, enhancing boat storage and protection for a private residence.</p>
+                                </div>
+                                <div class="mt-auto pt-3 border-t border-slate-100">
+                                    <span class="inline-block bg-purple-100 text-purple-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Boat Lifts</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/F87171/FFFFFF?text=Dock+Repair+Tampa" alt="Dock Repair Tampa" class="w-full">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Dock Repair & Maintenance - Tampa</h3>
-                            <p class="text-slate-600 text-sm mb-3">Comprehensive repair, replacement of damaged parts, and routine maintenance for a dock after years of use.</p>
-                            <span class="inline-block bg-red-100 text-red-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Repair & Maintenance</span>
-                        </div>
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="remodel construction" data-aos="zoom-in-up" data-aos-delay="300">
+                        <a href="#" class="block group">
+                            <div class="project-image-container">
+                                <img src="https://placehold.co/600x400/F87171/FFFFFF?text=Seawall+And+Dock+Repair" alt="Seawall and Dock Repair Tampa">
+                            </div>
+                            <div class="p-6 project-card-content">
+                                <div>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Seawall & Dock Combo - Tampa</h3>
+                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Comprehensive project involving seawall repair and construction of a new, adjoining dock to provide complete waterfront protection and access.</p>
+                                </div>
+                                <div class="mt-auto pt-3 border-t border-slate-100">
+                                    <span class="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-0.5 rounded-full mr-2">Remodeling</span>
+                                     <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Construction</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    </div>
-
+                </div>
                 </div>
         </section>
 
         <section class="py-16 md:py-24 bg-sky-600 text-white" data-aos="zoom-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Like What You See?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Inspired by Our Work?</h2>
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                    Let Kha Boat Dock - Design and Remodel turn your dock ideas into reality. Contact us for a detailed consultation.
+                    Let Kha Boat Dock - Design and Remodel bring your waterfront vision to life. Contact us for a detailed consultation.
                 </p>
-                <a href="khadock_contact.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
-                    Start Your Project
+                <a href="contact.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                    Start Your Project Today
                 </a>
             </div>
         </section>
     </main>
 
-    <footer class="footer-bg text-slate-300 py-12 md:py-16">
+    <footer class="bg-slate-900 text-slate-300 py-12 md:py-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <div>
@@ -244,29 +320,26 @@
                         <a href="#" aria-label="Kha Boat Dock LinkedIn" class="text-slate-300 hover:text-sky-400 transition-colors"><i class="fab fa-linkedin-in fa-lg"></i></a>
                     </div>
                 </div>
-
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="khadock_index.html" class="hover:text-sky-400 transition-colors">Home</a></li>
-                        <li><a href="khadock_about.html" class="hover:text-sky-400 transition-colors">About Us</a></li>
-                        <li><a href="khadock_services.html" class="hover:text-sky-400 transition-colors">Services</a></li>
-                        <li><a href="khadock_projects.html" class="hover:text-sky-400 transition-colors">Projects</a></li>
-                        <li><a href="khadock_contact.html" class="hover:text-sky-400 transition-colors">Contact Us</a></li>
+                        <li><a href="index.html" class="hover:text-sky-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-sky-400 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-sky-400 transition-colors">Services</a></li>
+                        <li><a href="projects.html" class="hover:text-sky-400 transition-colors">Projects</a></li>
+                        <li><a href="contact.html" class="hover:text-sky-400 transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
-
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-4">Main Services</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="khadock_services.html#design" class="hover:text-sky-400 transition-colors">Dock Design</a></li>
-                        <li><a href="khadock_services.html#construction" class="hover:text-sky-400 transition-colors">Dock Construction</a></li>
-                        <li><a href="khadock_services.html#lifts" class="hover:text-sky-400 transition-colors">Boat Lift Installation</a></li>
-                        <li><a href="khadock_services.html#repair" class="hover:text-sky-400 transition-colors">Repair & Maintenance</a></li>
-                        <li><a href="khadock_services.html#remodel" class="hover:text-sky-400 transition-colors">Dock Remodeling</a></li>
+                        <li><a href="services.html#design" class="hover:text-sky-400 transition-colors">Dock Design</a></li>
+                        <li><a href="services.html#construction" class="hover:text-sky-400 transition-colors">Dock Construction</a></li>
+                        <li><a href="services.html#lifts" class="hover:text-sky-400 transition-colors">Boat Lift Installation</a></li>
+                        <li><a href="services.html#repair" class="hover:text-sky-400 transition-colors">Repair & Maintenance</a></li>
+                        <li><a href="services.html#remodel" class="hover:text-sky-400 transition-colors">Dock Remodeling</a></li>
                     </ul>
                 </div>
-
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-4">Contact Information</h3>
                     <address class="not-italic text-sm space-y-2">
@@ -277,18 +350,48 @@
                     </address>
                 </div>
             </div>
-
             <div class="border-t border-slate-700 pt-8 text-center text-sm">
-                <p>&copy; <span id="current-year"></span> Kha Boat Dock - Design and Remodel. All rights reserved.</p>
+                <p>© <span id="current-year">2024</span> Kha Boat Dock - Design and Remodel. All rights reserved.</p>
             </div>
         </div>
     </footer>
     
-    <button id="scrollToTopBtn" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300">
+    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="khadock_script.js"></script>
+    <script src="js/script.js" defer></script> 
+    <script>
+        // Project filtering logic (can be moved to your main script.js if preferred)
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('#project-filters .filter-button');
+            const projectCards = document.querySelectorAll('#project-grid .project-card');
+
+            if (filterButtons.length > 0 && projectCards.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Update active button style
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+
+                        const filterValue = button.getAttribute('data-filter');
+
+                        projectCards.forEach(card => {
+                            const categories = card.getAttribute('data-category');
+                            if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
+                                card.style.display = 'block'; // Or your preferred display type
+                                // Optional: Re-trigger AOS for newly shown items if needed,
+                                // though AOS 'once:true' might mean they only animate once ever.
+                                // if (typeof AOS !== 'undefined') AOS.refreshHard(); 
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
