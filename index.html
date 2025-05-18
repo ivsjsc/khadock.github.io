@@ -20,22 +20,26 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            /* scroll-behavior: smooth; đã có trong styles.css */
         }
         .hero-bg {
-            background-image: url('images/pages/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
+            /* Sử dụng ảnh logo làm nền banner chính */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/logo/logo.jpg');
+            background-size: cover; /* Đảm bảo ảnh che phủ toàn bộ khu vực banner */
+            background-position: center center; /* Căn giữa ảnh trong banner */
+            background-repeat: no-repeat;
         }
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Giữ nguyên hoặc điều chỉnh nếu muốn */
         }
-        .dropdown-menu {
-            display: none;
+        /* Các kiểu cho dropdown menu nên được quản lý trong styles.css */
+        /* .dropdown-menu {
+            display: none; 
         }
         .dropdown:hover .dropdown-menu {
             display: block;
-        }
+        } */
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
@@ -43,7 +47,6 @@
     <div id="header-placeholder"></div>
 
     <main>
-        <!-- Banner Section -->
         <section class="hero-bg text-white min-h-[70vh] md:min-h-[80vh] flex items-center justify-center py-20 md:py-32" data-aos="fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight" data-aos="fade-down" data-aos-delay="200">
@@ -63,10 +66,8 @@
             </div>
         </section>
 
-        <!-- Main Content Section -->
         <section class="bg-slate-100">
-            <!-- Place your main content here if needed, or leave empty if content is below -->
-        </section>
+            </section>
 
         <section class="py-16 md:py-24 bg-slate-50" id="services-overview" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,52 +167,17 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="images/pages/miamidock.jpg" alt="Custom Dock Build Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <img src="images/pages/miamidock.jpg" alt="Custom Dock Build Project in Miami" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <h3 class="text-white text-xl font-semibold">Residential BoatDock - Miami Beach</h3>
                         </div>
                     </div>
                     <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="images/pages/Marinadock.webp" alt="Commercial Pier Construction Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <img src="images/pages/Marinadock.webp" alt="Commercial Pier Construction Project in Fort Lauderdale" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <h3 class="text-white text-xl font-semibold">Marina Pier - Fort Lauderdale</h3>
                         </div>
                     </div>
                     <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="images/pages/BoatDockRemodel.jpg" alt="BoatDock Remodel Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"> <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white text-xl font-semibold">BoatDock Remodel - Palm Beach</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-12">
-                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
-                        View Full Portfolio
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 md:py-24 bg-sky-600 text-white" data-aos="zoom-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your BoatDock Project?</h2>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                    Let's discuss your vision. Contact KhaDock today for a personalized consultation and free estimate.
-                </p>
-                <a href="contact.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
-                    Schedule Your Consultation
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <div id="footer-placeholder"></div>
-    
-    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/script.js" defer></script> 
-    <script src="js/loadComponents.js" defer></script>
-</body>
-</html>
+                        <img src="images/pages/BoatDockRemodel.jpg" alt="BoatDock Remodel Project in Palm Beach" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"> 
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end
