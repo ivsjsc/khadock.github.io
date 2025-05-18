@@ -50,11 +50,8 @@ body {
 }
 
 /* Kiểu cho ô tìm kiếm trên desktop */
-#desktop-search-container {
-    /* Tailwind đã xử lý việc ẩn/hiện và định vị. 
-       Nếu cần chiều rộng cố định khi hiện, có thể thêm ở đây, 
-       nhưng HTML của bạn đã có class 'w-64' khi nó hiện. */
-}
+/* #desktop-search-container ruleset removed because it was empty. 
+   Add styles here if you need to override Tailwind for this element. */
 
 /* Kiểu cho panel menu di động chính (được bật/tắt bằng JavaScript) */
 /* Các lớp Tailwind 'hidden', 'absolute', 'w-full', 'z-30', 'top-20', 'left-0', 'right-0', 'shadow-lg' 
@@ -70,10 +67,10 @@ body {
 }
 
 /* Nút bật/tắt menu con trên di động khi menu con được mở rộng */
-.mobile-submenu-toggle[aria-expanded="true"] {
-    /* background-color: #4a5568; */ /* Ví dụ: màu nền đậm hơn cho nút đang hoạt động (slate-600) */
-    /* color: #63b3ed; */ /* Ví dụ: màu chữ nổi bật (sky-400) */
-}
+/* .mobile-submenu-toggle[aria-expanded="true"] {
+    background-color: #4a5568; 
+    color: #63b3ed; 
+} */
 
 
 /* --- 3. Kiểu cho các Section Cụ Thể trên Trang --- */
