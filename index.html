@@ -7,7 +7,7 @@
     <meta name="description" content="Kha Boat Dock - Design and Remodel: Your trusted experts for custom boat docks, durable construction, professional remodeling, and boat lift installations in Florida.">
     <meta property="og:title" content="Kha Boat Dock - Florida's Premier Dock Solutions">
     <meta property="og:description" content="Offering expert design, construction, and remodeling services for boat docks, piers, and lifts across Florida. Quality craftsmanship guaranteed.">
-    <meta property="og:image" content="images\logo\logo.jpg"> <meta property="og:url" content="YOUR_ACTUAL_DOMAIN/index.html"> <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo/logo.jpg"> <meta property="og:url" content="YOUR_ACTUAL_DOMAIN/index.html"> <meta property="og:type" content="website">
 
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,47 +16,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
-        body {
+        /* These specific styles were in your original HTML. */
+        /* Consider moving them to styles.css if they are not page-specific overrides. */
+        /* body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-        }
-        .hero-bg {
+        } */
+        /* .hero-bg {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/logo/logo.jpg');
             background-size: cover;
             background-position: center;
-        }
-        .service-card:hover {
+        } */
+        /* .service-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-        }
-        .dropdown .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #1e293b; /* slate-800 */
-            z-index: 50;
-            min-width: 220px;
-            border-radius: 0.375rem; /* rounded-md */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            margin-top: 0.5rem; /* mt-2 */
-        }
-        .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { 
-            display: block;
-        }
-        .dropdown-menu a {
-            padding: 0.75rem 1rem; 
-            display: block;
-            color: #cbd5e1; /* slate-300 */
-        }
-        .dropdown-menu a:hover {
-            background-color: #334155; /* slate-700 */
-            color: #f1f5f9; /* slate-100 */
-        }
+        } */
+        /* .dropdown .dropdown-menu { ... } */ /* Should be in styles.css */
+        /* .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { ... } */ /* Should be in styles.css */
+        /* .dropdown-menu a { ... } */ /* Should be in styles.css */
+        /* .dropdown-menu a:hover { ... } */ /* Should be in styles.css */
+        
         /* Ensure search container is styled if not using Tailwind utility classes directly in header */
-        #desktop-search-container {
-            /* Basic styling, can be enhanced */
+        /* #desktop-search-container {
             width: 250px; 
-        }
+        } */
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
@@ -67,7 +52,7 @@
         <section class="hero-bg text-white min-h-[70vh] md:min-h-[80vh] flex items-center justify-center py-20 md:py-32" data-aos="fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight" data-aos="fade-down" data-aos-delay="200">
-                    Building Florida's Finest Waterfront Experiences
+                    Building Florida's Finest BoatDock Experiences
                 </h1>
                 <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="400">
                     KhaDock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship.
@@ -98,7 +83,7 @@
                         </div>
                         <h3 class="text-xl font-semibold text-slate-800 mb-3">Custom Dock Design & Remodeling</h3>
                         <p class="text-slate-600 text-sm mb-4">
-                            Tailored designs and expert remodeling to perfectly suit your waterfront property and lifestyle.
+                            Tailored designs and expert remodeling to perfectly suit your boat dock property and lifestyle.
                         </p>
                         <a href="services.html#design" class="text-sky-500 hover:text-sky-600 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
                     </div>
@@ -181,21 +166,20 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="images\pages\miamidock.jpg" alt="Custom Dock Build Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <img src="images/pages/miamidock.jpg" alt="Custom Dock Build Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white text-xl font-semibold">Residential Dock - Miami Beach</h3>
+                            <h3 class="text-white text-xl font-semibold">Residential BoatDock - Miami Beach</h3>
                         </div>
                     </div>
                     <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="images\pages\Marinadock.webp" alt="Commercial Pier Construction Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <img src="images/pages/Marinadock.webp" alt="Commercial Pier Construction Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <h3 class="text-white text-xl font-semibold">Marina Pier - Fort Lauderdale</h3>
                         </div>
                     </div>
                     <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="images\pages\Waterfrontdock.jpg" alt="Dock Remodel Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white text-xl font-semibold">Waterfront Remodel - Palm Beach</h3>
+                        <img src="images/pages/BoatDockRemodel.jpg" alt="BoatDock Remodel Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"> <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-white text-xl font-semibold">BoatDock Remodel - Palm Beach</h3>
                         </div>
                     </div>
                 </div>
@@ -209,9 +193,9 @@
 
         <section class="py-16 md:py-24 bg-sky-600 text-white" data-aos="zoom-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Waterfront Project?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your BoatDock Project?</h2>
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                    Let's discuss your vision. Contact Kha Boat Dock today for a personalized consultation and free estimate.
+                    Let's discuss your vision. Contact KhaDock today for a personalized consultation and free estimate.
                 </p>
                 <a href="contact.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
                     Schedule Your Consultation
@@ -227,7 +211,7 @@
     </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/script.js" defer></script> 
     <script src="js/loadComponents.js" defer></script>
 </body>
 </html>
