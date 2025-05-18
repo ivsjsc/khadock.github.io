@@ -17,67 +17,42 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> 
     <style>
-        body {
+        /* Các kiểu CSS nội tuyến này có thể được chuyển vào tệp styles.css của bạn */
+        /* body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-        }
-        .banner-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/logo/khadock.jpg'); /* Placeholder Banner Image */
+        } */
+        /* .banner-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/logo/khadock.jpg'); 
             background-size: cover;
             background-position: center;
-        }
-        .project-card .project-image-container {
+        } */
+        /* .project-card .project-image-container {
             height: 250px; 
             overflow: hidden;
-            background-color: #e2e8f0; /* Light gray background for image container */
-        }
-        .project-card img {
+            background-color: #e2e8f0; 
+        } */
+        /* .project-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease, filter 0.3s ease;
-        }
-        .project-card:hover img {
+        } */
+        /* .project-card:hover img {
             transform: scale(1.05);
             filter: brightness(1.1);
-        }
-        .project-card-content {
-            min-height: 160px; /* Ensure consistent card height */
+        } */
+        /* .project-card-content {
+            min-height: 160px; 
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-        }
-        .dropdown .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #1e293b; 
-            z-index: 50;
-            min-width: 220px; 
-            border-radius: 0.375rem; 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            margin-top: 0.5rem; 
-        }
-        .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { 
-            display: block;
-        }
-        .dropdown-menu a {
-            padding: 0.75rem 1rem; 
-            display: block;
-            color: #cbd5e1; 
-        }
-        .dropdown-menu a:hover {
-            background-color: #334155; 
-            color: #f1f5f9; 
-        }
-        .filter-button {
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .filter-button.active {
-            background-color: #0ea5e9; /* sky-500 */
-            color: white;
-            border-color: #0ea5e9;
-        }
+        } */
+        /* .dropdown .dropdown-menu { ... } */ /* Đã có trong styles.css */
+        /* .filter-button { ... } */ /* Đã có trong styles.css */
+        /* .filter-button.active { ... } */ /* Đã có trong styles.css */
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
@@ -109,13 +84,14 @@
                     <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="construction">Construction</button>
                     <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="remodel">Remodeling</button>
                     <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="lifts">Boat Lifts</button>
+                    <button class="filter-button px-4 py-2 text-sm font-medium border border-slate-300 rounded-md hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500" data-filter="maintenance">Repair & Maintenance</button> 
                 </div>
 
                 <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="100">
                         <a href="#" class="block group">
                             <div class="project-image-container">
-                                <img src="https://placehold.co/600x400/0EA5E9/FFFFFF?text=Luxury+Private+Dock" alt="Luxury Private Dock in Miami" class="w-full">
+                                <img src="images/pages/DockDesign.jpeg" alt="Luxury Private Dock in Miami by KhaDock" class="w-full">
                             </div>
                             <div class="p-6 project-card-content">
                                 <div>
@@ -133,7 +109,7 @@
                     <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="construction" data-aos="zoom-in-up" data-aos-delay="200">
                          <a href="#" class="block group">
                             <div class="project-image-container">
-                                <img src="https://placehold.co/600x400/38BDF8/FFFFFF?text=Commercial+Pier+FL" alt="Commercial Pier Fort Lauderdale">
+                                <img src="images/pages/DockConstruction.jpeg" alt="Commercial Pier Fort Lauderdale by KhaDock" class="w-full">
                             </div>
                             <div class="p-6 project-card-content">
                                 <div>
@@ -150,7 +126,7 @@
                     <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="remodel" data-aos="zoom-in-up" data-aos-delay="300">
                         <a href="#" class="block group">
                             <div class="project-image-container">
-                                 <img src="https://placehold.co/600x400/7DD3FC/FFFFFF?text=Classic+Dock+Remodel" alt="Classic Dock Remodel Palm Beach">
+                                 <img src="images/pages/Remodeling&Upgrades.jpeg" alt="Classic Dock Remodel Palm Beach by KhaDock" class="w-full">
                             </div>
                             <div class="p-6 project-card-content">
                                 <div>
@@ -167,8 +143,8 @@
                     <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="design lifts" data-aos="zoom-in-up" data-aos-delay="100">
                         <a href="#" class="block group">
                             <div class="project-image-container">
-                                <img src="https://placehold.co/600x400/F0ABFC/0F172A?text=Floating+Dock+System" alt="Floating Dock System Key West">
-                            </div>
+                                <img src="images/pages/DockServices.jpeg" alt="Floating Dock System Key West by KhaDock" class="w-full">
+                                </div>
                             <div class="p-6 project-card-content">
                                 <div>
                                     <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Floating Dock System - Key West</h3>
@@ -185,7 +161,7 @@
                     <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="lifts" data-aos="zoom-in-up" data-aos-delay="200">
                         <a href="#" class="block group">
                             <div class="project-image-container">
-                                <img src="https://placehold.co/600x400/A78BFA/FFFFFF?text=Dual+Boat+Lift+Install" alt="Dual Boat Lift Installation Sarasota">
+                                <img src="images/pages/BoatLift.jpeg" alt="Dual Boat Lift Installation Sarasota by KhaDock" class="w-full">
                             </div>
                             <div class="p-6 project-card-content">
                                 <div>
@@ -199,25 +175,26 @@
                         </a>
                     </div>
 
-                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="remodel construction" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden" data-category="remodel construction maintenance" data-aos="zoom-in-up" data-aos-delay="300">
                         <a href="#" class="block group">
                             <div class="project-image-container">
-                                <img src="https://placehold.co/600x400/F87171/FFFFFF?text=Seawall+And+Dock+Repair" alt="Seawall and Dock Repair Tampa">
+                                <img src="images/pages/Repair&Maintenance.jpeg" alt="Seawall and Dock Repair Tampa by KhaDock" class="w-full">
                             </div>
                             <div class="p-6 project-card-content">
                                 <div>
-                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Seawall & Dock Combo - Tampa</h3>
-                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Comprehensive project involving seawall repair and construction of a new, adjoining dock to provide complete waterfront protection and access.</p>
+                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Seawall & Dock Repair - Tampa</h3>
+                                    <p class="text-slate-600 text-sm mb-3 line-clamp-3">Comprehensive project involving seawall repair and dock maintenance to provide complete waterfront protection and longevity.</p>
                                 </div>
                                 <div class="mt-auto pt-3 border-t border-slate-100">
                                     <span class="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-0.5 rounded-full mr-2">Remodeling</span>
-                                     <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Construction</span>
+                                     <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full mr-2">Construction</span>
+                                     <span class="inline-block bg-rose-100 text-rose-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Maintenance</span>
                                 </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                </div>
+            </div>
         </section>
 
         <section class="py-16 md:py-24 bg-sky-600 text-white" data-aos="zoom-in">
@@ -240,10 +217,10 @@
     </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/script.js" defer></script> 
     <script src="js/loadComponents.js" defer></script>
     <script>
-        // Project filtering logic (can be moved to your main script.js if preferred)
+        // Project filtering logic
         document.addEventListener('DOMContentLoaded', () => {
             const filterButtons = document.querySelectorAll('#project-filters .filter-button');
             const projectCards = document.querySelectorAll('#project-grid .project-card');
@@ -251,19 +228,14 @@
             if (filterButtons.length > 0 && projectCards.length > 0) {
                 filterButtons.forEach(button => {
                     button.addEventListener('click', () => {
-                        // Update active button style
                         filterButtons.forEach(btn => btn.classList.remove('active'));
                         button.classList.add('active');
-
                         const filterValue = button.getAttribute('data-filter');
 
                         projectCards.forEach(card => {
                             const categories = card.getAttribute('data-category');
                             if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
-                                card.style.display = 'block'; // Or your preferred display type
-                                // Optional: Re-trigger AOS for newly shown items if needed,
-                                // though AOS 'once:true' might mean they only animate once ever.
-                                // if (typeof AOS !== 'undefined') AOS.refreshHard(); 
+                                card.style.display = 'block';
                             } else {
                                 card.style.display = 'none';
                             }
