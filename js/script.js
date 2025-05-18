@@ -21,7 +21,7 @@ function initializeHeaderLogic() {
 
     const headerElement = document.querySelector('header'); // Targets the first <header> tag
     if (!headerElement) {
-        console.error("[HeaderLogic] Main header element not found. Cannot initialize.");
+        newFunction();
         return;
     }
 
@@ -128,6 +128,10 @@ function initializeHeaderLogic() {
     setActiveNavLink(headerElement);
     headerLogicInitialized = true;
     console.log("[HeaderLogic] Initialized successfully (Direct Embedding Mode).");
+
+    function newFunction() {
+        console.error("[HeaderLogic] Main header element not found. Cannot initialize.");
+    }
 }
 
 /**
