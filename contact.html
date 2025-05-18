@@ -7,7 +7,8 @@
     <meta name="description" content="Contact KhaDock - Design and Remodel for a free consultation and quote for your dock design, construction, or remodeling project in Florida.">
     <meta property="og:title" content="Contact KhaDock - Florida's Dock Experts">
     <meta property="og:description" content="Connect with KhaDock in Lakeland, FL. Phone: +1 813-939-3989, Email: doduykha007@gmail.com.">
-    <meta property="og:image" content="images/pages/khadockbanner.jpeg"> <meta property="og:url" content="YOUR_DOMAIN/contact.html"> <meta property="og:type" content="website">
+    <meta property="og:image" content="images/pages/khadockbanner.jpeg"> 
+    <meta property="og:url" content="YOUR_DOMAIN/contact.html"> <meta property="og:type" content="website">
 
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,17 +34,24 @@
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+        <section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Let's Discuss Your Project</h2>
+                    <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                        We're excited to learn about your boat dock vision! Whether you have a clear idea or are just starting to explore options, our expert team at KhaDock is ready to assist. Please use the form below to send us a message, or feel free to contact us directly through one of the methods listed. We typically respond within one business day.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 items-start">
                     <div data-aos="fade-right" data-aos-delay="100">
-                        <h2 class="text-3xl font-bold text-slate-800 mb-6">Contact Details</h2>
+                        <h3 class="text-2xl font-bold text-slate-700 mb-6">Direct Contact Information</h3>
                         <p class="text-slate-600 leading-relaxed mb-8">
-                            Reach out to KhaDock - Design and Remodel via phone, email, or by visiting our office. We look forward to hearing from you!
+                            Feel free to reach out to us via phone, email, or visit our office during business hours. We look forward to hearing from you!
                         </p>
                         <div class="space-y-6">
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4 shadow">
                                     <i class="fas fa-map-marker-alt fa-lg"></i>
                                 </div>
                                 <div>
@@ -52,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4 shadow">
                                     <i class="fas fa-phone fa-lg"></i>
                                 </div>
                                 <div>
@@ -61,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4 shadow">
                                     <i class="fas fa-envelope fa-lg"></i>
                                 </div>
                                 <div>
@@ -70,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-4 shadow">
                                     <i class="fas fa-clock fa-lg"></i>
                                 </div>
                                 <div>
@@ -80,6 +88,46 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div data-aos="fade-left" data-aos-delay="200" class="bg-slate-50 p-8 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-bold text-slate-700 mb-6">Send Us a Message</h3>
+                        <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" name="name" id="name" required class="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-colors" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+                                <input type="email" name="email" id="email" required class="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-colors" placeholder="you@example.com">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+                                <input type="tel" name="phone" id="phone" class="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-colors" placeholder="+1 (555) 123-4567">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-slate-700 mb-1">Service of Interest</label>
+                                <select name="service" id="service" class="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-colors bg-white appearance-none">
+                                    <option value="">-- Please select a service --</option>
+                                    <option value="Dock Design">Custom Dock Design</option>
+                                    <option value="Dock Construction">New Dock Construction</option>
+                                    <option value="Dock Remodeling">Dock Remodeling</option>
+                                    <option value="Boat Lift Installation">Boat Lift Installation</option>
+                                    <option value="Repair & Maintenance">Repair & Maintenance</option>
+                                    <option value="Other Inquiry">Other Inquiry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Your Message <span class="text-red-500">*</span></label>
+                                <textarea name="message" id="message" rows="5" required class="w-full px-4 py-2.5 border border-slate-300 rounded-md shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-colors" placeholder="Tell us about your project or inquiry..."></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2">
+                                    Send Your Message
+                                </button>
+                            </div>
+                            <div id="form-status" class="text-sm mt-3"></div> 
+                        </form>
                     </div>
                 </div>
             </div>
@@ -92,7 +140,8 @@
                 </div>
                 <div class="aspect-w-16 aspect-h-9 rounded-lg shadow-xl overflow-hidden">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.580059709818!2d-81.90002202469071!3d28.40198907579043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dd3cd092ea3a81%3A0x95a8697bb1b93917!2s3850%20Rollingsford%20Cir%2C%20Lakeland%2C%20FL%2033810%2C%20USA!5e0!3m2!1sen!2s!4v1715942899934!5m2!1sen!2s" width="100%" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3514.300725247608!2d-81.9001798852838!3d28.259422782568136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dd3f5b30158f7b%3A0x7e6a3f9061c7d7c0!2s3850%20Rollingsford%20Cir%2C%20Lakeland%2C%20FL%2033810%2C%20USA!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
+                        width="100%" 
                         height="450" 
                         style="border:0;" 
                         allowfullscreen="" 
@@ -116,6 +165,7 @@
     <script src="js/loadComponents.js" defer></script>
     <script>
         // This script block is specific to the contact page for Formspree
+        // It should ideally be in your main script file, but can be here if only for this page.
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('form-status');
 
