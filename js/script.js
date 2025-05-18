@@ -1,76 +1,117 @@
 /**
  * Kha Boat Dock - Main Site Script (site_script_v3.js)
- * Assumes header and footer are directly embedded in each HTML page.
  * Handles menu interactions, active navigation, search, and other utilities.
+ * Header and Footer specific logic is initialized via callbacks in loadComponents.js
  */
 
 // --- State Variables ---
-let headerLogicInitialized = false;
+let headerLogicInitialized = false; // Flag to ensure header logic runs only once if needed
 let searchDebounceTimer = null;
 const SEARCH_HIGHLIGHT_CLASS = 'search-highlight';
-const FOOTER_YEAR_ID = 'current-year'; // ID for the copyright year span
+const FOOTER_YEAR_ID = 'current-year';
 
 /**
  * Initializes all interactive elements and logic within the header.
- * This function should be called on DOMContentLoaded.
+ * This function is called by loadComponents.js AFTER the header HTML is fetched.
  */
 function initializeHeaderLogic() {
+    // If already initialized, prevent re-running (useful for SPAs, less so for static sites but good practice)
     if (headerLogicInitialized) {
+        console.log("[HeaderLogic] Already initialized. Skipping.");
         return;
     }
 
-    const headerElement = document.querySelector('header'); // Targets the first <header> tag
+    const headerElement = document.querySelector('header');
     if (!headerElement) {
-        newFunction();
+        console.error("[HeaderLogic] Main header element (<header>) not found after dynamic loading. Ensure header.html contains a <header> tag.");
         return;
     }
+    console.log("[HeaderLogic] Found header element:", headerElement);
 
-    // Mobile Menu Toggle
+    // --- Mobile Menu Toggle (Main Panel) ---
     const mobileMenuButton = headerElement.querySelector('#mobile-menu-button');
-    // Corrected selector for mobileMenuPanel based on your services.html and contactus.html structure
-    const mobileMenuPanel = headerElement.querySelector('#mobile-menu-panel, div#mobile-menu.md\\:hidden'); 
-    const iconMenuOpen = headerElement.querySelector('#icon-menu-open'); // If you add this ID to your open icon
-    const iconMenuClose = headerElement.querySelector('#icon-menu-close'); // If you add this ID to your close icon
+    const mobileMenuPanel = headerElement.querySelector('#mobile-menu-panel');
+    const iconMenuOpen = headerElement.querySelector('#icon-menu-open');
+    const iconMenuClose = headerElement.querySelector('#icon-menu-close');
 
-    if (mobileMenuButton && mobileMenuPanel) {
+    if (mobileMenuButton && mobileMenuPanel && iconMenuOpen && iconMenuClose) {
         mobileMenuButton.addEventListener('click', () => {
-            const isCurrentlyHidden = mobileMenuPanel.classList.contains('hidden');
-            mobileMenuPanel.classList.toggle('hidden', !isCurrentlyHidden);
-            mobileMenuButton.setAttribute('aria-expanded', isCurrentlyHidden); // True if panel is now shown
-            document.body.classList.toggle('overflow-hidden', isCurrentlyHidden);
-            
-            // Icon toggling (assuming you have distinct open/close icons)
-            const barsIcon = mobileMenuButton.querySelector('.fa-bars');
-            const timesIcon = mobileMenuButton.querySelector('.fa-times'); // You might need to add a close icon
+            const isPanelCurrentlyVisible = !mobileMenuPanel.classList.contains('hidden');
 
-            if (isCurrentlyHidden) { // Menu is being opened
-                if (barsIcon) barsIcon.classList.add('hidden');
-                if (timesIcon) timesIcon.classList.remove('hidden');
-            } else { // Menu is being closed
-                if (barsIcon) barsIcon.classList.remove('hidden');
-                if (timesIcon) timesIcon.classList.add('hidden');
+            if (isPanelCurrentlyVisible) {
+                // Panel is visible, so hide it
+                mobileMenuPanel.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('overflow-hidden');
+                iconMenuOpen.classList.remove('hidden');
+                iconMenuClose.classList.add('hidden');
+                console.log("[HeaderLogic] Mobile menu panel closed.");
+            } else {
+                // Panel is hidden, so show it
+                mobileMenuPanel.classList.remove('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+                document.body.classList.add('overflow-hidden');
+                iconMenuOpen.classList.add('hidden');
+                iconMenuClose.classList.remove('hidden');
+                console.log("[HeaderLogic] Mobile menu panel opened.");
             }
         });
+        console.log("[HeaderLogic] Mobile menu main toggle listeners attached.");
+    } else {
+        console.warn("[HeaderLogic] Mobile menu main toggle elements not fully found. Check IDs: #mobile-menu-button, #mobile-menu-panel, #icon-menu-open, #icon-menu-close.");
     }
 
+    // --- Mobile Submenu Toggles (Accordion Style with Smooth Animation) ---
+    const mobileSubmenuToggles = headerElement.querySelectorAll('.mobile-submenu-toggle');
+    mobileSubmenuToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() { // Using 'function' to correctly scope 'this'
+            const submenuId = this.getAttribute('aria-controls');
+            const submenu = headerElement.querySelector(`#${submenuId}`);
+            const icon = this.querySelector('.mobile-submenu-icon');
 
-    // Mobile Submenu Toggles (using onclick from HTML, ensure function is global)
-    // The function toggleMobileSubmenu is defined globally below.
+            if (submenu) {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
 
-    // Desktop Dropdown Menu (Services)
+                if (isExpanded) {
+                    // Collapse the submenu
+                    submenu.style.maxHeight = null; 
+                    this.setAttribute('aria-expanded', 'false');
+                    if (icon) {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                    console.log(`[HeaderLogic] Mobile submenu '${submenuId}' collapsed.`);
+                } else {
+                    // Expand the submenu
+                    submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    this.setAttribute('aria-expanded', 'true');
+                    if (icon) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                    console.log(`[HeaderLogic] Mobile submenu '${submenuId}' expanded to ${submenu.scrollHeight}px.`);
+                }
+            } else {
+                console.warn(`[HeaderLogic] Mobile submenu content with ID '${submenuId}' not found.`);
+            }
+        });
+    });
+    if (mobileSubmenuToggles.length > 0) console.log("[HeaderLogic] Mobile submenu (accordion) listeners attached.");
+
+
+    // --- Desktop Dropdown Menu (Services) ---
     const servicesDropdownButton = headerElement.querySelector('#nav-services-button');
-    // The dropdown menu is a sibling div with class 'dropdown-menu' inside a parent div with class 'dropdown'
-    const servicesDropdownMenu = servicesDropdownButton?.parentElement.querySelector('.dropdown-menu'); 
     const parentDropdownDiv = servicesDropdownButton?.closest('.dropdown');
+    const servicesDropdownMenu = parentDropdownDiv?.querySelector('.dropdown-menu');
 
     if (servicesDropdownButton && servicesDropdownMenu && parentDropdownDiv) {
         servicesDropdownButton.addEventListener('click', (e) => {
-            e.stopPropagation();
+            e.stopPropagation(); 
             const isHidden = servicesDropdownMenu.classList.toggle('hidden');
             servicesDropdownButton.setAttribute('aria-expanded', String(!isHidden));
             parentDropdownDiv.classList.toggle('open', !isHidden);
         });
-
+        
         document.addEventListener('click', (e) => {
             if (parentDropdownDiv.classList.contains('open') && !parentDropdownDiv.contains(e.target)) {
                 servicesDropdownMenu.classList.add('hidden');
@@ -78,152 +119,139 @@ function initializeHeaderLogic() {
                 parentDropdownDiv.classList.remove('open');
             }
         });
+        console.log("[HeaderLogic] Desktop services dropdown listener attached.");
+    } else {
+        console.warn("[HeaderLogic] Desktop services dropdown elements not fully found.");
     }
 
-    // Desktop Search Toggle
+    // --- Desktop Search Toggle ---
     const desktopSearchButton = headerElement.querySelector('#desktop-search-button');
-    const desktopSearchContainer = headerElement.querySelector('#desktop-search-container'); // Assuming this ID exists
-    const desktopSearchInput = headerElement.querySelector('#desktop-search-input'); // Assuming this ID exists
-    const desktopSearchClose = headerElement.querySelector('#desktop-search-close'); // Assuming this ID exists
-    const desktopSearchWrapper = headerElement.querySelector('#desktop-search-wrapper'); // Assuming this ID for the parent div
+    const desktopSearchContainer = headerElement.querySelector('#desktop-search-container');
+    const desktopSearchInput = headerElement.querySelector('#desktop-search-input');
+    const desktopSearchClose = headerElement.querySelector('#desktop-search-close');
+    const desktopSearchWrapper = headerElement.querySelector('#desktop-search-wrapper');
 
     if (desktopSearchButton && desktopSearchContainer && desktopSearchInput && desktopSearchWrapper) {
         desktopSearchButton.addEventListener('click', (e) => {
-            e.stopPropagation();
+            e.stopPropagation(); 
             desktopSearchContainer.classList.remove('hidden');
             desktopSearchInput.focus();
         });
+
         if (desktopSearchClose) {
             desktopSearchClose.addEventListener('click', () => {
                 desktopSearchContainer.classList.add('hidden');
                 desktopSearchInput.value = '';
-                clearSearchHighlights();
+                if (typeof clearSearchHighlights === 'function') clearSearchHighlights();
             });
         }
+        
         document.addEventListener('click', (e) => {
             if (!desktopSearchContainer.classList.contains('hidden') && !desktopSearchWrapper.contains(e.target)) {
                 desktopSearchContainer.classList.add('hidden');
                 desktopSearchInput.value = '';
-                clearSearchHighlights();
+                if (typeof clearSearchHighlights === 'function') clearSearchHighlights();
             }
         });
+        console.log("[HeaderLogic] Desktop search listeners attached.");
+    } else {
+        console.warn("[HeaderLogic] Desktop search elements not fully found.");
     }
     
-    // Search Input Handling (Desktop & Mobile)
-    const searchInputs = headerElement.querySelectorAll('#desktop-search-input, #mobile-search-input'); // Use correct mobile ID if different
+    // --- Search Input Handling (Desktop & Mobile) ---
+    const searchInputs = headerElement.querySelectorAll('#desktop-search-input, #mobile-search-input');
     searchInputs.forEach(input => {
         input.addEventListener('input', (event) => {
             clearTimeout(searchDebounceTimer);
             const query = event.target.value;
             searchDebounceTimer = setTimeout(() => {
-                performSearch(query);
+                if (typeof performSearch === 'function') performSearch(query);
             }, 300);
         });
-        const searchForm = input.closest('form'); // Generalize to any form containing the search
+        const searchForm = input.closest('form');
         if (searchForm) {
             searchForm.addEventListener('submit', e => e.preventDefault());
         }
     });
+    if (searchInputs.length > 0) console.log("[HeaderLogic] Search input listeners attached.");
 
-    setActiveNavLink(headerElement);
-    headerLogicInitialized = true;
-    console.log("[HeaderLogic] Initialized successfully (Direct Embedding Mode).");
-
-    function newFunction() {
-        console.error("[HeaderLogic] Main header element not found. Cannot initialize.");
-    }
+    if (typeof setActiveNavLink === 'function') setActiveNavLink(headerElement);
+    
+    headerLogicInitialized = true; // Set flag after successful initialization
+    console.log("[HeaderLogic] Initialization complete.");
 }
-
-/**
- * Global function for mobile submenu toggle, accessible by onclick attributes.
- */
-window.toggleMobileSubmenu = function() {
-    // This function needs to correctly target the submenu and icon within the *specific* "Services" dropdown in the mobile menu.
-    // It's better to use event listeners attached in initializeHeaderLogic if possible,
-    // but if onclick is used, the elements need to be reliably found.
-    // Let's assume the structure from your provided HTML for `services.html`'s mobile menu.
-    const servicesButton = document.querySelector('#mobile-menu-panel button.mobile-submenu-toggle, #mobile-menu button[onclick="toggleMobileSubmenu()"]'); // More robust selector
-    if (!servicesButton) {
-        console.warn("Mobile services toggle button not found for toggleMobileSubmenu.");
-        return;
-    }
-    // Find the submenu and icon relative to THIS button or via specific IDs if they are unique.
-    // Your HTML uses specific IDs: mobile-submenu and mobile-submenu-icon
-    const submenu = document.getElementById('mobile-submenu'); // From your services.html
-    const icon = document.getElementById('mobile-submenu-icon');   // From your services.html
-
-    if (submenu && icon) {
-        submenu.classList.toggle('hidden');
-        const isExpanded = !submenu.classList.contains('hidden');
-        servicesButton.setAttribute('aria-expanded', isExpanded);
-        icon.classList.toggle('fa-chevron-down', !isExpanded);
-        icon.classList.toggle('fa-chevron-up', isExpanded);
-    } else {
-        console.warn("Mobile submenu content or icon not found for toggleMobileSubmenu.");
-    }
-};
 
 
 /**
  * Initializes footer-specific logic.
  */
 function initializeFooterLogic() {
-    const yearSpan = document.getElementById(FOOTER_YEAR_ID);
+    const footerElement = document.querySelector('footer');
+    if (!footerElement) {
+        console.error("[FooterLogic] Main footer element (<footer>) not found after dynamic loading.");
+        return;
+    }
+    const yearSpan = footerElement.querySelector(`#${FOOTER_YEAR_ID}`);
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
-        console.log("[FooterLogic] Copyright year updated.");
     } else {
-         console.warn(`[FooterLogic] Copyright year span with ID '${FOOTER_YEAR_ID}' not found.`);
+         console.warn(`[FooterLogic] Copyright year span with ID '${FOOTER_YEAR_ID}' not found in the loaded footer.`);
     }
+    console.log("[FooterLogic] Initialization complete.");
 }
 
 /**
  * Sets the active state for the current page's navigation link.
- * @param {HTMLElement} headerElement - The main header DOM element.
  */
 function setActiveNavLink(headerElement) {
-    if (!headerElement) return;
-    const currentPageFile = window.location.pathname.split('/').pop() || "index.html";
-
-    const navLinks = headerElement.querySelectorAll('nav a'); // Desktop and mobile links
+    if (!headerElement) {
+        console.warn("[ActiveNav] Header element not provided.");
+        return;
+    }
+    const currentPagePath = window.location.pathname;
+    const currentPageFile = currentPagePath.substring(currentPagePath.lastIndexOf('/') + 1) || "index.html";
+    
+    const navLinks = headerElement.querySelectorAll('nav a');
 
     navLinks.forEach(link => {
         const linkHref = link.getAttribute('href');
         if (!linkHref) return;
-
-        const linkFile = linkHref.split('/').pop().split('#')[0]; // Get filename, ignore hash
+        const linkFile = (linkHref.split('/').pop() || "index.html").split('#')[0].split('?')[0];
         
-        // Reset styles
-        link.classList.remove('text-sky-400', 'font-semibold');
-        if (!link.classList.contains('bg-sky-500')) { // Avoid removing base style of Contact Us button
-            link.classList.add('hover:text-sky-400', 'font-medium');
+        link.classList.remove('text-sky-400', 'font-semibold', 'bg-slate-600');
+        if (!link.classList.contains('bg-sky-500')) { // Exclude "Contact Us" button
+            link.classList.add('hover:text-sky-400');
+            if (!link.classList.contains('font-semibold')) { 
+                 link.classList.add('font-medium');
+            }
+        } else {
+            link.classList.add('font-semibold'); // Ensure "Contact Us" retains font-semibold
         }
 
-        // Apply active styles
         if (linkFile === currentPageFile) {
             link.classList.add('text-sky-400', 'font-semibold');
             link.classList.remove('hover:text-sky-400', 'font-medium');
 
-            // Special handling for "Services" dropdown parent in desktop nav
             const servicesButtonDesktop = headerElement.querySelector('button#nav-services-button');
             if (link.closest('.dropdown-menu') && servicesButtonDesktop) {
                 servicesButtonDesktop.classList.add('text-sky-400', 'font-semibold');
                 servicesButtonDesktop.classList.remove('hover:text-sky-400', 'font-medium');
             }
-            // Special handling for "Services" parent in mobile nav
-            const servicesButtonMobile = link.closest('#mobile-menu-panel div')?.querySelector('button.mobile-submenu-toggle, button[onclick="toggleMobileSubmenu()"]');
-            if (link.closest('#mobile-submenu, #mobile-services-submenu') && servicesButtonMobile) {
-                 servicesButtonMobile.classList.add('text-sky-400', 'font-semibold'); // Or bg-slate-600 as per your HTML
-                 servicesButtonMobile.classList.remove('hover:text-sky-400', 'font-medium');
+            
+            const mobileMenuPanel = headerElement.querySelector('#mobile-menu-panel');
+            if (mobileMenuPanel && link.closest('#mobile-services-submenu')) {
+                 const servicesButtonMobile = mobileMenuPanel.querySelector('button[aria-controls="mobile-services-submenu"]');
+                 if(servicesButtonMobile){
+                    servicesButtonMobile.classList.add('text-sky-400', 'font-semibold');
+                    servicesButtonMobile.classList.remove('hover:text-sky-400', 'font-medium');
+                 }
             }
         }
     });
-     console.log(`[ActiveNav] Active link attempt for: ${currentPageFile}`);
+    console.log(`[ActiveNav] Active link processing complete for: ${currentPageFile}`);
 }
 
-/**
- * Clears previously highlighted search results.
- */
+// --- Search Highlight Functions ---
 function clearSearchHighlights() {
     const mainContent = document.querySelector('main');
     if (!mainContent) return;
@@ -231,21 +259,16 @@ function clearSearchHighlights() {
     highlights.forEach(mark => {
         const parent = mark.parentNode;
         if (parent) {
-            parent.replaceChild(document.createTextNode(mark.textContent), mark);
+            parent.replaceChild(document.createTextNode(mark.textContent || ''), mark);
             parent.normalize();
         }
     });
 }
 
-/**
- * Performs a client-side search within the <main> element.
- */
 function performSearch(query) {
     clearSearchHighlights();
     const mainContent = document.querySelector('main');
-    if (!mainContent || !query || query.trim().length < 2) {
-        return;
-    }
+    if (!mainContent || !query || query.trim().length < 2) return;
     const queryLower = query.trim().toLowerCase();
     let matchCount = 0;
     let firstMatchElement = null;
@@ -253,112 +276,85 @@ function performSearch(query) {
     function traverseNodes(node) {
         if (node.nodeType === Node.TEXT_NODE) {
             const text = node.nodeValue;
+            if (!text) return;
             const textLower = text.toLowerCase();
             let matchIndex = -1;
             let lastIndex = 0;
             const fragment = document.createDocumentFragment();
             while ((matchIndex = textLower.indexOf(queryLower, lastIndex)) > -1) {
-                if (matchIndex > lastIndex) {
-                    fragment.appendChild(document.createTextNode(text.substring(lastIndex, matchIndex)));
-                }
+                if (matchIndex > lastIndex) fragment.appendChild(document.createTextNode(text.substring(lastIndex, matchIndex)));
                 const matchedText = text.substring(matchIndex, matchIndex + query.length);
                 const mark = document.createElement('mark');
                 mark.className = SEARCH_HIGHLIGHT_CLASS;
-                mark.style.backgroundColor = 'yellow'; // Example highlight style
-                mark.style.color = 'black';
+                mark.style.backgroundColor = 'yellow'; mark.style.color = 'black';
                 mark.textContent = matchedText;
                 fragment.appendChild(mark);
                 matchCount++;
                 if (!firstMatchElement) firstMatchElement = mark;
                 lastIndex = matchIndex + query.length;
             }
-            if (lastIndex < text.length) {
-                fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+            if (lastIndex < text.length) fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+            if (fragment.childNodes.length > 0 && node.parentNode && (fragment.childNodes.length > 1 || (fragment.firstChild && fragment.firstChild.nodeType !== Node.TEXT_NODE))) {
+                node.parentNode.replaceChild(fragment, node);
             }
-            if (fragment.childNodes.length > 0 && (fragment.childNodes.length > 1 || fragment.firstChild.nodeType !== Node.TEXT_NODE)) {
-                if (node.parentNode) {
-                    node.parentNode.replaceChild(fragment, node);
-                }
-            }
-        } else if (node.nodeType === Node.ELEMENT_NODE &&
-                   node.nodeName !== 'SCRIPT' && node.nodeName !== 'STYLE' &&
-                   node.nodeName !== 'MARK' && !node.classList.contains(SEARCH_HIGHLIGHT_CLASS)) {
+        } else if (node.nodeType === Node.ELEMENT_NODE && !['SCRIPT', 'STYLE', 'TEXTAREA', 'INPUT', 'MARK'].includes(node.nodeName) && !node.classList.contains(SEARCH_HIGHLIGHT_CLASS)) {
             Array.from(node.childNodes).forEach(traverseNodes);
         }
     }
     traverseNodes(mainContent);
     console.log(`[Search] Found ${matchCount} matches for "${query}".`);
-    if (firstMatchElement) {
-        firstMatchElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    if (firstMatchElement) firstMatchElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-/**
- * Initializes the "Scroll to Top" button.
- */
+// --- Utility Functions (Scroll to Top, AOS) ---
 function initializeScrollToTopButton() {
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
     if (scrollToTopBtn) {
         window.addEventListener('scroll', () => {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                scrollToTopBtn.classList.remove('hidden');
-                scrollToTopBtn.classList.add('flex');
+                scrollToTopBtn.classList.remove('hidden'); scrollToTopBtn.classList.add('flex');
             } else {
-                scrollToTopBtn.classList.add('hidden');
-                scrollToTopBtn.classList.remove('flex');
+                scrollToTopBtn.classList.add('hidden'); scrollToTopBtn.classList.remove('flex');
             }
-        });
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        }, { passive: true });
+        scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         console.log("[ScrollToTop] Initialized.");
+    } else {
+        console.warn("[ScrollToTop] Button #scrollToTopBtn not found.");
     }
 }
 
-/**
- * Initializes AOS library.
- */
 function initializeAOS() {
     if (typeof AOS !== 'undefined') {
         AOS.init({
-            offset: 100,
-            duration: 700,
-            easing: 'ease-out-quad',
-            once: true,
-            mirror: false,
-            anchorPlacement: 'top-bottom',
+            offset: 100, duration: 700, easing: 'ease-out-quad',
+            once: true, mirror: false, anchorPlacement: 'top-bottom',
         });
         console.log("[AOS] Initialized.");
     } else {
-        console.warn('[AOS] Library not found.');
+        console.warn('[AOS] AOS library not found.');
     }
 }
 
 // --- Main DOMContentLoaded Event Listener ---
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("[DOM] Content Loaded. Initializing site scripts (Direct Embedding Mode)...");
-
-    initializeHeaderLogic(); // Initialize header logic as it's already in the DOM
-    initializeFooterLogic(); // Initialize footer logic as it's already in the DOM
+    console.log("[DOM] Content Loaded. Initializing site scripts (dynamic components mode)...");
     initializeAOS();
     initializeScrollToTopButton();
 
-    // Formspree handling for contact page (if it's the current page)
     const contactForm = document.getElementById('contactForm');
-    if (contactForm) { // Check if the contact form exists on the current page
+    if (contactForm) {
         const formStatus = document.getElementById('form-status');
         contactForm.addEventListener('submit', async function(event) {
             event.preventDefault();
             const formData = new FormData(contactForm);
-            if(formStatus) formStatus.innerHTML = '<p class="text-slate-600">Sending...</p>';
+            if(formStatus) formStatus.innerHTML = '<p class="text-slate-600">Đang gửi...</p>'; // Sending...
             try {
                 const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {'Accept': 'application/json'}
+                    method: 'POST', body: formData, headers: {'Accept': 'application/json'}
                 });
                 if (response.ok) {
-                    if(formStatus) formStatus.innerHTML = '<p class="form-success">Thank you! Your message has been sent successfully.</p>';
+                    if(formStatus) formStatus.innerHTML = '<p class="form-success">Cảm ơn bạn! Tin nhắn của bạn đã được gửi thành công.</p>'; // Thank you! Your message has been sent successfully.
                     contactForm.reset();
                 } else {
                     response.json().then(data => {
@@ -366,17 +362,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (Object.hasOwn(data, 'errors')) {
                                 formStatus.innerHTML = `<p class="form-error">${data["errors"].map(error => error["message"]).join(", ")}</p>`;
                             } else {
-                                formStatus.innerHTML = '<p class="form-error">An error occurred. Please try again.</p>';
+                                formStatus.innerHTML = '<p class="form-error">Đã có lỗi xảy ra. Vui lòng thử lại.</p>'; // An error occurred. Please try again.
                             }
                         }
+                    }).catch(() => {
+                        if (formStatus) formStatus.innerHTML = '<p class="form-error">Lỗi xử lý phản hồi từ máy chủ. Vui lòng thử lại.</p>'; // Error processing server response. Please try again.
                     });
                 }
             } catch (error) {
-                if(formStatus) formStatus.innerHTML = '<p class="form-error">An error occurred. Please try again.</p>';
+                if(formStatus) formStatus.innerHTML = '<p class="form-error">Đã xảy ra lỗi mạng. Vui lòng kiểm tra kết nối và thử lại.</p>'; // A network error occurred. Please check your connection and try again.
             }
         });
         console.log("[ContactForm] Event listener added.");
     }
-
-    console.log("[DOM] Site script initializations complete.");
+    console.log("[DOM] Common site script initializations complete.");
 });
