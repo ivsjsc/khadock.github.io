@@ -29,69 +29,103 @@
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-color: #f1f5f9; 
-            color: #1e293b; 
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .banner-bg {
+             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/albums/dock15.jpg'); 
+             background-size: cover;
+             background-position: center;
+        }
+        .text-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* Splash Screen Styling */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #0f172a; /* slate-900 */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000; 
-            opacity: 1;
-            transition: opacity 0.75s ease-out, visibility 0.75s ease-out;
-            visibility: visible;
+        .filter-button {
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #e2e8f0; /* slate-200 */
         }
-        #splash-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none; 
+        .filter-button:hover {
+            background-color: #f0f9ff; /* sky-50 */
+            border-color: #7dd3fc; /* sky-300 */
+            color: #0369a1; /* sky-700 */
         }
-        #splash-logo {
-            width: 150px; 
-            height: 150px; 
-            object-fit: contain; 
-            margin-bottom: 1rem;
-        }
-        @media (min-width: 768px) { /* md */
-            #splash-logo {
-                width: 200px;
-                height: 200px;
-            }
+        .filter-button.active {
+            background-color: #0ea5e9; /* sky-500 */
+            color: white;
+            border-color: #0ea5e9; 
+            box-shadow: 0 4px 12px -1px rgba(14, 165, 233, 0.3), 0 2px 8px -1px rgba(14, 165, 233, 0.2);
         }
 
-        /* Main Hero Section Image Styling */
-        .main-hero-image-block { /* Renamed for clarity */
-            width: 100%;
-            height: 70vh; /* Adjust height as desired, e.g., 60vh, 70vh, or a fixed px value */
-            max-height: 750px; /* Optional max height */
-            overflow: hidden; 
-            background-color: #334155; /* Fallback color */
+        .project-card {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
-        .main-hero-image-block img {
-            width: 100%;
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.07);
+        }
+        .project-card .project-image-container {
+            height: 260px; 
+            overflow: hidden;
+            background-color: #e2e8f0; 
+        }
+        .project-card img { 
+            transition: transform 0.4s ease, filter 0.3s ease;
+            width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: center; 
-            display: block; 
         }
-        
-        /* Hero Content Block Styling (Below Image) */
-        .hero-content-block {
-            background-color: #1e293b; /* slate-800 or another suitable color */
-            color: #f1f5f9; /* slate-100 or white for text */
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        .project-card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 170px; 
+        }
+        .project-tag {
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 0.7rem; /* Slightly smaller tags */
         }
 
-        .service-card {
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        .album-scroll-container {
+            padding-bottom: 1rem; /* Space for scrollbar if it's outside */
+        }
+        .album-image-item { 
+            flex-shrink: 0; 
+            overflow: hidden; 
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 280px; /* Consistent width */
+            height: 180px; /* Consistent height */
+        }
+        .album-image-item:hover {
+            transform: translateY(-5px) scale(1.03); 
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12); 
+        }
+        .album-image-horizontal { 
+            height: 100%; 
+            width: 100%;  
+            object-fit: cover;
+            display: block; 
+        }
+
+        .scrollbar-thin::-webkit-scrollbar {
+            height: 8px; 
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: #e2e8f0; 
+            border-radius: 10px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: #94a3b8; 
+            border-radius: 10px;
+            border: 2px solid #e2e8f0; 
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+            background: #64748b; 
+        }
         }
         .service-card:hover {
             transform: translateY(-8px);
@@ -158,7 +192,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design1.jpg" alt="Modern Residential Dock Design Concept 1">
+                            <img src="/images/designs/design1.jpg" alt="Modern Residential Dock Design Concept 1">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Modern Waterfront Retreat</h3>
@@ -173,7 +207,7 @@
 
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design2.jpg" alt="Rustic Boathouse Dock Design Concept 2">
+                            <img src="/images/designs/design2.jpg" alt="Rustic Boathouse Dock Design Concept 2">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">The Angler's Boathouse</h3>
@@ -188,7 +222,7 @@
 
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="300">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design3.jpg" alt="Commercial Multi-Slip Dock Design Concept 3">
+                            <img src="/images/designs/design3.jpg" alt="Commercial Multi-Slip Dock Design Concept 3">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Community Marina Hub</h3>
@@ -202,7 +236,7 @@
                     </div>
                      <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design4.jpg" alt="Eco-Friendly Pier Design Concept 4">
+                            <img src="/images/designs/design4.jpg" alt="Eco-Friendly Pier Design Concept 4">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Eco-Conscious Pier</h3>
@@ -216,7 +250,7 @@
                     </div>
                      <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="design-card-image-container">
-                            <img src="images/designs/khadockdesign.png" alt="Luxury Entertainment Dock Design">
+                            <img src="/images/designs/khadockdesign.png" alt="Luxury Entertainment Dock Design">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">The Entertainer's Deck</h3>
@@ -230,7 +264,7 @@
                     </div>
                      <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="300">
                         <div class="design-card-image-container">
-                            <img src="images/designs/khadockdesign.png" alt="Compact Kayak Launch Dock Design">
+                            <img src="/images/designs/khadockdesign.png" alt="Compact Kayak Launch Dock Design">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Agile Kayak & Paddleboard Launch</h3>
@@ -316,13 +350,36 @@
     <script src="js/script.js" defer></script> 
     <script src="js/loadComponents.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', () => {
             AOS.init({
                 duration: 700,
                 offset: 100, 
                 once: true,
                 easing: 'ease-out-quad',
             });
+
+            const filterButtons = document.querySelectorAll('#project-filters .filter-button');
+            const projectCards = document.querySelectorAll('#project-grid .project-card');
+
+            if (filterButtons.length > 0 && projectCards.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        filterButtons.forEach(btn => btn.classList.remove('active', 'bg-sky-500', 'text-white', 'border-sky-500'));
+                        button.classList.add('active', 'bg-sky-500', 'text-white', 'border-sky-500');
+                        
+                        const filterValue = button.getAttribute('data-filter');
+
+                        projectCards.forEach(card => {
+                            const categories = card.getAttribute('data-category');
+                            if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
+                                card.style.display = 'flex'; 
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
 
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             if (scrollToTopBtn) {
