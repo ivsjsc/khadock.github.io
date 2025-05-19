@@ -29,61 +29,66 @@
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-color: #f1f5f9; 
+            background-color: #f1f5f9; /* slate-100 */
         }
-        .design-banner-bg { /* Updated to use the user-specified image */
-             background-image: linear-gradient(rgba(0,0,0,0.11), rgba(0,0,0,0.1)), url('images/designs/khadockdesign.png'); 
+        .design-banner-bg {
+             background-image: linear-gradient(rgba(12, 74, 110, 0.7), rgba(14, 116, 144, 0.8)), url('images/designs/khadockdesign.png'); 
              background-size: cover;
              background-position: center;
         }
         .text-shadow-strong {
-            text-shadow: 0px 2px 4px rgba(0,0,0,0.6);
+            text-shadow: 0px 2px 5px rgba(0,0,0,0.5);
         }
         .design-card {
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
             background-color: white;
+            border: 1px solid #e5e7eb; /* slate-200 */
         }
         .design-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.15), 0 8px 15px -8px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.2), 0 10px 20px -10px rgba(0,0,0,0.15);
         }
         .design-card-image-container {
-            height: 280px; 
+            height: 270px; 
             overflow: hidden;
             background-color: #e2e8f0; 
         }
         .design-card img { 
-            transition: transform 0.4s ease;
+            transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
         }
         .design-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         .design-tag {
-            font-size: 0.7rem;
-            padding: 0.25rem 0.6rem;
+            font-size: 0.65rem; /* Slightly smaller for more refined look */
+            padding: 0.2rem 0.55rem;
             border-radius: 9999px; 
-            font-weight: 500;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            font-weight: 600; /* Bolder tags */
+            letter-spacing: 0.025em;
+            text-transform: uppercase;
         }
         .design-process-step {
-            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e7eb; /* slate-200 */
         }
         .design-process-step:hover {
             background-color: #f0fdf4; 
             border-color: #22c55e; 
-            transform: translateY(-4px);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
         }
         .design-process-step .step-icon {
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
         .design-process-step:hover .step-icon {
-            transform: scale(1.1);
+            transform: scale(1.15);
+            color: #16a34a; /* green-600 */
         }
         .text-shadow { 
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
         }
     </style>
 </head>
@@ -94,15 +99,19 @@
     <main class="pt-20">
         <section class="design-banner-bg text-white py-28 md:py-40" data-aos="fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-5 text-shadow-strong" data-aos="fade-down" data-aos-delay="200">Innovative Dock Designs</h1>
+                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-100 font-light" data-aos="fade-up" data-aos-delay="400">
+                    Transforming waterfront visions into reality with bespoke, functional, and beautiful dock designs tailored for Florida.
+                </p>
             </div>
         </section>
 
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Design Philosophy</h2>
-                    <p class="text-lg text-slate-600 leading-relaxed">
-                        At KhaDock.com, we believe that a great dock design is more than just a plan; it's the foundation of your waterfront lifestyle. Our approach centers on understanding your unique needs, the specific characteristics of your property, and the demands of the Florida marine environment. We strive to create designs that are not only visually stunning but also exceptionally durable, functional, and environmentally conscious.
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-5">Our Design Philosophy</h2>
+                    <p class="text-lg text-slate-700 leading-relaxed">
+                        A great dock is the heart of your waterfront life. At KhaDock.com, we blend your vision with Florida's unique environment, crafting designs that are stunning, durable, functional, and eco-conscious.
                     </p>
                 </div>
             </div>
@@ -111,96 +120,96 @@
         <section class="py-16 md:py-24 bg-slate-50" id="design-showcase">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Explore Our Design Concepts</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        A selection of our conceptual designs, showcasing versatility and creative solutions for various waterfront needs.
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-5">Explore Our Design Concepts</h2>
+                    <p class="text-lg text-slate-700 max-w-2xl mx-auto">
+                        Versatile and creative solutions for diverse waterfront needs, brought to life through our conceptual designs.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="design-card-image-container">
-                            <img src="/images/designs/design1.jpg" alt="Modern Residential Dock Design Concept 1">
+                            <img src="images/designs/design1.jpg" alt="Modern Residential Dock Design Concept 1">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Modern Waterfront Retreat</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A sleek, minimalist design featuring clean lines, integrated seating, and durable composite materials, perfect for contemporary homes.</p>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Sleek, minimalist design with clean lines, integrated seating, and premium composite materials for modern homes.</p>
                             <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-sky-100 text-sky-700 mr-2 mb-1">Residential</span>
-                                <span class="design-tag bg-slate-100 text-slate-700 mr-2 mb-1">Modern</span>
-                                <span class="design-tag bg-green-100 text-green-700 mb-1">Composite Decking</span>
+                                <span class="design-tag bg-sky-100 text-sky-800 mr-1.5 mb-1">Residential</span>
+                                <span class="design-tag bg-slate-100 text-slate-800 mr-1.5 mb-1">Modern</span>
+                                <span class="design-tag bg-green-100 text-green-800 mb-1">Composite</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="design-card-image-container">
-                            <img src="/images/designs/design2.jpg" alt="Rustic Boathouse Dock Design Concept 2">
+                            <img src="images/designs/design2.jpg" alt="Rustic Boathouse Dock Design Concept 2">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">The Angler's Boathouse</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A charming, rustic boathouse design with natural wood finishes, ample storage for fishing gear, and a covered slip for protection.</p>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Charming, rustic boathouse with natural wood, ample gear storage, and a protective covered slip.</p>
                             <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-amber-100 text-amber-700 mr-2 mb-1">Boathouse</span>
-                                <span class="design-tag bg-lime-100 text-lime-700 mr-2 mb-1">Wood Finish</span>
-                                <span class="design-tag bg-slate-100 text-slate-700 mb-1">Fishing Focus</span>
+                                <span class="design-tag bg-amber-100 text-amber-800 mr-1.5 mb-1">Boathouse</span>
+                                <span class="design-tag bg-lime-100 text-lime-800 mr-1.5 mb-1">Wood Finish</span>
+                                <span class="design-tag bg-slate-100 text-slate-800 mb-1">Fishing</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="300">
                         <div class="design-card-image-container">
-                            <img src="/images/designs/design3.jpg" alt="Commercial Multi-Slip Dock Design Concept 3">
+                            <img src="images/designs/design3.jpg" alt="Commercial Multi-Slip Dock Design Concept 3">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Community Marina Hub</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A functional multi-slip marina layout designed for durability and ease of access, incorporating options for fueling stations and a dockmaster's office.</p>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Functional multi-slip marina layout for durability and easy access, with options for fueling and dockmaster facilities.</p>
                             <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-indigo-100 text-indigo-700 mr-2 mb-1">Commercial</span>
-                                <span class="design-tag bg-teal-100 text-teal-700 mr-2 mb-1">Multi-Slip</span>
-                                <span class="design-tag bg-slate-100 text-slate-700 mb-1">High-Traffic</span>
+                                <span class="design-tag bg-indigo-100 text-indigo-800 mr-1.5 mb-1">Commercial</span>
+                                <span class="design-tag bg-teal-100 text-teal-800 mr-1.5 mb-1">Multi-Slip</span>
+                                <span class="design-tag bg-slate-100 text-slate-800 mb-1">High-Traffic</span>
                             </div>
                         </div>
                     </div>
                      <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="design-card-image-container">
-                            <img src="/images/designs/design4.jpg" alt="Eco-Friendly Pier Design Concept 4">
+                            <img src="images/designs/design4.jpg" alt="Eco-Friendly Pier Design Concept 4">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Eco-Conscious Pier</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A design focused on sustainability, utilizing recycled materials, permeable decking to protect marine life, and solar-powered lighting.</p>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Sustainable design using recycled materials, permeable decking for marine life, and solar-powered lighting.</p>
                             <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-green-100 text-green-700 mr-2 mb-1">Eco-Friendly</span>
-                                <span class="design-tag bg-cyan-100 text-cyan-700 mr-2 mb-1">Permeable Decking</span>
-                                <span class="design-tag bg-yellow-100 text-yellow-700 mb-1">Solar Powered</span>
+                                <span class="design-tag bg-green-100 text-green-800 mr-1.5 mb-1">Eco-Friendly</span>
+                                <span class="design-tag bg-cyan-100 text-cyan-800 mr-1.5 mb-1">Permeable</span>
+                                <span class="design-tag bg-yellow-100 text-yellow-800 mb-1">Solar</span>
                             </div>
                         </div>
                     </div>
                      <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="design-card-image-container">
-                            <img src="/images/designs/khadockdesign.png" alt="Luxury Entertainment Dock Design">
+                            <img src="images/designs/khadockdesign.png" alt="Luxury Entertainment Dock Design">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">The Entertainer's Deck</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A spacious, multi-level dock design perfect for hosting, featuring an outdoor kitchen area, comfortable lounge seating, and integrated sound system.</p>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Spacious, multi-level dock for hosting, with outdoor kitchen, lounge seating, and integrated sound.</p>
                             <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-pink-100 text-pink-700 mr-2 mb-1">Entertainment</span>
-                                <span class="design-tag bg-purple-100 text-purple-700 mr-2 mb-1">Multi-Level</span>
-                                <span class="design-tag bg-slate-100 text-slate-700 mb-1">Luxury Features</span>
+                                <span class="design-tag bg-pink-100 text-pink-800 mr-1.5 mb-1">Entertainment</span>
+                                <span class="design-tag bg-purple-100 text-purple-800 mr-1.5 mb-1">Multi-Level</span>
+                                <span class="design-tag bg-slate-100 text-slate-800 mb-1">Luxury</span>
                             </div>
                         </div>
                     </div>
                      <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="300">
                         <div class="design-card-image-container">
-                            <img src="/images/designs/khadockdesign.png" alt="Compact Kayak Launch Dock Design">
+                            <img src="images/designs/khadockdesign.png" alt="Compact Kayak Launch Dock Design">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Agile Kayak & Paddleboard Launch</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A compact and efficient design for easy launching of kayaks and paddleboards, featuring low-profile access and secure storage solutions.</p>
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Agile Kayak Launch</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Compact, efficient design for easy kayak/paddleboard launching, featuring low-profile access and storage.</p>
                             <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-emerald-100 text-emerald-700 mr-2 mb-1">Recreational</span>
-                                <span class="design-tag bg-blue-100 text-blue-700 mr-2 mb-1">Compact</span>
-                                <span class="design-tag bg-gray-100 text-gray-700 mb-1">Easy Access</span>
+                                <span class="design-tag bg-emerald-100 text-emerald-800 mr-1.5 mb-1">Recreational</span>
+                                <span class="design-tag bg-blue-100 text-blue-800 mr-1.5 mb-1">Compact</span>
+                                <span class="design-tag bg-gray-100 text-gray-800 mb-1">Easy Access</span>
                             </div>
                         </div>
                     </div>
@@ -211,41 +220,41 @@
         <section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">From Vision to Reality: Our Design Journey</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        We follow a collaborative and meticulous process to ensure your custom dock design exceeds expectations.
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-5">Our Design Journey</h2>
+                    <p class="text-lg text-slate-700 max-w-2xl mx-auto">
+                        A collaborative and meticulous process to ensure your custom dock design exceeds every expectation.
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="100">
-                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-comments"></i></div>
-                        <h3 class="text-xl font-semibold text-slate-700 mb-2">1. Consultation & Site Assessment</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">We begin by understanding your vision, requirements, and budget, followed by a thorough assessment of your waterfront property.</p>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-comments"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">1. Consultation & Discovery</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">We start by deeply understanding your vision, needs, and property specifics through thorough consultation.</p>
                     </div>
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="200">
-                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-drafting-compass"></i></div>
-                        <h3 class="text-xl font-semibold text-slate-700 mb-2">2. Conceptual Design & 3D Visualization</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Our designers craft initial concepts and provide 3D renderings, allowing you to visualize your future dock and make informed decisions.</p>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-drafting-compass"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">2. Concept & 3D Visualization</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Our designers craft initial concepts with 3D renderings, helping you visualize and refine your future dock.</p>
                     </div>
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="300">
-                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-cogs"></i></div>
-                        <h3 class="text-xl font-semibold text-slate-700 mb-2">3. Material Selection & Engineering</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">We guide you in selecting the best materials for durability and aesthetics, while our engineers ensure structural integrity and compliance.</p>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-cogs"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">3. Materials & Engineering</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Guiding you through material selection for durability and aesthetics, ensuring structural integrity and compliance.</p>
                     </div>
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="400">
-                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-file-alt"></i></div>
-                        <h3 class="text-xl font-semibold text-slate-700 mb-2">4. Permitting Assistance</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Navigating the permitting process can be complex. We offer assistance to ensure all necessary approvals are obtained smoothly.</p>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-file-alt"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">4. Permitting Assistance</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Navigating complex permits? We assist in ensuring all necessary approvals are obtained smoothly.</p>
                     </div>
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="500">
-                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-check-circle"></i></div>
-                        <h3 class="text-xl font-semibold text-slate-700 mb-2">5. Final Design & Blueprints</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Once all details are refined and approved, we finalize the design and provide comprehensive blueprints ready for construction.</p>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="500">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-check-circle"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">5. Final Design & Blueprints</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Once refined and approved, we finalize the design, providing comprehensive blueprints for construction.</p>
                     </div>
-                     <div class="design-process-step bg-sky-500 text-white p-6 rounded-xl shadow-lg border border-sky-600 flex flex-col justify-center items-center text-center" data-aos="fade-up" data-aos-delay="600">
-                        <div class="step-icon text-white mb-4 text-3xl"><i class="fas fa-hard-hat"></i></div>
-                        <h3 class="text-xl font-semibold mb-2">Ready for Construction!</h3>
-                        <p class="text-sky-100 text-sm leading-relaxed">Your approved design moves seamlessly to our expert construction team.</p>
+                     <div class="design-process-step bg-sky-600 text-white p-6 rounded-xl shadow-xl flex flex-col justify-center items-center text-center" data-aos="fade-up" data-aos-delay="600">
+                        <div class="step-icon text-white mb-4 text-4xl"><i class="fas fa-hard-hat"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Construction Ready!</h3>
+                        <p class="text-sky-100 text-sm leading-relaxed">Your approved design seamlessly transitions to our expert construction team.</p>
                     </div>
                 </div>
             </div>
@@ -257,7 +266,7 @@
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-100">
                     Our expert designers are eager to collaborate with you. Contact KhaDock.com today to start your custom dock design journey.
                 </p>
-                <a href="contact.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                <a href="contact.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 hover:bg-slate-50">
                     Request a Design Consultation
                 </a>
             </div>
@@ -281,34 +290,10 @@
         document.addEventListener('DOMContentLoaded', () => {
             AOS.init({
                 duration: 700,
-                offset: 100, 
+                offset: 80, 
                 once: true,
-                easing: 'ease-out-quad',
+                easing: 'ease-out-cubic',
             });
-
-            const filterButtons = document.querySelectorAll('#project-filters .filter-button');
-            const projectCards = document.querySelectorAll('#project-grid .project-card');
-
-            if (filterButtons && filterButtons.length > 0 && projectCards && projectCards.length > 0) {
-                filterButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        filterButtons.forEach(btn => btn.classList.remove('active', 'bg-sky-500', 'text-white', 'border-sky-500'));
-                        button.classList.add('active', 'bg-sky-500', 'text-white', 'border-sky-500');
-                        
-                        const filterValue = button.getAttribute('data-filter');
-
-                        projectCards.forEach(card => {
-                            const categories = card.getAttribute('data-category');
-                            if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
-                                card.style.display = 'flex'; 
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                });
-            }
-
 
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             if (scrollToTopBtn) {
