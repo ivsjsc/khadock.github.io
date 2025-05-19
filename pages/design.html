@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dock Design Portfolio - KhaDock.com Florida</title>
+    <meta name="description" content="Explore innovative and custom boat dock designs by KhaDock.com. See our concepts for residential and commercial waterfront properties in Florida.">
+    
+    <meta property="og:title" content="KhaDock.com Design Portfolio - Custom Dock Solutions">
+    <meta property="og:description" content="Browse KhaDock.com's portfolio of inspiring dock designs, from modern minimalist to luxurious multi-functional structures, tailored for Florida's coast.">
+    <meta property="og:image" content="images/logo/logo.jpg"> 
+    <meta property="og:url" content="https://KhaDock.com/design.html"> 
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css"> 
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f8fafc; /* slate-50 for a very light base */
+        }
+        .design-banner-bg {
+             background-image: linear-gradient(rgba(14, 116, 144, 0.7), rgba(12, 74, 110, 0.8)), url('https://placehold.co/1920x700/0e7490/e0f2fe?text=Dock+Blueprints'); 
+             background-size: cover;
+             background-position: center;
+        }
+        .text-shadow-strong {
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.6);
+        }
+        .design-card {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            background-color: white;
+        }
+        .design-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.15), 0 8px 15px -8px rgba(0,0,0,0.1);
+        }
+        .design-card-image-container {
+            height: 280px; 
+            overflow: hidden;
+            background-color: #e2e8f0; /* slate-200 for placeholder bg */
+        }
+        .design-card img { 
+            transition: transform 0.4s ease;
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        .design-card:hover img {
+            transform: scale(1.05);
+        }
+        .design-tag {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px; /* pill shape */
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .design-process-step {
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+        .design-process-step:hover {
+            background-color: #ecfccb; /* lime-100 */
+            border-color: #84cc16; /* lime-500 */
+            transform: translateY(-4px);
+        }
+        .design-process-step .step-icon {
+            transition: transform 0.3s ease;
+        }
+        .design-process-step:hover .step-icon {
+            transform: scale(1.1);
+        }
+
+        /* Custom scrollbar for webkit browsers */
+        .scrollbar-thin::-webkit-scrollbar {
+            height: 8px; 
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: #e2e8f0; 
+            border-radius: 10px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: #94a3b8; 
+            border-radius: 10px;
+            border: 2px solid #e2e8f0; 
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+            background: #64748b; 
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="header-placeholder"></div>
+
+    <main class="pt-20">
+        <section class="design-banner-bg text-white py-28 md:py-40" data-aos="fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-5 text-shadow-strong" data-aos="fade-down" data-aos-delay="200">Innovative Dock Designs</h1>
+                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-100 font-light" data-aos="fade-up" data-aos-delay="400">
+                    KhaDock.com translates your waterfront vision into reality with bespoke dock designs, perfectly harmonizing functionality and Floridian aesthetics.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Design Philosophy</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        At KhaDock.com, we believe that a great dock design is more than just a plan; it's the foundation of your waterfront lifestyle. Our approach centers on understanding your unique needs, the specific characteristics of your property, and the demands of the Florida marine environment. We strive to create designs that are not only visually stunning but also exceptionally durable, functional, and environmentally conscious.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-slate-50" id="design-showcase">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Explore Our Design Concepts</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        A selection of our conceptual designs, showcasing versatility and creative solutions for various waterfront needs.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="design-card-image-container">
+                            <img src="https://placehold.co/600x400/0c4a6e/ffffff?text=Modern+Retreat+Design" alt="Modern Residential Dock Design Concept">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Modern Waterfront Retreat</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A sleek, minimalist design featuring clean lines, integrated seating, and durable composite materials, perfect for contemporary homes.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-100">
+                                <span class="design-tag bg-sky-100 text-sky-700 mr-2 mb-1">Residential</span>
+                                <span class="design-tag bg-slate-100 text-slate-700 mr-2 mb-1">Modern</span>
+                                <span class="design-tag bg-green-100 text-green-700 mb-1">Composite Decking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="design-card-image-container">
+                            <img src="https://placehold.co/600x400/78716c/ffffff?text=Rustic+Boathouse+Concept" alt="Rustic Boathouse Dock Design">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">The Angler's Boathouse</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A charming, rustic boathouse design with natural wood finishes, ample storage for fishing gear, and a covered slip for protection.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-100">
+                                <span class="design-tag bg-amber-100 text-amber-700 mr-2 mb-1">Boathouse</span>
+                                <span class="design-tag bg-lime-100 text-lime-700 mr-2 mb-1">Wood Finish</span>
+                                <span class="design-tag bg-slate-100 text-slate-700 mb-1">Fishing Focus</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="design-card-image-container">
+                            <img src="https://placehold.co/600x400/365314/ffffff?text=Multi-Slip+Marina+Layout" alt="Commercial Multi-Slip Dock Design">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Community Marina Hub</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A functional multi-slip marina layout designed for durability and ease of access, incorporating options for fueling stations and a dockmaster's office.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-100">
+                                <span class="design-tag bg-indigo-100 text-indigo-700 mr-2 mb-1">Commercial</span>
+                                <span class="design-tag bg-teal-100 text-teal-700 mr-2 mb-1">Multi-Slip</span>
+                                <span class="design-tag bg-slate-100 text-slate-700 mb-1">High-Traffic</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="design-card-image-container">
+                            <img src="https://placehold.co/600x400/7c2d12/ffffff?text=Eco+Friendly+Pier" alt="Eco-Friendly Pier Design">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Eco-Conscious Pier</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A design focused on sustainability, utilizing recycled materials, permeable decking to protect marine life, and solar-powered lighting.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-100">
+                                <span class="design-tag bg-green-100 text-green-700 mr-2 mb-1">Eco-Friendly</span>
+                                <span class="design-tag bg-cyan-100 text-cyan-700 mr-2 mb-1">Permeable Decking</span>
+                                <span class="design-tag bg-yellow-100 text-yellow-700 mb-1">Solar Powered</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="design-card-image-container">
+                            <img src="https://placehold.co/600x400/be185d/ffffff?text=Luxury+Entertainment+Dock" alt="Luxury Entertainment Dock Design">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">The Entertainer's Deck</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A spacious, multi-level dock design perfect for hosting, featuring an outdoor kitchen area, comfortable lounge seating, and integrated sound system.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-100">
+                                <span class="design-tag bg-pink-100 text-pink-700 mr-2 mb-1">Entertainment</span>
+                                <span class="design-tag bg-purple-100 text-purple-700 mr-2 mb-1">Multi-Level</span>
+                                <span class="design-tag bg-slate-100 text-slate-700 mb-1">Luxury Features</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="design-card-image-container">
+                            <img src="https://placehold.co/600x400/166534/ffffff?text=Compact+Kayak+Launch" alt="Compact Kayak Launch Dock Design">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Agile Kayak & Paddleboard Launch</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A compact and efficient design for easy launching of kayaks and paddleboards, featuring low-profile access and secure storage solutions.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-100">
+                                <span class="design-tag bg-emerald-100 text-emerald-700 mr-2 mb-1">Recreational</span>
+                                <span class="design-tag bg-blue-100 text-blue-700 mr-2 mb-1">Compact</span>
+                                <span class="design-tag bg-gray-100 text-gray-700 mb-1">Easy Access</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">From Vision to Reality: Our Design Journey</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        We follow a collaborative and meticulous process to ensure your custom dock design exceeds expectations.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-comments"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-2">1. Consultation & Site Assessment</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">We begin by understanding your vision, requirements, and budget, followed by a thorough assessment of your waterfront property.</p>
+                    </div>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-drafting-compass"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-2">2. Conceptual Design & 3D Visualization</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Our designers craft initial concepts and provide 3D renderings, allowing you to visualize your future dock and make informed decisions.</p>
+                    </div>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-cogs"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-2">3. Material Selection & Engineering</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">We guide you in selecting the best materials for durability and aesthetics, while our engineers ensure structural integrity and compliance.</p>
+                    </div>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-file-alt"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-2">4. Permitting Assistance</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Navigating the permitting process can be complex. We offer assistance to ensure all necessary approvals are obtained smoothly.</p>
+                    </div>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg border border-slate-200" data-aos="fade-up" data-aos-delay="500">
+                        <div class="step-icon text-sky-500 mb-4 text-3xl"><i class="fas fa-check-circle"></i></div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-2">5. Final Design & Blueprints</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Once all details are refined and approved, we finalize the design and provide comprehensive blueprints ready for construction.</p>
+                    </div>
+                     <div class="design-process-step bg-sky-500 text-white p-6 rounded-xl shadow-lg border border-sky-600 flex flex-col justify-center items-center text-center" data-aos="fade-up" data-aos-delay="600">
+                        <div class="step-icon text-white mb-4 text-3xl"><i class="fas fa-hard-hat"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Ready for Construction!</h3>
+                        <p class="text-sky-100 text-sm leading-relaxed">Your approved design moves seamlessly to our expert construction team.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="zoom-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Design Your Dream Dock?</h2>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-100">
+                    Our expert designers are eager to collaborate with you. Contact KhaDock.com today to start your custom dock design journey.
+                </p>
+                <a href="contact.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                    Request a Design Consultation
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    
+    <button id="scrollToTopBtn" title="Go to top" 
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
+                   w-14 h-14 rounded-full shadow-xl items-center justify-center 
+                   focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
+                   transition-all duration-300 z-40 text-xl">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js" defer></script> 
+    <script src="js/loadComponents.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 700,
+                offset: 100, 
+                once: true,
+                easing: 'ease-out-quad',
+            });
+
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        scrollToTopBtn.classList.remove('hidden');
+                        scrollToTopBtn.classList.add('flex');
+                    } else {
+                        scrollToTopBtn.classList.add('hidden');
+                        scrollToTopBtn.classList.remove('flex');
+                    }
+                }, { passive: true });
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
