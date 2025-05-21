@@ -45,8 +45,10 @@ body {
     transition: max-height 0.35s ease-in-out;
 }
 
+/* Updated Hero Section Styling */
+/* The hero section now uses inline style for background image, but these classes can be used for other sections */
 .hero-bg { /* For general hero sections if used */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/logo/logo.jpg'); 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/albums/dock15.jpg'); 
     background-size: cover;
     background-position: center;
 }
@@ -373,7 +375,8 @@ body {
     }
 }
 
-.main-hero-image-block { 
+/* Removed old hero image block styles */
+/* .main-hero-image-block { 
     width: 100%;
     height: 70vh; 
     max-height: 750px; 
@@ -386,9 +389,10 @@ body {
     object-fit: cover; 
     object-position: center; 
     display: block; 
-}
+} */
 
-.hero-content-block {
+/* Removed old hero content block styles - now integrated into the main section */
+/* .hero-content-block {
     background-color: #1e293b; 
     color: #f1f5f9; 
-}
+} */
