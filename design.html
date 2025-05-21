@@ -288,17 +288,17 @@
 
         <section class="py-16 md:py-24 bg-sky-50" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">✨ Tạo Ý Tưởng Cầu Tàu Mơ Ước Của Bạn ✨</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">✨ Generate Your Dream Dock Idea ✨</h2>
                 <p class="text-lg text-slate-700 max-w-2xl mx-auto mb-8">
-                    Hãy mô tả cầu tàu lý tưởng của bạn: mục đích, phong cách, vật liệu và bất kỳ tính năng đặc biệt nào. AI của chúng tôi sẽ tạo ra một ý tưởng thiết kế độc đáo dành cho bạn!
+                    Describe your ideal dock: its purpose, style, materials, and any special features. Our AI will generate a unique design concept for you!
                 </p>
                 <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-slate-200">
-                    <textarea id="design-input" class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800" placeholder="Ví dụ: 'Một cầu tàu hiện đại với khu vực thư giãn có mái che để giải trí, được xây dựng bằng vật liệu composite, phù hợp với một vịnh yên tĩnh ở Florida.'"></textarea>
+                    <textarea id="design-input" class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800" placeholder="Example: 'A modern dock with a covered lounge area for entertaining, built with composite materials, suitable for a quiet Florida cove.'"></textarea>
                     <button id="generate-design-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center">
-                        <i class="fas fa-magic mr-3"></i> Tạo Ý Tưởng Thiết Kế
+                        <i class="fas fa-magic mr-3"></i> Generate Design Idea
                     </button>
                     <div id="loading-indicator" class="mt-6 text-sky-600 hidden">
-                        <i class="fas fa-spinner fa-spin mr-2"></i> Đang tạo ý tưởng của bạn...
+                        <i class="fas fa-spinner fa-spin mr-2"></i> Generating your idea...
                     </div>
                     <div id="design-output" class="mt-8 p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden">
                         </div>
@@ -402,7 +402,7 @@
                 generateDesignBtn.addEventListener('click', async () => {
                     const prompt = designInput.value.trim();
                     if (!prompt) {
-                        errorMessage.textContent = 'Vui lòng mô tả cầu tàu mơ ước của bạn để tạo ý tưởng.';
+                        errorMessage.textContent = 'Please describe your dream dock to generate an idea.';
                         errorMessage.classList.remove('hidden');
                         designOutput.classList.add('hidden');
                         return;
@@ -415,7 +415,8 @@
 
                     try {
                         let chatHistory = [];
-                        chatHistory.push({ role: "user", parts: [{ text: `Generate a creative and functional boat dock design concept based on the following user preferences: "${prompt}". The design should include materials, key features, and an overall aesthetic. Keep it concise, around 150-200 words, and focus on innovation and practicality for a Florida waterfront. Respond in Vietnamese.` }] });
+                        // Modified prompt to explicitly ask for English response
+                        chatHistory.push({ role: "user", parts: [{ text: `Generate a creative and functional boat dock design concept based on the following user preferences: "${prompt}". The design should include materials, key features, and an overall aesthetic. Keep it concise, around 150-200 words, and focus on innovation and practicality for a Florida waterfront. Respond in English.` }] });
                         
                         const payload = { contents: chatHistory };
                         const apiKey = ""; // Canvas will automatically provide the API key
@@ -428,21 +429,31 @@
                         });
 
                         const result = await response.json();
+                        console.log('Gemini API raw response:', result); // Log raw response for debugging
 
                         if (result.candidates && result.candidates.length > 0 &&
                             result.candidates[0].content && result.candidates[0].content.parts &&
                             result.candidates[0].content.parts.length > 0) {
                             const text = result.candidates[0].content.parts[0].text;
-                            designOutput.innerHTML = `<h4 class="font-semibold text-lg mb-2 text-sky-700">Ý Tưởng Cầu Tàu Tùy Chỉnh Của Bạn:</h4><p>${text}</p>`;
+                            designOutput.innerHTML = `<h4 class="font-semibold text-lg mb-2 text-sky-700">Your Custom Dock Idea:</h4><p>${text}</p>`;
                             designOutput.classList.remove('hidden');
                         } else {
-                            errorMessage.textContent = 'Không thể tạo ý tưởng thiết kế. Vui lòng thử lại hoặc tinh chỉnh đầu vào của bạn.';
+                            // Improved error message based on API response
+                            let apiErrorDetails = '';
+                            if (result.error && result.error.message) {
+                                apiErrorDetails = `API Error: ${result.error.message}`;
+                            } else if (result.promptFeedback && result.promptFeedback.blockReason) {
+                                apiErrorDetails = `Content was blocked due to: ${result.promptFeedback.blockReason}. Please try a different input.`;
+                            }
+                            errorMessage.textContent = `Could not generate design idea. Please try again or refine your input. ${apiErrorDetails}`;
                             errorMessage.classList.remove('hidden');
-                            console.error('Gemini API response structure unexpected:', result);
+                            designOutput.classList.add('hidden');
+                            console.error('Gemini API response structure unexpected or empty:', result);
                         }
                     } catch (error) {
-                        errorMessage.textContent = 'Đã xảy ra lỗi khi kết nối với AI. Vui lòng thử lại sau.';
+                        errorMessage.textContent = `An error occurred while connecting to the AI. Please check your browser's console for details.`;
                         errorMessage.classList.remove('hidden');
+                        designOutput.classList.add('hidden');
                         console.error('Error calling Gemini API:', error);
                     } finally {
                         loadingIndicator.classList.add('hidden');
