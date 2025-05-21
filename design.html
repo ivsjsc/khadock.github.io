@@ -63,10 +63,10 @@
             transform: scale(1.08);
         }
         .design-tag {
-            font-size: 0.65rem; /* Slightly smaller for more refined look */
+            font-size: 0.65rem; 
             padding: 0.2rem 0.55rem;
             border-radius: 9999px; 
-            font-weight: 600; /* Bolder tags */
+            font-weight: 600; 
             letter-spacing: 0.025em;
             text-transform: uppercase;
         }
@@ -89,51 +89,73 @@
         .text-shadow { 
             text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
         }
+        main {
+            padding-top: 5rem; /* Adjust if your header height changes (h-20 = 5rem) */
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <div id="header-placeholder"></div>
 
-    <main class="pt-20">
-        <section class="py-16 md:py-24 bg-white" id="design-thinking-video" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
-            <div class="w-full md:w-2/3" data-aos="zoom-in-right">
-                <video 
-                src="videos/design1.mp4" 
-                controls 
-                poster="images/designs/design1.jpg"
-                class="w-full rounded-xl shadow-lg"
-                preload="metadata"
-                >
-                Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="w-full md:w-1/3" data-aos="fade-left" data-aos-delay="200">
-                <h2 class="text-2xl md:text-3xl font-bold text-sky-700 mb-4">Boat Dock Design Thinking Process</h2>
-                <ol class="list-decimal pl-5 text-lg text-slate-700 space-y-3">
-                <li>
-                    <span class="font-semibold">Site Analysis:</span> Assess the waterfront, water depth, and environmental factors to determine the best dock layout.
-                </li>
-                <li>
-                    <span class="font-semibold">Client Vision:</span> Collaborate with the client to understand their needs, lifestyle, and aesthetic preferences.
-                </li>
-                <li>
-                    <span class="font-semibold">Concept Development:</span> Sketch initial ideas, considering function, safety, and integration with the landscape.
-                </li>
-                <li>
-                    <span class="font-semibold">Material Selection:</span> Choose durable, weather-resistant materials suitable for marine environments.
-                </li>
-                <li>
-                    <span class="font-semibold">Visualization:</span> Create 3D renderings and plans to help the client visualize the final dock design.
-                </li>
-                <li>
-                    <span class="font-semibold">Refinement & Approval:</span> Adjust the design based on feedback and finalize for construction.
-                </li>
-                </ol>
-            </div>
+    <main>
+        <section class="design-banner-bg text-white py-20 md:py-32" data-aos="fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-tight text-shadow-strong" data-aos="fade-down" data-aos-delay="200">
+                    KhaDock Design Studio
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-slate-100 text-shadow" data-aos="fade-up" data-aos-delay="400">
+                    Crafting bespoke boat dock designs that blend innovation, functionality, and Florida's stunning coastal beauty. Your vision, expertly engineered.
+                </p>
+                <a href="#design-showcase" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-lg shadow-md transition duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="600">
+                    Explore Design Concepts
+                </a>
             </div>
         </section>
+
+        <section class="py-12 md:py-20 bg-white" id="design-thinking-video" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                    <div class="w-full lg:w-3/5 xl:w-2/3" data-aos="zoom-in-right">
+                        <div class="aspect-w-16 aspect-h-9 rounded-xl shadow-2xl overflow-hidden">
+                            <video 
+                                src="videos/design1.mp4" 
+                                controls 
+                                poster="images/designs/design1.jpg"
+                                class="w-full h-full object-cover"
+                                preload="metadata"
+                            >
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-2/5 xl:w-1/3" data-aos="fade-left" data-aos-delay="200">
+                        <h2 class="text-2xl md:text-3xl font-bold text-sky-700 mb-5">Our Design Thinking</h2>
+                        <ol class="list-decimal list-inside text-slate-700 space-y-3 text-base md:text-lg">
+                            <li>
+                                <span class="font-semibold text-slate-800">Site Analysis:</span> Assess waterfront, depth, environment.
+                            </li>
+                            <li>
+                                <span class="font-semibold text-slate-800">Client Vision:</span> Collaborate on needs, lifestyle, aesthetics.
+                            </li>
+                            <li>
+                                <span class="font-semibold text-slate-800">Concept Development:</span> Sketch ideas for function & safety.
+                            </li>
+                            <li>
+                                <span class="font-semibold text-slate-800">Material Selection:</span> Choose durable, marine-grade options.
+                            </li>
+                            <li>
+                                <span class="font-semibold text-slate-800">3D Visualization:</span> Create renderings for client clarity.
+                            </li>
+                            <li>
+                                <span class="font-semibold text-slate-800">Refinement & Approval:</span> Finalize for construction.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <section class="py-16 md:py-24 bg-slate-50" id="design-showcase">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
@@ -143,90 +165,63 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-10 max-w-4xl mx-auto">
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design13.jpg" alt="Modern Residential Dock Design Concept 1">
+                            <img src="images/designs/design2.jpg" alt="Rustic Boathouse Dock Design Concept">
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Modern Waterfront Retreat</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Sleek, minimalist design with clean lines, integrated seating, and premium composite materials for modern homes.</p>
-                            <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-sky-100 text-sky-800 mr-1.5 mb-1">Residential</span>
-                                <span class="design-tag bg-slate-100 text-slate-800 mr-1.5 mb-1">Modern</span>
-                                <span class="design-tag bg-green-100 text-green-800 mb-1">Composite</span>
+                        <div class="p-5 md:p-6 flex flex-col flex-grow">
+                            <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">The Angler's Boathouse</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Charming, rustic boathouse with natural wood, ample gear storage, and a protective covered slip.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-200">
+                                <span class="design-tag bg-amber-100 text-amber-800 mr-1.5 mb-1 inline-block">Boathouse</span>
+                                <span class="design-tag bg-lime-100 text-lime-800 mr-1.5 mb-1 inline-block">Wood</span>
+                                <span class="design-tag bg-slate-100 text-slate-800 mb-1 inline-block">Fishing</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design2.jpg" alt="Rustic Boathouse Dock Design Concept 2">
+                            <img src="images/designs/design3.jpg" alt="Commercial Multi-Slip Dock Design Concept">
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">The Angler's Boathouse</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Charming, rustic boathouse with natural wood, ample gear storage, and a protective covered slip.</p>
-                            <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-amber-100 text-amber-800 mr-1.5 mb-1">Boathouse</span>
-                                <span class="design-tag bg-lime-100 text-lime-800 mr-1.5 mb-1">Wood Finish</span>
-                                <span class="design-tag bg-slate-100 text-slate-800 mb-1">Fishing</span>
+                        <div class="p-5 md:p-6 flex flex-col flex-grow">
+                            <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">Community Marina Hub</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Functional multi-slip marina layout for durability and easy access, with options for fueling and dockmaster facilities.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-200">
+                                <span class="design-tag bg-indigo-100 text-indigo-800 mr-1.5 mb-1 inline-block">Commercial</span>
+                                <span class="design-tag bg-teal-100 text-teal-800 mr-1.5 mb-1 inline-block">Multi-Slip</span>
+                                <span class="design-tag bg-slate-100 text-slate-800 mb-1 inline-block">High-Traffic</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="design-card-image-container">
+                            <img src="images/designs/design4.jpg" alt="Eco-Friendly Pier Design Concept">
+                        </div>
+                        <div class="p-5 md:p-6 flex flex-col flex-grow">
+                            <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">Eco-Conscious Pier</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Sustainable design using recycled materials, permeable decking for marine life, and solar-powered lighting.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-200">
+                                <span class="design-tag bg-green-100 text-green-800 mr-1.5 mb-1 inline-block">Eco-Friendly</span>
+                                <span class="design-tag bg-cyan-100 text-cyan-800 mr-1.5 mb-1 inline-block">Permeable</span>
+                                <span class="design-tag bg-yellow-100 text-yellow-800 mb-1 inline-block">Solar</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design3.jpg" alt="Commercial Multi-Slip Dock Design Concept 3">
+                            <img src="https://placehold.co/600x450/7c3aed/ffffff?text=Dockside+Bathroom+Remodel" alt="Dockside Bathroom Remodel Concept"> 
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Community Marina Hub</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Functional multi-slip marina layout for durability and easy access, with options for fueling and dockmaster facilities.</p>
-                            <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-indigo-100 text-indigo-800 mr-1.5 mb-1">Commercial</span>
-                                <span class="design-tag bg-teal-100 text-teal-800 mr-1.5 mb-1">Multi-Slip</span>
-                                <span class="design-tag bg-slate-100 text-slate-800 mb-1">High-Traffic</span>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="design-card-image-container">
-                            <img src="images/designs/design4.jpg" alt="Eco-Friendly Pier Design Concept 4">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Eco-Conscious Pier</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Sustainable design using recycled materials, permeable decking for marine life, and solar-powered lighting.</p>
-                            <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-green-100 text-green-800 mr-1.5 mb-1">Eco-Friendly</span>
-                                <span class="design-tag bg-cyan-100 text-cyan-800 mr-1.5 mb-1">Permeable</span>
-                                <span class="design-tag bg-yellow-100 text-yellow-800 mb-1">Solar</span>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
-                        <div class="design-card-image-container">
-                            <img src="images/designs/khadockdesign.png" alt="Luxury Entertainment Dock Design">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">The Entertainer's Deck</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Spacious, multi-level dock for hosting, with outdoor kitchen, lounge seating, and integrated sound.</p>
-                            <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-pink-100 text-pink-800 mr-1.5 mb-1">Entertainment</span>
-                                <span class="design-tag bg-purple-100 text-purple-800 mr-1.5 mb-1">Multi-Level</span>
-                                <span class="design-tag bg-slate-100 text-slate-800 mb-1">Luxury</span>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="design-card-image-container">
-                            <img src="images/designs/khadockdesign.png" alt="Compact Kayak Launch Dock Design">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Agile Kayak Launch</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-2 flex-grow">Compact, efficient design for easy kayak/paddleboard launching, featuring low-profile access and storage.</p>
-                            <div class="mt-auto pt-3 border-t border-slate-100">
-                                <span class="design-tag bg-emerald-100 text-emerald-800 mr-1.5 mb-1">Recreational</span>
-                                <span class="design-tag bg-blue-100 text-blue-800 mr-1.5 mb-1">Compact</span>
-                                <span class="design-tag bg-gray-100 text-gray-800 mb-1">Easy Access</span>
+                        <div class="p-5 md:p-6 flex flex-col flex-grow">
+                            <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">Dockside Bathroom Oasis</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Transform your dockside convenience with a stylish and functional bathroom remodel, featuring marine-grade fixtures and weather-resistant finishes.</p>
+                            <div class="mt-auto pt-3 border-t border-slate-200">
+                                <span class="design-tag bg-purple-100 text-purple-800 mr-1.5 mb-1 inline-block">Remodel</span>
+                                <span class="design-tag bg-blue-100 text-blue-800 mr-1.5 mb-1 inline-block">Comfort</span>
+                                <span class="design-tag bg-gray-100 text-gray-800 mb-1 inline-block">Utility</span>
                             </div>
                         </div>
                     </div>
@@ -243,28 +238,28 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-comments"></i></div>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg text-center md:text-left" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl mx-auto md:mx-0"><i class="fas fa-comments"></i></div>
                         <h3 class="text-xl font-semibold text-slate-800 mb-2">1. Consultation & Discovery</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">We start by deeply understanding your vision, needs, and property specifics through thorough consultation.</p>
                     </div>
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-drafting-compass"></i></div>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg text-center md:text-left" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl mx-auto md:mx-0"><i class="fas fa-drafting-compass"></i></div>
                         <h3 class="text-xl font-semibold text-slate-800 mb-2">2. Concept & 3D Visualization</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">Our designers craft initial concepts with 3D renderings, helping you visualize and refine your future dock.</p>
                     </div>
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-cogs"></i></div>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg text-center md:text-left" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl mx-auto md:mx-0"><i class="fas fa-cogs"></i></div>
                         <h3 class="text-xl font-semibold text-slate-800 mb-2">3. Materials & Engineering</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">Guiding you through material selection for durability and aesthetics, ensuring structural integrity and compliance.</p>
                     </div>
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
-                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-file-alt"></i></div>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg text-center md:text-left" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl mx-auto md:mx-0"><i class="fas fa-file-alt"></i></div>
                         <h3 class="text-xl font-semibold text-slate-800 mb-2">4. Permitting Assistance</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">Navigating complex permits? We assist in ensuring all necessary approvals are obtained smoothly.</p>
                     </div>
-                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="500">
-                        <div class="step-icon text-sky-600 mb-4 text-4xl"><i class="fas fa-check-circle"></i></div>
+                    <div class="design-process-step bg-white p-6 rounded-xl shadow-lg text-center md:text-left" data-aos="fade-up" data-aos-delay="500">
+                        <div class="step-icon text-sky-600 mb-4 text-4xl mx-auto md:mx-0"><i class="fas fa-check-circle"></i></div>
                         <h3 class="text-xl font-semibold text-slate-800 mb-2">5. Final Design & Blueprints</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">Once refined and approved, we finalize the design, providing comprehensive blueprints for construction.</p>
                     </div>
@@ -283,54 +278,22 @@
                 <p class="text-lg text-slate-700 max-w-2xl mx-auto mb-8">
                     Describe your ideal dock: its purpose, style, materials, and any special features. Our AI will generate a unique design concept for you!
                 </p>
-                <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-slate-200">
-                    <textarea id="design-input" class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800" placeholder="Example: 'A modern dock with a covered lounge area for entertaining, built with composite materials, suitable for a quiet Florida cove.'"></textarea>
-                    <button id="generate-design-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center">
-                        <i class="fas fa-magic mr-3"></i> Generate Design Idea
+                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200">
+                    <textarea id="design-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" placeholder="Example: 'A modern dock with a covered lounge area for entertaining, built with composite materials, suitable for a quiet Florida cove.'"></textarea>
+                    <button id="generate-design-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
+                        <i class="fas fa-magic mr-2 sm:mr-3"></i> Generate Design Idea
                     </button>
                     <div id="loading-indicator" class="mt-6 text-sky-600 hidden">
                         <i class="fas fa-spinner fa-spin mr-2"></i> Generating your idea...
                     </div>
-                    <div id="design-output" class="mt-8 p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden">
+                    <div id="design-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
                         </div>
                     <div id="error-message" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden">
                         </div>
                 </div>
             </div>
         </section>
-
-        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
-                <div class="w-full md:w-2/3" data-aos="zoom-in-right">
-                    <video 
-                        src="videos/project1.mp4" 
-                        controls 
-                        poster="images/albums/dock15.jpg"
-                        class="w-full rounded-xl shadow-lg"
-                        preload="metadata"
-                    >
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="w-full md:w-1/3" data-aos="fade-left" data-aos-delay="200">
-                    <h2 class="text-2xl md:text-3xl font-bold text-sky-700 mb-4">KhaDock Project Resilience</h2>
-                    <ul class="list-disc pl-5 text-lg text-slate-700 space-y-3">
-                        <li>
-                            <span class="font-semibold">Our project remains 100% intact after a major storm.</span>
-                        </li>
-                        <li>
-                            <span class="font-semibold">KhaDock Commitment:</span> Quality, durability, and peace of mind for every client.
-                        </li>
-                        <li>
-                            <span class="font-semibold">Guaranteed craftsmanship</span> for all marine construction.
-                        </li>
-                        <li>
-                            <span class="font-semibold">Trusted by Florida waterfront owners.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        
         <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="zoom-in-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Design Your Dream Dock?</h2>
@@ -348,9 +311,9 @@
     
     <button id="scrollToTopBtn" title="Go to top" 
             class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
-                   w-14 h-14 rounded-full shadow-xl items-center justify-center 
+                   w-12 h-12 md:w-14 md:h-14 rounded-full shadow-xl items-center justify-center 
                    focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
-                   transition-all duration-300 z-40 text-xl">
+                   transition-all duration-300 z-40 text-xl md:text-2xl">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -371,7 +334,7 @@
                 window.addEventListener('scroll', () => {
                     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
                         scrollToTopBtn.classList.remove('hidden');
-                        scrollToTopBtn.classList.add('flex');
+                        scrollToTopBtn.classList.add('flex'); 
                     } else {
                         scrollToTopBtn.classList.add('hidden');
                         scrollToTopBtn.classList.remove('flex');
@@ -382,7 +345,6 @@
                 });
             }
 
-            // AI-Powered Dock Design Idea Generator Logic
             const designInput = document.getElementById('design-input');
             const generateDesignBtn = document.getElementById('generate-design-btn');
             const loadingIndicator = document.getElementById('loading-indicator');
@@ -391,8 +353,8 @@
 
             if (generateDesignBtn && designInput && loadingIndicator && designOutput && errorMessage) {
                 generateDesignBtn.addEventListener('click', async () => {
-                    const prompt = designInput.value.trim();
-                    if (!prompt) {
+                    const userPrompt = designInput.value.trim();
+                    if (!userPrompt) {
                         errorMessage.textContent = 'Please describe your dream dock to generate an idea.';
                         errorMessage.classList.remove('hidden');
                         designOutput.classList.add('hidden');
@@ -401,16 +363,28 @@
 
                     loadingIndicator.classList.remove('hidden');
                     generateDesignBtn.disabled = true;
+                    generateDesignBtn.classList.add('opacity-75', 'cursor-not-allowed');
                     designOutput.classList.add('hidden');
                     errorMessage.classList.add('hidden');
 
                     try {
                         let chatHistory = [];
-                        // Modified prompt to explicitly ask for English response
-                        chatHistory.push({ role: "user", parts: [{ text: `Generate a creative and functional boat dock design concept based on the following user preferences: "${prompt}". The design should include materials, key features, and an overall aesthetic. Keep it concise, around 150-200 words, and focus on innovation and practicality for a Florida waterfront. Respond in English.` }] });
+                        chatHistory.push({ 
+                            role: "user", 
+                            parts: [{ text: `As a creative dock design expert for KhaDock.com in Florida, generate a detailed and inspiring boat dock concept based on the following user input: "${userPrompt}". 
+                                Please provide the response in well-structured English, including:
+                                1.  **Concept Name:** (A catchy, descriptive name)
+                                2.  **Overall Vision:** (1-2 sentences describing the main idea and feel)
+                                3.  **Key Features & Functionality:** (Bulleted list of 3-5 distinct features, e.g., multi-level sundeck, integrated fish cleaning station, kayak launch, specific boat lift type, ambient lighting)
+                                4.  **Suggested Materials:** (Bulleted list of 2-3 primary materials, e.g., premium composite decking, marine-grade aluminum for structure, natural Ipe wood accents)
+                                5.  **Aesthetic Style:** (1-2 sentences describing the look, e.g., modern minimalist, rustic charm, coastal contemporary)
+                                6.  **Best Suited For:** (1 sentence describing who this dock would appeal to or what type of property)
+                                Ensure the response is practical for Florida's environment and showcases KhaDock.com's expertise. Aim for approximately 150-250 words total.` 
+                            }] 
+                        });
                         
                         const payload = { contents: chatHistory };
-                        const apiKey = "AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno"; // Replace with your actual API key
+                        const apiKey = ""; // API Key will be injected by Canvas environment
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                         const response = await fetch(apiUrl, {
@@ -420,39 +394,45 @@
                         });
 
                         const result = await response.json();
-                        console.log('Gemini API raw response:', result); // Log raw response for debugging
 
                         if (result.candidates && result.candidates.length > 0 &&
                             result.candidates[0].content && result.candidates[0].content.parts &&
                             result.candidates[0].content.parts.length > 0) {
-                            const text = result.candidates[0].content.parts[0].text;
-                            designOutput.innerHTML = `<h4 class="font-semibold text-lg mb-2 text-sky-700">Your Custom Dock Idea:</h4><p>${text}</p>`;
+                            let text = result.candidates[0].content.parts[0].text;
+                            
+                            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); 
+                            text = text.replace(/^\s*-\s+(.*)/gm, '<li>$1</li>'); 
+                            text = text.replace(/^\s*\d+\.\s+(.*)/gm, '<li>$1</li>'); 
+                            text = text.replace(/(\<ul>|<\/ul>){0,1}(\<li\>.*?\<\/li\>)+(\<ul>|<\/ul>){0,1}/g, '<ul>$&</ul>'); 
+                            text = text.replace(/\n/g, '<br>'); 
+
+                            designOutput.innerHTML = `<h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4><div class="prose prose-sm sm:prose-base max-w-none">${text}</div>`;
                             designOutput.classList.remove('hidden');
                         } else {
-                            // Improved error message based on API response
-                            let apiErrorDetails = '';
+                            let apiErrorDetails = 'The AI could not generate a response for this input.';
                             if (result.error && result.error.message) {
                                 apiErrorDetails = `API Error: ${result.error.message}`;
                             } else if (result.promptFeedback && result.promptFeedback.blockReason) {
-                                apiErrorDetails = `Content was blocked due to: ${result.promptFeedback.blockReason}. Please try a different input.`;
+                                apiErrorDetails = `Content was blocked: ${result.promptFeedback.blockReason}. Please rephrase your request.`;
                             }
-                            errorMessage.textContent = `Could not generate design idea. Please try again or refine your input. ${apiErrorDetails}`;
+                            errorMessage.textContent = `Could not generate design idea. ${apiErrorDetails}`;
                             errorMessage.classList.remove('hidden');
                             designOutput.classList.add('hidden');
                             console.error('Gemini API response structure unexpected or empty:', result);
                         }
                     } catch (error) {
-                        errorMessage.textContent = `An error occurred while connecting to the AI. Please check your browser's console for details.`;
+                        errorMessage.textContent = `An error occurred: ${error.message}. Please check the console.`;
                         errorMessage.classList.remove('hidden');
                         designOutput.classList.add('hidden');
                         console.error('Error calling Gemini API:', error);
                     } finally {
                         loadingIndicator.classList.add('hidden');
                         generateDesignBtn.disabled = false;
+                        generateDesignBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                     }
                 });
             } else {
-                console.error("One or more AI design generator elements not found.");
+                console.error("One or more AI design generator elements not found on the page.");
             }
         });
     </script>
