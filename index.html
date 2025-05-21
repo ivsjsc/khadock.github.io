@@ -46,9 +46,9 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
         #gemini-output h3 {
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 600; /* font-semibold */
-            color: #1e3a8a; /* text-blue-800 or similar */
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            color: #1e3a8a; 
             margin-top: 1rem;
             margin-bottom: 0.5rem;
         }
@@ -62,7 +62,7 @@
         }
         #gemini-output p {
             margin-bottom: 0.75rem;
-            line-height: 1.625; /* leading-relaxed */
+            line-height: 1.625; 
         }
     </style>
 </head>
@@ -70,14 +70,14 @@
 
     <div id="header-placeholder"></div>
 
-    <main>
+    <main id="main-content-area">
         <section class="flex flex-col" data-aos="fade-in">
             <div class="hero-image-fullwidth-container w-full" data-aos="fade-down" data-aos-delay="50">
                 <picture>
-                    <source srcset="images/logo/logo.jpg" type="image/jpg">
+                    <source srcset="images/logo/logo.webp" type="image/webp">
                     <source srcset="images/logo/logo.jpg" type="image/jpeg">
                     <img src="images/logo/logo.jpg" alt="KhaDock - Florida's Premier Boat Dock Solutions"
-                         class="shadow-lg" loading="eager" width="1920" height="1080">
+                         class="shadow-lg" loading="eager" width="1920" height="1080"> 
                 </picture>
             </div>
         </section>
@@ -215,8 +215,13 @@
                     <button id="gemini-submit-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
                         <i class="fas fa-lightbulb mr-2 sm:mr-3"></i> Gửi yêu cầu cho Trợ lý AI
                     </button>
-                    <div id="gemini-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden"></div>
-                    <div id="gemini-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden"></div>
+                    <div id="gemini-loading" class="mt-6 text-sky-600 hidden">
+                        <i class="fas fa-spinner fa-spin mr-2"></i> Trợ lý AI đang suy nghĩ...
+                    </div>
+                    <div id="gemini-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden">
+                        </div>
+                    <div id="gemini-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
+                        </div>
                 </div>
             </div>
         </section>
@@ -240,35 +245,35 @@
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250">
                         <img src="images/albums/dock4.jpg" alt="KhaDock Project Album Image 4 - Dock Repair" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
                         <img src="images/albums/dock5.jpg" alt="KhaDock Project Album Image 5 - New Construction" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="350">full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="350">
                         <img src="images/albums/dock6.jpg" alt="KhaDock Project Album Image 6 - Waterfront View" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">ge w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
                         <img src="images/albums/dock7.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="350">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">e w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
                         <img src="images/albums/dock8.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">ge w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
                         <img src="images/albums/dock9.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">age w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
                         <img src="images/albums/dock10.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
                         <img src="images/albums/dock11.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
                         <img src="images/albums/dock12.jpg" alt="KhaDock Project Album Image 12" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
                         <img src="images/albums/dock13.jpg" alt="KhaDock Project Album Image 13" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
-                    </div>lass="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
                         <img src="images/albums/dock14.jpg" alt="KhaDock Project Album Image 14" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
@@ -338,9 +343,8 @@
     <script src="js/loadComponents.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Splash screen logic (existing)
-            const splashScreen = document.getElementById('splash-screen'); // Assuming you have this element
-            const mainContentArea = document.getElementById('main-content-area'); // Assuming your main content wrapper has this ID
+            const splashScreen = document.getElementById('splash-screen'); 
+            const mainContentArea = document.getElementById('main-content-area'); 
             const visitedFlag = 'khadockVisited';
             const splashDuration = 2500;
 
@@ -348,11 +352,12 @@
                 if (splashScreen) {
                     splashScreen.classList.add('hidden');
                 }
-                // Ensure mainContentArea exists before trying to style it
-                if (mainContentArea) {
+                if (mainContentArea) { 
                     setTimeout(() => {
                         mainContentArea.style.opacity = '1';
                     }, 50);
+                } else { 
+                    console.error("Error: main-content-area not found for splash screen logic.");
                 }
             }
 
@@ -364,13 +369,12 @@
                         localStorage.setItem(visitedFlag, 'true');
                     }, splashDuration);
                 } else {
-                     if(mainContentArea) mainContentArea.style.opacity = '1'; // Fallback if splash elements aren't present
+                     if(mainContentArea) mainContentArea.style.opacity = '1'; 
                 }
             } else {
                 showMainContent();
             }
 
-            // Gemini API Interaction
             const geminiUserInput = document.getElementById('gemini-user-input');
             const geminiSubmitBtn = document.getElementById('gemini-submit-btn');
             const geminiLoading = document.getElementById('gemini-loading');
@@ -394,12 +398,22 @@
                     geminiSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
                     try {
-                        const prompt = `Bạn là một Trợ lý Dự án Bến thuyền hữu ích và sáng tạo cho KhaDock.com, một công ty thiết kế, thi công và sửa chữa bến thuyền hàng đầu tại Florida. Một người dùng đang tìm kiếm sự hỗ trợ cho dự án ven sông của họ. Dựa trên thông tin đầu vào của họ: "${userInput}", hãy cung cấp lời khuyên hữu ích, đề xuất các dịch vụ liên quan của KhaDock (Thiết kế & Sửa chữa Bến thuyền tùy chỉnh, Sửa chữa & Bảo trì, Nâng cấp & Phụ kiện Bến thuyền), và đưa ra những cân nhắc ban đầu hoặc ý tưởng sáng tạo cho dự án của họ. Giữ cho phản hồi ngắn gọn, thân thiện và tập trung vào các giải pháp mà KhaDock có thể cung cấp. Cấu trúc phản hồi với các tiêu đề rõ ràng hoặc gạch đầu dòng để dễ đọc. Đề cập đến môi trường cụ thể của Florida nếu có liên quan. Trả lời bằng tiếng Việt.`;
+                        const prompt = "Bạn là một Trợ lý Dự án Bến thuyền hữu ích và sáng tạo cho KhaDock.com, " +
+                            "một công ty thiết kế, thi công và sửa chữa bến thuyền hàng đầu tại Florida. " +
+                            "Một người dùng đang tìm kiếm sự hỗ trợ cho dự án ven sông của họ. " +
+                            "Dựa trên thông tin đầu vào của họ: \"" + userInput + "\", " +
+                            "hãy cung cấp lời khuyên hữu ích, đề xuất các dịch vụ liên quan của KhaDock " +
+                            "(Thiết kế & Sửa chữa Bến thuyền tùy chỉnh, Sửa chữa & Bảo trì, Nâng cấp & Phụ kiện Bến thuyền), " +
+                            "và đưa ra những cân nhắc ban đầu hoặc ý tưởng sáng tạo cho dự án của họ. " +
+                            "Giữ cho phản hồi ngắn gọn, thân thiện và tập trung vào các giải pháp mà KhaDock có thể cung cấp. " +
+                            "Cấu trúc phản hồi với các tiêu đề rõ ràng hoặc gạch đầu dòng để dễ đọc. " +
+                            "Đề cập đến môi trường cụ thể của Florida nếu có liên quan. " +
+                            "Trả lời bằng tiếng Việt.";
                         
                         let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                         const payload = { contents: chatHistory };
-                        const apiKey = ""; // API Key will be injected by Canvas environment
-                        const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + apiKey;
+                        const apiKey = ""; 
+                        const apiUrl = \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}\`;
 
                         const response = await fetch(apiUrl, {
                             method: 'POST',
@@ -414,37 +428,36 @@
                             result.candidates[0].content.parts.length > 0) {
                             
                             let text = result.candidates[0].content.parts[0].text;
-                            // Basic Markdown-like to HTML conversion for display
-                            text = text.replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>'); // Bold
-                            text = text.replace(/^### (.*$)/gim, '<h3>$1</h3>'); // H3
-                            text = text.replace(/^## (.*$)/gim, '<h2>$1</h2>');   // H2
-                            text = text.replace(/^# (.*$)/gim, '<h1>$1</h1>');    // H1
-                            text = text.replace(/^\* (.*$)/gim, '<li>$1</li>'); // List items
-                            // Wrap list items in <ul>, ensuring not to double-wrap
+                            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); 
+                            text = text.replace(/^### (.*$)/gim, '<h3>$1</h3>'); 
+                            text = text.replace(/^## (.*$)/gim, '<h2>$1</h2>');   
+                            text = text.replace(/^# (.*$)/gim, '<h1>$1</h1>');    
+                            text = text.replace(/^\* (.*$)/gim, '<li>$1</li>'); 
+                            
                             text = text.replace(/(<li>.*?<\/li>)/gs, (match) => {
                                 if (!match.startsWith('<ul>') && !match.endsWith('</ul>')) {
                                     return '<ul>' + match + '</ul>';
                                 }
                                 return match;
                             });
-                            text = text.replace(/<\/ul>\s*<ul>/gs, ''); // Consolidate adjacent lists
-                            text = text.replace(/\n/g, '<br>'); // Newlines to <br>
+                            text = text.replace(/<\/ul>\s*<ul>/gs, ''); 
+                            text = text.replace(/\n/g, '<br>'); 
 
                             geminiOutput.innerHTML = text;
                             geminiOutput.classList.remove('hidden');
                         } else {
                             let apiErrorDetails = 'Trợ lý AI không thể tạo phản hồi cho yêu cầu này.';
                             if (result.error && result.error.message) {
-                                apiErrorDetails = `Lỗi API: ${result.error.message}`;
+                                apiErrorDetails = \`Lỗi API: \${result.error.message}\`;
                             } else if (result.promptFeedback && result.promptFeedback.blockReason) {
-                                apiErrorDetails = `Nội dung bị chặn: ${result.promptFeedback.blockReason}. Vui lòng diễn đạt lại yêu cầu của bạn.`;
+                                apiErrorDetails = \`Nội dung bị chặn: \${result.promptFeedback.blockReason}. Vui lòng diễn đạt lại yêu cầu của bạn.\`;
                             }
-                            geminiError.textContent = `Không thể tạo ý tưởng. ${apiErrorDetails}`;
+                            geminiError.textContent = \`Không thể tạo ý tưởng. \${apiErrorDetails}\`;
                             geminiError.classList.remove('hidden');
                             console.error('Gemini API response unexpected or empty:', result);
                         }
                     } catch (error) {
-                        geminiError.textContent = `Đã xảy ra lỗi: ${error.message}. Vui lòng kiểm tra console.`;
+                        geminiError.textContent = \`Đã xảy ra lỗi: \${error.message}. Vui lòng kiểm tra console.\`;
                         geminiError.classList.remove('hidden');
                         console.error('Error calling Gemini API:', error);
                     } finally {
