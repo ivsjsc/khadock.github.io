@@ -1,23 +1,45 @@
-<header class="bg-slate-800 text-slate-200 shadow-md sticky top-0 z-50">
+<header class="bg-slate-800/95 backdrop-blur-sm text-slate-200 shadow-md sticky top-0 z-50 transition-colors duration-300">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-            <a href="index.html" class="flex items-center space-x-3 group" aria-label="KhaDock Homepage">
-                <img src="images/logo/logoicon.png" alt="KhaDock Logo" class="h-10 w-10 rounded-full group-hover:opacity-80 transition-opacity" width="40" height="40">
-                <span class="text-2xl font-bold text-sky-400 group-hover:text-sky-300 transition-colors">KhaDock.com</span>
+        <div class="flex items-center justify-between h-16 md:h-20">
+            <!-- Logo & Brand -->
+            <a href="index.html" class="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg" aria-label="KhaDock Homepage">
+                <img src="images/logo/logoicon.png" 
+                     alt="" 
+                     class="h-8 w-8 md:h-10 md:w-10 rounded-full group-hover:opacity-80 transition-opacity"
+                     width="40" height="40"
+                     loading="eager"
+                     decoding="async">
+                <span class="text-xl md:text-2xl font-bold text-sky-400 group-hover:text-sky-300 transition-colors">KhaDock.com</span>
             </a>
 
-            <nav class="hidden md:flex space-x-6 items-center">
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-4 lg:space-x-6 items-center" aria-label="Main navigation">
                 <a href="index.html" id="nav-index" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md">
                     <img src="images/logo/logoicon.png" alt="Home" class="h-6 w-6 rounded-sm" width="24" height="24">
                     <span>Home</span>
                 </a>
                 <a href="about.html" id="nav-about" class="hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md">About Us</a>
 
+                <!-- Improved Dropdown -->
                 <div class="relative dropdown group">
-                    <button id="nav-services-button" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown-menu" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center px-3 py-2 rounded-md">
-                        Services <i class="fas fa-chevron-down fa-xs ml-1.5 transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    <button id="nav-services-button" 
+                            aria-haspopup="true" 
+                            aria-expanded="false"
+                            aria-controls="services-dropdown-menu"
+                            class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <span>Services</span>
+                        <svg class="w-4 h-4 ml-1.5 transform group-hover:rotate-180 transition-transform duration-200" 
+                             fill="none" 
+                             stroke="currentColor" 
+                             viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
                     </button>
-                    <div id="services-dropdown-menu" class="dropdown-menu hidden group-hover:block hover:block absolute bg-slate-700 text-slate-200 mt-2 py-2 rounded-md shadow-xl z-20 min-w-[240px] transition-all duration-300 ease-out">
+                    
+                    <!-- Improved Dropdown Menu -->
+                    <div id="services-dropdown-menu" 
+                         class="dropdown-menu opacity-0 invisible group-hover:opacity-100 group-hover:visible absolute bg-slate-700 text-slate-200 mt-2 py-2 rounded-md shadow-xl z-20 min-w-[240px] transition-all duration-200 ease-out"
+                         role="menu">
                         <a href="services.html" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Services Overview</a>
                         <a href="services.html#design" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Custom Dock Design</a>
                         <a href="services.html#remodel" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Dock Remodeling</a>
@@ -29,11 +51,20 @@
                 <a href="design.html" id="nav-design" class="hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md">Designs</a>
                 <a href="contact.html" id="nav-contact" class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2.5 rounded-md font-semibold transition-colors duration-300 shadow-sm hover:shadow-md">Contact Us</a>
 
+                <!-- Improved Search Button -->
                 <div class="relative" id="desktop-search-wrapper">
-                    <button id="desktop-search-button" aria-label="Open search bar" class="text-slate-300 hover:text-sky-400 p-2 rounded-full transition-colors">
-                        <i class="fas fa-search fa-fw"></i>
+                    <button id="desktop-search-button" 
+                            aria-label="Open search" 
+                            aria-expanded="false"
+                            class="text-slate-300 hover:text-sky-400 p-2 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
                     </button>
-                    <div id="desktop-search-container" class="hidden absolute right-0 mt-2 p-3 bg-slate-700 rounded-lg shadow-xl z-30 w-72">
+                    
+                    <!-- Improved Search Container -->
+                    <div id="desktop-search-container" 
+                         class="hidden absolute right-0 mt-2 p-3 bg-slate-700 rounded-lg shadow-xl z-30 w-72 transform origin-top-right transition-transform duration-200">
                         <form class="search-form flex items-center" role="search">
                             <input type="search" id="desktop-search-input" placeholder="Search site..." class="w-full px-3 py-2 text-sm text-slate-900 bg-slate-100 rounded-l-md focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none placeholder-slate-500" aria-label="Search input">
                             <button type="submit" aria-label="Submit search" class="bg-sky-500 text-white px-4 py-2 rounded-r-md hover:bg-sky-600 text-sm transition-colors">
@@ -47,15 +78,26 @@
                 </div>
             </nav>
 
-            <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu-panel" class="md:hidden text-slate-300 hover:text-sky-400 focus:outline-none p-2 rounded-md transition-colors" aria-label="Open main menu">
-                <span class="sr-only">Open main menu</span>
-                <i class="fas fa-bars fa-lg" id="icon-menu-open"></i>
-                <i class="fas fa-times fa-lg hidden" id="icon-menu-close"></i>
+            <!-- Improved Mobile Menu Button -->
+            <button id="mobile-menu-button" 
+                    aria-expanded="false" 
+                    aria-controls="mobile-menu-panel"
+                    class="md:hidden text-slate-300 hover:text-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500 p-2 rounded-md transition-colors"
+                    aria-label="Toggle menu">
+                <span class="sr-only">Toggle menu</span>
+                <svg class="w-6 h-6" id="icon-menu-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg class="w-6 h-6 hidden" id="icon-menu-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
             </button>
         </div>
     </div>
 
-    <div id="mobile-menu-panel" class="md:hidden hidden bg-slate-700/95 backdrop-blur-sm absolute w-full z-40 top-20 left-0 right-0 shadow-xl pb-4">
+    <!-- Improved Mobile Menu Panel -->
+    <div id="mobile-menu-panel" 
+         class="md:hidden hidden bg-slate-700/95 backdrop-blur-sm absolute w-full z-40 top-16 md:top-20 left-0 right-0 shadow-xl transform transition-transform duration-200 origin-top">
        <nav class="flex flex-col space-y-1.5 px-4 py-3">
             <a href="index.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">Home</a>
             <a href="about.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">About Us</a>
