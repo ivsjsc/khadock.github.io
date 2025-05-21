@@ -23,7 +23,10 @@ main {
     /* QUAN TRỌNG: Đảm bảo dòng này KHÔNG BỊ COMMENT */
     /* và giá trị padding-top PHÙ HỢP với chiều cao header của bạn. */
     /* Header của bạn có class h-20 của Tailwind, tương đương 5rem (80px). */
+    /* Nếu header của bạn cao 80px, hãy sử dụng giá trị này: */
     padding-top: 5rem; 
+    /* Nếu header cao hơn hoặc thấp hơn, hãy điều chỉnh cho phù hợp. */
+    /* Ví dụ, nếu header cao 64px (h-16), dùng: padding-top: 4rem; */
 }
 
 
