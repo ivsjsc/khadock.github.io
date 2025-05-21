@@ -418,7 +418,7 @@
                         chatHistory.push({ role: "user", parts: [{ text: `Generate a creative and functional boat dock design concept based on the following user preferences: "${prompt}". The design should include materials, key features, and an overall aesthetic. Keep it concise, around 150-200 words, and focus on innovation and practicality for a Florida waterfront. Respond in English.` }] });
                         
                         const payload = { contents: chatHistory };
-                        const apiKey = ""; // Canvas will automatically provide the API key
+                        const apiKey = "YOUR_GEMINI_API_KEY"; // Replace with your actual API key
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                         const response = await fetch(apiUrl, {
