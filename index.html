@@ -67,29 +67,7 @@
                 height: 200px;
             }
         }
-
-        /* Main Hero Section Image Styling */
-        .main-hero-image-block { /* Renamed for clarity */
-            width: 100%;
-            height: 70vh; /* Adjust height as desired, e.g., 60vh, 70vh, or a fixed px value */
-            max-height: 750px; /* Optional max height */
-            overflow: hidden; 
-            background-color: #334155; /* Fallback color */
-        }
-        .main-hero-image-block img {
-            width: 100%;
-            height: 100%; 
-            object-fit: cover; 
-            object-position: center; 
-            display: block; 
-        }
         
-        /* Hero Content Block Styling (Below Image) */
-        .hero-content-block {
-            background-color: #1e293b; /* slate-800 or another suitable color */
-            color: #f1f5f9; /* slate-100 or white for text */
-        }
-
         .service-card {
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
@@ -116,42 +94,39 @@
             transform: scale(1.08);
             filter: brightness(1.05);
         }
-        .text-shadow-custom { 
+        /* No longer needed as text is now in HTML */
+        /* .text-shadow-custom { 
             text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5); 
-        }
+        } */
     </style>
 </head>
 <body class="antialiased">
 
     <div id="header-placeholder"></div>
 
-    <main class="flex flex-col" data-aos="fade-in">
-            <div class="main-hero-image-block w-full" data-aos="fade-down" data-aos-delay="50">
-                <img src="images/logo/logo.jpg" 
-                     alt="KhaDock - Beautiful waterfront property with a custom dock" 
-                     class="shadow-lg"> 
-            </div>
-
-        <section class="hero-content-block bg-slate-800 text-slate-100 relative" id="hero-section">    
-            <div class="hero-content-block py-12 md:py-16" data-aos="fade-up" data-aos-delay="100">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight text-shadow-custom">
-                        Building Florida's Finest Boat Dock Experiences
-                    </h1>
-                    <p class="text-md sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-200">
-                        KhaDock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship, creating lasting waterfront memories.
-                    </p>
-                    <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4">
-                        <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base sm:text-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105">
-                            View Our Portfolio
-                        </a>
-                        <a href="about.html" class="w-full sm:w-auto inline-block bg-slate-100 hover:bg-sky-500 text-slate-700 font-semibold hover:text-white py-3 px-8 border-2 border-transparent hover:border-sky-500 rounded-lg text-base sm:text-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105">
-                            About Us
-                        </a>
-                        <a href="design.html" class="w-full sm:w-auto inline-block bg-slate-100 hover:bg-sky-500 text-slate-700 font-semibold hover:text-white py-3 px-8 border-2 border-transparent hover:border-sky-500 rounded-lg text-base sm:text-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105">
-                            KhaDock's Designs
-                        </a>
-                    </div>
+    <main class="flex flex-col" id="main-content-area">
+        <section class="relative h-screen md:h-[70vh] max-h-[750px] flex items-center justify-center text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/albums/dock15.jpg');" data-aos="fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-white z-10">
+                <p class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-shadow-strong" data-aos="fade-down" data-aos-delay="100">BKO</p>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-shadow-strong" data-aos="fade-down" data-aos-delay="200">
+                    KHA BOAT DOCK & DESIGN
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-200 text-shadow" data-aos="fade-up" data-aos-delay="400">
+                    Building Florida's Finest Boat Dock Experiences
+                </p>
+                <p class="text-md sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-200" data-aos="fade-up" data-aos-delay="500">
+                    KhaDock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship, creating lasting waterfront memories.
+                </p>
+                <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4" data-aos="fade-up" data-aos-delay="600">
+                    <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base sm:text-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105">
+                        View Our Portfolio
+                    </a>
+                    <a href="about.html" class="w-full sm:w-auto inline-block bg-slate-100 hover:bg-sky-500 text-slate-700 font-semibold hover:text-white py-3 px-8 border-2 border-transparent hover:border-sky-500 rounded-lg text-base sm:text-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105">
+                        About Us
+                    </a>
+                    <a href="design.html" class="w-full sm:w-auto inline-block bg-slate-100 hover:bg-sky-500 text-slate-700 font-semibold hover:text-white py-3 px-8 border-2 border-transparent hover:border-sky-500 rounded-lg text-base sm:text-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105">
+                        KhaDock's Designs
+                    </a>
                 </div>
             </div>
         </section>
@@ -292,43 +267,43 @@
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
                         <img src="images/albums/dock11.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="650">
                         <img src="images/albums/dock12.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="700">
                         <img src="images/albums/dock13.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="750">
                         <img src="images/albums/dock14.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="800">
                         <img src="images/albums/dock15.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="850">
                         <img src="images/albums/dock16.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="900">
                         <img src="images/albums/dock17.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="950">
                         <img src="images/albums/dock18.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="1000">
                         <img src="images/albums/dock19.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="1050">
                         <img src="images/pages/khadockbanner.jpeg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="650">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="1100">
                         <img src="images/designs/design1.jpg" alt="KhaDock Design 1" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="1150">
                         <img src="images/designs/design2.jpg" alt="KhaDock Design 2" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="750">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="1200">
                         <img src="images/designs/design3.jpg" alt="KhaDock Design 3" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="800">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="1250">
                         <img src="images/designs/design4.jpg" alt="KhaDock Design 4" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
                     </div>
                 </div>
