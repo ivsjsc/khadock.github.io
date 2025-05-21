@@ -5,173 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KhaDock.com - Florida's Premier Dock Design, Construction & Remodel</title>
     <meta name="description" content="Kha Boat Dock - Design and Remodel: Your trusted experts for custom boat docks, durable construction, professional remodeling in Florida.">
-    
     <meta property="og:title" content="Kha Boat Dock - Florida's Premier Dock Solutions">
     <meta property="og:description" content="Offering expert design, construction, and remodeling services for boat docks, piers, and lifts across Florida. Quality craftsmanship guaranteed.">
-    <meta property="og:image" content="images/logo/logoicon.png"> 
-    <meta property="og:url" content="https://KhaDock.com/index.html"> 
-    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo/logo.jpg"> <meta property="og:url" content="YOUR_ACTUAL_DOMAIN/index.html"> <meta property="og:type" content="website">
 
-    <link rel="icon" href="images/logo/logoicon.png" type="image/png"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/styles.css"> 
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: #f1f5f9; 
-            color: #1e293b; 
         }
-
-        /* Splash Screen Styling */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #0f172a; /* slate-900 */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000; 
-            opacity: 1;
-            transition: opacity 0.75s ease-out, visibility 0.75s ease-out;
-            visibility: visible;
-        }
-        #splash-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none; 
-        }
-        #splash-logo {
-            width: 150px; 
-            height: 150px; 
-            object-fit: contain; 
-            margin-bottom: 1rem;
-        }
-        @media (min-width: 768px) { /* md */
-            #splash-logo {
-                width: 200px;
-                height: 200px;
-            }
-        }
-
-        /* Main Hero Section Image Styling */
-        /* This section is now handled by inline style in the HTML for the background image */
-        /* .main-hero-image-block { 
-            width: 100%;
-            height: 70vh; 
-            max-height: 750px; 
+        /* CSS cho hình ảnh hero full-width */
+        .hero-image-fullwidth-container {
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            /* Bạn có thể đặt chiều cao tối đa hoặc tỷ lệ khung hình nếu muốn */
+            /* Ví dụ: max-height: 70vh; */
+            /* aspect-ratio: 16 / 7; */ /* Hoặc một tỷ lệ khác phù hợp với ảnh của bạn */
             overflow: hidden; 
-            background-color: #334155; 
         }
-        .main-hero-image-block img {
+        .hero-image-fullwidth-container img {
             width: 100%;
-            height: 100%; 
-            object-fit: cover; 
-            object-position: center; 
+            height: auto; /* Cho phép chiều cao tự điều chỉnh theo chiều rộng để giữ tỷ lệ */
+            /* Nếu muốn ảnh che phủ hoàn toàn container (có thể bị cắt xén): */
+            /* height: 100%; */
+            /* object-fit: cover; */
             display: block; 
-        } */
-        
-        /* Hero Content Block Styling (Below Image) */
-        /* This section is now integrated into the main hero section as an overlay */
-        /* .hero-content-block {
-            background-color: #1e293b; 
-            color: #f1f5f9; 
-        } */
-
-        .service-card {
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12); 
-        }
-        .service-card .fa-3x {
-            font-size: 2.25rem; 
-        }
-
-        .album-image-wrapper { 
-            position: relative;
-            overflow: hidden; 
-            border-radius: 0.5rem; 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
         }
         .album-image {
-            transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .album-image-wrapper:hover .album-image {
-            transform: scale(1.08);
-            filter: brightness(1.05);
+        .album-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
-        .text-shadow-custom { 
-            text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5); 
+        /* Đảm bảo main có padding-top nếu header là sticky */
+        /* Nên đặt trong styles.css */
+        /*
+        main {
+            padding-top: 5rem; /* Chiều cao của header (h-20) */
         }
+        */
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-slate-100 text-slate-800 antialiased">
 
     <div id="header-placeholder"></div>
 
-    <main class="pt-20">
-        <section class="design-banner-bg text-white py-28 md:py-40" data-aos="fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-5 text-shadow-strong" data-aos="fade-down" data-aos-delay="200">Innovative Dock Designs</h1>
-                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-100 font-light" data-aos="fade-up" data-aos-delay="400">
-                    Transforming waterfront visions into reality with bespoke, functional, and beautiful dock designs tailored for Florida.
-                </p>
-            </div>
-        </section>
-        <section class="py-16 md:py-24 bg-white" id="design-thinking-video" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
-            <div class="w-full md:w-2/3" data-aos="zoom-in-right">
-                <video 
-                src="videos/project1.mp4" 
-                controls 
-                poster="images/designs/design1.jpg"
-                class="w-full rounded-xl shadow-lg"
-                preload="metadata"
-                >
-                Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="w-full md:w-1/3" data-aos="fade-left" data-aos-delay="200">
-                <h2 class="text-2xl md:text-3xl font-bold text-sky-700 mb-4">Boat Dock Design Thinking Process</h2>
-                <ol class="list-decimal pl-5 text-lg text-slate-700 space-y-3">
-                <li>
-                    <span class="font-semibold">Site Analysis:</span> Assess the waterfront, water depth, and environmental factors to determine the best dock layout.
-                </li>
-                <li>
-                    <span class="font-semibold">Client Vision:</span> Collaborate with the client to understand their needs, lifestyle, and aesthetic preferences.
-                </li>
-                <li>
-                    <span class="font-semibold">Concept Development:</span> Sketch initial ideas, considering function, safety, and integration with the landscape.
-                </li>
-                <li>
-                    <span class="font-semibold">Material Selection:</span> Choose durable, weather-resistant materials suitable for marine environments.
-                </li>
-                <li>
-                    <span class="font-semibold">Visualization:</span> Create 3D renderings and plans to help the client visualize the final dock design.
-                </li>
-                <li>
-                    <span class="font-semibold">Refinement & Approval:</span> Adjust the design based on feedback and finalize for construction.
-                </li>
-                </ol>
-            </div>
+    <main>
+        <section class="flex flex-col" data-aos="fade-in">
+            <div class="hero-image-fullwidth-container w-full" data-aos="fade-down" data-aos-delay="50">
+                <img src="images/logo/logo.jpg" alt="KhaDock - Florida's Premier Boat Dock Solutions" 
+                     class="shadow-lg"> 
+                     </div>
+
+            <div class="bg-slate-700 text-white py-10 md:py-16" data-aos="fade-up" data-aos-delay="150">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        Building Florida's Finest BoatDock Experiences
+                    </h1>
+                    <p class="text-md sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+                        KhaDock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship.
+                    </p>
+                    <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4">
+                        <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg shadow-md transition duration-300 transform hover:scale-105">
+                            View Our Portfolio
+                        </a>
+                        <a href="contact.html" class="w-full sm:w-auto inline-block bg-slate-600 hover:bg-sky-500 text-white font-semibold hover:text-white py-3 px-6 sm:px-8 border-2 border-slate-500 hover:border-sky-500 rounded-lg text-base sm:text-lg shadow-md transition duration-300 transform hover:scale-105">
+                            Get a Free Estimate
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
         
