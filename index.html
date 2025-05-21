@@ -7,9 +7,12 @@
     <meta name="description" content="Kha Boat Dock - Design and Remodel: Your trusted experts for custom boat docks, durable construction, professional remodeling in Florida.">
     <meta property="og:title" content="Kha Boat Dock - Florida's Premier Dock Solutions">
     <meta property="og:description" content="Offering expert design, construction, and remodeling services for boat docks, piers, and lifts across Florida. Quality craftsmanship guaranteed.">
-    <meta property="og:image" content="images/logo/logo.jpg"> <meta property="og:url" content="YOUR_ACTUAL_DOMAIN/index.html"> <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo/logo.jpg">
+    <meta property="og:url" content="https://KhaDock.com/index.html">
+    <meta property="og:type" content="website">
 
-    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -21,25 +24,19 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* CSS cho hình ảnh hero full-width */
         .hero-image-fullwidth-container {
-            width: 100%; /* Chiếm toàn bộ chiều rộng */
-            /* Bạn có thể đặt chiều cao tối đa hoặc tỷ lệ khung hình nếu muốn */
-            /* Ví dụ: max-height: 70vh; */
-            /* aspect-ratio: 16 / 7; */ /* Hoặc một tỷ lệ khác phù hợp với ảnh của bạn */
-            overflow: hidden; 
-        }
-        .hero-image-fullwidth-container img {
             width: 100%;
-            height: auto; /* Cho phép chiều cao tự điều chỉnh theo chiều rộng để giữ tỷ lệ */
-            /* Nếu muốn ảnh che phủ hoàn toàn container (có thể bị cắt xén): */
-            /* height: 100%; */
-            /* object-fit: cover; */
-            display: block; 
+            overflow: hidden;
+        }
+        .hero-image-fullwidth-container img,
+        .hero-image-fullwidth-container picture img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         .album-image {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -48,13 +45,6 @@
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
-        /* Đảm bảo main có padding-top nếu header là sticky */
-        /* Nên đặt trong styles.css */
-        /*
-        main {
-            padding-top: 5rem; /* Chiều cao của header (h-20) */
-        }
-        */
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
@@ -64,11 +54,15 @@
     <main>
         <section class="flex flex-col" data-aos="fade-in">
             <div class="hero-image-fullwidth-container w-full" data-aos="fade-down" data-aos-delay="50">
-                <img src="images/logo/logo.jpg" alt="KhaDock - Florida's Premier Boat Dock Solutions" 
-                     class="shadow-lg"> 
-            </div>     
+                <picture>
+                    <source srcset="images/logo/logo.webp" type="image/webp">
+                    <source srcset="images/logo/logo.jpg" type="image/jpeg">
+                    <img src="images/logo/logo.jpg" alt="KhaDock - Florida's Premier Boat Dock Solutions"
+                         class="shadow-lg" loading="lazy" width="1920" height="1080"> {/* Adjust width/height to actual image dimensions */}
+                </picture>
+            </div>
         </section>
-        
+
         <section class="relative h-screen md:h-[70vh] max-h-[750px] flex items-center justify-center text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/albums/dock15.jpg');" data-aos="fade-down" data-aos-delay="50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-white z-10">
                 <p class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-shadow-strong" data-aos="fade-down" data-aos-delay="100">KhaDock.com</p>
@@ -130,7 +124,7 @@
                     </div>
                     <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="300">
                         <div class="text-sky-500 mb-5 md:mb-6">
-                            <i class="fas fa-anchor fa-3x"></i> 
+                            <i class="fas fa-anchor fa-3x"></i>
                         </div>
                         <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Dock Upgrades & Accessories</h3>
                         <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
@@ -178,7 +172,7 @@
                     </div>
                     <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-left" data-aos-delay="300">
                         <div class="flex items-center mb-4">
-                            <i class="fas fa-handshake-angle fa-2x text-sky-500 mr-4"></i> 
+                            <i class="fas fa-handshake-angle fa-2x text-sky-500 mr-4"></i>
                             <h3 class="text-xl font-semibold text-slate-700">Customer-Focused Approach</h3>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed">
@@ -199,76 +193,76 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="images/albums/dock1.jpg" alt="KhaDock Project Album Image 1 - Custom Dock" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock1.jpg" alt="KhaDock Project Album Image 1 - Custom Dock" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="images/albums/dock2.jpg" alt="KhaDock Project Album Image 2 - Boat Lift" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock2.jpg" alt="KhaDock Project Album Image 2 - Boat Lift" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="images/albums/dock3.jpg" alt="KhaDock Project Album Image 3 - Dock Remodel" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock3.jpg" alt="KhaDock Project Album Image 3 - Dock Remodel" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="images/albums/dock4.jpg" alt="KhaDock Project Album Image 4 - Dock Repair" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock4.jpg" alt="KhaDock Project Album Image 4 - Dock Repair" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="images/albums/dock5.jpg" alt="KhaDock Project Album Image 5 - New Construction" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock5.jpg" alt="KhaDock Project Album Image 5 - New Construction" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="350">
-                        <img src="images/albums/dock6.jpg" alt="KhaDock Project Album Image 6 - Waterfront View" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock6.jpg" alt="KhaDock Project Album Image 6 - Waterfront View" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="images/albums/dock7.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock7.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
-                        <img src="images/albums/dock8.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock8.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="images/albums/dock9.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock9.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
-                        <img src="images/albums/dock10.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock10.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
-                        <img src="images/albums/dock11.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock11.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="images/albums/dock12.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock12.jpg" alt="KhaDock Project Album Image 12" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
-                        <img src="images/albums/dock13.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock13.jpg" alt="KhaDock Project Album Image 13" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="images/albums/dock14.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock14.jpg" alt="KhaDock Project Album Image 14" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
-                        <img src="images/albums/dock15.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock15.jpg" alt="KhaDock Project Album Image 15" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
-                        <img src="images/albums/dock16.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock16.jpg" alt="KhaDock Project Album Image 16" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="images/albums/dock17.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock17.jpg" alt="KhaDock Project Album Image 17" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
-                        <img src="images/albums/dock18.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock18.jpg" alt="KhaDock Project Album Image 18" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
-                        <img src="images/albums/dock19.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/albums/dock19.jpg" alt="KhaDock Project Album Image 19" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
-                        <img src="images/pages/khadockbanner.jpeg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/pages/khadockbanner.jpeg" alt="KhaDock Banner Image" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="650">
-                        <img src="images/designs/design1.jpg" alt="KhaDock Design 1" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/designs/design1.jpg" alt="KhaDock Design 1" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="700">
-                        <img src="images/designs/design2.jpg" alt="KhaDock Design 2" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/designs/design2.jpg" alt="KhaDock Design 2" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="750">
-                        <img src="images/designs/design3.jpg" alt="KhaDock Design 3" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/designs/design3.jpg" alt="KhaDock Design 3" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="800">
-                        <img src="images/designs/design4.jpg" alt="KhaDock Design 4" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover">
+                        <img src="images/designs/design4.jpg" alt="KhaDock Design 4" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                 </div>
                 <div class="text-center mt-12 md:mt-16">
@@ -279,7 +273,7 @@
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="zoom-in"> 
+        <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="zoom-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-shadow-custom">Ready to Start Your Dream Dock Project?</h2>
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-100">
@@ -293,78 +287,51 @@
     </main>
 
     <div id="footer-placeholder"></div>
-    
-    <button id="scrollToTopBtn" title="Go to top" 
-            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
-                   w-14 h-14 rounded-full shadow-xl items-center justify-center 
+
+    <button id="scrollToTopBtn" title="Go to top"
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
+                   w-14 h-14 rounded-full shadow-xl items-center justify-center
                    focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
                    transition-all duration-300 z-40 text-xl">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/script.js" defer></script> 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="js/script.js" defer></script>
     <script src="js/loadComponents.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const splashScreen = document.getElementById('splash-screen');
             const mainContent = document.getElementById('main-content-area');
             const visitedFlag = 'khadockVisited';
-            const splashDuration = 2500; // Duration in milliseconds (2.5 seconds)
+            const splashDuration = 2500;
 
             function showMainContent() {
                 if (splashScreen) {
                     splashScreen.classList.add('hidden');
                 }
                 if (mainContent) {
-                    // Delay showing main content slightly for smoother transition after splash
                     setTimeout(() => {
                         mainContent.style.opacity = '1';
-                    }, 50); // Small delay
+                    }, 50);
                 }
             }
 
-            if (!localStorage.getItem(visitedFlag)) {
-                // First visit
+            if (!localStorage.getItem(visitedFlag) && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '/khadock.github.io/' ||  window.location.pathname === '/khadock.github.io/index.html')) {
                 if (splashScreen && mainContent) {
-                    mainContent.style.opacity = '0'; // Keep main content hidden initially
+                    mainContent.style.opacity = '0';
                     setTimeout(() => {
                         showMainContent();
                         localStorage.setItem(visitedFlag, 'true');
                     }, splashDuration);
-
-                    // Optional: Hide splash on click/tap if desired before timeout
-                    // splashScreen.addEventListener('click', () => {
-                    //     clearTimeout(splashTimeout); // Clear the scheduled timeout
-                    //     showMainContent();
-                    //     localStorage.setItem(visitedFlag, 'true');
-                    // });
                 } else {
-                     // Fallback if splash elements are not found, show main content directly
                     if(mainContent) mainContent.style.opacity = '1';
                 }
             } else {
-                // Not the first visit, hide splash immediately and show content
                 showMainContent();
             }
 
-            AOS.init({
-                duration: 700, 
-                offset: 100, 
-                once: true, 
-                easing: 'ease-out-quad', 
-            });
-
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            if (scrollToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) { 
-                        scrollToTopBtn.classList.remove('hidden');
-                        scrollToTopBtn.classList.add('flex'); 
-                    } else {
-                        scrollToTopBtn.classList.add('hidden');
-                        scrollToTopBtn.classList.remove('flex');
-                    }
-                }, { passive: true });
-                scrollToTopBtn.addEventListener('click', () => {
-                    window.scrollTo
+        });
+    </script>
+</body>
+</html>
