@@ -379,7 +379,70 @@
             const geminiOutput = document.getElementById('gemini-output');
             const geminiError = document.getElementById('gemini-error');
 
-            if (geminiSubmitBtn && geminiUserInput && geminiLoading && geminiOutput && geminiError) {
+            try {
+                const basePrompt = {
+                    en: "You are a helpful and creative Dock Project Assistant for KhaDock.com, " +
+                        "a leading dock design, construction and repair company in Florida. " +
+                        "A user is seeking guidance for their waterfront project. " +
+                        "Based on their input: \"" + userInput + "\", " +
+                        "provide helpful advice, suggest relevant KhaDock services " +
+                        "(Custom Dock Design & Remodeling, Repair & Maintenance, Dock Upgrades & Accessories), " +
+                        "and offer initial considerations or creative ideas for their project. " +
+                        "Keep the response concise, friendly, and focused on solutions KhaDock can provide. " +
+                        "Structure the response with clear headings or bullet points for readability. " +
+                        "Reference Florida's specific environment where relevant.",
+                    vi: "Bạn là một Trợ lý Dự án Bến thuyền hữu ích và sáng tạo cho KhaDock.com, " +
+                        "một công ty thiết kế, thi công và sửa chữa bến thuyền hàng đầu tại Florida. " +
+                        "Một người dùng đang tìm kiếm sự hỗ trợ cho dự án ven sông của họ. " +
+                        "Dựa trên thông tin đầu vào của họ: \"" + userInput + "\", " +
+                        "hãy cung cấp lời khuyên hữu ích, đề xuất các dịch vụ liên quan của KhaDock " +
+                        "(Thiết kế & Sửa chữa Bến thuyền tùy chỉnh, Sửa chữa & Bảo trì, Nâng cấp & Phụ kiện Bến thuyền), " +
+                        "và đưa ra những cân nhắc ban đầu hoặc ý tưởng sáng tạo cho dự án của họ. " +
+                        "Giữ cho phản hồi ngắn gọn, thân thiện và tập trung vào các giải pháp mà KhaDock có thể cung cấp. " +
+                        "Cấu trúc phản hồi với các tiêu đề rõ ràng hoặc gạch đầu dòng để dễ đọc. " +
+                        "Đề cập đến môi trường cụ thể của Florida nếu có liên quan."
+                };
+
+                const langToggle = document.createElement('div');
+                langToggle.className = 'flex items-center space-x-4 mb-4';
+                langToggle.innerHTML = `
+                    <button type="button" class="lang-btn active" data-lang="en">English</button>
+                    <button type="button" class="lang-btn" data-lang="vi">Tiếng Việt</button>
+                `;
+                
+                geminiUserInput.parentNode.insertBefore(langToggle, geminiUserInput);
+
+                const style = document.createElement('style');
+                style.textContent = `
+                    .lang-btn {
+                        padding: 0.5rem 1rem;
+                        border-radius: 0.375rem;
+                        font-weight: 500;
+                        transition: all 0.3s;
+                    }
+                    .lang-btn.active {
+                        background-color: #0ea5e9;
+                        color: white;
+                    }
+                    .lang-btn:not(.active) {
+                        background-color: #e2e8f0;
+                        color: #475569;
+                    }
+                    .lang-btn:hover:not(.active) {
+                        background-color: #cbd5e1;
+                    }
+                `;
+                document.head.appendChild(style);
+
+                let currentLang = 'en';
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        currentLang = btn.dataset.lang;
+                    });
+                });
+
                 geminiSubmitBtn.addEventListener('click', async () => {
                     const userInput = geminiUserInput.value.trim();
                     if (!userInput) {
@@ -396,24 +459,10 @@
                     geminiSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
                     try {
-                        const prompt = "Bạn là một Trợ lý Dự án Bến thuyền hữu ích và sáng tạo cho KhaDock.com, " +
-                            "một công ty thiết kế, thi công và sửa chữa bến thuyền hàng đầu tại Florida. " +
-                            "Một người dùng đang tìm kiếm sự hỗ trợ cho dự án ven sông của họ. " +
-                            "Dựa trên thông tin đầu vào của họ: \"" + userInput + "\", " +
-                            "hãy cung cấp lời khuyên hữu ích, đề xuất các dịch vụ liên quan của KhaDock " +
-                            "(Thiết kế & Sửa chữa Bến thuyền tùy chỉnh, Sửa chữa & Bảo trì, Nâng cấp & Phụ kiện Bến thuyền), " +
-                            "và đưa ra những cân nhắc ban đầu hoặc ý tưởng sáng tạo cho dự án của họ. " +
-                            "Giữ cho phản hồi ngắn gọn, thân thiện và tập trung vào các giải pháp mà KhaDock có thể cung cấp. " +
-                            "Cấu trúc phản hồi với các tiêu đề rõ ràng hoặc gạch đầu dòng để dễ đọc. " +
-                            "Đề cập đến môi trường cụ thể của Florida nếu có liên quan. " +
-                            "Trả lời bằng tiếng Việt.";
-                        
+                        const prompt = basePrompt[currentLang];
                         let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                         const payload = { contents: chatHistory };
-                        const apiKey = ""; 
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno`;
-                        // Song ngữ: yêu cầu trả lời cả tiếng Việt và tiếng Anh
-                        chatHistory[0].parts[0].text += " Sau khi trả lời bằng tiếng Việt, hãy dịch toàn bộ phản hồi sang tiếng Anh. Đặt tiêu đề rõ ràng cho từng phần: 'Tiếng Việt:' và 'English:'.";
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_API_KEY`;
 
                         const response = await fetch(apiUrl, {
                             method: 'POST',
@@ -466,8 +515,10 @@
                         geminiSubmitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                     }
                 });
-            } else {
-                console.warn("Một hoặc nhiều thành phần của Trợ lý AI không được tìm thấy trên trang.");
+            } catch (error) {
+                geminiError.textContent = `Đã xảy ra lỗi: ${error.message}. Vui lòng kiểm tra console.`;
+                geminiError.classList.remove('hidden');
+                console.error('Error initializing Gemini Assistant:', error);
             }
         });
     </script>
