@@ -202,25 +202,25 @@
 
         <section class="py-16 md:py-24 bg-sky-50" data-aos="fade-up" id="gemini-assistant-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">✨ Trợ lý Dự án Bến thuyền Thông minh ✨</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Bạn có ý tưởng cho bến thuyền mơ ước của mình? Hãy chia sẻ với trợ lý AI của KhaDock! Mô tả nhu cầu, phong cách mong muốn, vật liệu ưa thích, hoặc bất kỳ tính năng đặc biệt nào bạn đang nghĩ đến. Trợ lý sẽ giúp bạn phác thảo ý tưởng và gợi ý các dịch vụ phù hợp.
-                    </p>
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">✨ Smart Dock Project Assistant ✨</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                Have an idea for your dream dock? Share it with KhaDock's AI assistant! Describe your needs, preferred style, materials, or any special features you have in mind. The assistant will help outline your concept and suggest suitable services.
+                </p>
+            </div>
+            <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-xl border border-slate-200">
+                <textarea id="gemini-user-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" placeholder="Example: I want a modern dock with a covered lounge area, using composite materials, suitable for a quiet bay in Florida..."></textarea>
+                <button id="gemini-submit-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
+                <i class="fas fa-lightbulb mr-2 sm:mr-3"></i> Submit to AI Assistant
+                </button>
+                <div id="gemini-loading" class="mt-6 text-sky-600 hidden">
+                <i class="fas fa-spinner fa-spin mr-2"></i> AI Assistant is thinking...
                 </div>
-                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-xl border border-slate-200">
-                    <textarea id="gemini-user-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" placeholder="Ví dụ: Tôi muốn một bến thuyền hiện đại có khu vực tiếp khách có mái che, sử dụng vật liệu composite, phù hợp cho một vịnh nhỏ yên tĩnh ở Florida..."></textarea>
-                    <button id="gemini-submit-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
-                        <i class="fas fa-lightbulb mr-2 sm:mr-3"></i> Gửi yêu cầu cho Trợ lý AI
-                    </button>
-                    <div id="gemini-loading" class="mt-6 text-sky-600 hidden">
-                        <i class="fas fa-spinner fa-spin mr-2"></i> Trợ lý AI đang suy nghĩ...
-                    </div>
-                    <div id="gemini-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden">
-                        </div>
-                    <div id="gemini-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
-                        </div>
+                <div id="gemini-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden">
                 </div>
+                <div id="gemini-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
+                </div>
+            </div>
             </div>
         </section>
         <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
