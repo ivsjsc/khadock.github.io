@@ -412,6 +412,8 @@
                         const payload = { contents: chatHistory };
                         const apiKey = ""; 
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno`;
+                        // Song ngữ: yêu cầu trả lời cả tiếng Việt và tiếng Anh
+                        chatHistory[0].parts[0].text += " Sau khi trả lời bằng tiếng Việt, hãy dịch toàn bộ phản hồi sang tiếng Anh. Đặt tiêu đề rõ ràng cho từng phần: 'Tiếng Việt:' và 'English:'.";
 
                         const response = await fetch(apiUrl, {
                             method: 'POST',
