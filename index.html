@@ -448,16 +448,16 @@
                         } else {
                             let apiErrorDetails = 'Trợ lý AI không thể tạo phản hồi cho yêu cầu này.';
                             if (result.error && result.error.message) {
-                                apiErrorDetails = \`Lỗi API: \${result.error.message}\`;
+                                apiErrorDetails = 'Lỗi API: ' + result.error.message;
                             } else if (result.promptFeedback && result.promptFeedback.blockReason) {
-                                apiErrorDetails = \`Nội dung bị chặn: \${result.promptFeedback.blockReason}. Vui lòng diễn đạt lại yêu cầu của bạn.\`;
+                                apiErrorDetails = 'Nội dung bị chặn: ' + result.promptFeedback.blockReason + '. Vui lòng diễn đạt lại yêu cầu của bạn.';
                             }
-                            geminiError.textContent = \`Không thể tạo ý tưởng. \${apiErrorDetails}\`;
+                            geminiError.textContent = `Không thể tạo ý tưởng. ${apiErrorDetails}`;
                             geminiError.classList.remove('hidden');
                             console.error('Gemini API response unexpected or empty:', result);
                         }
                     } catch (error) {
-                        geminiError.textContent = \`Đã xảy ra lỗi: \${error.message}. Vui lòng kiểm tra console.\`;
+                        geminiError.textContent = `Đã xảy ra lỗi: ${error.message}. Vui lòng kiểm tra console.`;
                         geminiError.classList.remove('hidden');
                         console.error('Error calling Gemini API:', error);
                     } finally {
