@@ -20,7 +20,10 @@ body {
 }
 
 main {
-    padding-top: 5rem; /* QUAN TRỌNG: Điều chỉnh giá trị này bằng chiều cao header của bạn. Ví dụ: 5rem cho header h-20 */
+    /* QUAN TRỌNG: Đảm bảo dòng này KHÔNG BỊ COMMENT */
+    /* và giá trị padding-top PHÙ HỢP với chiều cao header của bạn. */
+    /* Header của bạn có class h-20 của Tailwind, tương đương 5rem (80px). */
+    padding-top: 5rem; 
 }
 
 
