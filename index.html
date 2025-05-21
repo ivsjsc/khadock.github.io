@@ -45,6 +45,25 @@
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
+        #gemini-output h3 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            color: #1e3a8a; /* text-blue-800 or similar */
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        #gemini-output ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        #gemini-output li {
+            margin-bottom: 0.25rem;
+        }
+        #gemini-output p {
+            margin-bottom: 0.75rem;
+            line-height: 1.625; /* leading-relaxed */
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
@@ -58,7 +77,7 @@
                     <source srcset="images/logo/logo.webp" type="image/webp">
                     <source srcset="images/logo/logo.jpg" type="image/jpeg">
                     <img src="images/logo/logo.jpg" alt="KhaDock - Florida's Premier Boat Dock Solutions"
-                         class="shadow-lg" loading="lazy" width="1920" height="1080"> {/* Adjust width/height to actual image dimensions */}
+                         class="shadow-lg" loading="eager" width="1920" height="1080"> {/* Changed to eager for LCP */}
                 </picture>
             </div>
         </section>
@@ -183,6 +202,29 @@
             </div>
         </section>
 
+        <section class="py-16 md:py-24 bg-sky-50" data-aos="fade-up" id="gemini-assistant-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">✨ Trợ lý Dự án Bến thuyền Thông minh ✨</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        Bạn có ý tưởng cho bến thuyền mơ ước của mình? Hãy chia sẻ với trợ lý AI của KhaDock! Mô tả nhu cầu, phong cách mong muốn, vật liệu ưa thích, hoặc bất kỳ tính năng đặc biệt nào bạn đang nghĩ đến. Trợ lý sẽ giúp bạn phác thảo ý tưởng và gợi ý các dịch vụ phù hợp.
+                    </p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-xl border border-slate-200">
+                    <textarea id="gemini-user-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" placeholder="Ví dụ: Tôi muốn một bến thuyền hiện đại có khu vực tiếp khách có mái che, sử dụng vật liệu composite, phù hợp cho một vịnh nhỏ yên tĩnh ở Florida..."></textarea>
+                    <button id="gemini-submit-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
+                        <i class="fas fa-lightbulb mr-2 sm:mr-3"></i> Gửi yêu cầu cho Trợ lý AI
+                    </button>
+                    <div id="gemini-loading" class="mt-6 text-sky-600 hidden">
+                        <i class="fas fa-spinner fa-spin mr-2"></i> Trợ lý AI đang suy nghĩ...
+                    </div>
+                    <div id="gemini-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden">
+                        </div>
+                    <div id="gemini-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
+                        </div>
+                </div>
+            </div>
+        </section>
         <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
@@ -301,8 +343,9 @@
     <script src="js/loadComponents.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const splashScreen = document.getElementById('splash-screen');
-            const mainContent = document.getElementById('main-content-area');
+            // Splash screen logic (existing)
+            const splashScreen = document.getElementById('splash-screen'); // Assuming you have this element
+            const mainContentArea = document.getElementById('main-content-area'); // Assuming your main content wrapper has this ID
             const visitedFlag = 'khadockVisited';
             const splashDuration = 2500;
 
@@ -310,27 +353,114 @@
                 if (splashScreen) {
                     splashScreen.classList.add('hidden');
                 }
-                if (mainContent) {
+                // Ensure mainContentArea exists before trying to style it
+                if (mainContentArea) {
                     setTimeout(() => {
-                        mainContent.style.opacity = '1';
+                        mainContentArea.style.opacity = '1';
                     }, 50);
                 }
             }
 
             if (!localStorage.getItem(visitedFlag) && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '/khadock.github.io/' ||  window.location.pathname === '/khadock.github.io/index.html')) {
-                if (splashScreen && mainContent) {
-                    mainContent.style.opacity = '0';
+                 if (splashScreen && mainContentArea) {
+                    mainContentArea.style.opacity = '0';
                     setTimeout(() => {
                         showMainContent();
                         localStorage.setItem(visitedFlag, 'true');
                     }, splashDuration);
                 } else {
-                    if(mainContent) mainContent.style.opacity = '1';
+                     if(mainContentArea) mainContentArea.style.opacity = '1'; // Fallback if splash elements aren't present
                 }
             } else {
                 showMainContent();
             }
 
+            // Gemini API Interaction
+            const geminiUserInput = document.getElementById('gemini-user-input');
+            const geminiSubmitBtn = document.getElementById('gemini-submit-btn');
+            const geminiLoading = document.getElementById('gemini-loading');
+            const geminiOutput = document.getElementById('gemini-output');
+            const geminiError = document.getElementById('gemini-error');
+
+            if (geminiSubmitBtn && geminiUserInput && geminiLoading && geminiOutput && geminiError) {
+                geminiSubmitBtn.addEventListener('click', async () => {
+                    const userInput = geminiUserInput.value.trim();
+                    if (!userInput) {
+                        geminiError.textContent = 'Vui lòng mô tả ý tưởng hoặc nhu cầu của bạn.';
+                        geminiError.classList.remove('hidden');
+                        geminiOutput.classList.add('hidden');
+                        return;
+                    }
+
+                    geminiLoading.classList.remove('hidden');
+                    geminiOutput.classList.add('hidden');
+                    geminiError.classList.add('hidden');
+                    geminiSubmitBtn.disabled = true;
+                    geminiSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+                    try {
+                        const prompt = `Bạn là một Trợ lý Dự án Bến thuyền hữu ích và sáng tạo cho KhaDock.com, một công ty thiết kế, thi công và sửa chữa bến thuyền hàng đầu tại Florida. Một người dùng đang tìm kiếm sự hỗ trợ cho dự án ven sông của họ. Dựa trên thông tin đầu vào của họ: "${userInput}", hãy cung cấp lời khuyên hữu ích, đề xuất các dịch vụ liên quan của KhaDock (Thiết kế & Sửa chữa Bến thuyền tùy chỉnh, Sửa chữa & Bảo trì, Nâng cấp & Phụ kiện Bến thuyền), và đưa ra những cân nhắc ban đầu hoặc ý tưởng sáng tạo cho dự án của họ. Giữ cho phản hồi ngắn gọn, thân thiện và tập trung vào các giải pháp mà KhaDock có thể cung cấp. Cấu trúc phản hồi với các tiêu đề rõ ràng hoặc gạch đầu dòng để dễ đọc. Đề cập đến môi trường cụ thể của Florida nếu có liên quan. Trả lời bằng tiếng Việt.`;
+                        
+                        let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                        const payload = { contents: chatHistory };
+                        const apiKey = ""; // API Key will be injected by Canvas environment
+                        const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + apiKey;
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            
+                            let text = result.candidates[0].content.parts[0].text;
+                            // Basic Markdown-like to HTML conversion for display
+                            text = text.replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>'); // Bold
+                            text = text.replace(/^### (.*$)/gim, '<h3>$1</h3>'); // H3
+                            text = text.replace(/^## (.*$)/gim, '<h2>$1</h2>');   // H2
+                            text = text.replace(/^# (.*$)/gim, '<h1>$1</h1>');    // H1
+                            text = text.replace(/^\* (.*$)/gim, '<li>$1</li>'); // List items
+                            // Wrap list items in <ul>, ensuring not to double-wrap
+                            text = text.replace(/(<li>.*?<\/li>)/gs, (match) => {
+                                if (!match.startsWith('<ul>') && !match.endsWith('</ul>')) {
+                                    return '<ul>' + match + '</ul>';
+                                }
+                                return match;
+                            });
+                            text = text.replace(/<\/ul>\s*<ul>/gs, ''); // Consolidate adjacent lists
+                            text = text.replace(/\n/g, '<br>'); // Newlines to <br>
+
+                            geminiOutput.innerHTML = text;
+                            geminiOutput.classList.remove('hidden');
+                        } else {
+                            let apiErrorDetails = 'Trợ lý AI không thể tạo phản hồi cho yêu cầu này.';
+                            if (result.error && result.error.message) {
+                                apiErrorDetails = `Lỗi API: ${result.error.message}`;
+                            } else if (result.promptFeedback && result.promptFeedback.blockReason) {
+                                apiErrorDetails = `Nội dung bị chặn: ${result.promptFeedback.blockReason}. Vui lòng diễn đạt lại yêu cầu của bạn.`;
+                            }
+                            geminiError.textContent = `Không thể tạo ý tưởng. ${apiErrorDetails}`;
+                            geminiError.classList.remove('hidden');
+                            console.error('Gemini API response unexpected or empty:', result);
+                        }
+                    } catch (error) {
+                        geminiError.textContent = `Đã xảy ra lỗi: ${error.message}. Vui lòng kiểm tra console.`;
+                        geminiError.classList.remove('hidden');
+                        console.error('Error calling Gemini API:', error);
+                    } finally {
+                        geminiLoading.classList.add('hidden');
+                        geminiSubmitBtn.disabled = false;
+                        geminiSubmitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    }
+                });
+            } else {
+                console.warn("Một hoặc nhiều thành phần của Trợ lý AI không được tìm thấy trên trang.");
+            }
         });
     </script>
 </body>
