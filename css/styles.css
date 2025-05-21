@@ -20,6 +20,7 @@ body {
 }
 
 main {
+    padding-top: 5rem; /* QUAN TRỌNG: Điều chỉnh giá trị này bằng chiều cao header của bạn. Ví dụ: 5rem cho header h-20 */
 }
 
 
