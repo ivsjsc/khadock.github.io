@@ -1,0 +1,31 @@
+github.io\khadock.github.io\css\services.css
+.banner-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('../images/pages/DockDesign.jpeg');
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+}
+
+.service-section {
+    scroll-margin-top: 5rem;
+}
+
+.service-section img {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+}
+
+.service-section:hover img {
+    transform: scale(1.02);
+}
+
+.ai-designer-overlay {
+    background: linear-gradient(to top, rgba(7, 89, 133, 0.9), transparent);
+}
+
+@media (max-width: 768px) {
+    .service-section {
+        scroll-margin-top: 4rem;
+    }
+}
