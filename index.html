@@ -16,21 +16,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
-        darkMode: 'media',
         theme: {
           extend: {
             colors: {
               sky: {
+                50: '#f0f9ff',
                 500: '#0EA5E9',
                 600: '#0284C7',
-                700: '#0369A1',
+                700: '#0369A1'
               }
+            },
+            boxShadow: {
+              'strong': '0 4px 12px rgba(0, 0, 0, 0.15)'
+            },
+            textShadow: {
+              'strong': '2px 2px 4px rgba(0, 0, 0, 0.5)'
             }
           }
-        }
+        },
+        plugins: [
+          // Add custom plugins here
+        ]
       }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -270,5 +279,6 @@
     <script src="js/script.js" defer></script>
     <script src="js/loadComponents.js" defer></script>
     <script src="js/gemini.js" defer></script>
+    <script src="js/imageHandler.js" defer></script>
 </body>
 </html>
