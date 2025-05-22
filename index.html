@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
     <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)">
 
@@ -272,31 +272,57 @@
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-sky-50" data-aos="fade-up" id="gemini-assistant-section">
+        <section class="ai-design-section py-16 md:py-24 bg-gradient-to-br from-sky-50 to-blue-100" data-aos="fade-up" id="ai-design-generator">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
                 <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">✨ Smart Dock Project Assistant ✨</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Have an idea for your dream dock? Share it with KhaDock's AI assistant! Describe your needs, preferred style, materials, or any special features you have in mind. The assistant will help outline your concept and suggest suitable services.
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
+                        <i class="fas fa-lightbulb text-sky-500"></i> Generate Your Dream Dock Idea
+                    </h2>
+                    <p class="text-lg text-slate-700 max-w-2xl mx-auto">
+                        Describe your ideal dock—its style, materials, or features—and let our AI craft a unique, Florida-inspired design concept just for you!
                     </p>
                 </div>
-                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-xl border border-slate-200">
-                    <textarea id="gemini-user-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" placeholder="Example: I want a modern dock with a covered lounge area, using composite materials, suitable for a quiet bay in Florida..."></textarea>
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-                        <button id="gemini-submit-btn" class="w-full sm:w-auto bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
-                            <i class="fas fa-lightbulb mr-2 sm:mr-3"></i> Submit to AI Assistant
+
+                <!-- AI Input Form -->
+                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-2xl border border-sky-200 relative overflow-hidden">
+                    <!-- Decorative Element -->
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-500 to-blue-600"></div>
+                    <textarea
+                        id="ai-design-input"
+                        class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
+                        placeholder="Example: 'A modern dock with a covered lounge area, composite materials, for a quiet Florida cove.'"
+                    ></textarea>
+
+                    <!-- Buttons -->
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <button
+                            id="ai-generate-btn"
+                            class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
+                        >
+                            <i class="fas fa-magic mr-2"></i> Generate Design Idea
                         </button>
-                        <button id="translate-btn" class="w-full sm:w-auto hidden bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 inline-flex items-center justify-center text-sm sm:text-base">
+                        <button
+                            id="ai-translate-btn"
+                            class="hidden bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 inline-flex items-center justify-center text-sm sm:text-base"
+                        >
                             <i class="fas fa-language mr-2"></i> Translate to Vietnamese
                         </button>
                     </div>
-                    <div id="gemini-loading" class="mt-6 text-sky-600 hidden flex items-center">
-                        <i class="fas fa-spinner fa-spin mr-2"></i> <span id="loading-text">AI Assistant is thinking...</span>
+
+                    <!-- Loading Indicator -->
+                    <div id="ai-loading" class="mt-6 text-sky-600 hidden">
+                        <i class="fas fa-spinner fa-spin mr-2"></i> 
+                        <span id="ai-loading-text">Generating your idea...</span>
                     </div>
-                    <div id="gemini-error" class="mt-4 p-4 bg-red-100 border border-red-300 text-red-700 rounded-lg text-left hidden">
-                        </div>
-                    <div id="gemini-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose-sm sm:prose max-w-none">
-                        </div>
+
+                    <!-- Error Message -->
+                    <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden"></div>
+
+                    <!-- Output -->
+                    <div id="ai-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
+                        <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
+                    </div>
                 </div>
             </div>
         </section>
