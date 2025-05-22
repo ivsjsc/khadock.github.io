@@ -51,20 +51,21 @@ export class AIDesigner {
 }
 
 // Scripts Section
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="js/loadComponents.js" type="module" defer></script>
-<script>
-    // Core initialization
-    document.addEventListener('DOMContentLoaded', () => {
-        // Initialize AOS
+
+// Core initialization function to be called on DOMContentLoaded
+export function initializeAIDesigner() {
+    // Initialize AOS
+    if (window.AOS) {
         AOS.init({
             duration: 700,
             offset: 80,
             once: true,
             easing: 'ease-out-cubic'
         });
+    }
 
-        // Initialize AI functionality
-        initializeAIDesigner();
-    });
-</script>
+    // Initialize AI functionality
+    if (typeof AIDesigner !== 'undefined') {
+        AIDesigner.init();
+    }
+}
