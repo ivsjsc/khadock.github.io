@@ -127,14 +127,6 @@ a:hover, a:focus {
 
 /* Hero & Banner Sections
    ========================================================================== */
-.hero-bg, .banner-bg, .design-banner-bg {
-    background-size: cover;
-    background-position: center center; /* Explicitly center both axes */
-    position: relative; /* For z-index stacking if needed, and pseudo-elements */
-    z-index: 1; /* Base stacking context */
-    color: #ffffff; /* Default white text for dark backgrounds */
-    /* `will-change: transform;` can be intensive if overused. Use if parallax or complex animations are applied. */
-}
 
 /* Specific background images with gradient overlays */
 .hero-bg {
@@ -155,9 +147,7 @@ a:hover, a:focus {
     }
 }
 @supports not (-webkit-overflow-scrolling: touch) { /* For other browsers where 'fixed' works well */
-    .hero-bg, .banner-bg, .design-banner-bg {
-        /* background-attachment: fixed; /* Uncomment if 'fixed' effect is desired on desktop. Be mindful of performance. */
-    }
+    /* No rules needed here unless you want to enable background-attachment: fixed; */
 }
 
 .hero-image-fullwidth-container { /* Used if you have a non-background hero image */
@@ -529,10 +519,10 @@ a:hover, a:focus {
     border-radius: 0.25rem; /* Tailwind rounded-sm */
 }
 /* Remove default outline for elements that have custom :focus-visible, if needed */
-a:focus, button:focus, input:focus, select:focus, textarea:focus {
-    /* Example: if you want to rely solely on :focus-visible and Tailwind's focus utilities */
-    /* outline: none; */ 
-}
+/* a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    Example: if you want to rely solely on :focus-visible and Tailwind's focus utilities
+    outline: none; 
+} */
 
 
 /* Dark Mode Support (Leveraging prefers-color-scheme)
