@@ -338,50 +338,53 @@
 
         <section class="ai-design-section py-16 md:py-24 bg-gradient-to-br from-sky-50 to-blue-100" data-aos="fade-up" id="ai-design-generator">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Header -->
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
-                        <i class="fas fa-lightbulb text-sky-500"></i> Generate Your Dream Dock Idea
-                    </h2>
-                    <p class="text-lg text-slate-700 max-w-2xl mx-auto">
-                        Describe your ideal dock—its style, materials, or features—and let our AI craft a unique, Florida-inspired design concept just for you!
-                    </p>
+            <!-- Header -->
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
+                <i class="fas fa-lightbulb text-sky-500"></i> Generate Your Dream Dock Idea
+                </h2>
+                <p class="text-lg text-slate-700 max-w-2xl mx-auto">
+                Describe your ideal dock—its style, materials, or features—and let our AI craft a unique, Florida-inspired design concept just for you!
+                </p>
+                <div class="mt-4 text-slate-500 text-sm">
+                <strong>KhaDock AI Designer</strong> is developed by <a href="https://ivsacademy.edu.vn" class="text-sky-600 hover:underline" target="_blank" rel="noopener">IVS Celestech</a>, a division of IVS JSC.
+                </div>
+            </div>
+
+            <!-- AI Input Form -->
+            <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-2xl border border-sky-200 relative overflow-hidden">
+                <!-- Decorative Element -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-500 to-blue-600"></div>
+                <textarea
+                id="ai-design-input"
+                class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
+                placeholder="Example: 'A modern dock with a covered lounge area, composite materials, for a quiet Florida cove.'"
+                ></textarea>
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <button
+                    id="ai-generate-btn"
+                    class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
+                >
+                    <i class="fas fa-magic mr-2"></i> Generate Design Idea
+                </button>      
                 </div>
 
-                <!-- AI Input Form -->
-                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-2xl border border-sky-200 relative overflow-hidden">
-                    <!-- Decorative Element -->
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-500 to-blue-600"></div>
-                    <textarea
-                        id="ai-design-input"
-                        class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
-                        placeholder="Example: 'A modern dock with a covered lounge area, composite materials, for a quiet Florida cove.'"
-                    ></textarea>
-
-                    <!-- Buttons -->
-                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-                        <button
-                            id="ai-generate-btn"
-                            class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
-                        >
-                            <i class="fas fa-magic mr-2"></i> Generate Design Idea
-                        </button>      
-                    </div>
-
-                    <!-- Loading Indicator -->
-                    <div id="ai-loading" class="mt-6 text-sky-600 hidden">
-                        <i class="fas fa-spinner fa-spin mr-2"></i> 
-                        <span id="ai-loading-text">Generating your idea...</span>
-                    </div>
-
-                    <!-- Error Message -->
-                    <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden"></div>
-
-                    <!-- Output -->
-                    <div id="ai-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
-                        <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
-                    </div>
+                <!-- Loading Indicator -->
+                <div id="ai-loading" class="mt-6 text-sky-600 hidden">
+                <i class="fas fa-spinner fa-spin mr-2"></i> 
+                <span id="ai-loading-text">Generating your idea...</span>
                 </div>
+
+                <!-- Error Message -->
+                <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden"></div>
+
+                <!-- Output -->
+                <div id="ai-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
+                <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
+                </div>
+            </div>
             </div>
         </section>
         
