@@ -2,20 +2,6 @@ let headerLogicInitialized = false;
 let searchDebounceTimer = null;
 const SEARCH_HIGHLIGHT_CLASS = 'search-highlight';
 const FOOTER_YEAR_ID = 'current-year';
-const DEBOUNCE_DELAY = 300;
-const SCROLL_THRESHOLD = 200;
-
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
 
 function initializeHeaderLogic() {
     if (headerLogicInitialized) {
@@ -156,7 +142,7 @@ function initializeHeaderLogic() {
             const query = event.target.value;
             searchDebounceTimer = setTimeout(() => {
                 if (typeof performSearch === 'function') performSearch(query);
-            }, DEBOUNCE_DELAY);
+            }, 300);
         });
         const searchForm = input.closest('form');
         if (searchForm) {
@@ -280,7 +266,7 @@ function clearSearchHighlights() {
 function performSearch(query) {
     clearSearchHighlights();
     const mainContent = document.querySelector('main');
-    if (!mainContent || !query?.trim() || query.trim().length < 2) {
+    if (!mainContent || !query || query.trim().length < 2) {
         return;
     }
     const queryLower = query.trim().toLowerCase();
@@ -342,74 +328,37 @@ function performSearch(query) {
 
 function initializeScrollToTopButton() {
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    if (!scrollToTopBtn) return;
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.classList.remove('hidden');
+                scrollToTopBtn.classList.add('flex'); 
+            } else {
+                scrollToTopBtn.classList.add('hidden');
+                scrollToTopBtn.classList.remove('flex');
+            }
+        }, { passive: true }); 
 
-    const handleScroll = debounce(() => {
-        const shouldShow = document.documentElement.scrollTop > SCROLL_THRESHOLD;
-        scrollToTopBtn.classList.toggle('hidden', !shouldShow);
-        scrollToTopBtn.classList.toggle('flex', shouldShow);
-    }, 100);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 }
 
 function initializeAOS() {
-    try {
-        if (typeof AOS === 'undefined') {
-            throw new Error('AOS library not found');
-        }
-
+    if (typeof AOS !== 'undefined') {
         AOS.init({
-            offset: 100,
-            duration: 700,
-            easing: 'ease-out-quad',
-            once: true,
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-            disable: window.innerWidth < 768 // Disable on mobile for better performance
+            offset: 100,          
+            duration: 700,        
+            easing: 'ease-out-quad', 
+            once: true,           
+            mirror: false,        
+            anchorPlacement: 'top-bottom', 
         });
-
-    } catch (error) {
-        console.warn('[AOS]', error.message);
+    } else {
+        console.warn('[AOS] AOS library not found. Animations will not work.');
     }
 }
-
-const handleFormSubmission = async (event) => {
-    event.preventDefault();
-    const formStatus = document.getElementById('form-status');
-    const form = event.target;
-    
-    try {
-        if (!form || !formStatus) throw new Error('Form elements not found');
-        
-        formStatus.innerHTML = '<p class="text-slate-600">Sending...</p>';
-        const formData = new FormData(form);
-        const formActionUrl = form.action;
-
-        if (!formActionUrl || formActionUrl === 'YOUR_FORM_ACTION_URL_HERE') {
-            throw new Error('Form submission endpoint not configured');
-        }
-
-        const response = await fetch(formActionUrl, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        });
-
-        if (!response.ok) throw new Error('Server response was not OK');
-
-        formStatus.innerHTML = '<p class="form-success">Thank you! Your message has been sent successfully.</p>';
-        form.reset();
-
-    } catch (error) {
-        formStatus.innerHTML = `<p class="form-error">${error.message}</p>`;
-        console.error('[Form Error]', error);
-    }
-};
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeAOS();
@@ -417,7 +366,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const contactForm = document.getElementById('contactForm'); 
     if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmission);
+        const formStatus = document.getElementById('form-status'); 
+        contactForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(contactForm);
+            if(formStatus) formStatus.innerHTML = '<p class="text-slate-600">Sending...</p>';
+            
+            const formActionUrl = contactForm.action || 'YOUR_FORM_ACTION_URL_HERE'; 
+            if (formActionUrl === 'YOUR_FORM_ACTION_URL_HERE' || formActionUrl === window.location.href + '#') { 
+                if(formStatus) formStatus.innerHTML = '<p class="form-error">Form submission endpoint not configured.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(formActionUrl, {
+                    method: 'POST', 
+                    body: formData, 
+                    headers: {'Accept': 'application/json'}
+                });
+                if (response.ok) {
+                    if(formStatus) formStatus.innerHTML = '<p class="form-success">Thank you! Your message has been sent successfully.</p>';
+                    contactForm.reset();
+                } else {
+                    response.json().then(data => {
+                        if (formStatus) {
+                            const errorMessage = data && data.errors ? data.errors.map(error => error.message).join(", ") : (data && data.error ? data.error : "Oops! There was a problem submitting your form.");
+                            formStatus.innerHTML = `<p class="form-error">${errorMessage}</p>`;
+                        }
+                    }).catch(() => {
+                        if (formStatus) formStatus.innerHTML = '<p class="form-error">Error processing server response. Please try again.</p>';
+                    });
+                }
+            } catch (error) {
+                if(formStatus) formStatus.innerHTML = '<p class="form-error">A network error occurred. Please check your connection and try again.</p>';
+            }
+        });
     }
     
     const splashScreen = document.getElementById('splash-screen');
@@ -436,11 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (!localStorage.getItem(visitedFlag) && 
-        (window.location.pathname.endsWith('index.html') || 
-         window.location.pathname === '/' || 
-         window.location.pathname === '/khadock.github.io/' || 
-         window.location.pathname === '/khadock.github.io/index.html')) {
+    if (!localStorage.getItem(visitedFlag) && window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
         if (splashScreen && mainContent) {
             mainContent.style.opacity = '0'; 
             setTimeout(() => {
@@ -448,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem(visitedFlag, 'true');
             }, splashDuration);
         } else {
-            showMainContent();
+            if(mainContent) mainContent.style.opacity = '1';
         }
     } else {
         showMainContent();

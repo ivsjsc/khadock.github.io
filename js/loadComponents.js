@@ -1,87 +1,51 @@
-class ComponentLoader {
-    static async loadComponents() {
-        try {
-            await Promise.all([
-                this.loadComponent('header-placeholder', 'header.html'),
-                this.loadComponent('footer-placeholder', 'footer.html')
-            ]);
-        } catch (error) {
-            console.error('Component loading error:', error);
-            this.handleComponentError(error);
-        }
+document.addEventListener('DOMContentLoaded', function() {
+    function loadHTMLComponent(componentPath, placeholderId, callback) {
+        const componentURL = new URL(componentPath, window.location.href).href;
+
+        fetch(componentURL)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${componentURL}. Status: ${response.status} ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                const placeholder = document.getElementById(placeholderId);
+                if (placeholder) {
+                    if (placeholder.parentNode) {
+                        placeholder.outerHTML = data; 
+                        if (callback) {
+                           requestAnimationFrame(callback);
+                        }
+                    } else {
+                        console.error(`[LoadComponents] Parent node of placeholder '${placeholderId}' not found.`);
+                    }
+                } else {
+                    console.error(`[LoadComponents] Placeholder element with ID '${placeholderId}' not found.`);
+                }
+            })
+            .catch(error => {
+                console.error(`[LoadComponents] Error loading component ${componentPath}:`, error);
+                const placeholder = document.getElementById(placeholderId);
+                if(placeholder) {
+                    placeholder.innerHTML = `<div style="color:red; background-color: #ffebee; border: 1px solid red; padding: 10px; border-radius: 5px; text-align: center;">Error loading ${componentPath}. Please check the file path and ensure it's accessible.</div>`;
+                }
+            });
     }
 
-    static async loadBodyComponents() {
-        await Promise.all([
-            this.loadComponent('header-placeholder', 'header.html'),
-            this.loadComponent('footer-placeholder', 'footer.html')
-        ]);
-    }
-
-    static async loadComponent(elementId, path) {
-        const element = document.getElementById(elementId);
-        if (!element) {
-            throw new Error(`Element ${elementId} not found`);
-        }
-
-        try {
-            const response = await fetch(path);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const html = await response.text();
-            element.innerHTML = html;
-        } catch (error) {
-            throw new Error(`Failed to load ${path}: ${error.message}`);
-        }
-    }
-
-    static handleComponentError(error) {
-        const errorHtml = `
-            <div class="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-                <p>Failed to load page component</p>
-                <p class="text-sm">${error.message}</p>
-            </div>
-        `;
-
-        ['header-placeholder', 'footer-placeholder'].forEach(id => {
-            const element = document.getElementById(id);
-            if (element) {
-                element.innerHTML = errorHtml;
-            }
-        });
-    }
-}
-
-// Initialize component loading
-document.addEventListener('DOMContentLoaded', () => {
-    ComponentLoader.loadComponents();
-});
-
-function initializeAOS() {
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100,
-            disable: window.innerWidth < 768
-        });
-    }
-}
-
-function setupScrollToTop() {
-    const scrollToTopButton = document.getElementById('scroll-to-top');
-    if (!scrollToTopButton) return;
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollToTopButton.classList.add('visible');
+    loadHTMLComponent('header.html', 'header-placeholder', () => {
+        if (typeof initializeHeaderLogic === 'function') {
+            initializeHeaderLogic(); 
         } else {
-            scrollToTopButton.classList.remove('visible');
+            console.error("[LoadComponents] 'initializeHeaderLogic' function is not defined.");
         }
     });
 
-    scrollToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    loadHTMLComponent('footer.html', 'footer-placeholder', () => {
+        if (typeof initializeFooterLogic === 'function') {
+            initializeFooterLogic(); 
+        } else {
+            console.error("[LoadComponents] 'initializeFooterLogic' function is not defined.");
+        }
     });
-}
+});
