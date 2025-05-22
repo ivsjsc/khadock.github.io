@@ -120,9 +120,9 @@ a:hover, a:focus {
     max-height: 0; /* Collapsed by default */
     transition: max-height 0.35s ease-in-out; /* Smooth transition for accordion effect */
 }
-.mobile-submenu-content.open { /* JavaScript should toggle this class */
-    /* max-height will be set by JS to scrollHeight */
-}
+/* .mobile-submenu-content.open { 
+    max-height will be set by JS to scrollHeight 
+} */
 
 
 /* Hero & Banner Sections
