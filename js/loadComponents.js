@@ -1,17 +1,3 @@
-document.addEventListener('DOMContentLoaded', async function() {
-    try {
-        await ComponentLoader.loadComponents();
-        
-        // Initialize after components are loaded
-        initializeAOS();
-        setupScrollToTop();
-        
-    } catch (error) {
-        console.error('Error loading components:', error);
-        handleComponentError();
-    }
-});
-
 class ComponentLoader {
     static async loadComponents() {
         try {
@@ -21,39 +7,49 @@ class ComponentLoader {
             ]);
         } catch (error) {
             console.error('Component loading error:', error);
-            throw error;
+            this.handleComponentError(error);
         }
     }
 
-    static async loadComponent(elementId, componentPath) {
+    static async loadComponent(elementId, path) {
+        const element = document.getElementById(elementId);
+        if (!element) {
+            throw new Error(`Element ${elementId} not found`);
+        }
+
         try {
-            const element = document.getElementById(elementId);
-            if (!element) throw new Error(`Element ${elementId} not found`);
-
-            const response = await fetch(componentPath);
-            if (!response.ok) throw new Error(`Failed to load ${componentPath}`);
-
+            const response = await fetch(path);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const html = await response.text();
             element.innerHTML = html;
-
         } catch (error) {
-            throw new Error(`Component loading error: ${error.message}`);
+            throw new Error(`Failed to load ${path}: ${error.message}`);
         }
+    }
+
+    static handleComponentError(error) {
+        const errorHtml = `
+            <div class="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                <p>Failed to load page component</p>
+                <p class="text-sm">${error.message}</p>
+            </div>
+        `;
+
+        ['header-placeholder', 'footer-placeholder'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.innerHTML = errorHtml;
+            }
+        });
     }
 }
 
-function handleComponentError() {
-    const errorMessage = `
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded" role="alert">
-            <p>Failed to load page components. Please refresh the page or contact support.</p>
-        </div>
-    `;
-    
-    ['header-placeholder', 'footer-placeholder'].forEach(id => {
-        const element = document.getElementById(id);
-        if (element) element.innerHTML = errorMessage;
-    });
-}
+// Initialize component loading
+document.addEventListener('DOMContentLoaded', () => {
+    ComponentLoader.loadComponents();
+});
 
 function initializeAOS() {
     if (typeof AOS !== 'undefined') {
