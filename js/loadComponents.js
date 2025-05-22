@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', async function() {
     try {
         // Load header
-        const headerResponse = await fetch('components/header.html');
+        const headerResponse = await fetch('header.html');
         if (!headerResponse.ok) throw new Error('Failed to load header');
         const headerContent = await headerResponse.text();
         document.getElementById('header-placeholder').innerHTML = headerContent;
 
         // Load footer
-        const footerResponse = await fetch('components/footer.html');
+        const footerResponse = await fetch('footer.html');
         if (!footerResponse.ok) throw new Error('Failed to load footer');
         const footerContent = await footerResponse.text();
         document.getElementById('footer-placeholder').innerHTML = footerContent;
