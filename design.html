@@ -279,17 +279,26 @@
                     Describe your ideal dock: its purpose, style, materials, and any special features. Our AI will generate a unique design concept for you!
                 </p>
                 <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200">
-                    <textarea id="design-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" placeholder="Example: 'A modern dock with a covered lounge area for entertaining, built with composite materials, suitable for a quiet Florida cove.'"></textarea>
-                    <button id="generate-design-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
-                        <i class="fas fa-magic mr-2 sm:mr-3"></i> Generate Design Idea
-                    </button>
-                    <div id="loading-indicator" class="mt-6 text-sky-600 hidden">
-                        <i class="fas fa-spinner fa-spin mr-2"></i> Generating your idea...
+                    <textarea id="design-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" 
+                        placeholder="Example: 'A modern dock with a covered lounge area for entertaining, built with composite materials, suitable for a quiet Florida cove.'">
+                    </textarea>
+                    
+                    <div class="flex justify-between items-center mb-4">
+                        <button id="generate-design-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
+                            <i class="fas fa-magic mr-2 sm:mr-3"></i> Generate Design Idea
+                        </button>
+                        
+                        <button id="translate-btn" class="hidden bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 inline-flex items-center justify-center text-sm sm:text-base">
+                            <i class="fas fa-language mr-2"></i> Translate to Vietnamese
+                        </button>
                     </div>
-                    <div id="design-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
-                        </div>
-                    <div id="error-message" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden">
-                        </div>
+
+                    <div id="loading-indicator" class="mt-6 text-sky-600 hidden">
+                        <i class="fas fa-spinner fa-spin mr-2"></i> <span id="loading-text">Generating your idea...</span>
+                    </div>
+
+                    <div id="design-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none"></div>
+                    <div id="error-message" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden"></div>
                 </div>
             </div>
         </section>
@@ -321,6 +330,28 @@
     <script src="js/script.js" defer></script> 
     <script src="js/loadComponents.js" defer></script>
     <script>
+        const basePrompt = {
+            en: `As a creative dock design expert for KhaDock.com in Florida, generate a detailed and inspiring boat dock concept based on the following user input: "{INPUT}".
+                Please provide the response in well-structured English, including:
+                1. **Concept Name:** (A catchy, descriptive name)
+                2. **Overall Vision:** (1-2 sentences describing the main idea and feel)
+                3. **Key Features & Functionality:** (3-5 distinct features)
+                4. **Suggested Materials:** (2-3 primary materials)
+                5. **Aesthetic Style:** (1-2 sentences describing the look)
+                6. **Best Suited For:** (1 sentence about ideal users/property)
+                Ensure practical for Florida's environment. 150-250 words total.`,
+            
+            vi: `Với tư cách là chuyên gia thiết kế bến thuyền sáng tạo của KhaDock.com tại Florida, hãy tạo ra một ý tưởng bến thuyền chi tiết và đầy cảm hứng dựa trên yêu cầu sau: "{INPUT}".
+                Vui lòng cung cấp phản hồi bằng tiếng Việt có cấu trúc rõ ràng, bao gồm:
+                1. **Tên Ý Tưởng:** (Một tên gọi ấn tượng, mô tả)
+                2. **Tầm Nhìn Tổng Thể:** (1-2 câu mô tả ý tưởng và cảm nhận chính)
+                3. **Tính Năng & Chức Năng Chính:** (3-5 tính năng nổi bật)
+                4. **Vật Liệu Đề Xuất:** (2-3 vật liệu chính)
+                5. **Phong Cách Thẩm Mỹ:** (1-2 câu mô tả về diện mạo)
+                6. **Phù Hợp Nhất Với:** (1 câu về đối tượng/khu vực lý tưởng)
+                Đảm bảo phù hợp với môi trường Florida. Khoảng 150-250 từ.`
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             AOS.init({
                 duration: 700,
@@ -350,8 +381,12 @@
             const loadingIndicator = document.getElementById('loading-indicator');
             const designOutput = document.getElementById('design-output');
             const errorMessage = document.getElementById('error-message');
+            const translateBtn = document.getElementById('translate-btn');
+            const loadingText = document.getElementById('loading-text');
+            let originalText = '';
+            let isTranslated = false;
 
-            if (generateDesignBtn && designInput && loadingIndicator && designOutput && errorMessage) {
+            if (generateDesignBtn && designInput && loadingIndicator && designOutput && errorMessage && translateBtn) {
                 generateDesignBtn.addEventListener('click', async () => {
                     const userPrompt = designInput.value.trim();
                     if (!userPrompt) {
@@ -369,18 +404,10 @@
 
                     try {
                         let chatHistory = [];
+                        const prompt = basePrompt.en.replace('{INPUT}', userPrompt);
                         chatHistory.push({ 
                             role: "user", 
-                            parts: [{ text: `As a creative dock design expert for KhaDock.com in Florida, generate a detailed and inspiring boat dock concept based on the following user input: "${userPrompt}". 
-                                Please provide the response in well-structured English, including:
-                                1.  **Concept Name:** (A catchy, descriptive name)
-                                2.  **Overall Vision:** (1-2 sentences describing the main idea and feel)
-                                3.  **Key Features & Functionality:** (Bulleted list of 3-5 distinct features, e.g., multi-level sundeck, integrated fish cleaning station, kayak launch, specific boat lift type, ambient lighting)
-                                4.  **Suggested Materials:** (Bulleted list of 2-3 primary materials, e.g., premium composite decking, marine-grade aluminum for structure, natural Ipe wood accents)
-                                5.  **Aesthetic Style:** (1-2 sentences describing the look, e.g., modern minimalist, rustic charm, coastal contemporary)
-                                6.  **Best Suited For:** (1 sentence describing who this dock would appeal to or what type of property)
-                                Ensure the response is practical for Florida's environment and showcases KhaDock.com's expertise. Aim for approximately 150-250 words total.` 
-                            }] 
+                            parts: [{ text: prompt }] 
                         });
                         
                         const payload = { contents: chatHistory };
@@ -399,15 +426,14 @@
                             result.candidates[0].content && result.candidates[0].content.parts &&
                             result.candidates[0].content.parts.length > 0) {
                             let text = result.candidates[0].content.parts[0].text;
+                            originalText = text; // Store original English text
                             
-                            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); 
-                            text = text.replace(/^\s*-\s+(.*)/gm, '<li>$1</li>'); 
-                            text = text.replace(/^\s*\d+\.\s+(.*)/gm, '<li>$1</li>'); 
-                            text = text.replace(/(\<ul>|<\/ul>){0,1}(\<li\>.*?\<\/li\>)+(\<ul>|<\/ul>){0,1}/g, '<ul>$&</ul>'); 
-                            text = text.replace(/\n/g, '<br>'); 
-
+                            text = formatDesignText(text);
+                            
                             designOutput.innerHTML = `<h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4><div class="prose prose-sm sm:prose-base max-w-none">${text}</div>`;
                             designOutput.classList.remove('hidden');
+                            translateBtn.classList.remove('hidden'); // Show translate button
+                            isTranslated = false;
                         } else {
                             let apiErrorDetails = 'The AI could not generate a response for this input.';
                             if (result.error && result.error.message) {
@@ -431,10 +457,70 @@
                         generateDesignBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                     }
                 });
+
+                translateBtn.addEventListener('click', async () => {
+                    try {
+                        if (!isTranslated) {
+                            translateBtn.disabled = true;
+                            loadingText.textContent = 'Translating...';
+                            loadingIndicator.classList.remove('hidden');
+
+                            const translationPrompt = `Translate the following dock design concept to Vietnamese, maintaining the formatting and structure:\n\n${originalText}`;
+                            
+                            const response = await fetch(apiUrl, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    contents: [{
+                                        role: "user",
+                                        parts: [{ text: translationPrompt }]
+                                    }]
+                                })
+                            });
+
+                            const result = await response.json();
+                            if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                                let translatedText = result.candidates[0].content.parts[0].text;
+                                translatedText = formatDesignText(translatedText);
+                                
+                                designOutput.innerHTML = `
+                                    <h4 class="font-semibold text-lg mb-3 text-sky-700">Ý Tưởng Thiết Kế KhaDock:</h4>
+                                    <div class="prose prose-sm sm:prose-base max-w-none">${translatedText}</div>
+                                `;
+                                
+                                translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Show English';
+                                isTranslated = true;
+                            }
+                        } else {
+                            const formattedOriginal = formatDesignText(originalText);
+                            designOutput.innerHTML = `
+                                <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
+                                <div class="prose prose-sm sm:prose-base max-w-none">${formattedOriginal}</div>
+                            `;
+                            translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Translate to Vietnamese';
+                            isTranslated = false;
+                        }
+                    } catch (error) {
+                        errorMessage.textContent = `Translation error: ${error.message}`;
+                        errorMessage.classList.remove('hidden');
+                    } finally {
+                        translateBtn.disabled = false;
+                        loadingIndicator.classList.add('hidden');
+                    }
+                });
             } else {
                 console.error("One or more AI design generator elements not found on the page.");
             }
         });
+
+        function formatDesignText(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/^\s*-\s+(.*)/gm, '<li>$1</li>')
+                .replace(/^\s*\d+\.\s+(.*)/gm, '<li>$1</li>')
+                .replace(/(\<ul>|<\/ul>){0,1}(\<li\>.*?\<\/li\>)+(\<ul>|<\/ul>){0,1}/g, '<ul>$&</ul>')
+                .replace(/\n/g, '<br>');
+        }
     </script>
 </body>
 </html>
