@@ -2,47 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)">
+
     <title>Dock Design Portfolio - KhaDock.com Florida</title>
     <meta name="description" content="Explore innovative and custom boat dock designs by KhaDock.com. See our concepts for residential and commercial waterfront properties in Florida.">
     
     <meta property="og:title" content="KhaDock.com Design Portfolio - Custom Dock Solutions">
     <meta property="og:description" content="Browse KhaDock.com's portfolio of inspiring dock designs, from modern minimalist to luxurious multi-functional structures, tailored for Florida's coast.">
-    <meta property="og:image" content="images/logo/logoicon.png"> 
-    <meta property="og:url" content="https://KhaDock.com/design.html"> 
-    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo/logoicon.png"> <meta property="og:url" content="https://KhaDock.com/design.html"> <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KhaDock">
 
-    <link rel="icon" href="images/logo/logoicon.png" type="image/png"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preload" href="images/logo/logoicon.png" as="image"> <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
+    <link rel="preload" href="images/designs/khadockdesign.png" as="image"> <link rel="icon" href="images/logo/logoicon.png" type="image/png"> <link rel="apple-touch-icon" href="images/logo/logoicon.png"> <link rel="manifest" href="manifest.json"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/styles.css"> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sky: { 
+                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
+                            400: '#38bdf8', 500: '#0EA5E9', 600: '#0284C7', 700: '#0369A1',
+                            800: '#075985', 900: '#0c4a6e'
+                        },
+                        slate: {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+                            800: '#1e293b', 900: '#0f172a'
+                        }
+                        // You can add other custom colors from your css/styles.css here if you want to use them as Tailwind utilities
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             background-color: #f1f5f9; /* slate-100 */
+            color: #1e293b; /* slate-800, default text color */
+            scroll-behavior: smooth;
+        }
+        main {
+            padding-top: 5rem; /* Adjust if your header height (h-20 = 5rem in Tailwind) changes */
         }
         .design-banner-bg {
-             background-image: linear-gradient(rgba(12, 74, 110, 0.7), rgba(14, 116, 144, 0.8)), url('images/designs/khadockdesign.png'); 
-             background-size: cover;
-             background-position: center;
+            background-image: linear-gradient(rgba(12, 74, 110, 0.75), rgba(14, 116, 144, 0.85)), url('images/designs/khadockdesign.png'); 
+            background-size: cover;
+            background-position: center;
         }
         .text-shadow-strong {
-            text-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+            text-shadow: 0px 2px 5px rgba(0,0,0,0.6); /* Slightly stronger shadow */
+        }
+        .text-shadow { 
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.45); /* Slightly stronger shadow */
         }
         .design-card {
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
             background-color: white;
-            border: 1px solid #e5e7eb; /* slate-200 */
+            border: 1px solid #e2e8f0; /* slate-200 */
         }
         .design-card:hover {
             transform: translateY(-10px);
@@ -51,7 +82,7 @@
         .design-card-image-container {
             height: 270px; 
             overflow: hidden;
-            background-color: #e2e8f0; 
+            background-color: #e2e8f0; /* slate-200 for placeholder bg */
         }
         .design-card img { 
             transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -63,8 +94,8 @@
             transform: scale(1.08);
         }
         .design-tag {
-            font-size: 0.65rem; 
-            padding: 0.2rem 0.55rem;
+            font-size: 0.7rem; /* Slightly larger for better readability */
+            padding: 0.25rem 0.65rem;
             border-radius: 9999px; 
             font-weight: 600; 
             letter-spacing: 0.025em;
@@ -72,12 +103,13 @@
         }
         .design-process-step {
             transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e5e7eb; /* slate-200 */
+            border: 1px solid #e2e8f0; /* slate-200 */
         }
         .design-process-step:hover {
-            background-color: #f0fdf4; 
-            border-color: #22c55e; 
+            background-color: #f0fdf4; /* green-50 */
+            border-color: #22c55e; /* green-500 */
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(34,197,94,0.1); /* Softer green shadow */
         }
         .design-process-step .step-icon {
             transition: transform 0.3s ease, color 0.3s ease;
@@ -86,17 +118,41 @@
             transform: scale(1.15);
             color: #16a34a; /* green-600 */
         }
-        .text-shadow { 
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        /* Styles for Gemini AI Output - consistent with index.html */
+        #gemini-output h3, #design-output h3 { 
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #0369a1; /* sky-700 */
+            margin-top: 1rem; /* mt-4 */
+            margin-bottom: 0.5rem; /* mb-2 */
         }
-        main {
-            padding-top: 5rem; /* Adjust if your header height changes (h-20 = 5rem) */
+        #gemini-output strong, #design-output strong {
+            color: #0f172a; /* slate-900 */
+        }
+        #gemini-output ul, #design-output ul {
+            list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; padding-left: 0.5rem;
+        }
+        #gemini-output li, #design-output li {
+            margin-bottom: 0.375rem; line-height: 1.6;
+        }
+        #gemini-output p, #design-output p {
+            margin-bottom: 0.75rem; line-height: 1.625; 
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-slate-100">
 
-    <div id="header-placeholder"></div>
+    <div id="header-placeholder">
+        <div class="bg-slate-800 text-slate-200 py-6 text-center"><p>Loading header...</p></div>
+    </div>
 
     <main>
         <section class="design-banner-bg text-white py-20 md:py-32" data-aos="fade-in">
@@ -124,6 +180,7 @@
                                 poster="images/designs/design1.jpg"
                                 class="w-full h-full object-cover"
                                 preload="metadata"
+                                aria-label="KhaDock Design Process Video"
                             >
                                 Your browser does not support the video tag.
                             </video>
@@ -168,60 +225,57 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-10 max-w-4xl mx-auto">
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design2.jpg" alt="Rustic Boathouse Dock Design Concept">
+                            <img src="images/designs/design2.jpg" alt="The Angler's Boathouse Dock Design Concept by KhaDock">
                         </div>
                         <div class="p-5 md:p-6 flex flex-col flex-grow">
                             <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">The Angler's Boathouse</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Charming, rustic boathouse with natural wood, ample gear storage, and a protective covered slip.</p>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Charming, rustic boathouse with natural wood, ample gear storage, and a protective covered slip. Ideal for the avid fisherman needing quick water access and secure boat housing.</p>
                             <div class="mt-auto pt-3 border-t border-slate-200">
                                 <span class="design-tag bg-amber-100 text-amber-800 mr-1.5 mb-1 inline-block">Boathouse</span>
                                 <span class="design-tag bg-lime-100 text-lime-800 mr-1.5 mb-1 inline-block">Wood</span>
-                                <span class="design-tag bg-slate-100 text-slate-800 mb-1 inline-block">Fishing</span>
+                                <span class="design-tag bg-slate-200 text-slate-800 mb-1 inline-block">Fishing</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design3.jpg" alt="Commercial Multi-Slip Dock Design Concept">
+                            <img src="images/designs/design3.jpg" alt="Community Marina Hub Dock Design by KhaDock">
                         </div>
                         <div class="p-5 md:p-6 flex flex-col flex-grow">
                             <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">Community Marina Hub</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Functional multi-slip marina layout for durability and easy access, with options for fueling and dockmaster facilities.</p>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Functional multi-slip marina layout designed for durability and easy navigation. Options for fueling stations, dockmaster facilities, and integrated utilities for a bustling community hub.</p>
                             <div class="mt-auto pt-3 border-t border-slate-200">
                                 <span class="design-tag bg-indigo-100 text-indigo-800 mr-1.5 mb-1 inline-block">Commercial</span>
                                 <span class="design-tag bg-teal-100 text-teal-800 mr-1.5 mb-1 inline-block">Multi-Slip</span>
-                                <span class="design-tag bg-slate-100 text-slate-800 mb-1 inline-block">High-Traffic</span>
+                                <span class="design-tag bg-slate-200 text-slate-800 mb-1 inline-block">High-Traffic</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="300">
                         <div class="design-card-image-container">
-                            <img src="images/designs/design4.jpg" alt="Eco-Friendly Pier Design Concept">
+                            <img src="images/designs/design4.jpg" alt="Eco-Conscious Pier Design by KhaDock">
                         </div>
                         <div class="p-5 md:p-6 flex flex-col flex-grow">
-                            <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">Eco-Conscious Pier</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Sustainable design using recycled materials, permeable decking for marine life, and solar-powered lighting.</p>
+                            <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">The Eco-Conscious Pier</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">A sustainable pier design featuring recycled composite materials, flow-through grating to minimize environmental impact, and solar-powered accent lighting.</p>
                             <div class="mt-auto pt-3 border-t border-slate-200">
                                 <span class="design-tag bg-green-100 text-green-800 mr-1.5 mb-1 inline-block">Eco-Friendly</span>
-                                <span class="design-tag bg-cyan-100 text-cyan-800 mr-1.5 mb-1 inline-block">Permeable</span>
+                                <span class="design-tag bg-cyan-100 text-cyan-800 mr-1.5 mb-1 inline-block">Composite</span>
                                 <span class="design-tag bg-yellow-100 text-yellow-800 mb-1 inline-block">Solar</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="design-card rounded-xl shadow-lg overflow-hidden flex flex-col" data-aos="zoom-in-up" data-aos-delay="400">
                         <div class="design-card-image-container">
-                            <img src="https://placehold.co/600x450/7c3aed/ffffff?text=Dockside+Bathroom+Remodel" alt="Dockside Bathroom Remodel Concept"> 
+                            <img src="https://placehold.co/600x450/7c3aed/ffffff?text=Modern+Dockside+Living" alt="Modern Dockside Living Space Concept by KhaDock"> 
                         </div>
                         <div class="p-5 md:p-6 flex flex-col flex-grow">
-                            <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">Dockside Bathroom Oasis</h3>
-                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Transform your dockside convenience with a stylish and functional bathroom remodel, featuring marine-grade fixtures and weather-resistant finishes.</p>
+                            <h3 class="text-lg md:text-xl font-semibold text-slate-800 mb-2">Modern Dockside Living</h3>
+                            <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-grow">Sleek, contemporary multi-level dock with integrated seating, entertainment areas, and a boat lift. Perfect for modern homes valuing style and functionality.</p>
                             <div class="mt-auto pt-3 border-t border-slate-200">
-                                <span class="design-tag bg-purple-100 text-purple-800 mr-1.5 mb-1 inline-block">Remodel</span>
-                                <span class="design-tag bg-blue-100 text-blue-800 mr-1.5 mb-1 inline-block">Comfort</span>
-                                <span class="design-tag bg-gray-100 text-gray-800 mb-1 inline-block">Utility</span>
+                                <span class="design-tag bg-purple-100 text-purple-800 mr-1.5 mb-1 inline-block">Modern</span>
+                                <span class="design-tag bg-blue-100 text-blue-800 mr-1.5 mb-1 inline-block">Entertainment</span>
+                                <span class="design-tag bg-gray-200 text-gray-800 mb-1 inline-block">Composite</span>
                             </div>
                         </div>
                     </div>
@@ -231,7 +285,7 @@
 
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-5">Our Design Journey</h2>
                     <p class="text-lg text-slate-700 max-w-2xl mx-auto">
                         A collaborative and meticulous process to ensure your custom dock design exceeds every expectation.
@@ -272,32 +326,26 @@
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-sky-50" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section class="py-16 md:py-24 bg-sky-50" data-aos="fade-up" id="gemini-design-assistant-section"> <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">✨ Generate Your Dream Dock Idea ✨</h2>
                 <p class="text-lg text-slate-700 max-w-2xl mx-auto mb-8">
                     Describe your ideal dock: its purpose, style, materials, and any special features. Our AI will generate a unique design concept for you!
                 </p>
                 <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200">
                     <textarea id="design-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" 
-                        placeholder="Example: 'A modern dock with a covered lounge area for entertaining, built with composite materials, suitable for a quiet Florida cove.'">
-                    </textarea>
-                    
-                    <div class="flex justify-between items-center mb-4">
-                        <button id="generate-design-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
+                              placeholder="Example: 'A modern dock with a covered lounge area for entertaining, built with composite materials, suitable for a quiet Florida cove.'"></textarea>
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+                        <button id="generate-design-btn" class="w-full sm:w-auto bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
                             <i class="fas fa-magic mr-2 sm:mr-3"></i> Generate Design Idea
                         </button>
-                        
-                        <button id="translate-btn" class="hidden bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 inline-flex items-center justify-center text-sm sm:text-base">
+                        <button id="translate-btn" class="w-full sm:w-auto hidden bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 inline-flex items-center justify-center text-sm sm:text-base">
                             <i class="fas fa-language mr-2"></i> Translate to Vietnamese
                         </button>
                     </div>
-
-                    <div id="loading-indicator" class="mt-6 text-sky-600 hidden">
+                    <div id="loading-indicator" class="mt-6 text-sky-600 hidden flex items-center">
                         <i class="fas fa-spinner fa-spin mr-2"></i> <span id="loading-text">Generating your idea...</span>
                     </div>
-
-                    <div id="design-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none"></div>
+                    <div id="design-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose-sm sm:prose max-w-none"></div>
                     <div id="error-message" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden"></div>
                 </div>
             </div>
@@ -309,14 +357,16 @@
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-100">
                     Our expert designers are eager to collaborate with you. Contact KhaDock.com today to start your custom dock design journey.
                 </p>
-                <a href="contact.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 hover:bg-slate-50">
+                <a href="contactus.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 hover:bg-slate-50">
                     Request a Design Consultation
                 </a>
             </div>
         </section>
     </main>
 
-    <div id="footer-placeholder"></div>
+    <div id="footer-placeholder">
+        <div class="bg-slate-900 text-slate-300 py-6 text-center"><p>Loading footer...</p></div>
+    </div>
     
     <button id="scrollToTopBtn" title="Go to top" 
             class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
@@ -327,47 +377,48 @@
     </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/script.js" defer></script> 
-    <script src="js/loadComponents.js" defer></script>
-    <script>
-        // KhaDock.com Services Overview
-        // - Custom Dock Design
-        // - Dock Remodeling
-        // - Repair & Maintenance
-
+    <script src="js/loadComponents.js" type="module" defer></script> 
+    <script src="js/script.js" type="module" defer></script> <script>
+        // Base prompts for AI, can be shared if this script is externalized
         const basePrompt = {
             en: `As a creative dock design expert for KhaDock.com in Florida, generate a detailed and inspiring boat dock concept based on the following user input: "{INPUT}".
-            KhaDock.com services include: Custom Dock Design, Dock Remodeling, and Repair & Maintenance.
-            Please provide the response in well-structured English, including:
-            1. **Concept Name:** (A catchy, descriptive name)
-            2. **Overall Vision:** (1-2 sentences describing the main idea and feel)
-            3. **Key Features & Functionality:** (3-5 distinct features)
-            4. **Suggested Materials:** (2-3 primary materials)
-            5. **Aesthetic Style:** (1-2 sentences describing the look)
-            6. **Best Suited For:** (1 sentence about ideal users/property)
-            Ensure practical for Florida's environment. 150-250 words total.
-            Use ENGLISH language only. Only use Vietnamese if the user specifically requests it.`,
-
+KhaDock.com services include: Custom Dock Design, Dock Remodeling, and Repair & Maintenance.
+Please provide the response in well-structured English, including:
+1. **Concept Name:** (A catchy, descriptive name)
+2. **Overall Vision:** (1-2 sentences describing the main idea and feel)
+3. **Key Features & Functionality:** (3-5 distinct features)
+4. **Suggested Materials:** (2-3 primary materials)
+5. **Aesthetic Style:** (1-2 sentences describing the look)
+6. **Best Suited For:** (1 sentence about ideal users/property)
+Ensure practical for Florida's environment. 150-250 words total.
+Use ENGLISH language only. Only use Vietnamese if the user specifically requests it.`,
             vi: `Với tư cách là chuyên gia thiết kế bến thuyền sáng tạo của KhaDock.com tại Florida, hãy tạo ra một ý tưởng bến thuyền chi tiết và đầy cảm hứng dựa trên yêu cầu sau: "{INPUT}".
-            Các dịch vụ của KhaDock.com bao gồm: Thiết kế bến thuyền theo yêu cầu, Cải tạo bến thuyền, và Sửa chữa & Bảo trì.
-            Vui lòng cung cấp phản hồi bằng tiếng Việt có cấu trúc rõ ràng, bao gồm:
-            1. **Tên Ý Tưởng:** (Một tên gọi ấn tượng, mô tả)
-            2. **Tầm Nhìn Tổng Thể:** (1-2 câu mô tả ý tưởng và cảm nhận chính)
-            3. **Tính Năng & Chức Năng Chính:** (3-5 tính năng nổi bật)
-            4. **Vật Liệu Đề Xuất:** (2-3 vật liệu chính)
-            5. **Phong Cách Thẩm Mỹ:** (1-2 câu mô tả về diện mạo)
-            6. **Phù Hợp Nhất Với:** (1 câu về đối tượng/khu vực lý tưởng)
-            Đảm bảo phù hợp với môi trường Florida. Khoảng 150-250 từ.`
+Các dịch vụ của KhaDock.com bao gồm: Thiết kế bến thuyền theo yêu cầu, Cải tạo bến thuyền, và Sửa chữa & Bảo trì.
+Vui lòng cung cấp phản hồi bằng tiếng Việt có cấu trúc rõ ràng, bao gồm:
+1. **Tên Ý Tưởng:** (Một tên gọi ấn tượng, mô tả)
+2. **Tầm Nhìn Tổng Thể:** (1-2 câu mô tả ý tưởng và cảm nhận chính)
+3. **Tính Năng & Chức Năng Chính:** (3-5 tính năng nổi bật)
+4. **Vật Liệu Đề Xuất:** (2-3 vật liệu chính)
+5. **Phong Cách Thẩm Mỹ:** (1-2 câu mô tả về diện mạo)
+6. **Phù Hợp Nhất Với:** (1 câu về đối tượng/khu vực lý tưởng)
+Đảm bảo phù hợp với môi trường Florida. Khoảng 150-250 từ.`
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            AOS.init({
-                duration: 700,
-                offset: 80, 
-                once: true,
-                easing: 'ease-out-cubic',
-            });
+            // AOS initialization should ideally be in your main app script (js/script.js or js/app.js)
+            // after components are loaded, or here if this page is standalone.
+            if (typeof AOS !== 'undefined') {
+                 AOS.init({
+                    duration: 700,
+                    offset: 80, 
+                    once: true,
+                    easing: 'ease-out-cubic',
+                });
+            } else {
+                console.warn("AOS library not defined on design.html");
+            }
 
+            // Scroll to top (also ideally in main app script)
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             if (scrollToTopBtn) {
                 window.addEventListener('scroll', () => {
@@ -384,15 +435,27 @@
                 });
             }
 
+            // Gemini AI Assistant Logic for Design Page
             const designInput = document.getElementById('design-input');
             const generateDesignBtn = document.getElementById('generate-design-btn');
             const loadingIndicator = document.getElementById('loading-indicator');
             const designOutput = document.getElementById('design-output');
             const errorMessage = document.getElementById('error-message');
             const translateBtn = document.getElementById('translate-btn');
-            const loadingText = document.getElementById('loading-text');
-            let originalText = '';
-            let isTranslated = false;
+            const loadingTextEl = document.getElementById('loading-text'); // Ensure this element exists or handle null
+            
+            let originalAIText = ''; // Store original text from AI
+            let isAITextTranslated = false; // Track translation state
+
+            function formatAIDesignText(text) { // Renamed to avoid conflict if global
+                return text
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/^\s*-\s+(.*)/gm, '<li>$1</li>')
+                    .replace(/^\s*\d+\.\s+(.*)/gm, (match, content) => `<li>${content.replace(/^\s*\*\s*/, '')}</li>`)
+                    .replace(/(\<ul>|<\/ul\>){0,1}(\<li\>.*?\<\/li\>)+(\<ul>|<\/ul\>){0,1}/g, '<ul>$&</ul>')
+                    .replace(/<\/ul>\s*<ul>/gs, '')
+                    .replace(/\n/g, '<br>');
+            }
 
             if (generateDesignBtn && designInput && loadingIndicator && designOutput && errorMessage && translateBtn) {
                 generateDesignBtn.addEventListener('click', async () => {
@@ -401,63 +464,69 @@
                         errorMessage.textContent = 'Please describe your dream dock to generate an idea.';
                         errorMessage.classList.remove('hidden');
                         designOutput.classList.add('hidden');
+                        translateBtn.classList.add('hidden');
                         return;
                     }
 
+                    if (loadingTextEl) loadingTextEl.textContent = 'Generating your idea...';
                     loadingIndicator.classList.remove('hidden');
                     generateDesignBtn.disabled = true;
                     generateDesignBtn.classList.add('opacity-75', 'cursor-not-allowed');
                     designOutput.classList.add('hidden');
                     errorMessage.classList.add('hidden');
+                    translateBtn.classList.add('hidden');
 
                     try {
-                        let chatHistory = [];
-                        const prompt = basePrompt.en.replace('{INPUT}', userPrompt);
-                        chatHistory.push({ 
-                            role: "user", 
-                            parts: [{ text: prompt }] 
-                        });
+                        const userInputLower = userPrompt.toLowerCase();
+                        let currentPromptText, currentLang;
+
+                        if (userInputLower.includes('vietnamese') || userInputLower.includes('tiếng việt')) {
+                            currentPromptText = basePrompt.vi.replace('{INPUT}', userPrompt);
+                            currentLang = 'vi';
+                        } else {
+                            currentPromptText = basePrompt.en.replace('{INPUT}', userPrompt);
+                            currentLang = 'en';
+                        }
                         
-                        const payload = { contents: chatHistory };
-                        const apiKey = "AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno"; // API Key will be injected by Canvas environment
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno`;
+                        const payload = { contents: [{ role: "user", parts: [{ text: currentPromptText }] }] };
+                        const apiKey = ""; // Replace with your actual API key for testing, or ensure it's injected
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                         const response = await fetch(apiUrl, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)
                         });
-
                         const result = await response.json();
 
-                        if (result.candidates && result.candidates.length > 0 &&
-                            result.candidates[0].content && result.candidates[0].content.parts &&
-                            result.candidates[0].content.parts.length > 0) {
-                            let text = result.candidates[0].content.parts[0].text;
-                            originalText = text; // Store original English text
+                        if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                            originalAIText = result.candidates[0].content.parts[0].text;
+                            const formattedText = formatAIDesignText(originalAIText);
                             
-                            text = formatDesignText(text);
-                            
-                            designOutput.innerHTML = `<h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4><div class="prose prose-sm sm:prose-base max-w-none">${text}</div>`;
+                            const title = (currentLang === 'vi') ? "Ý Tưởng Thiết Kế Từ KhaDock AI:" : "KhaDock AI Design Concept:";
+                            designOutput.innerHTML = `<h3 class="font-semibold text-lg mb-3 text-sky-700">${title}</h3><div class="prose prose-sm sm:prose-base max-w-none">${formattedText}</div>`;
                             designOutput.classList.remove('hidden');
-                            translateBtn.classList.remove('hidden'); // Show translate button
-                            isTranslated = false;
+                            
+                            if (currentLang === 'en') {
+                                translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Translate to Vietnamese';
+                                isAITextTranslated = false;
+                            } else {
+                                translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Show English';
+                                isAITextTranslated = true; 
+                            }
+                            translateBtn.classList.remove('hidden');
+
                         } else {
                             let apiErrorDetails = 'The AI could not generate a response for this input.';
-                            if (result.error && result.error.message) {
-                                apiErrorDetails = `API Error: ${result.error.message}`;
-                            } else if (result.promptFeedback && result.promptFeedback.blockReason) {
-                                apiErrorDetails = `Content was blocked: ${result.promptFeedback.blockReason}. Please rephrase your request.`;
-                            }
-                            errorMessage.textContent = `Could not generate design idea. ${apiErrorDetails}`;
+                            if (result.error?.message) apiErrorDetails = `API Error: ${result.error.message}`;
+                            else if (result.promptFeedback?.blockReason) apiErrorDetails = `Content blocked: ${result.promptFeedback.blockReason}. Please rephrase.`;
+                            errorMessage.textContent = `Could not generate idea. ${apiErrorDetails}`;
                             errorMessage.classList.remove('hidden');
-                            designOutput.classList.add('hidden');
-                            console.error('Gemini API response structure unexpected or empty:', result);
+                            console.error('Gemini API response error:', result);
                         }
                     } catch (error) {
-                        errorMessage.textContent = `An error occurred: ${error.message}. Please check the console.`;
+                        errorMessage.textContent = `An error occurred: ${error.message}. Check console.`;
                         errorMessage.classList.remove('hidden');
-                        designOutput.classList.add('hidden');
                         console.error('Error calling Gemini API:', error);
                     } finally {
                         loadingIndicator.classList.add('hidden');
@@ -467,68 +536,84 @@
                 });
 
                 translateBtn.addEventListener('click', async () => {
+                    if (!originalAIText) return;
+
+                    if(loadingTextEl) loadingTextEl.textContent = 'Translating...';
+                    loadingIndicator.classList.remove('hidden');
+                    translateBtn.disabled = true;
+                    translateBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                    errorMessage.classList.add('hidden');
+
                     try {
-                        if (!isTranslated) {
-                            translateBtn.disabled = true;
-                            loadingText.textContent = 'Translating...';
-                            loadingIndicator.classList.remove('hidden');
+                        let translationPromptText;
+                        let targetTitle;
+                        let targetButtonText;
 
-                            const translationPrompt = `Translate the following dock design concept to Vietnamese, maintaining the formatting and structure:\n\n${originalText}`;
+                        if (!isAITextTranslated) { // Currently English, translate to Vietnamese
+                            translationPromptText = `Translate the following dock design concept to Vietnamese, maintaining the formatting and structure:\n\n${originalAIText}`;
+                            targetTitle = "Ý Tưởng Thiết Kế Từ KhaDock AI:";
+                            targetButtonText = '<i class="fas fa-language mr-2"></i> Show English';
+                        } else { // Currently Vietnamese (or was last translated to VI), translate to English
+                            // To get a good English version, we should ideally re-translate the original English prompt,
+                            // or if originalAIText was already VI, then translate that to EN.
+                            // For simplicity, if it's translated, we'll revert to the original English text.
+                            // If the original was VI (user typed in VI), then this button should translate to EN.
+                            // This logic needs originalLanguage to be stored if original was VI.
+                            // Assuming originalAIText is always the first AI response (which is English by default unless user typed in VI)
                             
-                            const response = await fetch(apiUrl, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                    contents: [{
-                                        role: "user",
-                                        parts: [{ text: translationPrompt }]
-                                    }]
-                                })
-                            });
-
-                            const result = await response.json();
-                            if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                                let translatedText = result.candidates[0].content.parts[0].text;
-                                translatedText = formatDesignText(translatedText);
-                                
-                                designOutput.innerHTML = `
-                                    <h4 class="font-semibold text-lg mb-3 text-sky-700">Ý Tưởng Thiết Kế KhaDock:</h4>
-                                    <div class="prose prose-sm sm:prose-base max-w-none">${translatedText}</div>
-                                `;
-                                
-                                translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Show English';
-                                isTranslated = true;
+                            // If the goal is to toggle between the current originalAIText (which might be EN or VI) and its translation:
+                            if(translateBtn.innerHTML.includes("Show English")) { // It means current text is VI, show original English
+                                const formattedOriginal = formatAIDesignText(originalAIText); // Assuming originalAIText was English
+                                designOutput.innerHTML = `<h3 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h3><div class="prose prose-sm sm:prose-base max-w-none">${formattedOriginal}</div>`;
+                                translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Translate to Vietnamese';
+                                isAITextTranslated = false;
+                                loadingIndicator.classList.add('hidden');
+                                translateBtn.disabled = false;
+                                translateBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                                return;
+                            } else { // Current text is English, translate to VI
+                                translationPromptText = `Translate the following dock design concept to Vietnamese, maintaining the formatting and structure:\n\n${originalAIText}`;
+                                targetTitle = "Ý Tưởng Thiết Kế Từ KhaDock AI:";
+                                targetButtonText = '<i class="fas fa-language mr-2"></i> Show English';
                             }
+                        }
+                        
+                        const payload = { contents: [{ role: "user", parts: [{ text: translationPromptText }] }] };
+                        const apiKey = "AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno"; // API key
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno`;
+                        
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        const result = await response.json();
+
+                        if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                            let translatedText = result.candidates[0].content.parts[0].text;
+                            translatedText = formatAIDesignText(translatedText);
+                            
+                            designOutput.innerHTML = `<h3 class="font-semibold text-lg mb-3 text-sky-700">${targetTitle}</h3><div class="prose prose-sm sm:prose-base max-w-none">${translatedText}</div>`;
+                            isAITextTranslated = !isAITextTranslated;
+                            translateBtn.innerHTML = targetButtonText;
                         } else {
-                            const formattedOriginal = formatDesignText(originalText);
-                            designOutput.innerHTML = `
-                                <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
-                                <div class="prose prose-sm sm:prose-base max-w-none">${formattedOriginal}</div>
-                            `;
-                            translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Translate to Vietnamese';
-                            isTranslated = false;
+                            errorMessage.textContent = 'Could not translate the text. Please try again.';
+                            errorMessage.classList.remove('hidden');
                         }
                     } catch (error) {
-                        errorMessage.textContent = `Translation error: ${error.message}`;
+                        errorMessage.textContent = `Translation error: ${error.message}. Check console.`;
                         errorMessage.classList.remove('hidden');
+                        console.error('Error during translation:', error);
                     } finally {
-                        translateBtn.disabled = false;
                         loadingIndicator.classList.add('hidden');
+                        translateBtn.disabled = false;
+                        translateBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                     }
                 });
             } else {
-                console.error("One or more AI design generator elements not found on the page.");
+                console.warn("One or more AI design generator elements not found on the design page.");
             }
         });
-
-        function formatDesignText(text) {
-            return text
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/^\s*-\s+(.*)/gm, '<li>$1</li>')
-                .replace(/^\s*\d+\.\s+(.*)/gm, '<li>$1</li>')
-                .replace(/(\<ul>|<\/ul>){0,1}(\<li\>.*?\<\/li\>)+(\<ul>|<\/ul>){0,1}/g, '<ul>$&</ul>')
-                .replace(/\n/g, '<br>');
-        }
     </script>
 </body>
 </html>
