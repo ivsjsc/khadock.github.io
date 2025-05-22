@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    loadHTMLComponent('header.html', 'header-placeholder', () => {
+    loadHTMLComponent('components/header.html', 'header-placeholder', () => {
         if (typeof initializeHeaderLogic === 'function') {
             initializeHeaderLogic(); 
         } else {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    loadHTMLComponent('footer.html', 'footer-placeholder', () => {
+    loadHTMLComponent('components/footer.html', 'footer-placeholder', () => {
         if (typeof initializeFooterLogic === 'function') {
             initializeFooterLogic(); 
         } else {
