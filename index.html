@@ -586,12 +586,12 @@ Vui lòng cung cấp phản hồi bằng tiếng Việt có cấu trúc rõ ràn
                             targetTitle = "Ý Tưởng Thiết Kế Từ KhaDock AI:";
                         } else { // Currently Vietnamese, translate to English
                             translationPromptText = `Translate the following dock design concept to English, maintaining the formatting and structure:\n\n${formatGeminiResponseText(originalGeminiText)}`; // Translate the already formatted (but potentially originally VI) text
-                            targetTitle = "KhaDock AI Design Concept:";
+                            targetTitle = "KhaDock AI Designer:";
                         }
                         
                         const payload = { contents: [{ role: "user", parts: [{ text: translationPromptText }] }] };
-                        const apiKey = ""; // API key
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                        const apiKey = "AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno"; // API key
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno`;
                         
                         const response = await fetch(apiUrl, {
                             method: 'POST',

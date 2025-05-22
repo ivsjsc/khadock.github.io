@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)">
+
+    <title>KhaDock - Florida's Premier Boat Dock Solutions</title>
+    <meta name="description" content="KhaDock specializes in custom boat dock design, robust construction, professional remodeling, and boat lift installations across Florida. Your trusted marine construction partner.">
+    <meta name="keywords" content="boat docks Florida, dock design, dock construction, dock repair, dock remodeling, boat lifts, marine construction Florida, KhaDock">
+
+    <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions">
+    <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Building your waterfront dreams.">
+    <meta property="og:image" content="images/logo/logoicon.png"> <meta property="og:url" content="https://khadock.com"> <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KhaDock">
+
+    <link rel="preload" href="images/logo/logoicon.png" as="image" fetchpriority="high"> <link rel="preload" href="fonts/Inter-VariableFont.woff2" as="font" type="font/woff2" crossorigin> <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" as="image" href="images/albums/dock15.jpg"> <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> <link rel="apple-touch-icon" href="images/logo/logoicon.png"> <link rel="manifest" href="manifest.json"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> <link rel="stylesheet" href="css/responsive.css"> <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sky: { 
+                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
+                            400: '#38bdf8', 500: '#0EA5E9', 600: '#0284C7', 700: '#0369A1',
+                            800: '#075985', 900: '#0c4a6e'
+                        },
+                        slate: {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+                            800: '#1e293b', 900: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .hero-section-main { /* Unique class for the main hero */
+            background-size: cover;
+            background-position: center;
+            will-change: transform; /* Optimize performance */
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        .album-image-wrapper { /* For the new album section */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .album-image-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .album-image {
+            width: 100%;
+            height: 100%; /* Ensure image fills wrapper */
+            object-fit: cover;
+        }
+        /* Styles for dropdown menu if loaded dynamically */
+        .dropdown .dropdown-menu {
+            display: none; position: absolute; background-color: #1e293b; 
+            z-index: 50; min-width: 230px; border-radius: 0.375rem; 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            margin-top: 0.5rem; padding: 0.25rem 0; left:0;
+        }
+        .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { display: block; }
+        .dropdown-menu a {
+            padding: 0.75rem 1rem; display: block; color: #cbd5e1; 
+            transition: background-color 0.2s, color 0.2s; white-space: nowrap; text-decoration: none;
+        }
+        .dropdown-menu a:hover, .dropdown-menu a:focus { background-color: #334155; color: #f1f5f9; outline: none; }
+        
+        /* Styling for Gemini AI Output */
+        #gemini-output h3, #gemini-output h4 { /* Target h3 and h4 specifically for Gemini output */
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #0369a1; /* sky-700 */
+            margin-top: 1rem; /* mt-4 */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+         #gemini-output strong { /* Make sure bold text is clearly visible */
+            color: #0f172a; /* slate-900 */
+        }
+        #gemini-output ul {
+            list-style-type: disc;
+            margin-left: 1.5rem; /* ml-6 */
+            margin-bottom: 1rem; /* mb-4 */
+            padding-left: 0.5rem; /* Add some padding for list items */
+        }
+        #gemini-output li {
+            margin-bottom: 0.375rem; /* mb-1.5 */
+            line-height: 1.6;
+        }
+        #gemini-output p {
+            margin-bottom: 0.75rem; /* mb-3 */
+            line-height: 1.625; 
+        }
+        .text-shadow-strong { text-shadow: 0px 2px 5px rgba(0,0,0,0.5); }
+        .text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased font-inter">
+
+    <div id="header-placeholder">
+        <div class="bg-slate-800 text-slate-200 py-6 text-center">
+            <p class="text-lg">Loading Navigation...</p>
+        </div>
+    </div>
+
+    <main id="main-content-area">
+    
+        <section class="w-full" data-aos="fade-in">
+            <div class="w-full aspect-[1920/400] md:aspect-[1920/400] lg:aspect-[1920/400] overflow-hidden">
+                <picture>
+                    <source srcset="images/logo/logo.jpg" type="image/jpg">
+                    <source srcset="images/logo/logo.jpg" type="image/jpeg">
+                    <img 
+                        src="images/logo/logo.jpg" 
+                        alt="KhaDock - Florida's Premier Boat Dock Solutions"
+                        class="w-full h-full object-cover block"
+                        loading="eager"
+                        width="1920"
+                        height="400"
+                        style="display:block;"
+                    >
+                </picture>
+            </div>
+        </section>
+
+        <section 
+            class="hero-section-main relative min-h-[40vh] md:min-h-[50vh] flex items-center justify-center text-center bg-cover bg-center bg-blend-multiply bg-black/60 -mt-8"
+            style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/albums/dock15.jpg');"
+            data-aos="fade-in" 
+        >
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-white z-10 py-10 md:py-14">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 text-shadow-strong" data-aos="fade-down" data-aos-delay="100">
+                    KhaDock.com
+                </h1>
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight text-shadow-strong" data-aos="fade-down" data-aos-delay="200">
+                    YOUR TRUSTED PARTNER IN FLORIDA
+                </h2>
+                <p class="text-base md:text-lg lg:text-xl max-w-2xl mx-auto text-slate-200 text-shadow" data-aos="fade-up" data-aos-delay="300">
+                    Building Finest Boat Dock Experiences: Custom Design, Durable Construction, and Expert Remodeling.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                        View Our Portfolio
+                    </a>
+                    <a href="projects.html" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
+                        KhaDock's Design
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-slate-50" id="services-overview" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Core Services</h2>
+                    <p class="text-base md:text-lg text-slate-600 max-w-xl mx-auto">
+                        From concept to completion, we provide a full range of dock and marine construction services tailored to your needs.
+                    </p>
+                </div>
+                <div class="grid gap-8 md:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="text-sky-500 mb-5 md:mb-6">
+                            <i class="fas fa-drafting-compass fa-3x"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Custom Dock Design & Remodeling</h3>
+                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
+                            Tailored designs and expert remodeling to perfectly suit your waterfront property and lifestyle, enhancing both beauty and functionality.
+                        </p>
+                        <a href="services.html#design" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">
+                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="text-sky-500 mb-5 md:mb-6">
+                            <i class="fas fa-tools fa-3x"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Repair & Maintenance</h3>
+                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
+                            Comprehensive repair and maintenance to keep your dock in top condition, ensuring safety and extending its lifespan.
+                        </p>
+                        <a href="services.html#repair" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">
+                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="text-sky-500 mb-5 md:mb-6">
+                            <i class="fas fa-anchor fa-3x"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Dock Upgrades & Accessories</h3>
+                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
+                            Upgrade materials, add new amenities like boat lifts or lighting, and enhance your dock for better functionality and style.
+                        </p>
+                        <a href="services.html#upgrades" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">
+                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center mt-12 md:mt-16">
+                    <a href="services.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">
+                        Explore All Services
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose KhaDock?</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        We are committed to delivering superior quality, exceptional service, and lasting value to every client in Florida.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-right" data-aos-delay="100">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-medal fa-2x text-sky-500 mr-4"></i>
+                            <h3 class="text-xl font-semibold text-slate-700">Florida Marine Expertise</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Deep understanding of Florida's unique coastal conditions, permitting processes, and stringent building codes.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-gem fa-2x text-sky-500 mr-4"></i>
+                            <h3 class="text-xl font-semibold text-slate-700">Premium Quality Materials</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            We use only the best marine-grade lumber, composite decking, and hardware to ensure longevity and resilience.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-left" data-aos-delay="300">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-handshake-angle fa-2x text-sky-500 mr-4"></i>
+                            <h3 class="text-xl font-semibold text-slate-700">Customer-Focused Approach</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Your satisfaction is our priority. We collaborate closely with you from initial design to final walkthrough.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-sky-50" data-aos="fade-up" id="gemini-assistant-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">✨ Smart Dock Project Assistant ✨</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        Have an idea for your dream dock? Share it with KhaDock's AI assistant! Describe your needs, preferred style, materials, or any special features you have in mind. The assistant will help outline your concept and suggest suitable services.
+                    </p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-xl border border-slate-200">
+                    <textarea id="gemini-user-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" placeholder="Example: I want a modern dock with a covered lounge area, using composite materials, suitable for a quiet bay in Florida..."></textarea>
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+                        <button id="gemini-submit-btn" class="w-full sm:w-auto bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
+                            <i class="fas fa-lightbulb mr-2 sm:mr-3"></i> Submit to AI Assistant
+                        </button>
+                        <button id="translate-btn" class="w-full sm:w-auto hidden bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 inline-flex items-center justify-center text-sm sm:text-base">
+                            <i class="fas fa-language mr-2"></i> Translate to Vietnamese
+                        </button>
+                    </div>
+                    <div id="gemini-loading" class="mt-6 text-sky-600 hidden flex items-center">
+                        <i class="fas fa-spinner fa-spin mr-2"></i> <span id="loading-text">AI Assistant is thinking...</span>
+                    </div>
+                    <div id="gemini-error" class="mt-4 p-4 bg-red-100 border border-red-300 text-red-700 rounded-lg text-left hidden">
+                        </div>
+                    <div id="gemini-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose-sm sm:prose max-w-none">
+                        </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Project Showcase</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        A glimpse into the quality and diversity of boat docks, piers, and marine structures we've crafted.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="images/albums/dock1.jpg" alt="KhaDock Project Album Image 1 - Custom Dock" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="150">
+                        <img src="images/albums/dock2.jpg" alt="KhaDock Project Album Image 2 - Boat Lift" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="images/albums/dock3.jpg" alt="KhaDock Project Album Image 3 - Dock Remodel" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250">
+                        <img src="images/albums/dock4.jpg" alt="KhaDock Project Album Image 4 - Dock Repair" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="images/albums/dock5.jpg" alt="KhaDock Project Album Image 5 - New Construction" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="350">
+                        <img src="images/albums/dock6.jpg" alt="KhaDock Project Album Image 6 - Waterfront View" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="images/albums/dock7.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
+                        <img src="images/albums/dock8.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="images/albums/dock9.jpg" alt="KhaDock Project Album Image 9" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
+                        <img src="images/albums/dock10.jpg" alt="KhaDock Project Album Image 10" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
+                        <img src="images/albums/dock11.jpg" alt="KhaDock Project Album Image 11" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="650">
+                        <img src="images/designs/design1.jpg" alt="KhaDock Design 1" class="album-image" loading="lazy" width="600" height="450">
+                    </div>
+                </div>
+                <div class="text-center mt-12 md:mt-16">
+                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">
+                        View Full Portfolio
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="zoom-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-shadow">Ready to Start Your Dream Dock Project?</h2>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-100">
+                    Let's discuss your vision. Contact KhaDock today for a personalized consultation and a no-obligation, free estimate.
+                </p>
+                <a href="contactus.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                    Schedule Your Consultation
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder">
+        <div class="bg-slate-900 text-slate-300 py-6 text-center">
+            <p class="text-sm">Loading footer...</p>
+        </div>
+    </div>
+
+    <button id="scrollToTopBtn" title="Go to top"
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
+                   w-12 h-12 md:w-14 md:h-14 rounded-full shadow-xl items-center justify-center 
+                   focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
+                   transition-all duration-300 z-40 text-xl md:text-2xl">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="js/loadComponents.js" type="module" defer></script>
+    <script src="js/app.js" type="module" defer></script> <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Splash Screen Logic (from your provided HTML)
+            const splashScreen = document.getElementById('splash-screen'); 
+            const mainContentArea = document.getElementById('main-content-area'); 
+            const visitedFlag = 'khadockVisited';
+            const splashDuration = 2500;
+
+            function showMainContent() {
+                if (splashScreen) {
+                    splashScreen.classList.add('hidden');
+                }
+                if (mainContentArea) { 
+                    setTimeout(() => {
+                        mainContentArea.style.opacity = '1';
+                        // Initialize AOS here after main content is visible to ensure elements are ready
+                        if (typeof AOS !== 'undefined') {
+                            AOS.init({
+                                duration: 700,
+                                offset: 80, 
+                                once: true,
+                                easing: 'ease-out-cubic',
+                            });
+                        } else {
+                            console.warn("AOS not defined when trying to init after splash.");
+                        }
+                    }, 50); // Small delay for opacity transition
+                } else { 
+                    console.error("Error: main-content-area not found for splash screen logic.");
+                }
+            }
+
+            if (!localStorage.getItem(visitedFlag) && splashScreen && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '/khadock.github.io/' ||  window.location.pathname === '/khadock.github.io/index.html')) {
+                if (mainContentArea) {
+                    mainContentArea.style.opacity = '0'; // Hide main content initially
+                    setTimeout(() => {
+                        showMainContent();
+                        localStorage.setItem(visitedFlag, 'true');
+                    }, splashDuration);
+                } else {
+                     showMainContent(); // Show immediately if no main content area for opacity
+                }
+            } else {
+                showMainContent(); // Show main content immediately if visited or no splash
+            }
+
+            // Gemini AI Assistant Logic (from your provided HTML)
+            const geminiUserInput = document.getElementById('gemini-user-input');
+            const geminiSubmitBtn = document.getElementById('gemini-submit-btn');
+            const geminiLoading = document.getElementById('gemini-loading');
+            const geminiOutput = document.getElementById('gemini-output');
+            const geminiError = document.getElementById('gemini-error');
+            const translateBtn = document.getElementById('translate-btn');
+            const loadingTextEl = document.getElementById('loading-text'); // For "Translating..." text
+
+            let originalGeminiText = '';
+            let isGeminiTextTranslated = false;
+            
+            const baseGeminiPrompt = {
+                en: `As a creative dock design expert for KhaDock.com in Florida, generate a detailed and inspiring boat dock concept based on the following user input: "{INPUT}".
+KhaDock.com services include: Custom Dock Design, Dock Remodeling, and Repair & Maintenance.
+Please provide the response in well-structured ENGLISH, including:
+1. **Concept Name:** (A catchy, descriptive name)
+2. **Overall Vision:** (1-2 sentences describing the main idea and feel)
+3. **Key Features & Functionality:** (3-5 distinct features)
+4. **Suggested Materials:** (2-3 primary materials)
+5. **Aesthetic Style:** (1-2 sentences describing the look)
+6. **Best Suited For:** (1 sentence about ideal users/property)
+Ensure practical for Florida's environment. 150-250 words total.
+Use ENGLISH language only. Only use Vietnamese if the user specifically requests it.`,
+                vi: `Với tư cách là chuyên gia thiết kế bến thuyền sáng tạo của KhaDock.com tại Florida, hãy tạo ra một ý tưởng bến thuyền chi tiết và đầy cảm hứng dựa trên yêu cầu sau: "{INPUT}".
+Các dịch vụ của KhaDock.com bao gồm: Thiết kế bến thuyền theo yêu cầu, Cải tạo bến thuyền, và Sửa chữa & Bảo trì.
+Vui lòng cung cấp phản hồi bằng tiếng Việt có cấu trúc rõ ràng, bao gồm:
+1. **Tên Ý Tưởng:** (Một tên gọi ấn tượng, mô tả)
+2. **Tầm Nhìn Tổng Thể:** (1-2 câu mô tả ý tưởng và cảm nhận chính)
+3. **Tính Năng & Chức Năng Chính:** (3-5 tính năng nổi bật)
+4. **Vật Liệu Đề Xuất:** (2-3 vật liệu chính)
+5. **Phong Cách Thẩm Mỹ:** (1-2 câu mô tả về diện mạo)
+6. **Phù Hợp Nhất Với:** (1 câu về đối tượng/khu vực lý tưởng)
+Đảm bảo phù hợp với môi trường Florida. Khoảng 150-250 từ.`
+            };
+
+            function formatGeminiResponseText(text) {
+                return text
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/^\s*-\s+(.*)/gm, '<li>$1</li>')
+                    .replace(/^\s*\d+\.\s+(.*)/gm, (match, content) => `<li>${content.replace(/^\s*\*\s*/, '')}</li>`) // Handle numbered lists that might also have asterisks
+                    .replace(/(\<li\>.*?\<\/li\>)/gs, (match) => { // Wrap loose LIs in ULs
+                        if (!match.trim().startsWith('<ul>') && !match.trim().endsWith('</ul>') &&
+                            !(match.includes('<ul>') && match.includes('</ul>'))) { // Avoid double wrapping
+                            return '<ul>' + match + '</ul>';
+                        }
+                        return match;
+                    })
+                    .replace(/<\/ul>\s*<ul>/gs, '') // Consolidate adjacent ULs
+                    .replace(/\n/g, '<br>'); // Convert newlines to <br>
+            }
+
+            if (geminiSubmitBtn && geminiUserInput && geminiLoading && geminiOutput && geminiError && translateBtn && loadingTextEl) {
+                geminiSubmitBtn.addEventListener('click', async () => {
+                    const userInput = geminiUserInput.value.trim();
+                    if (!userInput) {
+                        geminiError.textContent = 'Please describe your idea or requirements.';
+                        geminiError.classList.remove('hidden');
+                        geminiOutput.classList.add('hidden');
+                        translateBtn.classList.add('hidden');
+                        return;
+                    }
+
+                    loadingTextEl.textContent = 'AI Assistant is thinking...';
+                    geminiLoading.classList.remove('hidden');
+                    geminiOutput.classList.add('hidden');
+                    geminiError.classList.add('hidden');
+                    translateBtn.classList.add('hidden');
+                    geminiSubmitBtn.disabled = true;
+                    geminiSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+                    try {
+                        const userInputLower = userInput.toLowerCase();
+                        let currentPrompt, targetLang;
+                        if (userInputLower.includes('vietnamese') || userInputLower.includes('tiếng việt') || userInputLower.includes('trả lời bằng tiếng việt') || userInputLower.includes('việt hóa') || userInputLower.includes('việt nam')) {
+                            currentPrompt = baseGeminiPrompt.vi.replace('{INPUT}', userInput);
+                            targetLang = 'vi';
+                        } else {
+                            currentPrompt = baseGeminiPrompt.en.replace('{INPUT}', userInput);
+                            targetLang = 'en';
+                        }
+                        
+                        let chatHistory = [{ role: "user", parts: [{ text: currentPrompt }] }];
+                        const payload = { contents: chatHistory };
+                        const apiKey = ""; // API key will be injected by Canvas environment if needed, or use your hardcoded one if testing locally
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        const result = await response.json();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            
+                            originalGeminiText = result.candidates[0].content.parts[0].text;
+                            const formattedText = formatGeminiResponseText(originalGeminiText);
+                            
+                            const title = (targetLang === 'vi') ? "Ý Tưởng Thiết Kế Từ KhaDock AI:" : "KhaDock AI Design Concept:";
+                            geminiOutput.innerHTML = `<h4 class="font-semibold text-lg mb-3 text-sky-700">${title}</h4><div class="prose prose-sm sm:prose-base max-w-none">${formattedText}</div>`;
+                            geminiOutput.classList.remove('hidden');
+                            
+                            // Setup translate button based on initial response language
+                            if (targetLang === 'en') {
+                                translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Translate to Vietnamese';
+                                isGeminiTextTranslated = false;
+                            } else {
+                                translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Show English';
+                                isGeminiTextTranslated = true; // Since it's already in Vietnamese
+                            }
+                            translateBtn.classList.remove('hidden');
+
+                        } else {
+                            let apiErrorDetails = 'The AI could not generate a response for this input.';
+                            if (result.error && result.error.message) {
+                                apiErrorDetails = `API Error: ${result.error.message}`;
+                            } else if (result.promptFeedback && result.promptFeedback.blockReason) {
+                                apiErrorDetails = `Content was blocked: ${result.promptFeedback.blockReason}. Please rephrase your request.`;
+                            }
+                            geminiError.textContent = `Could not generate design idea. ${apiErrorDetails}`;
+                            geminiError.classList.remove('hidden');
+                            console.error('Gemini API response structure unexpected or empty:', result);
+                        }
+                    } catch (error) {
+                        geminiError.textContent = `An error occurred: ${error.message}. Please check the console.`;
+                        geminiError.classList.remove('hidden');
+                        console.error('Error calling Gemini API:', error);
+                    } finally {
+                        geminiLoading.classList.add('hidden');
+                        geminiSubmitBtn.disabled = false;
+                        geminiSubmitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    }
+                });
+
+                translateBtn.addEventListener('click', async () => {
+                    if (!originalGeminiText) return;
+
+                    loadingTextEl.textContent = 'Translating...';
+                    geminiLoading.classList.remove('hidden');
+                    translateBtn.disabled = true;
+                    translateBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                    geminiError.classList.add('hidden');
+
+                    try {
+                        let translationPromptText;
+                        let targetTitle;
+
+                        if (!isGeminiTextTranslated) { // Currently English, translate to Vietnamese
+                            translationPromptText = `Translate the following dock design concept to Vietnamese, maintaining the formatting and structure:\n\n${originalGeminiText}`;
+                            targetTitle = "Ý Tưởng Thiết Kế Từ KhaDock AI:";
+                        } else { // Currently Vietnamese, translate to English
+                            translationPromptText = `Translate the following dock design concept to English, maintaining the formatting and structure:\n\n${formatGeminiResponseText(originalGeminiText)}`; // Translate the already formatted (but potentially originally VI) text
+                            targetTitle = "KhaDock AI Design Concept:";
+                        }
+                        
+                        const payload = { contents: [{ role: "user", parts: [{ text: translationPromptText }] }] };
+                        const apiKey = ""; // API key
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                        
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        const result = await response.json();
+
+                        if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                            let translatedText = result.candidates[0].content.parts[0].text;
+                            translatedText = formatGeminiResponseText(translatedText);
+                            
+                            geminiOutput.innerHTML = `<h4 class="font-semibold text-lg mb-3 text-sky-700">${targetTitle}</h4><div class="prose prose-sm sm:prose-base max-w-none">${translatedText}</div>`;
+                            isGeminiTextTranslated = !isGeminiTextTranslated; // Toggle translation state
+                            translateBtn.innerHTML = isGeminiTextTranslated ? '<i class="fas fa-language mr-2"></i> Show English' : '<i class="fas fa-language mr-2"></i> Translate to Vietnamese';
+                        } else {
+                            geminiError.textContent = 'Could not translate the text. Please try again.';
+                            geminiError.classList.remove('hidden');
+                        }
+                    } catch (error) {
+                        geminiError.textContent = `Translation error: ${error.message}. Please check the console.`;
+                        geminiError.classList.remove('hidden');
+                        console.error('Error during translation:', error);
+                    } finally {
+                        geminiLoading.classList.add('hidden');
+                        translateBtn.disabled = false;
+                        translateBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    }
+                });
+            } else {
+                console.warn("One or more AI Assistant components not found on the page.");
+            }
+        });
+    </script>
+</body>
+</html>
