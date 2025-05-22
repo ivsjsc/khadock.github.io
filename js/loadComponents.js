@@ -11,6 +11,13 @@ class ComponentLoader {
         }
     }
 
+    static async loadBodyComponents() {
+        await Promise.all([
+            this.loadComponent('header-placeholder', 'components/header.html'),
+            this.loadComponent('footer-placeholder', 'components/footer.html')
+        ]);
+    }
+
     static async loadComponent(elementId, path) {
         const element = document.getElementById(elementId);
         if (!element) {

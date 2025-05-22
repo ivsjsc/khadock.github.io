@@ -45,8 +45,8 @@ class App {
         });
 
         // Error handling
-        window.addEventListener('error', this.handleError.bind(this));
-        window.addEventListener('unhandledrejection', this.handlePromiseError.bind(this));
+        window.addEventListener('error', (event) => this.handleError(event));
+        window.addEventListener('unhandledrejection', (event) => this.handlePromiseError(event));
     }
 
     static initializeModules() {
