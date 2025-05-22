@@ -22,6 +22,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preload" href="images/logo/logoicon.png" as="image">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
+    <link rel="preload" as="image" href="images/pages/DockDesign.jpg">
+    <link rel="preload" as="image" href="images/logo/logoicon.png">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/logo/logoicon.png">
@@ -46,7 +48,7 @@
 
     <div id="header-placeholder"></div>
 
-    <main>
+    <main id="main-content-area" class="min-h-screen">
         <section class="banner-bg text-white py-20 md:py-28" data-aos="fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center bg-black bg-opacity-60 p-8 md:p-10 rounded-lg">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Comprehensive Dock Services</h1>
@@ -247,59 +249,12 @@
         <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
             <i class="fas fa-arrow-up"></i>
         </button>
-
-        <div id="footer-placeholder"></div>
     </main>
 
-    <script src="js/loadComponents.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS with custom settings
-            AOS.init({
-                duration: 800,
-                offset: 100,
-                once: true,
-                easing: 'ease-out-quad',
-            });
+    <div id="footer-placeholder"></div>
 
-            // Lazy load images
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            if ('loading' in HTMLImageElement.prototype) {
-                images.forEach(img => {
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                    }
-                });
-            } else {
-                // Fallback for browsers that don't support lazy loading
-                const script = document.createElement('script');
-                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-                document.body.appendChild(script);
-            }
-
-            // Add error handling for images
-            const allImages = document.querySelectorAll('img');
-            allImages.forEach(img => {
-                img.onerror = function() {
-                    console.warn(`Failed to load image: ${img.src}`);
-                    img.src = 'images/fallback.jpg'; // Add a fallback image
-                };
-            });
-
-            // Add error handling for background images
-            const handleBackgroundError = () => {
-                const element = document.querySelector('.banner-bg');
-                if (element) {
-                    element.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("images/fallback.jpg")';
-                }
-            };
-
-            // Test background image loading
-            const testImage = new Image();
-            testImage.onerror = handleBackgroundError;
-            testImage.src = 'images/pages/DockDesign.jpg';
-        });
-    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="js/loadComponents.js" type="module" defer></script>
+    <script src="js/services.js" type="module" defer></script>
 </body>
 </html>

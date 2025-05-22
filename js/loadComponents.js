@@ -1,51 +1,24 @@
-document.addEventListener('DOMContentLoaded', function() {
-    function loadHTMLComponent(componentPath, placeholderId, callback) {
-        const componentURL = new URL(componentPath, window.location.href).href;
+document.addEventListener('DOMContentLoaded', async function() {
+    try {
+        // Load header
+        const headerResponse = await fetch('components/header.html');
+        if (!headerResponse.ok) throw new Error('Failed to load header');
+        const headerContent = await headerResponse.text();
+        document.getElementById('header-placeholder').innerHTML = headerContent;
 
-        fetch(componentURL)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Failed to load ${componentURL}. Status: ${response.status} ${response.statusText}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                const placeholder = document.getElementById(placeholderId);
-                if (placeholder) {
-                    if (placeholder.parentNode) {
-                        placeholder.outerHTML = data; 
-                        if (callback) {
-                           requestAnimationFrame(callback);
-                        }
-                    } else {
-                        console.error(`[LoadComponents] Parent node of placeholder '${placeholderId}' not found.`);
-                    }
-                } else {
-                    console.error(`[LoadComponents] Placeholder element with ID '${placeholderId}' not found.`);
-                }
-            })
-            .catch(error => {
-                console.error(`[LoadComponents] Error loading component ${componentPath}:`, error);
-                const placeholder = document.getElementById(placeholderId);
-                if(placeholder) {
-                    placeholder.innerHTML = `<div style="color:red; background-color: #ffebee; border: 1px solid red; padding: 10px; border-radius: 5px; text-align: center;">Error loading ${componentPath}. Please check the file path and ensure it's accessible.</div>`;
-                }
-            });
+        // Load footer
+        const footerResponse = await fetch('components/footer.html');
+        if (!footerResponse.ok) throw new Error('Failed to load footer');
+        const footerContent = await footerResponse.text();
+        document.getElementById('footer-placeholder').innerHTML = footerContent;
+
+        // Initialize active nav state
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('services.html')) {
+            document.querySelector('nav a[href*="services"]')?.classList.add('active');
+        }
+
+    } catch (error) {
+        console.error('Error loading components:', error);
     }
-
-    loadHTMLComponent('header.html', 'header-placeholder', () => {
-        if (typeof initializeHeaderLogic === 'function') {
-            initializeHeaderLogic(); 
-        } else {
-            console.error("[LoadComponents] 'initializeHeaderLogic' function is not defined.");
-        }
-    });
-
-    loadHTMLComponent('footer.html', 'footer-placeholder', () => {
-        if (typeof initializeFooterLogic === 'function') {
-            initializeFooterLogic(); 
-        } else {
-            console.error("[LoadComponents] 'initializeFooterLogic' function is not defined.");
-        }
-    });
 });
