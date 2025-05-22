@@ -2,101 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)">
-    
-    <!-- SEO -->
+
+    <!-- SEO Meta Tags -->
     <title>KhaDock - Florida's Premier Boat Dock Solutions</title>
     <meta name="description" content="KhaDock - Florida's Premier Boat Dock Solutions. Custom dock design, construction and maintenance services.">
-    <meta property="og:title" content="Kha Boat Dock - Florida's Premier Dock Solutions">
-    <meta property="og:description" content="Offering expert design, construction, and remodeling services for boat docks, piers, and lifts across Florida. Quality craftsmanship guaranteed.">
-    <meta property="og:image" content="images/logo/logo.jpg">
-    <meta property="og:url" content="https://KhaDock.com/index.html">
+    <meta name="keywords" content="boat docks, dock design, dock construction, dock repair, dock remodeling, Florida docks">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions">
+    <meta property="og:description" content="Expert dock design, construction and maintenance services in Florida.">
+    <meta property="og:image" content="images/logo/logoicon.png">
+    <meta property="og:url" content="https://khadock.com">
     <meta property="og:type" content="website">
 
-    <!-- Responsive image support -->
-    <link rel="preload" as="image" href="images/logo/logoicon.png" media="(min-width: 768px)">
-    <link rel="preload" as="image" href="images/logo/logoicon.png" media="(max-width: 767px)">
-    <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
-    
-    <!-- Styles -->
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="images/logo/logoicon.png" as="image" fetchpriority="high">
+    <link rel="preload" href="fonts/Inter-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Favicon -->
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="images/logo/logoicon.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Tailwind CSS Configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              sky: {
-                50: '#f0f9ff',
-                500: '#0EA5E9',
-                600: '#0284C7',
-                700: '#0369A1'
-              }
-            },
-            boxShadow: {
-              'strong': '0 4px 12px rgba(0, 0, 0, 0.15)'
-            },
-            textShadow: {
-              'strong': '2px 2px 4px rgba(0, 0, 0, 0.5)'
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sky: {
+                            50: '#f0f9ff',
+                            500: '#0EA5E9',
+                            600: '#0284C7',
+                            700: '#0369A1'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
             }
-          }
-        },
-        plugins: [
-          // Add custom plugins here
-        ]
-      }
+        }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Inline Styles for Performance -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
-        }
-        .hero-image-fullwidth-container {
-            width: 100%;
-            overflow: hidden;
-        }
-        .hero-image-fullwidth-container img,
-        .hero-image-fullwidth-container picture img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        .album-image {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .album-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-        #gemini-output h3 {
-            font-size: 1.25rem; 
-            font-weight: 600; 
-            color: #1e3a8a; 
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        #gemini-output ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        #gemini-output li {
-            margin-bottom: 0.25rem;
-        }
-        #gemini-output p {
-            margin-bottom: 0.75rem;
-            line-height: 1.625; 
         }
         @media (prefers-reduced-motion: reduce) {
             * {
@@ -109,175 +69,49 @@
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
-    <!-- App Shell -->
+
+    <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
+
+    <!-- Main Content Area -->
     <main id="main-content-area" class="min-h-screen">
-
-        <section class="hero-bg text-white min-h-[70vh] md:min-h-[80vh] flex items-center justify-center py-20 md:py-32" data-aos="fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight" data-aos="fade-down" data-aos-delay="200">
-                    Building Florida's Finest Waterfront Experiences
-                </h1>
-                <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                    Kha Boat Dock specializes in custom dock design, robust construction, and expert remodeling. Your vision, our craftsmanship.
-                </p>
-                <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4" data-aos="fade-up" data-aos-delay="600">
-                    <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-lg shadow-md transition duration-300 transform hover:scale-105">
-                        View Our Portfolio
-                    </a>
-                    <a href="contactus.html" class="w-full sm:w-auto inline-block bg-transparent hover:bg-sky-500 text-white font-semibold hover:text-white py-3 px-8 border-2 border-sky-500 hover:border-transparent rounded-lg text-lg shadow-md transition duration-300 transform hover:scale-105">
-                        Get a Free Estimate
-                    </a>
-                </div>
+        <section class="hero-section bg-sky-500 text-white py-20">
+            <div class="container mx-auto text-center">
+                <h1 class="text-4xl font-bold mb-4">Welcome to KhaDock</h1>
+                <p class="text-lg">Your premier boat dock solution in Florida.</p>
+                <a href="services.html" class="inline-block bg-white text-sky-500 py-2 px-6 rounded-full mt-8 font-semibold hover:bg-sky-100">Explore Our Services</a>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-slate-50" id="services-overview" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Core Services</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        From concept to completion, we provide a full range of dock and marine construction services.
-                    </p>
-                </div>
+        <section class="services-overview py-16">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="service-card bg-white p-8 rounded-xl shadow-lg text-center transition duration-300" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="text-sky-500 mb-6">
-                            <i class="fas fa-drafting-compass fa-3x"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-3">Custom Dock Design & Remodeling</h3>
-                        <p class="text-slate-600 text-sm mb-4">
-                            Tailored designs and expert remodeling to perfectly suit your waterfront property and lifestyle.
-                        </p>
-                        <a href="services.html#design" class="text-sky-500 hover:text-sky-600 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
+                    <div class="service-card bg-white shadow-md rounded-lg p-6">
+                        <h3 class="text-xl font-semibold mb-2">Dock Design</h3>
+                        <p>Custom dock designs tailored to your needs.</p>
+                        <a href="design.html" class="text-sky-500 hover:text-sky-700">Learn More</a>
                     </div>
-                    <div class="service-card bg-white p-8 rounded-xl shadow-lg text-center transition duration-300" data-aos="zoom-in-up" data-aos-delay="200">
-                        <div class="text-sky-500 mb-6">
-                            <i class="fas fa-hard-hat fa-3x"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-3">New Dock Construction</h3>
-                        <p class="text-slate-600 text-sm mb-4">
-                            Built with the highest quality materials and craftsmanship for lasting durability and safety.
-                        </p>
-                        <a href="services.html#construction" class="text-sky-500 hover:text-sky-600 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
+                    <div class="service-card bg-white shadow-md rounded-lg p-6">
+                        <h3 class="text-xl font-semibold mb-2">Dock Construction</h3>
+                        <p>Expert construction for durable and safe docks.</p>
+                        <a href="construction.html" class="text-sky-500 hover:text-sky-700">Learn More</a>
                     </div>
-                    <div class="service-card bg-white p-8 rounded-xl shadow-lg text-center transition duration-300" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="text-sky-500 mb-6">
-                            <i class="fas fa-anchor fa-3x"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-3">Boat Lifts & Accessories</h3>
-                        <p class="text-slate-600 text-sm mb-4">
-                            Professional installation of boat lifts and a wide range of dock accessories to enhance functionality.
-                        </p>
-                        <a href="services.html#lifts" class="text-sky-500 hover:text-sky-600 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
-                    </div>
-                </div>
-                 <div class="text-center mt-12">
-                    <a href="services.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
-                        Explore All Our Services
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose Kha Boat Dock?</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        We are committed to delivering superior quality, exceptional service, and lasting value to every client.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-right" data-aos-delay="100">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-medal fa-2x text-sky-500 mr-3"></i>
-                            <h3 class="text-xl font-semibold text-slate-700">Florida Marine Expertise</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm">
-                            Deep understanding of Florida's unique coastal conditions, permitting, and building codes.
-                        </p>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-gem fa-2x text-sky-500 mr-3"></i>
-                            <h3 class="text-xl font-semibold text-slate-700">Premium Quality Materials</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm">
-                            We use only the best marine-grade materials to ensure longevity and resilience against the elements.
-                        </p>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-left" data-aos-delay="300">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-handshake fa-2x text-sky-500 mr-3"></i>
-                            <h3 class="text-xl font-semibold text-slate-700">Customer-Focused Approach</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm">
-                            Your satisfaction is our priority. We work closely with you from start to finish.
-                        </p>
+                    <div class="service-card bg-white shadow-md rounded-lg p-6">
+                        <h3 class="text-xl font-semibold mb-2">Dock Repair</h3>
+                        <p>Reliable repair services to keep your dock in top condition.</p>
+                        <a href="repair.html" class="text-sky-500 hover:text-sky-700">Learn More</a>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">See Our Craftsmanship</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        A showcase of our dedication to quality and attention to detail in every project.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="https://placehold.co/600x400/0EA5E9/FFFFFF?text=Custom+Dock+Build" alt="Custom Dock Build Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white text-xl font-semibold">Residential Dock - Miami Beach</h3>
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="https://placehold.co/600x400/38BDF8/FFFFFF?text=Commercial+Pier+Construction" alt="Commercial Pier Construction Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white text-xl font-semibold">Marina Pier - Fort Lauderdale</h3>
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="https://placehold.co/600x400/7DD3FC/FFFFFF?text=Dock+Remodel+Project" alt="Dock Remodel Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white text-xl font-semibold">Waterfront Remodel - Palm Beach</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-12">
-                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
-                        View Full Portfolio
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 md:py-24 bg-sky-600 text-white" data-aos="zoom-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Waterfront Project?</h2>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                    Let's discuss your vision. Contact Kha Boat Dock today for a personalized consultation and free estimate.
-                </p>
-                <a href="contactus.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
-                    Schedule Your Consultation
-                </a>
-            </div>
-        </section>
-
     </main>
+
+    <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="js/config.js" type="module"></script>
-    <script src="js/app.js" type="module"></script>
-    <script src="js/loadComponents.js" defer></script>
-    <script src="js/gemini.js" defer></script>
-    <script src="js/imageHandler.js" defer></script>
-    <script src="js/performance.js" defer></script>
+    <script src="js/loadComponents.js" type="module" defer></script>
+    <script src="js/app.js" type="module" defer></script>
 </body>
 </html>
