@@ -76,7 +76,15 @@
                         </a>
                     </div>
                     <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
-                        <img src="images/pages/DockDesign.jpeg" alt="Professional custom dock design by KhaDock" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]">
+                        <img 
+                            src="images/pages/DockDesign.jpeg" 
+                            alt="Professional custom dock design by KhaDock" 
+                            class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]"
+                            loading="lazy"
+                            decoding="async"
+                            width="800"
+                            height="600"
+                        >
                     </div>
                 </article>
 
@@ -117,9 +125,8 @@
                             <li>Structural repairs, replacement of damaged decking and pilings.</li>
                             <li>Maintenance of electrical and water systems at the dock.</li>
                             <li>Cleaning, removal of algae, barnacles.</li>
-                            <li>Upgrading and renovating existing docks.</li>
                         </ul>
-                        <a href="contact.html?service=repair" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
+                        <a href="contact.html?service=maintenance" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
                             Schedule Maintenance
                         </a>
                     </div>
@@ -147,7 +154,6 @@
                         </a>
                     </div>
                 </article>
-                
             </div>
         </section>
 
@@ -155,37 +161,47 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <article id="ai-designer" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="100">
-                        <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Innovation</span>
+                        <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Innovation by IVS Celestech</span>
                         <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">KhaDock's AI Designer</h3>
                         <p class="text-slate-600 leading-relaxed mb-4">
-                            Experience the future of dock design with our innovative AI Designer, powered by IVS Celestech technology. This cutting-edge tool combines artificial intelligence with marine engineering expertise to revolutionize your dock planning process.
+                            Experience the future of dock design with our state-of-the-art AI Designer. Developed in partnership with IVS Celestech, this innovative tool combines artificial intelligence with marine engineering expertise to revolutionize your dock planning process.
                         </p>
                         <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
-                            <li>Instant conceptual designs based on your requirements</li>
-                            <li>Smart material recommendations for Florida's climate</li>
-                            <li>Real-time visualization of design options</li>
-                            <li>Cost-effective solutions tailored to your budget</li>
-                            <li>Integration with our professional design services</li>
+                            <li>Generate instant conceptual designs tailored to your needs</li>
+                            <li>Receive smart material recommendations for Florida's climate</li>
+                            <li>Explore real-time 3D visualization of design options</li>
+                            <li>Get cost-effective solutions within your budget</li>
+                            <li>Seamlessly integrate with our professional design services</li>
                         </ul>
-                        <a href="design.html" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
-                            Try AI Designer <i class="fas fa-robot ml-2"></i>
-                        </a>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="design.html" class="inline-flex items-center bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
+                                <i class="fas fa-robot mr-2"></i> Try AI Designer
+                            </a>
+                            <a href="contact.html?service=aidesign" class="inline-flex items-center border-2 border-sky-500 text-sky-600 hover:bg-sky-50 font-semibold py-3 px-6 rounded-lg transition duration-300">
+                                <i class="fas fa-info-circle mr-2"></i> Learn More
+                            </a>
+                        </div>
                     </div>
                     <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
-                        <div class="relative rounded-lg shadow-xl overflow-hidden">
+                        <div class="relative rounded-lg shadow-xl overflow-hidden group">
                             <img 
                                 src="images/pages/ai-designer.jpg" 
                                 alt="KhaDock's AI Designer - Smart dock design technology" 
                                 class="w-full h-auto object-cover aspect-[4/3]"
                                 loading="lazy"
+                                decoding="async"
+                                width="800"
+                                height="600"
                             >
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-sky-900/80 to-transparent p-4">
-                                <p class="text-white text-sm">Powered by IVS Celestech Technology</p>
+                            <div class="absolute inset-0 bg-gradient-to-t from-sky-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <p class="text-lg font-semibold mb-2">Powered by IVS Celestech</p>
+                                    <p class="text-sm opacity-90">Advanced AI technology for precise dock design</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </article>
-
                 <div class="mt-16 p-6 bg-white rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                         <div class="p-4">
@@ -219,16 +235,42 @@
                 </a>
             </div>
         </section>
-    </main>
 
-    <div id="footer-placeholder"></div>
-    
-    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+        <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <div id="footer-placeholder"></div>
+    </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/script.js" defer></script> 
     <script src="js/loadComponents.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS with custom settings
+            AOS.init({
+                duration: 800,
+                offset: 100,
+                once: true,
+                easing: 'ease-out-quad',
+            });
+
+            // Lazy load images
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            if ('loading' in HTMLImageElement.prototype) {
+                images.forEach(img => {
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                    }
+                });
+            } else {
+                // Fallback for browsers that don't support lazy loading
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+                document.body.appendChild(script);
+            }
+        });
+    </script>
 </body>
 </html>
