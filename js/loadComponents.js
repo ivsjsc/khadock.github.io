@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function() {
     try {
-        await Promise.all([
-            loadComponent('header-placeholder', 'components/header.html'),
-            loadComponent('footer-placeholder', 'components/footer.html')
-        ]);
+        await ComponentLoader.loadComponents();
         
         // Initialize after components are loaded
         initializeAOS();
@@ -15,19 +12,33 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
-async function loadComponent(elementId, componentPath) {
-    try {
-        const element = document.getElementById(elementId);
-        if (!element) throw new Error(`Element ${elementId} not found`);
+class ComponentLoader {
+    static async loadComponents() {
+        try {
+            await Promise.all([
+                this.loadComponent('header-placeholder', 'components/header.html'),
+                this.loadComponent('footer-placeholder', 'components/footer.html')
+            ]);
+        } catch (error) {
+            console.error('Component loading error:', error);
+            throw error;
+        }
+    }
 
-        const response = await fetch(componentPath);
-        if (!response.ok) throw new Error(`Failed to load ${componentPath}`);
+    static async loadComponent(elementId, componentPath) {
+        try {
+            const element = document.getElementById(elementId);
+            if (!element) throw new Error(`Element ${elementId} not found`);
 
-        const html = await response.text();
-        element.innerHTML = html;
+            const response = await fetch(componentPath);
+            if (!response.ok) throw new Error(`Failed to load ${componentPath}`);
 
-    } catch (error) {
-        throw new Error(`Component loading error: ${error.message}`);
+            const html = await response.text();
+            element.innerHTML = html;
+
+        } catch (error) {
+            throw new Error(`Component loading error: ${error.message}`);
+        }
     }
 }
 
