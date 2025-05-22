@@ -436,15 +436,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (!localStorage.getItem(visitedFlag) && window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+    if (!localStorage.getItem(visitedFlag) && 
+        (window.location.pathname.endsWith('index.html') || 
+         window.location.pathname === '/' || 
+         window.location.pathname === '/khadock.github.io/' || 
+         window.location.pathname === '/khadock.github.io/index.html')) {
         if (splashScreen && mainContent) {
             mainContent.style.opacity = '0'; 
             setTimeout(() => {
                 showMainContent();
-                localStorage.setItem(visitedFlag, 'true');MainContent();
+                localStorage.setItem(visitedFlag, 'true');
             }, splashDuration);
         } else {
-            if(mainContent) mainContent.style.opacity = '1';        }
+            showMainContent();
+        }
     } else {
         showMainContent();
     }
