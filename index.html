@@ -2,145 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KhaDock - Florida's Premier Boat Dock Solutions</title>
-    <meta name="description" content="KhaDock specializes in custom boat dock design, robust construction, professional remodeling, and boat lift installations across Florida. Your trusted marine construction partner.">
-    <meta name="keywords" content="boat docks Florida, dock design, dock construction, dock repair, dock remodeling, boat lifts, marine construction Florida, KhaDock">
+    <meta name="description" content="KhaDock - Florida's Premier Boat Dock Solutions. Custom dock design, construction and maintenance services.">
+    <meta property="og:title" content="Kha Boat Dock - Florida's Premier Dock Solutions">
+    <meta property="og:description" content="Offering expert design, construction, and remodeling services for boat docks, piers, and lifts across Florida. Quality craftsmanship guaranteed.">
+    <meta property="og:image" content="images/logo/logo.jpg">
+    <meta property="og:url" content="https://KhaDock.com/index.html">
+    <meta property="og:type" content="website">
 
-    <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions">
-    <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Building your waterfront dreams.">
-    <meta property="og:image" content="images/logo/logoicon.png"> <meta property="og:url" content="https://khadock.com"> <meta property="og:type" content="website">
-    <meta property="og:site_name" content="KhaDock">
-
-    <link rel="preload" href="images/logo/logoicon.png" as="image" fetchpriority="high"> <link rel="preload" href="fonts/Inter-VariableFont.woff2" as="font" type="font/woff2" crossorigin> <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
-    <link rel="preload" href="css/styles.css" as="style">
-
-
-    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> <link rel="apple-touch-icon" href="images/logo/logoicon.png"> <link rel="manifest" href="manifest.json"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"> <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sky: { // Your existing sky palette
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0EA5E9',
-                            600: '#0284C7',
-                            700: '#0369A1',
-                            800: '#075985',
-                            900: '#0c4a6e'
-                        },
-                        slate: { // Added slate palette for consistency
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a'
-                        }
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         body {
-            font-family: 'inter', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
         }
-        .hero-section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/0c4a6e/93c5fd?text=KhaDock+Waterfront+Excellence'); /* Placeholder Hero Image */
-            background-size: cover;
-            background-position: center;
-            min-height: 75vh; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .hero-image-fullwidth-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        .hero-image-fullwidth-container img,
+        .hero-image-fullwidth-container picture img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        /* Basic styles for dropdown if not handled by Tailwind in header_component.html */
-        /* These might be needed if your header_component.html relies on them */
-        .dropdown .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #1e293b; /* slate-800 */
-            z-index: 50;
-            min-width: 220px;
-            border-radius: 0.375rem; /* rounded-md */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            margin-top: 0.5rem; /* mt-2 */
+        .album-image {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { 
-            display: block;
+        .album-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
-        .dropdown-menu a {
-            padding: 0.75rem 1rem; 
-            display: block;
-            color: #cbd5e1; /* slate-300 */
+        #gemini-output h3 {
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            color: #1e3a8a; 
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
         }
-        .dropdown-menu a:hover {
-            background-color: #334155; /* slate-700 */
-            color: #f1f5f9; /* slate-100 */
+        #gemini-output ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
         }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
+        #gemini-output li {
+            margin-bottom: 0.25rem;
+        }
+        #gemini-output p {
+            margin-bottom: 0.75rem;
+            line-height: 1.625; 
         }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 antialiased font-inter">
+<body class="bg-slate-100 text-slate-800 antialiased">
 
-    <div id="header-placeholder">
-        <div class="bg-slate-800 text-slate-200 py-6 text-center"> <p class="text-lg">Loading Navigation...</p>
-        </div>
-    </div>
+    <div id="header-placeholder"></div>
 
-    <main id="main-content-area">
-        <section class="hero-section text-white py-20" data-aos="fade-in">
-            <div class="container mx-auto text-center px-4">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight" data-aos="fade-down" data-aos-delay="200">
-                    Florida's Premier Boat Dock & Marine Solutions
+    <main id="main-content-area" class="min-h-screen">
+        <section class="flex flex-col" data-aos="fade-in">
+            <div class="hero-image-fullwidth-container w-full max-h-[600px] overflow-hidden" data-aos="fade-down" data-aos-delay="50">
+                <picture>
+                    <source srcset="images/logo/logo.jpg" type="image/jpg">
+                    <source srcset="images/logo/logo.jpg" type="image/jpeg">
+                    <img 
+                        src="images/logo/logo.jpg" 
+                        alt="KhaDock - Florida's Premier Boat Dock Solutions"
+                        class="shadow-lg w-full h-auto object-cover" 
+                        loading="eager" 
+                        width="1920" 
+                        height="1080"
+                    >
+                </picture>
+            </div>
+        </section>
+
+        <section 
+            class="relative min-h-[600px] md:h-[70vh] flex items-center justify-center text-center bg-cover bg-center bg-[url('images/albums/dock15.jpg')] bg-blend-multiply bg-black/60" 
+            data-aos="fade-down" 
+            data-aos-delay="50"
+        >
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-white z-10 py-16">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-shadow-strong" data-aos="fade-down" data-aos-delay="100">
+                    KhaDock.com
                 </h1>
-                <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                    KhaDock delivers exceptional craftsmanship in custom dock design, durable construction, and expert remodeling. Your waterfront vision, expertly built.
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-shadow-strong" data-aos="fade-down" data-aos-delay="200">
+                    IN FLORIDA
+                </h2>
+                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-200 text-shadow" data-aos="fade-up" data-aos-delay="400">
+                    Building Finest Boat Dock Experiences
                 </p>
-                <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:space-x-4" data-aos="fade-up" data-aos-delay="600">
-                    <a href="projects.html" class="w-full sm:w-auto inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-lg shadow-md transition duration-300 transform hover:scale-105">
-                        View Our Portfolio
-                    </a>
-                    <a href="contactus.html" class="w-full sm:w-auto inline-block bg-transparent hover:bg-sky-500 text-white font-semibold hover:text-white py-3 px-8 border-2 border-sky-500 hover:border-transparent rounded-lg text-lg shadow-md transition duration-300 transform hover:scale-105">
-                        Get a Free Estimate
-                    </a>
-                </div>
             </div>
         </section>
 
@@ -148,45 +110,51 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Core Services</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        From concept to completion, we provide a full range of dock and marine construction services.
+                    <p class="text-base md:text-lg text-slate-600 max-w-xl mx-auto">
+                        From concept to completion, we provide a full range of dock and marine construction services tailored to your needs.
                     </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="service-card bg-white p-8 rounded-xl shadow-lg text-center transition duration-300" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="text-sky-500 mb-6">
+                <div class="grid gap-8 md:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="text-sky-500 mb-5 md:mb-6">
                             <i class="fas fa-drafting-compass fa-3x"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-3">Custom Dock Design & Remodeling</h3>
-                        <p class="text-slate-600 text-sm mb-4">
-                            Tailored designs and expert remodeling to perfectly suit your waterfront property and lifestyle.
+                        <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Custom Dock Design & Remodeling</h3>
+                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
+                            Tailored designs and expert remodeling to perfectly suit your waterfront property and lifestyle, enhancing both beauty and functionality.
                         </p>
-                        <a href="services.html#design" class="text-sky-500 hover:text-sky-700 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
+                        <a href="services.html#design" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">
+                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
-                    <div class="service-card bg-white p-8 rounded-xl shadow-lg text-center transition duration-300" data-aos="zoom-in-up" data-aos-delay="200">
-                        <div class="text-sky-500 mb-6">
-                            <i class="fas fa-hard-hat fa-3x"></i>
+                    <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="text-sky-500 mb-5 md:mb-6">
+                            <i class="fas fa-tools fa-3x"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-3">New Dock Construction</h3>
-                        <p class="text-slate-600 text-sm mb-4">
-                            Built with the highest quality materials and craftsmanship for lasting durability and safety.
+                        <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Repair & Maintenance</h3>
+                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
+                            Comprehensive repair and maintenance to keep your dock in top condition, ensuring safety and extending its lifespan.
                         </p>
-                        <a href="services.html#construction" class="text-sky-500 hover:text-sky-700 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
+                        <a href="services.html#repair" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">
+                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
-                    <div class="service-card bg-white p-8 rounded-xl shadow-lg text-center transition duration-300" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="text-sky-500 mb-6">
+                    <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="text-sky-500 mb-5 md:mb-6">
                             <i class="fas fa-anchor fa-3x"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-3">Boat Lifts & Accessories</h3>
-                        <p class="text-slate-600 text-sm mb-4">
-                            Professional installation of boat lifts and a wide range of dock accessories to enhance functionality.
+                        <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Dock Upgrades & Accessories</h3>
+                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
+                            Upgrade materials, add new amenities like boat lifts or lighting, and enhance your dock for better functionality and style.
                         </p>
-                        <a href="services.html#lifts" class="text-sky-500 hover:text-sky-700 font-medium">Learn More <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
+                        <a href="services.html#upgrades" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">
+                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
-                 <div class="text-center mt-12">
-                    <a href="services.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
-                        Explore All Our Services
+                <div class="text-center mt-12 md:mt-16">
+                    <a href="services.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">
+                        Explore All Services
                     </a>
                 </div>
             </div>
@@ -197,99 +165,354 @@
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose KhaDock?</h2>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        We are committed to delivering superior quality, exceptional service, and lasting value to every client.
+                        We are committed to delivering superior quality, exceptional service, and lasting value to every client in Florida.
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-right" data-aos-delay="100">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-medal fa-2x text-sky-500 mr-3"></i>
+                    <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-right" data-aos-delay="100">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-medal fa-2x text-sky-500 mr-4"></i>
                             <h3 class="text-xl font-semibold text-slate-700">Florida Marine Expertise</h3>
                         </div>
-                        <p class="text-slate-600 text-sm">
-                            Deep understanding of Florida's unique coastal conditions, permitting, and building codes.
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Deep understanding of Florida's unique coastal conditions, permitting processes, and stringent building codes.
                         </p>
                     </div>
-                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-gem fa-2x text-sky-500 mr-3"></i>
+                    <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-gem fa-2x text-sky-500 mr-4"></i>
                             <h3 class="text-xl font-semibold text-slate-700">Premium Quality Materials</h3>
                         </div>
-                        <p class="text-slate-600 text-sm">
-                            We use only the best marine-grade materials to ensure longevity and resilience against the elements.
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            We use only the best marine-grade lumber, composite decking, and hardware to ensure longevity and resilience.
                         </p>
                     </div>
-                    <div class="p-6 bg-slate-50 rounded-lg" data-aos="fade-left" data-aos-delay="300">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-handshake fa-2x text-sky-500 mr-3"></i>
+                    <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-left" data-aos-delay="300">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-handshake-angle fa-2x text-sky-500 mr-4"></i>
                             <h3 class="text-xl font-semibold text-slate-700">Customer-Focused Approach</h3>
                         </div>
-                        <p class="text-slate-600 text-sm">
-                            Your satisfaction is our priority. We work closely with you from start to finish, ensuring your vision is realized.
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Your satisfaction is our priority. We collaborate closely with you from initial design to final walkthrough.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section class="py-16 md:py-24 bg-sky-50" data-aos="fade-up" id="gemini-assistant-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">✨ Smart Dock Project Assistant ✨</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                Have an idea for your dream dock? Share it with KhaDock's AI assistant! Describe your needs, preferred style, materials, or any special features you have in mind. The assistant will help outline your concept and suggest suitable services.
+                </p>
+            </div>
+            <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-xl border border-slate-200">
+                <textarea id="gemini-user-input" class="w-full p-3 sm:p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[100px] sm:min-h-[120px] text-slate-800 text-sm sm:text-base" 
+                    placeholder="Example: I want a modern dock with a covered lounge area...">
+                </textarea>
+                
+                <div class="flex flex-wrap gap-4 items-center">
+                    <button id="gemini-submit-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base">
+                        <i class="fas fa-lightbulb mr-2 sm:mr-3"></i> Generate Idea
+                    </button>
+                    
+                    <button id="translate-btn" class="hidden bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 inline-flex items-center justify-center text-sm sm:text-base">
+                        <i class="fas fa-language mr-2"></i> Translate to Vietnamese
+                    </button>
+                </div>
+
+                <div id="gemini-loading" class="mt-6 text-sky-600 hidden">
+                    <i class="fas fa-spinner fa-spin mr-2"></i> <span id="loading-text">Generating your idea...</span>
+                </div>
+
+                <div id="gemini-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden"></div>
+                <div id="gemini-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none"></div>
+            </div>
+            </div>
+        </section>
         <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">See Our Craftsmanship</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Project Showcase</h2>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        A showcase of our dedication to quality and attention to detail in every project.
+                        A glimpse into the quality and diversity of boat docks, piers, and marine structures we've crafted.
                     </p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="https://placehold.co/600x400/0EA5E9/FFFFFF?text=Custom+Dock+Build" alt="Custom Dock Build Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white text-xl font-semibold">Residential Dock - Miami Beach</h3>
-                        </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="images/albums/dock1.jpg" alt="KhaDock Project Album Image 1 - Custom Dock" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="https://placehold.co/600x400/38BDF8/FFFFFF?text=Commercial+Pier+Construction" alt="Commercial Pier Construction Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white text-xl font-semibold">Marina Pier - Fort Lauderdale</h3>
-                        </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="150">
+                        <img src="images/albums/dock2.jpg" alt="KhaDock Project Album Image 2 - Boat Lift" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
-                    <div class="group relative overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="https://placehold.co/600x400/7DD3FC/FFFFFF?text=Dock+Remodel+Project" alt="Dock Remodel Project" class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="text-white text-xl font-semibold">Waterfront Remodel - Palm Beach</h3>
-                        </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="images/albums/dock3.jpg" alt="KhaDock Project Album Image 3 - Dock Remodel" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250">
+                        <img src="images/albums/dock4.jpg" alt="KhaDock Project Album Image 4 - Dock Repair" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="images/albums/dock5.jpg" alt="KhaDock Project Album Image 5 - New Construction" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="350">
+                        <img src="images/albums/dock6.jpg" alt="KhaDock Project Album Image 6 - Waterfront View" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="images/albums/dock7.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
+                        <img src="images/albums/dock8.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="images/albums/dock9.jpg" alt="KhaDock Project Album Image 9" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
+                        <img src="images/albums/dock10.jpg" alt="KhaDock Project Album Image 10" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
+                        <img src="images/albums/dock11.jpg" alt="KhaDock Project Album Image 11" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="images/albums/dock12.jpg" alt="KhaDock Project Album Image 12" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
+                        <img src="images/albums/dock13.jpg" alt="KhaDock Project Album Image 13" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="images/albums/dock14.jpg" alt="KhaDock Project Album Image 14" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
+                        <img src="images/albums/dock15.jpg" alt="KhaDock Project Album Image 15" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
+                        <img src="images/albums/dock16.jpg" alt="KhaDock Project Album Image 16" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="images/albums/dock17.jpg" alt="KhaDock Project Album Image 17" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
+                        <img src="images/albums/dock18.jpg" alt="KhaDock Project Album Image 18" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
+                        <img src="images/albums/dock19.jpg" alt="KhaDock Project Album Image 19" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
+                        <img src="images/pages/khadockbanner.jpeg" alt="KhaDock Banner Image" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="650">
+                        <img src="images/designs/design1.jpg" alt="KhaDock Design 1" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="700">
+                        <img src="images/designs/design2.jpg" alt="KhaDock Design 2" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="750">
+                        <img src="images/designs/design3.jpg" alt="KhaDock Design 3" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
+                    </div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="800">
+                        <img src="images/designs/design4.jpg" alt="KhaDock Design 4" class="album-image w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" width="600" height="450">
                     </div>
                 </div>
-                <div class="text-center mt-12">
-                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+                <div class="text-center mt-12 md:mt-16">
+                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">
                         View Full Portfolio
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-sky-600 text-white" data-aos="zoom-in">
+        <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="zoom-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Waterfront Project?</h2>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                    Let's discuss your vision. Contact KhaDock today for a personalized consultation and free estimate.
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-shadow-custom">Ready to Start Your Dream Dock Project?</h2>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-100">
+                    Let's discuss your vision. Contact KhaDock today for a personalized consultation and a no-obligation, free estimate.
                 </p>
-                <a href="contactus.html" class="bg-white text-sky-600 font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                <a href="contact.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
                     Schedule Your Consultation
                 </a>
             </div>
         </section>
     </main>
 
-    <div id="footer-placeholder">
-        <p class="text-center p-4 text-gray-500">Loading footer...</p> </div>
+    <div id="footer-placeholder"></div>
 
-    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
+    <button id="scrollToTopBtn" title="Go to top"
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
+                   w-14 h-14 rounded-full shadow-xl items-center justify-center
+                   focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
+                   transition-all duration-300 z-40 text-xl">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/loadComponents.js" type="module" defer></script>
-    <script src="js/app.js" type="module" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/loadComponents.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const splashScreen = document.getElementById('splash-screen'); 
+            const mainContentArea = document.getElementById('main-content-area'); 
+            const visitedFlag = 'khadockVisited';
+            const splashDuration = 2500;
+
+            function showMainContent() {
+                if (splashScreen) {
+                    splashScreen.classList.add('hidden');
+                }
+                if (mainContentArea) { 
+                    setTimeout(() => {
+                        mainContentArea.style.opacity = '1';
+                    }, 50);
+                } else { 
+                    console.error("Error: main-content-area not found for splash screen logic.");
+                }
+            }
+
+            if (!localStorage.getItem(visitedFlag) && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '/khadock.github.io/' ||  window.location.pathname === '/khadock.github.io/index.html')) {
+                 if (splashScreen && mainContentArea) {
+                    mainContentArea.style.opacity = '0';
+                    setTimeout(() => {
+                        showMainContent();
+                        localStorage.setItem(visitedFlag, 'true');
+                    }, splashDuration);
+                } else {
+                     if(mainContentArea) mainContentArea.style.opacity = '1'; 
+                }
+            } else {
+                showMainContent();
+            }
+
+            const geminiUserInput = document.getElementById('gemini-user-input');
+            const geminiSubmitBtn = document.getElementById('gemini-submit-btn');
+            const geminiLoading = document.getElementById('gemini-loading');
+            const geminiOutput = document.getElementById('gemini-output');
+            const geminiError = document.getElementById('gemini-error');
+            const translateBtn = document.getElementById('translate-btn');
+            const loadingText = document.getElementById('loading-text');
+            let originalText = '';
+            let isTranslated = false;
+
+            geminiSubmitBtn.addEventListener('click', async () => {
+                const userInput = geminiUserInput.value.trim();
+                if (!userInput) {
+                    geminiError.textContent = 'Please describe your idea or needs.';
+                    geminiError.classList.remove('hidden');
+                    geminiOutput.classList.add('hidden');
+                    translateBtn.classList.add('hidden');
+                    return;
+                }
+
+                geminiLoading.classList.remove('hidden');
+                geminiOutput.classList.add('hidden');
+                geminiError.classList.add('hidden');
+                translateBtn.classList.add('hidden');
+                geminiSubmitBtn.disabled = true;
+                geminiSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+                try {
+                    const prompt = `As a creative dock expert for KhaDock.com in Florida, provide advice and suggestions for the following request: "${userInput}". Include relevant KhaDock services and creative ideas. Structure with clear headings and bullet points.`;
+                    
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_API_KEY`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ role: "user", parts: [{ text: prompt }] }]
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                        originalText = result.candidates[0].content.parts[0].text;
+                        const formattedText = formatGeminiResponse(originalText);
+                        
+                        geminiOutput.innerHTML = `
+                            <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
+                            <div class="prose prose-sm sm:prose-base max-w-none">${formattedText}</div>
+                        `;
+                        
+                        geminiOutput.classList.remove('hidden');
+                        translateBtn.classList.remove('hidden');
+                        isTranslated = false;
+                        translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Translate to Vietnamese';
+                    }
+                } catch (error) {
+                    handleGeminiError(error);
+                } finally {
+                    geminiLoading.classList.add('hidden');
+                    geminiSubmitBtn.disabled = false;
+                    geminiSubmitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                }
+            });
+
+            translateBtn.addEventListener('click', async () => {
+                if (!originalText) return;
+
+                try {
+                    translateBtn.disabled = true;
+                    loadingText.textContent = isTranslated ? 'Showing English...' : 'Translating...';
+                    geminiLoading.classList.remove('hidden');
+
+                    if (!isTranslated) {
+                        const translationPrompt = `Translate this dock design concept to Vietnamese, maintaining the same structure and formatting:\n\n${originalText}`;
+                        
+                        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_API_KEY`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                contents: [{ role: "user", parts: [{ text: translationPrompt }] }]
+                            })
+                        });
+
+                        const result = await response.json();
+                        if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                            const translatedText = formatGeminiResponse(result.candidates[0].content.parts[0].text);
+                            
+                            geminiOutput.innerHTML = `
+                                <h4 class="font-semibold text-lg mb-3 text-sky-700">Ý Tưởng Thiết Kế KhaDock:</h4>
+                                <div class="prose prose-sm sm:prose-base max-w-none">${translatedText}</div>
+                            `;
+                            
+                            translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Show English';
+                            isTranslated = true;
+                        }
+                    } else {
+                        const formattedOriginal = formatGeminiResponse(originalText);
+                        geminiOutput.innerHTML = `
+                            <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
+                            <div class="prose prose-sm sm:prose-base max-w-none">${formattedOriginal}</div>
+                        `;
+                        translateBtn.innerHTML = '<i class="fas fa-language mr-2"></i> Translate to Vietnamese';
+                        isTranslated = false;
+                    }
+                } catch (error) {
+                    handleGeminiError(error);
+                } finally {
+                    translateBtn.disabled = false;
+                    geminiLoading.classList.add('hidden');
+                }
+            });
+
+            function formatGeminiResponse(text) {
+                return text
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                    .replace(/^\* (.*$)/gim, '<li>$1</li>')
+                    .replace(/(<li>.*?<\/li>)/gs, match => 
+                        !match.startsWith('<ul>') ? '<ul>' + match + '</ul>' : match
+                    )
+                    .replace(/<\/ul>\s*<ul>/gs, '')
+                    .replace(/\n/g, '<br>');
+            }
+
+            function handleGeminiError(error) {
+                geminiError.textContent = `An error occurred: ${error.message}`;
+                geminiError.classList.remove('hidden');
+                console.error('Gemini API Error:', error);
+            }
+        });
+    </script>
 </body>
 </html>
