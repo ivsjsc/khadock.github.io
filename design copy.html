@@ -335,6 +335,14 @@
         // - Dock Remodeling
         // - Repair & Maintenance
 
+        // Creative content for KhaDock.com Services Overview
+        // 1. Custom Dock Design: 
+        //    "Transform your waterfront dreams into reality with our bespoke dock design service. We blend innovative engineering with your unique vision, ensuring every dock is a perfect fit for your lifestyle and Florida’s environment."
+        // 2. Dock Remodeling:
+        //    "Revitalize your existing dock with modern upgrades, enhanced safety features, and stylish finishes. Our remodeling solutions breathe new life into aging structures, maximizing both beauty and functionality."
+        // 3. Repair & Maintenance:
+        //    "Protect your investment with our comprehensive repair and maintenance services. From routine inspections to expert repairs, we keep your dock safe, durable, and ready for every season."
+
         const basePrompt = {
             en: `As a creative dock design expert for KhaDock.com in Florida, generate a detailed and inspiring boat dock concept based on the following user input: "{INPUT}".
             KhaDock.com services include: Custom Dock Design, Dock Remodeling, and Repair & Maintenance.
@@ -526,7 +534,7 @@
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/^\s*-\s+(.*)/gm, '<li>$1</li>')
                 .replace(/^\s*\d+\.\s+(.*)/gm, '<li>$1</li>')
-                .replace(/(\<ul>|<\/ul>){0,1}(\<li\>.*?\<\/li\>)+(\<ul>|<\/ul>){0,1}/g, '<ul>$&</ul>')
+                .replace(/(\<ul>|<\/ul\>){0,1}(\<li\>.*?\<\/li\>)+(\<ul>|<\/ul\>){0,1}/g, '<ul>$&</ul>')
                 .replace(/\n/g, '<br>');
         }
     </script>
