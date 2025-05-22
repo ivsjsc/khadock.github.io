@@ -432,4 +432,124 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         showMainContent();
     }
+
+    // AI Design Generator
+    const generateBtn = document.getElementById('generate-design-btn');
+    const designInput = document.getElementById('design-input');
+    const loadingIndicator = document.getElementById('loading-indicator');
+    const designOutput = document.getElementById('design-output');
+    const errorMessage = document.getElementById('error-message');
+    const loadingText = document.getElementById('loading-text');
+    
+    const basePrompt = {
+        en: `As a creative dock design expert for KhaDock.com in Florida, generate a detailed and inspiring boat dock concept based on the following user input: "{INPUT}". 
+            Provide the response in well-structured English, including:
+            1. **Concept Name:** (A catchy, descriptive name)
+            2. **Overall Vision:** (1-2 sentences describing the main idea and feel)
+            3. **Key Features & Functionality:** (3-5 distinct features)
+            4. **Suggested Materials:** (2-3 primary materials)
+            5. **Aesthetic Style:** (1-2 sentences describing the look)
+            6. **Best Suited For:** (1 sentence about ideal users/property)
+            Ensure practical for Florida's environment. 150-250 words total.`
+    };
+
+    if (generateBtn && designInput) {
+        generateBtn.addEventListener('click', async () => {
+            const userInput = designInput.value.trim();
+            
+            if (!userInput) {
+                showError('Please describe your dream dock to generate an idea.');
+                return;
+            }
+
+            // Show loading state
+            showLoading(true);
+            disableButton(generateBtn);
+
+            try {
+                const prompt = basePrompt.en.replace('{INPUT}', userInput);
+                const result = await generateDesign(prompt);
+                showResult(result);
+            } catch (error) {
+                showError(`Error: ${error.message}. Please try again.`);
+                console.error('Generation Error:', error);
+            } finally {
+                showLoading(false);
+                enableButton(generateBtn);
+            }
+        });
+    }
+
+    // Helper Functions
+    async function generateDesign(prompt) {
+        const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
+        const response = await fetch(
+            'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        role: 'user',
+                        parts: [{ text: prompt }]
+                    }]
+                })
+            }
+        );
+
+        const data = await response.json();
+        if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+            throw new Error('Invalid API response');
+        }
+        
+        return data.candidates[0].content.parts[0].text;
+    }
+
+    function showResult(text) {
+        const formattedText = formatDesignText(text);
+        designOutput.innerHTML = `
+            <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
+            <div class="prose prose-sm sm:prose-base max-w-none">${formattedText}</div>
+        `;
+        designOutput.classList.remove('hidden');
+        errorMessage.classList.add('hidden');
+    }
+
+    function formatDesignText(text) {
+        return text
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/^\s*-\s+(.*)/gm, '<li>$1</li>')
+            .replace(/^\s*\d+\.\s+(.*)/gm, '<li>$1</li>')
+            .replace(/(\<ul>|<\/ul\>){0,1}(\<li\>.*?\<\/li\>)+(\<ul>|<\/ul\>){0,1}/g, '<ul>$&</ul>')
+            .replace(/\n/g, '<br>')
+            .replace(/<\/ul>\s*<ul>/g, '');
+    }
+
+    function showLoading(show) {
+        loadingIndicator.classList.toggle('hidden', !show);
+        designOutput.classList.toggle('hidden', show);
+        errorMessage.classList.add('hidden');
+        if (loadingText) {
+            loadingText.textContent = 'Generating your idea...';
+        }
+    }
+
+    function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.classList.remove('hidden');
+        designOutput.classList.add('hidden');
+    }
+
+    function disableButton(button) {
+        button.disabled = true;
+        button.classList.add('opacity-75', 'cursor-not-allowed');
+    }
+
+    function enableButton(button) {
+        button.disabled = false;
+        button.classList.remove('opacity-75', 'cursor-not-allowed');
+    }
 });

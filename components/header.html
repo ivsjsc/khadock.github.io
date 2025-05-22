@@ -1,0 +1,82 @@
+<header class="bg-slate-800 text-slate-200 shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html" class="flex items-center space-x-3 group" aria-label="KhaDock Homepage">
+                <img src="images/logo/logoicon.png" alt="KhaDock Logo" class="h-10 w-10 rounded-full group-hover:opacity-80 transition-opacity" width="40" height="40">
+                <span class="text-2xl font-bold text-sky-400 group-hover:text-sky-300 transition-colors">KhaDock.com</span>
+            </a>
+
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" id="nav-index" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md">
+                    <img src="images/logo/logoicon.png" alt="Home" class="h-6 w-6 rounded-sm" width="24" height="24">
+                    <span>Home</span>
+                </a>
+                <a href="about.html" id="nav-about" class="hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md">About Us</a>
+
+                <div class="relative dropdown group">
+                    <button id="nav-services-button" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown-menu" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center px-3 py-2 rounded-md">
+                        Services <i class="fas fa-chevron-down fa-xs ml-1.5 transform group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+                    <div id="services-dropdown-menu" class="dropdown-menu hidden group-hover:block hover:block absolute bg-slate-700 text-slate-200 mt-2 py-2 rounded-md shadow-xl z-20 min-w-[240px] transition-all duration-300 ease-out">
+                        <a href="services.html" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Services Overview</a>
+                        <a href="services.html#design" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Custom Dock Design</a>
+                        <a href="services.html#remodel" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Dock Remodeling</a>
+                        <a href="services.html#repair" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Repair & Maintenance</a>
+                    </div>
+                </div>
+
+                <a href="projects.html" id="nav-projects" class="hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md">Projects</a>
+                <a href="design.html" id="nav-design" class="hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md">Designs</a>
+                <a href="contact.html" id="nav-contact" class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2.5 rounded-md font-semibold transition-colors duration-300 shadow-sm hover:shadow-md">Contact Us</a>
+
+                <div class="relative" id="desktop-search-wrapper">
+                    <button id="desktop-search-button" aria-label="Open search bar" class="text-slate-300 hover:text-sky-400 p-2 rounded-full transition-colors">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                    <div id="desktop-search-container" class="hidden absolute right-0 mt-2 p-3 bg-slate-700 rounded-lg shadow-xl z-30 w-72">
+                        <form class="search-form flex items-center" role="search">
+                            <input type="search" id="desktop-search-input" placeholder="Search site..." class="w-full px-3 py-2 text-sm text-slate-900 bg-slate-100 rounded-l-md focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none placeholder-slate-500" aria-label="Search input">
+                            <button type="submit" aria-label="Submit search" class="bg-sky-500 text-white px-4 py-2 rounded-r-md hover:bg-sky-600 text-sm transition-colors">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button type="button" id="desktop-search-close" aria-label="Close search bar" class="absolute top-1 right-1 text-slate-400 hover:text-white p-1.5 rounded-full transition-colors">
+                                <i class="fas fa-times fa-sm"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+            <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu-panel" class="md:hidden text-slate-300 hover:text-sky-400 focus:outline-none p-2 rounded-md transition-colors" aria-label="Open main menu">
+                <span class="sr-only">Open main menu</span>
+                <i class="fas fa-bars fa-lg" id="icon-menu-open"></i>
+                <i class="fas fa-times fa-lg hidden" id="icon-menu-close"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu-panel" class="md:hidden hidden bg-slate-700/95 backdrop-blur-sm absolute w-full z-40 top-20 left-0 right-0 shadow-xl pb-4">
+       <nav class="flex flex-col space-y-1.5 px-4 py-3">
+            <a href="index.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">Home</a>
+            <a href="about.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">About Us</a>
+
+            <div>
+                <div class="px-3 py-2.5 font-semibold text-sky-400">Services</div>
+                <div id="mobile-services-submenu-items" class="pl-5 pr-3 pb-1 space-y-1">
+                    <a href="services.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Services Overview</a>
+                    <a href="services.html#design" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Custom Dock Design</a>
+                    <a href="services.html#remodel" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Dock Remodeling</a>
+                    <a href="services.html#repair" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Repair & Maintenance</a>
+                </div>
+            </div>
+
+            <a href="projects.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">Projects</a>
+            <a href="design.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">Designs</a>
+            <a href="contact.html" class="block px-3 py-2.5 rounded-md bg-sky-500 text-white hover:bg-sky-600 font-semibold text-center transition-colors shadow-sm hover:shadow-md">Contact Us</a>
+
+            <form class="search-form mt-4 px-3" role="search">
+                 <input type="search" id="mobile-search-input" placeholder="Search..." class="w-full px-4 py-2.5 text-sm text-slate-900 bg-slate-100 rounded-md focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none placeholder-slate-500" aria-label="Search input mobile">
+            </form>
+        </nav>
+    </div>
+</header>
