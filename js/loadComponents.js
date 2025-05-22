@@ -13,8 +13,8 @@ class ComponentLoader {
 
     static async loadBodyComponents() {
         await Promise.all([
-            this.loadComponent('header-placeholder', 'components/header.html'),
-            this.loadComponent('footer-placeholder', 'components/footer.html')
+            this.loadComponent('header-placeholder', 'header.html'),
+            this.loadComponent('footer-placeholder', 'footer.html')
         ]);
     }
 
