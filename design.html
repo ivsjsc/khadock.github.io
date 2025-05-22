@@ -486,8 +486,8 @@ Vui lòng cung cấp phản hồi bằng tiếng Việt có cấu trúc rõ ràn
                         }
                         
                         const payload = { contents: [{ role: "user", parts: [{ text: currentPromptText }] }] };
-                        const apiKey = ""; // Replace with your actual API key for testing, or ensure it's injected
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                        const apiKey = "AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno"; // Replace with your actual API key for testing, or ensure it's injected
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno`;
 
                         const response = await fetch(apiUrl, {
                             method: 'POST',
