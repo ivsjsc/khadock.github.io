@@ -396,22 +396,46 @@
                     geminiSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
                     try {
-                        const prompt = "You are a helpful and creative Dock Project Assistant for KhaDock.com, " +
-                            "a leading boat dock design, construction, and repair company in Florida. " +
-                            "A user is seeking support for their waterfront project. " +
-                            "Based on their input: \"" + userInput + "\", " +
-                            "please provide useful advice, suggest relevant KhaDock services " +
-                            "(Custom Dock Design & Remodeling, Repair & Maintenance, Dock Upgrades & Accessories), " +
-                            "and offer initial considerations or creative ideas for their project. " +
-                            "Keep the response concise, friendly, and focused on solutions KhaDock can provide. " +
-                            "Structure your response with clear headings or bullet points for readability. " +
-                            "Mention Florida-specific environment if relevant. " +
-                            "Respond in English only. Reply in Vietnamese only if specifically requested by the user.";
-                        
+                        // Language detection: Use English by default, only use Vietnamese if user requests it
+                        const userInputLower = userInput.toLowerCase();
+                        let prompt, lang;
+                        if (
+                            userInputLower.includes('vietnamese') ||
+                            userInputLower.includes('tiếng việt') ||
+                            userInputLower.includes('trả lời bằng tiếng việt') ||
+                            userInputLower.includes('việt hóa') ||
+                            userInputLower.includes('việt nam')
+                        ) {
+                            lang = 'vi';
+                            prompt = `Với tư cách là chuyên gia thiết kế bến thuyền sáng tạo của KhaDock.com tại Florida, hãy tạo ra một ý tưởng bến thuyền chi tiết và đầy cảm hứng dựa trên yêu cầu sau: "${userInput}".
+Các dịch vụ của KhaDock.com bao gồm: Thiết kế bến thuyền theo yêu cầu, Cải tạo bến thuyền, và Sửa chữa & Bảo trì.
+Vui lòng cung cấp phản hồi bằng tiếng Việt có cấu trúc rõ ràng, bao gồm:
+1. **Tên Ý Tưởng:** (Một tên gọi ấn tượng, mô tả)
+2. **Tầm Nhìn Tổng Thể:** (1-2 câu mô tả ý tưởng và cảm nhận chính)
+3. **Tính Năng & Chức Năng Chính:** (3-5 tính năng nổi bật)
+4. **Vật Liệu Đề Xuất:** (2-3 vật liệu chính)
+5. **Phong Cách Thẩm Mỹ:** (1-2 câu mô tả về diện mạo)
+6. **Phù Hợp Nhất Với:** (1 câu về đối tượng/khu vực lý tưởng)
+Đảm bảo phù hợp với môi trường Florida. Khoảng 150-250 từ.`;
+                        } else {
+                            lang = 'en';
+                            prompt = `As a creative dock design expert for KhaDock.com in Florida, generate a detailed and inspiring boat dock concept based on the following user input: "${userInput}".
+KhaDock.com services include: Custom Dock Design, Dock Remodeling, and Repair & Maintenance.
+Please provide the response in well-structured English, including:
+1. **Concept Name:** (A catchy, descriptive name)
+2. **Overall Vision:** (1-2 sentences describing the main idea and feel)
+3. **Key Features & Functionality:** (3-5 distinct features)
+4. **Suggested Materials:** (2-3 primary materials)
+5. **Aesthetic Style:** (1-2 sentences describing the look)
+6. **Best Suited For:** (1 sentence about ideal users/property)
+Ensure practical for Florida's environment. 150-250 words total.
+Use ENGLISH language only. Only use Vietnamese if the user specifically requests it.`;
+                        }
+
                         let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                         const payload = { contents: chatHistory };
-                        const apiKey = ""; 
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno`;
+                        const apiKey = "AIzaSyCweMMVnQeySpVY8_JX-hEkpv_GrVxgUno"; 
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                         const response = await fetch(apiUrl, {
                             method: 'POST',
