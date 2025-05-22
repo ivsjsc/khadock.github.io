@@ -2,20 +2,6 @@ let headerLogicInitialized = false;
 let searchDebounceTimer = null;
 const SEARCH_HIGHLIGHT_CLASS = 'search-highlight';
 const FOOTER_YEAR_ID = 'current-year';
-const DEBOUNCE_DELAY = 300;
-const SCROLL_THRESHOLD = 200;
-
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
 
 function initializeHeaderLogic() {
     if (headerLogicInitialized) {
@@ -156,7 +142,7 @@ function initializeHeaderLogic() {
             const query = event.target.value;
             searchDebounceTimer = setTimeout(() => {
                 if (typeof performSearch === 'function') performSearch(query);
-            }, DEBOUNCE_DELAY);
+            }, 300);
         });
         const searchForm = input.closest('form');
         if (searchForm) {
@@ -280,7 +266,7 @@ function clearSearchHighlights() {
 function performSearch(query) {
     clearSearchHighlights();
     const mainContent = document.querySelector('main');
-    if (!mainContent || !query?.trim() || query.trim().length < 2) {
+    if (!mainContent || !query || query.trim().length < 2) {
         return;
     }
     const queryLower = query.trim().toLowerCase();
@@ -342,19 +328,21 @@ function performSearch(query) {
 
 function initializeScrollToTopButton() {
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    if (!scrollToTopBtn) return;
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.classList.remove('hidden');
+                scrollToTopBtn.classList.add('flex'); 
+            } else {
+                scrollToTopBtn.classList.add('hidden');
+                scrollToTopBtn.classList.remove('flex');
+            }
+        }, { passive: true }); 
 
-    const handleScroll = debounce(() => {
-        const shouldShow = document.documentElement.scrollTop > SCROLL_THRESHOLD;
-        scrollToTopBtn.classList.toggle('hidden', !shouldShow);
-        scrollToTopBtn.classList.toggle('flex', shouldShow);
-    }, 100);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 }
 
 function initializeAOS() {
