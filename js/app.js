@@ -1,439 +1,337 @@
-// js/app.js
+document.addEventListener('DOMContentLoaded', () => {
 
-// Configuration for the application
-const config = {
-    scrollToTopThreshold: 300,
-    scrollBehavior: 'smooth',
-    aos: {
-        duration: 700,
-        offset: 80,
-        once: true,
-        easing: 'ease-out-cubic',
-        // disable: 'mobile' // Consider if truly needed, Tailwind handles responsiveness well
-    },
-    searchDebounceTime: 300, // milliseconds
-};
+    const header = document.querySelector('.nav-header');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+    const iconMenuOpen = document.getElementById('icon-menu-open');
+    const iconMenuClose = document.getElementById('icon-menu-close');
+    const desktopSearchButton = document.getElementById('desktop-search-button');
+    const desktopSearchContainer = document.getElementById('desktop-search-container');
+    const desktopSearchInput = document.getElementById('desktop-search-input');
+    const desktopSearchClose = document.getElementById('desktop-search-close');
+    const searchResults = document.getElementById('search-results');
+    const mobileSearchInput = document.getElementById('mobile-search-input');
+    const mobileSearchResults = document.getElementById('mobile-search-results');
+    const megaMenuContainer = document.querySelector('.mega-menu-container');
+    const servicesMegaMenu = document.getElementById('services-mega-menu');
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterEmail = document.getElementById('newsletter-email');
+    const newsletterMessage = document.getElementById('newsletter-message');
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
-class App {
-    static searchDebounceTimer = null;
-    static SEARCH_HIGHLIGHT_CLASS = 'search-highlight';
-
-    static init() {
-        this.setupScrollToTop();
-        this.setupImageLoadHandling();
-        this.initializeAOS();
-
-        // Functions dependent on header being loaded
-        // Listen for a custom event dispatched by loadComponents.js
-        document.addEventListener('headerLoaded', () => {
-            this.handleMobileMenu();
-            this.setActiveNavigationLink();
-            this.initializeSearch();
-            this.initializeDesktopDropdowns(); // For desktop "Services" dropdown
+    if (AOS) {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
         });
-         // Fallback if header is already loaded by the time this script runs
-        if (document.getElementById('header-placeholder')?.querySelector('header')) {
-            this.handleMobileMenu();
-            this.setActiveNavigationLink();
-            this.initializeSearch();
-            this.initializeDesktopDropdowns();
-        }
     }
 
-    static initializeAOS() {
-        if (typeof AOS !== 'undefined') {
-            AOS.init(config.aos);
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('shrink');
         } else {
-            console.warn('[AOS] AOS library not found. Animations will not work.');
+            header.classList.remove('shrink');
         }
-    }
-
-    static setupScrollToTop() {
-        const scrollBtn = document.getElementById('scrollToTopBtn');
-        if (!scrollBtn) {
-            console.warn("ScrollToTop button (scrollToTopBtn) not found.");
-            return;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > config.scrollToTopThreshold) {
-                scrollBtn.classList.remove('hidden');
-                scrollBtn.classList.add('flex');
+        if (scrollToTopBtn) {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
             } else {
-                scrollBtn.classList.add('hidden');
-                scrollBtn.classList.remove('flex');
+                scrollToTopBtn.classList.remove('show');
             }
-        }, { passive: true });
+        }
+    });
 
-        scrollBtn.addEventListener('click', () => {
+    if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
-                behavior: config.scrollBehavior
+                behavior: 'smooth'
             });
         });
     }
 
-    static setupImageLoadHandling() {
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('error', function() {
-                // Prevent infinite loop if placeholder also fails
-                if (this.src.includes('images/placeholder.jpg')) return;
-                this.src = 'images/placeholder.jpg'; // Ensure this placeholder image exists
-                this.alt = 'Image failed to load. Displaying placeholder.';
-                console.warn(`Image failed to load: ${this.dataset.originalSrc || this.src}, replaced with placeholder.`);
-            });
-            // Store original src if needed for debugging, or if you have a more complex retry logic
-            img.dataset.originalSrc = img.src;
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenuPanel.classList.toggle('hidden');
+        mobileMenuPanel.classList.toggle('-translate-x-full');
+        mobileMenuPanel.classList.toggle('translate-x-0');
+        iconMenuOpen.classList.toggle('hidden');
+        iconMenuClose.classList.toggle('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', mobileMenuPanel.classList.contains('translate-x-0'));
+    });
+
+    const mobileSubmenuToggle = document.querySelector('.mobile-submenu-toggle');
+    const mobileServicesSubmenuItems = document.getElementById('mobile-services-submenu-items');
+
+    if (mobileSubmenuToggle && mobileServicesSubmenuItems) {
+        mobileSubmenuToggle.addEventListener('click', () => {
+            const isExpanded = mobileSubmenuToggle.getAttribute('aria-expanded') === 'true';
+            mobileSubmenuToggle.setAttribute('aria-expanded', !isExpanded);
+            mobileServicesSubmenuItems.style.maxHeight = isExpanded ? null : mobileServicesSubmenuItems.scrollHeight + 'px';
+            mobileSubmenuToggle.querySelector('.mobile-submenu-icon').classList.toggle('rotate-180', !isExpanded);
         });
     }
 
-    static handleMobileMenu() {
-        const headerElement = document.getElementById('header-placeholder')?.querySelector('header');
-        if (!headerElement) {
-            console.warn("Header element not found for mobile menu setup.");
-            return;
-        }
-
-        const mobileMenuButton = headerElement.querySelector('#mobile-menu-button');
-        const mobileMenuPanel = headerElement.querySelector('#mobile-menu-panel');
-        const iconMenuOpen = headerElement.querySelector('#icon-menu-open');
-        const iconMenuClose = headerElement.querySelector('#icon-menu-close');
-
-        if (!mobileMenuButton || !mobileMenuPanel || !iconMenuOpen || !iconMenuClose) {
-            console.warn("Mobile menu toggle elements not fully found in header.");
-            return;
-        }
-
-        mobileMenuButton.addEventListener('click', () => {
-            const isPanelCurrentlyVisible = !mobileMenuPanel.classList.contains('hidden');
-            mobileMenuPanel.classList.toggle('hidden');
-            mobileMenuButton.setAttribute('aria-expanded', String(!isPanelCurrentlyVisible));
-            document.body.classList.toggle('overflow-hidden', !isPanelCurrentlyVisible);
-            iconMenuOpen.classList.toggle('hidden', !isPanelCurrentlyVisible);
-            iconMenuClose.classList.toggle('hidden', isPanelCurrentlyVisible);
-        });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) { // md breakpoint
-                if (!mobileMenuPanel.classList.contains('hidden')) {
-                    mobileMenuPanel.classList.add('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-                    document.body.classList.remove('overflow-hidden');
-                    iconMenuOpen.classList.remove('hidden');
-                    iconMenuClose.classList.add('hidden');
-                }
+    if (desktopSearchButton && desktopSearchContainer) {
+        desktopSearchButton.addEventListener('click', () => {
+            const isExpanded = desktopSearchContainer.classList.contains('hidden');
+            desktopSearchContainer.classList.toggle('hidden', !isExpanded);
+            desktopSearchButton.setAttribute('aria-expanded', isExpanded);
+            if (isExpanded) {
+                desktopSearchInput.focus();
             }
         });
 
-        // Handle mobile submenu accordions (if any, based on header.html structure)
-        const mobileSubmenuToggles = mobileMenuPanel.querySelectorAll('.mobile-submenu-toggle'); // Example class
-        mobileSubmenuToggles.forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const submenuId = this.getAttribute('aria-controls');
-                const submenu = mobileMenuPanel.querySelector(`#${submenuId}`);
-                const icon = this.querySelector('.mobile-submenu-icon'); // Example class
+        desktopSearchClose.addEventListener('click', () => {
+            desktopSearchContainer.classList.add('hidden');
+            desktopSearchButton.setAttribute('aria-expanded', 'false');
+        });
 
-                if (submenu) {
-                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                    if (isExpanded) {
-                        submenu.style.maxHeight = null;
-                        this.setAttribute('aria-expanded', 'false');
-                        if (icon) icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-                    } else {
-                        submenu.style.maxHeight = submenu.scrollHeight + "px";
-                        this.setAttribute('aria-expanded', 'true');
-                        if (icon) icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-                    }
-                }
-            });
+        document.addEventListener('click', (event) => {
+            if (!desktopSearchWrapper.contains(event.target) && !desktopSearchButton.contains(event.target)) {
+                desktopSearchContainer.classList.add('hidden');
+                desktopSearchButton.setAttribute('aria-expanded', 'false');
+            }
         });
     }
 
-    static initializeDesktopDropdowns() {
-        const headerElement = document.getElementById('header-placeholder')?.querySelector('header');
-        if (!headerElement) {
-            console.warn("Header element not found for desktop dropdown setup.");
-            return;
+    const currentPath = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        const linkPath = link.href.split('/').pop();
+        if (linkPath === currentPath || (linkPath === '' && currentPath === 'index.html')) {
+            link.classList.add('text-sky-400');
         }
-        const dropdowns = headerElement.querySelectorAll('.dropdown'); // Class from header.html
-        dropdowns.forEach(dropdown => {
-            const trigger = dropdown.querySelector('button'); // Assuming button triggers dropdown
-            const menu = dropdown.querySelector('.dropdown-menu');
+    });
 
-            if (trigger && menu) {
-                const toggle = (forceOpen) => {
-                    const isOpen = typeof forceOpen === 'boolean' ? forceOpen : menu.classList.contains('hidden');
-                    menu.classList.toggle('hidden', !isOpen);
-                    trigger.setAttribute('aria-expanded', String(isOpen));
-                    dropdown.classList.toggle('open', isOpen);
+    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+    bottomNavItems.forEach(item => {
+        const itemPath = item.href.split('/').pop();
+        if (itemPath === currentPath || (itemPath === '' && currentPath === 'index.html')) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    if (desktopSearchInput) {
+        desktopSearchInput.addEventListener('input', async () => {
+            const query = desktopSearchInput.value.trim();
+            if (query.length < 3) {
+                searchResults.innerHTML = '';
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            try {
+                const geminiApiKey = "";
+                const geminiApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`;
+
+                const prompt = `Suggest relevant search results for a website about dock construction and home renovation, based on the query: "${query}". Provide results as a simple list of page titles and short descriptions, one result per line.`;
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: prompt }] }]
                 };
 
-                trigger.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    toggle(); // Toggle on click
+                const response = await fetch(geminiApiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
                 });
 
-                dropdown.addEventListener('mouseenter', () => {
-                    if (window.innerWidth >= 768) { // md breakpoint for desktop
-                       toggle(true);
-                    }
-                });
-                dropdown.addEventListener('mouseleave', () => {
-                     if (window.innerWidth >= 768) {
-                       toggle(false);
-                    }
-                });
-                 // Close dropdown if clicked outside
-                document.addEventListener('click', (e) => {
-                    if (!dropdown.contains(e.target) && dropdown.classList.contains('open')) {
-                        toggle(false);
-                    }
-                });
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    displaySearchResults(searchResults, text);
+                } else {
+                    searchResults.innerHTML = '<p class="text-slate-400 p-2">No suggestions found.</p>';
+                    searchResults.style.display = 'block';
+                }
+
+            } catch (error) {
+                console.error('Search suggestion error:', error);
+                searchResults.innerHTML = '<p class="text-red-400 p-2">Error fetching suggestions.</p>';
+                searchResults.style.display = 'block';
             }
         });
     }
 
-
-    static setActiveNavigationLink() {
-        const headerElement = document.getElementById('header-placeholder')?.querySelector('header');
-        if (!headerElement) {
-            console.warn("Header element not found for setting active navigation link.");
-            return;
-        }
-
-        const currentPagePath = window.location.pathname;
-        const currentPageFile = (currentPagePath.split('/').pop() || "index.html").split('#')[0].split('?')[0];
-        const currentHash = window.location.hash;
-
-        const navLinks = headerElement.querySelectorAll('nav a:not(.dropdown-menu a)'); // Exclude dropdown items for now
-        const dropdownLinks = headerElement.querySelectorAll('.dropdown-menu a');
-
-        const activeClasses = ['text-sky-400', 'font-semibold']; // Tailwind classes for active link
-        const inactiveClasses = ['hover:text-sky-400', 'font-medium']; // Tailwind classes for inactive link
-
-        const cleanLink = (link) => {
-            link.classList.remove(...activeClasses);
-            // Add inactive classes only if it's not a special button (like Contact Us)
-            if (!link.classList.contains('bg-sky-500')) { // Example: Contact Us button
-                link.classList.add(...inactiveClasses);
+    if (mobileSearchInput) {
+        mobileSearchInput.addEventListener('input', async () => {
+            const query = mobileSearchInput.value.trim();
+            if (query.length < 3) {
+                mobileSearchResults.innerHTML = '';
+                mobileSearchResults.style.display = 'none';
+                return;
             }
-            // For dropdown items, remove specific active background
-            if (link.closest('.dropdown-menu')) {
-                link.classList.remove('bg-slate-600');
-            }
-        };
 
-        navLinks.forEach(cleanLink);
-        dropdownLinks.forEach(cleanLink);
+            try {
+                const geminiApiKey = "";
+                const geminiApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`;
 
-        navLinks.forEach(link => {
-            const linkHref = link.getAttribute('href');
-            if (!linkHref) return;
-            const linkFile = (linkHref.split('/').pop() || "index.html").split('#')[0].split('?')[0];
+                const prompt = `Suggest relevant search results for a website about dock construction and home renovation, based on the query: "${query}". Provide results as a simple list of page titles and short descriptions, one result per line.`;
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: prompt }] }]
+                };
 
-            if (linkFile === currentPageFile && link.id !== 'nav-services-button') { // Exclude services button itself
-                link.classList.add(...activeClasses);
-                link.classList.remove(...inactiveClasses);
-            }
-        });
+                const response = await fetch(geminiApiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
 
-        let isServicePageActiveInDropdown = false;
-        dropdownLinks.forEach(link => {
-            const linkHref = link.getAttribute('href');
-            if (!linkHref) return;
-            const linkFile = (linkHref.split('/').pop() || "index.html").split('#')[0].split('?')[0];
-            const linkHash = '#' + (linkHref.split('#')[1] || '');
-
-            if (linkFile === currentPageFile && (linkHash === currentHash || (linkHash === '#' && !currentHash))) {
-                link.classList.add(...activeClasses, 'bg-slate-600');
-                link.classList.remove(...inactiveClasses);
-                isServicePageActiveInDropdown = true;
-            }
-        });
-
-        const servicesButtonDesktop = headerElement.querySelector('#nav-services-button');
-        if (servicesButtonDesktop) {
-            if (currentPageFile === "services.html" || isServicePageActiveInDropdown) {
-                servicesButtonDesktop.classList.add(...activeClasses);
-                servicesButtonDesktop.classList.remove(...inactiveClasses);
-            } else {
-                cleanLink(servicesButtonDesktop); // Ensure it's cleaned if no service link is active
-            }
-        }
-
-        // Similar logic for mobile menu active states if structure differs significantly
-        const mobileMenuPanel = headerElement.querySelector('#mobile-menu-panel');
-        if (mobileMenuPanel) {
-            const mobileLinks = mobileMenuPanel.querySelectorAll('a');
-            mobileLinks.forEach(mlink => {
-                cleanLink(mlink); // Clean first
-                const linkHref = mlink.getAttribute('href');
-                if (!linkHref) return;
-                const linkFile = (linkHref.split('/').pop() || "index.html").split('#')[0].split('?')[0];
-                const linkHash = '#' + (linkHref.split('#')[1] || '');
-
-                if (linkFile === currentPageFile && (linkHash === currentHash || (linkHash === '#' && !currentHash))) {
-                    mlink.classList.add(...activeClasses);
-                    if (mlink.closest('#mobile-services-submenu-items')) { // Example ID for service submenu
-                        mlink.classList.add('bg-slate-600');
-                    }
-                    mlink.classList.remove(...inactiveClasses);
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    displaySearchResults(mobileSearchResults, text);
+                } else {
+                    mobileSearchResults.innerHTML = '<p class="text-slate-400 p-2">No suggestions found.</p>';
+                    mobileSearchResults.style.display = 'block';
                 }
-            });
-        }
+
+            } catch (error) {
+                console.error('Mobile search suggestion error:', error);
+                mobileSearchResults.innerHTML = '<p class="text-red-400 p-2">Error fetching suggestions.</p>';
+                mobileSearchResults.style.display = 'block';
+            }
+        });
     }
 
-    static initializeSearch() {
-        const headerElement = document.getElementById('header-placeholder')?.querySelector('header');
-        if (!headerElement) {
-            console.warn("Header element not found for search initialization.");
-            return;
-        }
-
-        const desktopSearchButton = headerElement.querySelector('#desktop-search-button');
-        const desktopSearchContainer = headerElement.querySelector('#desktop-search-container');
-        const desktopSearchInput = headerElement.querySelector('#desktop-search-input');
-        const desktopSearchClose = headerElement.querySelector('#desktop-search-close');
-        const desktopSearchWrapper = headerElement.querySelector('#desktop-search-wrapper'); // Parent of container
-
-        if (desktopSearchButton && desktopSearchContainer && desktopSearchInput && desktopSearchWrapper) {
-            desktopSearchButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                desktopSearchContainer.classList.remove('hidden');
-                desktopSearchInput.focus();
-            });
-
-            if (desktopSearchClose) {
-                desktopSearchClose.addEventListener('click', () => {
-                    desktopSearchContainer.classList.add('hidden');
-                    desktopSearchInput.value = '';
-                    this.clearSearchHighlightsOnPage();
-                });
-            }
-
-            document.addEventListener('click', (e) => {
-                if (!desktopSearchContainer.classList.contains('hidden') && !desktopSearchWrapper.contains(e.target)) {
-                    desktopSearchContainer.classList.add('hidden');
-                    desktopSearchInput.value = '';
-                    this.clearSearchHighlightsOnPage();
-                }
-            });
-
-            desktopSearchInput.addEventListener('input', (event) => this.handleSearchInput(event.target.value));
-            const desktopSearchForm = desktopSearchInput.closest('form');
-            if (desktopSearchForm) desktopSearchForm.addEventListener('submit', e => e.preventDefault());
-
+    function displaySearchResults(resultsDiv, text) {
+        const items = text.split('\n').filter(line => line.trim() !== '');
+        resultsDiv.innerHTML = '';
+        if (items.length === 0) {
+            resultsDiv.innerHTML = '<p class="text-slate-400 p-2">No suggestions found.</p>';
         } else {
-            console.warn("Desktop search elements not fully found in header.");
+            const ul = document.createElement('ul');
+            ul.className = 'space-y-1';
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'p-2 hover:bg-slate-600 rounded-md cursor-pointer';
+                li.textContent = item;
+                ul.appendChild(li);
+            });
+            resultsDiv.appendChild(ul);
         }
-
-        const mobileSearchInput = headerElement.querySelector('#mobile-search-input');
-        if (mobileSearchInput) {
-            mobileSearchInput.addEventListener('input', (event) => this.handleSearchInput(event.target.value));
-            const mobileSearchForm = mobileSearchInput.closest('form');
-            if (mobileSearchForm) mobileSearchForm.addEventListener('submit', e => e.preventDefault());
-        } else {
-            console.warn("Mobile search input not found in header.");
-        }
+        resultsDiv.style.display = 'block';
     }
 
-    static handleSearchInput(query) {
-        clearTimeout(this.searchDebounceTimer);
-        this.searchDebounceTimer = setTimeout(() => {
-            this.performSearchOnPage(query);
-        }, config.searchDebounceTime);
+    if (megaMenuContainer && servicesMegaMenu) {
+        megaMenuContainer.addEventListener('mouseenter', () => {
+            servicesMegaMenu.classList.remove('hidden');
+            servicesMegaMenu.classList.add('block');
+            servicesMegaMenu.setAttribute('aria-expanded', 'true');
+        });
+
+        megaMenuContainer.addEventListener('mouseleave', () => {
+            servicesMegaMenu.classList.add('hidden');
+            servicesMegaMenu.classList.remove('block');
+            servicesMegaMenu.setAttribute('aria-expanded', 'false');
+        });
     }
 
-    static performSearchOnPage(query) {
-        this.clearSearchHighlightsOnPage();
-        const mainContent = document.querySelector('main#main-content-area'); // Target specific main
-        if (!mainContent || !query || query.trim().length < 2) {
-            return;
-        }
-        const queryLower = query.trim().toLowerCase();
-        let matchCount = 0;
-        let firstMatchElement = null;
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = newsletterEmail.value;
 
-        const treeWalker = document.createTreeWalker(mainContent, NodeFilter.SHOW_TEXT, {
-            acceptNode: function (node) {
-                const parentElement = node.parentElement;
-                if (!parentElement || parentElement.closest('script, style, textarea, input, button, nav, footer, .search-form') || parentElement.classList.contains(App.SEARCH_HIGHLIGHT_CLASS)) {
-                    return NodeFilter.FILTER_REJECT;
+            if (!email || !email.includes('@')) {
+                newsletterMessage.textContent = 'Please enter a valid email address.';
+                newsletterMessage.className = 'mt-2 text-sm text-red-400';
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+
+                if (response.ok) {
+                    newsletterMessage.textContent = 'Thank you for subscribing!';
+                    newsletterMessage.className = 'mt-2 text-sm text-green-400';
+                    newsletterEmail.value = '';
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Subscription failed.');
                 }
-                return NodeFilter.FILTER_ACCEPT;
+
+            } catch (error) {
+                console.error('Newsletter error:', error);
+                newsletterMessage.textContent = `Subscription failed: ${error.message}`;
+                newsletterMessage.className = 'mt-2 text-sm text-red-400';
             }
         });
+    }
 
-        const nodesToModify = [];
-        while (treeWalker.nextNode()) {
-            const node = treeWalker.currentNode;
-            const text = node.nodeValue;
-            const textLower = text.toLowerCase();
-            let matchIndex = textLower.indexOf(queryLower);
-            if (matchIndex !== -1) {
-                nodesToModify.push({ node, text, queryLower, query });
-            }
-        }
+    function initMap() {
+        const mapDiv = document.getElementById('footer-map');
+        if (!mapDiv) return;
 
-        nodesToModify.forEach(({ node, text, queryLower, query }) => {
-            const parent = node.parentNode;
-            if (!parent) return;
-
-            const fragment = document.createDocumentFragment();
-            let lastIndex = 0;
-            let textLower = text.toLowerCase(); // Re-evaluate for fresh indexOf
-            let matchIndex = textLower.indexOf(queryLower, lastIndex);
-
-            while (matchIndex > -1) {
-                if (matchIndex > lastIndex) {
-                    fragment.appendChild(document.createTextNode(text.substring(lastIndex, matchIndex)));
+        const map = new google.maps.Map(mapDiv, {
+            center: { lat: 28.0430, lng: -81.9430 },
+            zoom: 12,
+            styles: [
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{"color": "#444444"}]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [{"color": "#f2f2f2"}, {"lightness": "100"}]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [{"visibility": "off"}]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [{"saturation": -100}, {"lightness": 45}]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "all",
+                    "stylers": [{"visibility": "simplified"}]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.icon",
+                    "stylers": [{"visibility": "off"}]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [{"visibility": "off"}]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [{"color": "#46bcec"}, {"visibility": "on"}]
                 }
-                const matchedText = text.substring(matchIndex, matchIndex + query.length);
-                const mark = document.createElement('mark');
-                mark.className = App.SEARCH_HIGHLIGHT_CLASS; // Use static class member
-                mark.textContent = matchedText;
-                fragment.appendChild(mark);
-                matchCount++;
-                if (!firstMatchElement) firstMatchElement = mark;
-                lastIndex = matchIndex + query.length;
-                matchIndex = textLower.indexOf(queryLower, lastIndex);
-            }
-
-            if (lastIndex < text.length) {
-                fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
-            }
-            parent.replaceChild(fragment, node);
+            ]
         });
 
-
-        if (firstMatchElement) {
-            firstMatchElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }
-
-    static clearSearchHighlightsOnPage() {
-        const mainContent = document.querySelector('main#main-content-area');
-        if (!mainContent) return;
-
-        const highlightedElements = mainContent.querySelectorAll(`mark.${App.SEARCH_HIGHLIGHT_CLASS}`);
-        highlightedElements.forEach(mark => {
-            const parent = mark.parentNode;
-            if (parent) {
-                // Replace mark with its text content
-                parent.replaceChild(document.createTextNode(mark.textContent), mark);
-                parent.normalize(); // Merges adjacent text nodes
-            }
+        const marker = new google.maps.Marker({
+            position: { lat: 28.0430, lng: -81.9430 },
+            map: map,
+            title: "KhaDock.com"
         });
     }
-}
 
-// Initialize the App when the DOM is ready
-// Using a more robust check for DOM readiness
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', App.init.bind(App));
-} else {
-    App.init.call(App); // Call with App as 'this' context
-}
-
-export default App; // If you plan to import App in other modules, e.g. for testing
-    
+    if (document.getElementById('footer-map')) {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap`;
+        script.defer = true;
+        script.async = true;
+        document.head.appendChild(script);
+    }
+});

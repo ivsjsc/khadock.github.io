@@ -13,35 +13,15 @@
                 </a>
                 <a href="about.html" id="nav-about" class="hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base">About Us</a>
 
-                <div class="relative group mega-menu-container">
-                    <button type="button" id="nav-services-button" aria-haspopup="true" aria-expanded="false" aria-controls="services-mega-menu" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center px-3 py-2 rounded-md text-sm lg:text-base">
+                <div class="relative dropdown group">
+                    <button type="button" id="nav-services-button" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown-menu" class="hover:text-sky-400 transition-colors duration-300 font-medium flex items-center px-3 py-2 rounded-md text-sm lg:text-base">
                         Services <i class="fas fa-chevron-down fa-xs ml-1.5 transform group-hover:rotate-180 transition-transform duration-200" aria-hidden="true"></i>
                     </button>
-                    <div id="services-mega-menu" class="mega-menu hidden absolute bg-slate-700 text-slate-200 mt-2 py-4 rounded-md shadow-xl z-20 min-w-[600px] transition-all duration-300 ease-out origin-top-left" aria-labelledby="nav-services-button">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4">
-                            <div>
-                                <h3 class="text-lg font-semibold mb-2 text-sky-300">Dock Services</h3>
-                                <ul class="space-y-1">
-                                    <li><a href="services.html#design" class="block px-2 py-1.5 hover:bg-slate-600 hover:text-sky-300 transition-colors rounded-md text-sm">Custom Dock Design</a></li>
-                                    <li><a href="services.html#construction" class="block px-2 py-1.5 hover:bg-slate-600 hover:text-sky-300 transition-colors rounded-md text-sm">Dock Construction</a></li>
-                                    <li><a href="services.html#remodel" class="block px-2 py-1.5 hover:bg-slate-600 hover:text-sky-300 transition-colors rounded-md text-sm">Dock Remodeling</a></li>
-                                    <li><a href="services.html#repair" class="block px-2 py-1.5 hover:bg-slate-600 hover:text-sky-300 transition-colors rounded-md text-sm">Repair & Maintenance</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold mb-2 text-sky-300">Home Renovation</h3>
-                                <ul class="space-y-1">
-                                    <li><a href="services.html#floor-remodeling" class="block px-2 py-1.5 hover:bg-slate-600 hover:text-sky-300 transition-colors rounded-md text-sm">Floor Remodeling</a></li>
-                                    <li><a href="services.html#paint" class="block px-2 py-1.5 hover:bg-slate-600 hover:text-sky-300 transition-colors rounded-md text-sm">Painting Services</a></li>
-                                    <li><a href="services.html#bathroom-remodeling" class="block px-2 py-1.5 hover:bg-slate-600 hover:text-sky-300 transition-colors rounded-md text-sm">Bathroom Remodeling</a></li>
-                                    <li><a href="services.html" class="block px-2 py-1.5 hover:bg-slate-600 hover:text-sky-300 transition-colors rounded-md text-sm">All Renovation Services</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="px-4 pt-4 mt-4 border-t border-slate-600">
-                            <img src="https://placehold.co/300x150/0EA5E9/ffffff?text=Design+Studio" alt="AI Design Studio Promotion" class="rounded-md shadow-md w-full">
-                            <p class="text-sm text-slate-400 mt-2">Visualize your dream project with our AI Design Studio!</p>
-                        </div>
+                    <div id="services-dropdown-menu" class="dropdown-menu hidden absolute bg-slate-700 text-slate-200 mt-2 py-2 rounded-md shadow-xl z-20 min-w-[240px] transition-all duration-300 ease-out origin-top-left" aria-labelledby="nav-services-button">
+                        <a href="services.html" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Services Overview</a>
+                        <a href="services.html#design" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Custom Dock Design</a>
+                        <a href="services.html#remodel" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Dock Remodeling</a>
+                        <a href="services.html#repair" class="block px-4 py-2.5 text-sm hover:bg-slate-600 hover:text-sky-300 transition-colors">Repair & Maintenance</a>
                     </div>
                 </div>
 
@@ -64,7 +44,6 @@
                                 <i class="fas fa-times fa-sm" aria-hidden="true"></i>
                             </button>
                         </form>
-                        <div id="search-results" class="mt-2 text-slate-300 text-sm"></div>
                     </div>
                 </div>
             </nav>
@@ -77,8 +56,8 @@
         </div>
     </div>
 
-    <div id="mobile-menu-panel" class="md:hidden hidden bg-slate-700/95 backdrop-blur-sm fixed w-full h-full z-40 top-0 left-0 right-0 shadow-xl pb-4 overflow-y-auto transform -translate-x-full transition-transform duration-300 ease-in-out" aria-labelledby="mobile-menu-button">
-       <nav class="flex flex-col space-y-1.5 px-4 py-3 mt-20" aria-label="Main mobile navigation">
+    <div id="mobile-menu-panel" class="md:hidden hidden bg-slate-700/95 backdrop-blur-sm absolute w-full z-40 top-20 left-0 right-0 shadow-xl pb-4" aria-labelledby="mobile-menu-button">
+       <nav class="flex flex-col space-y-1.5 px-4 py-3" aria-label="Main mobile navigation">
             <a href="index.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">Home</a>
             <a href="about.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">About Us</a>
 
@@ -92,9 +71,6 @@
                     <a href="services.html#design" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Custom Dock Design</a>
                     <a href="services.html#remodel" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Dock Remodeling</a>
                     <a href="services.html#repair" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Repair & Maintenance</a>
-                    <a href="services.html#floor-remodeling" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Floor Remodeling</a>
-                    <a href="services.html#paint" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Painting Services</a>
-                    <a href="services.html#bathroom-remodeling" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Bathroom Remodeling</a>
                 </div>
             </div>
 
@@ -105,29 +81,7 @@
             <form class="search-form mt-4 px-3" role="search" action="javascript:void(0);">
                  <label for="mobile-search-input" class="sr-only">Search site</label>
                  <input type="search" id="mobile-search-input" placeholder="Search..." class="w-full px-4 py-2.5 text-sm text-slate-900 bg-slate-100 rounded-md focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none placeholder-slate-500">
-                 <div id="mobile-search-results" class="mt-2 text-slate-300 text-sm"></div>
             </form>
         </nav>
     </div>
 </header>
-
-<div class="bottom-nav md:hidden fixed bottom-0 left-0 w-full bg-slate-800 shadow-t z-50">
-    <div class="flex justify-around items-center h-16">
-        <a href="index.html" class="bottom-nav-item active">
-            <i class="fas fa-home fa-lg"></i>
-            <span class="bottom-nav-label">Home</span>
-        </a>
-        <a href="services.html" class="bottom-nav-item">
-            <i class="fas fa-tools fa-lg"></i>
-            <span class="bottom-nav-label">Services</span>
-        </a>
-        <a href="projects.html" class="bottom-nav-item">
-            <i class="fas fa-hammer fa-lg"></i>
-            <span class="bottom-nav-label">Projects</span>
-        </a>
-        <a href="contact.html" class="bottom-nav-item">
-            <i class="fas fa-envelope fa-lg"></i>
-            <span class="bottom-nav-label">Contact</span>
-        </a>
-    </div>
-</div>
