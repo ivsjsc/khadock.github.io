@@ -66,6 +66,32 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        .hero-banner-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .hero-banner-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+        .hero-banner-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6); /* Overlay for text readability */
+            color: white;
+            z-index: 1;
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased font-inter">
@@ -74,51 +100,44 @@
     </div>
 
     <main id="main-content-area" class="pt-20">
-        <article class="w-full" data-aos="fade-in">
-            <div class="w-full aspect-[1920/400] md:aspect-[1920/400] lg:aspect-[1920/400] overflow-hidden">
-                <picture>
-                    <source srcset="images/logo/logo.jpg" type="image/jpg">
-                    <img
-                        src="images/logo/logo.jpg"
-                        alt="KhaDock - Florida's Premier Boat Dock Solutions"
-                        class="w-full h-full object-cover block"
-                        loading="eager"
-                        width="1920"
-                        height="400"
-                    >
-                </picture>
+        <section class="hero-banner-container" data-aos="fade-in">
+            <picture>
+                <source srcset="images/albums/dock15.jpg" media="(min-width: 768px)">
+                <img
+                    src="images/albums/dock15.jpg"
+                    alt="KhaDock - Florida's Premier Boat Dock Solutions"
+                    class="hero-banner-image"
+                    loading="eager"
+                    width="1920"
+                    height="400"
+                >
+            </picture>
+            <div class="hero-banner-content">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 z-10 py-10 md:py-14">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 text-shadow-strong" data-aos="fade-down" data-aos-delay="100">
+                        KhaDock.com
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight text-shadow-strong" data-aos="fade-down" data-aos-delay="200">
+                        YOUR TRUSTED PARTNER IN FLORIDA
+                    </h2>
+                    <p class="text-base md:text-lg lg:text-xl max-w-2xl mx-auto text-slate-200 text-shadow" data-aos="fade-up" data-aos-delay="300">
+                        Building Finest Boat Dock Experiences: Custom Design, Durable Construction, and Expert Remodeling.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+                        <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            View Our Portfolio
+                        </a>
+                        <a href="design.html" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
+                            KhaDock's Design
+                        </a>
+                    </div>
+                </div>
             </div>
-        </article>
+        </section>
 
         <div class="w-full flex justify-center my-0">
             <div class="h-0.5 w-3/4 bg-sky-400 rounded-full shadow-lg opacity-80"></div>
         </div>
-
-        <section
-            class="hero-section-main relative min-h-[40vh] md:min-h-[50vh] flex items-center justify-center text-center bg-cover bg-center bg-blend-multiply bg-black/60 -mt-8"
-            style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/albums/dock15.jpg');"
-            data-aos="fade-in"
-        >
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-white z-10 py-10 md:py-14">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 text-shadow-strong" data-aos="fade-down" data-aos-delay="100">
-                    KhaDock.com
-                </h1>
-                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight text-shadow-strong" data-aos="fade-down" data-aos-delay="200">
-                    YOUR TRUSTED PARTNER IN FLORIDA
-                </h2>
-                <p class="text-base md:text-lg lg:text-xl max-w-2xl mx-auto text-slate-200 text-shadow" data-aos="fade-up" data-aos-delay="300">
-                    Building Finest Boat Dock Experiences: Custom Design, Durable Construction, and Expert Remodeling.
-                </p>
-                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
-                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                        View Our Portfolio
-                    </a>
-                    <a href="design.html" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
-                        KhaDock's Design
-                    </a>
-                </div>
-            </div>
-        </section>
 
         <section class="py-16 md:py-24 bg-slate-50" id="services-overview" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
