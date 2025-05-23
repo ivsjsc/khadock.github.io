@@ -8,10 +8,10 @@
 
     <title>KhaDock - Florida's Premier Boat Dock Solutions</title>
     <meta name="description" content="KhaDock specializes in custom boat dock design, robust construction, professional remodeling, and boat lift installations across Florida. Your trusted marine construction partner.">
-    <meta name="keywords" content="boat docks Florida, dock design, dock construction, dock repair, dock remodeling, boat lifts, marine construction Florida, KhaDock">
+    <meta name="keywords" content="boat docks Florida, dock design, dock construction, dock repair, dock remodeling, boat lifts, marine construction Florida, KhaDock, AI dock design">
 
-    <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions">
-    <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Building your waterfront dreams.">
+    <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions with AI Design">
+    <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Try our AI Design Generator!">
     <meta property="og:image" content="images/logo/logoicon.png">
     <meta property="og:url" content="https://khadock.com">
     <meta property="og:type" content="website">
@@ -20,19 +20,16 @@
     <link rel="preload" href="images/logo/logoicon.png" as="image" fetchpriority="high">
     <link rel="preload" href="fonts/Inter-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
-    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style"> <link rel="preload" href="css/styles.css" as="style">
     <link rel="preload" as="image" href="images/albums/dock15.jpg">
 
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
     <link rel="apple-touch-icon" href="images/logo/logoicon.png">
     <link rel="manifest" href="manifest.json">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css"> <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -51,6 +48,9 @@
                     },
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: { // Added for loading spinners or other effects
+                        'spin-slow': 'spin 2s linear infinite',
                     }
                 }
             }
@@ -63,23 +63,18 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        /* Additional styles for AI Gemini features, if needed, will be in styles.css */
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased font-inter">
 
     <div id="header-placeholder">
-        <div class="bg-slate-800 text-slate-200 py-6 text-center">
-            <p class="text-lg">Loading Navigation...</p>
         </div>
-    </div>
 
-    <main id="main-content-area">
-
-        <article class="w-full" data-aos="fade-in">
+    <main id="main-content-area" class="pt-20"> <article class="w-full" data-aos="fade-in">
             <div class="w-full aspect-[1920/400] md:aspect-[1920/400] lg:aspect-[1920/400] overflow-hidden">
                 <picture>
                     <source srcset="images/logo/logo.jpg" type="image/jpg">
-                    <source srcset="images/logo/logo.jpg" type="image/jpeg">
                     <img
                         src="images/logo/logo.jpg"
                         alt="KhaDock - Florida's Premier Boat Dock Solutions"
@@ -87,7 +82,6 @@
                         loading="eager"
                         width="1920"
                         height="400"
-                        style="display:block;"
                     >
                 </picture>
             </div>
@@ -133,46 +127,26 @@
                 </div>
                 <div class="grid gap-8 md:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="text-sky-500 mb-5 md:mb-6">
-                            <i class="fas fa-drafting-compass fa-3x"></i>
-                        </div>
+                        <div class="text-sky-500 mb-5 md:mb-6"><i class="fas fa-drafting-compass fa-3x"></i></div>
                         <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Custom Dock Design & Remodeling</h3>
-                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
-                            Tailored designs and expert remodeling to perfectly suit your waterfront property and lifestyle, enhancing both beauty and functionality.
-                        </p>
-                        <a href="services.html#design" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">
-                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
+                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">Tailored designs and expert remodeling to perfectly suit your waterfront property and lifestyle, enhancing both beauty and functionality.</p>
+                        <a href="services.html#design" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i></a>
                     </div>
                     <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="200">
-                        <div class="text-sky-500 mb-5 md:mb-6">
-                            <i class="fas fa-tools fa-3x"></i>
-                        </div>
+                        <div class="text-sky-500 mb-5 md:mb-6"><i class="fas fa-tools fa-3x"></i></div>
                         <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Repair & Maintenance</h3>
-                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
-                            Comprehensive repair and maintenance to keep your dock in top condition, ensuring safety and extending its lifespan.
-                        </p>
-                        <a href="services.html#repair" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">
-                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
+                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">Comprehensive repair and maintenance to keep your dock in top condition, ensuring safety and extending its lifespan.</p>
+                        <a href="services.html#repair" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i></a>
                     </div>
                     <div class="service-card bg-white p-6 md:p-8 rounded-xl shadow-lg text-center flex flex-col items-center" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="text-sky-500 mb-5 md:mb-6">
-                            <i class="fas fa-anchor fa-3x"></i>
-                        </div>
+                        <div class="text-sky-500 mb-5 md:mb-6"><i class="fas fa-anchor fa-3x"></i></div>
                         <h3 class="text-xl md:text-2xl font-semibold text-slate-800 mb-3">Dock Upgrades & Accessories</h3>
-                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">
-                            Upgrade materials, add new amenities like boat lifts or lighting, and enhance your dock for better functionality and style.
-                        </p>
-                        <a href="services.html#upgrades" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">
-                            Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
+                        <p class="text-slate-600 text-sm md:text-base mb-5 flex-grow">Upgrade materials, add new amenities like boat lifts or lighting, and enhance your dock for better functionality and style.</p>
+                        <a href="services.html#upgrades" class="text-sky-600 hover:text-sky-700 font-semibold mt-auto inline-flex items-center group text-sm">Learn More <i class="fas fa-arrow-right fa-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i></a>
                     </div>
                 </div>
                 <div class="text-center mt-12 md:mt-16">
-                    <a href="services.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">
-                        Explore All Services
-                    </a>
+                    <a href="services.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">Explore All Services</a>
                 </div>
             </div>
         </section>
@@ -181,37 +155,20 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose KhaDock?</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        We are committed to delivering superior quality, exceptional service, and lasting value to every client in Florida.
-                    </p>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">We are committed to delivering superior quality, exceptional service, and lasting value to every client in Florida.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-right" data-aos-delay="100">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-medal fa-2x text-sky-500 mr-4"></i>
-                            <h3 class="text-xl font-semibold text-slate-700">Florida Marine Expertise</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Deep understanding of Florida's unique coastal conditions, permitting processes, and stringent building codes.
-                        </p>
+                        <div class="flex items-center mb-4"><i class="fas fa-medal fa-2x text-sky-500 mr-4"></i><h3 class="text-xl font-semibold text-slate-700">Florida Marine Expertise</h3></div>
+                        <p class="text-slate-600 text-sm leading-relaxed">Deep understanding of Florida's unique coastal conditions, permitting processes, and stringent building codes.</p>
                     </div>
                     <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-gem fa-2x text-sky-500 mr-4"></i>
-                            <h3 class="text-xl font-semibold text-slate-700">Premium Quality Materials</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            We use only the best marine-grade lumber, composite decking, and hardware to ensure longevity and resilience.
-                        </p>
+                        <div class="flex items-center mb-4"><i class="fas fa-gem fa-2x text-sky-500 mr-4"></i><h3 class="text-xl font-semibold text-slate-700">Premium Quality Materials</h3></div>
+                        <p class="text-slate-600 text-sm leading-relaxed">We use only the best marine-grade lumber, composite decking, and hardware to ensure longevity and resilience.</p>
                     </div>
                     <div class="p-8 bg-slate-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-left" data-aos-delay="300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-handshake-angle fa-2x text-sky-500 mr-4"></i>
-                            <h3 class="text-xl font-semibold text-slate-700">Customer-Focused Approach</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Your satisfaction is our priority. We collaborate closely with you from initial design to final walkthrough.
-                        </p>
+                        <div class="flex items-center mb-4"><i class="fas fa-handshake-angle fa-2x text-sky-500 mr-4"></i><h3 class="text-xl font-semibold text-slate-700">Customer-Focused Approach</h3></div>
+                        <p class="text-slate-600 text-sm leading-relaxed">Your satisfaction is our priority. We collaborate closely with you from initial design to final walkthrough.</p>
                     </div>
                 </div>
             </div>
@@ -221,7 +178,7 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
-                        <i class="fas fa-lightbulb text-sky-500"></i> Generate Your Dream Dock Idea
+                        <i class="fas fa-lightbulb text-sky-500"></i> ✨ AI Dock Design Studio ✨
                     </h2>
                     <p class="text-lg text-slate-700 max-w-2xl mx-auto">
                         Describe your ideal dock—its style, materials, or features—and let our AI craft a unique, Florida-inspired design concept just for you!
@@ -236,27 +193,53 @@
                     <textarea
                         id="ai-design-input"
                         class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
-                        placeholder="Example: 'A modern dock with a covered lounge area, composite materials, for a quiet Florida cove.'"
+                        placeholder="Ví dụ: 'Một cầu tàu hiện đại hình chữ T, vật liệu composite, có khu vực mái che, đèn LED và chỗ đậu cho 2 tàu thuyền ở Sarasota.'"
                         aria-label="Describe your ideal dock"
                     ></textarea>
 
-                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                         <button
                             id="ai-generate-btn"
                             class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
                         >
-                            <i class="fas fa-magic mr-2"></i> Generate Design Idea
+                            <i class="fas fa-magic mr-2"></i> Tạo Ý Tưởng Thiết Kế
+                        </button>
+                         <button
+                            id="ai-clear-input-btn"
+                            class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-3 px-6 rounded-lg shadow-sm transition duration-300 text-sm sm:text-base"
+                        >
+                            <i class="fas fa-eraser mr-2"></i> Xóa Input
                         </button>
                     </div>
 
-                    <div id="ai-loading" class="mt-6 text-sky-600 hidden">
-                        <i class="fas fa-spinner fa-spin mr-2"></i>
-                        <span id="ai-loading-text">Generating your idea...</span>
+                    <div id="ai-loading" class="mt-6 text-sky-600 hidden flex items-center justify-center">
+                        <i class="fas fa-spinner fa-spin mr-2 text-xl"></i>
+                        <span id="ai-loading-text" class="font-medium">Đang tạo ý tưởng...</span>
                     </div>
 
                     <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden" role="alert"></div>
 
-                    <div id="ai-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none" aria-live="polite">
+                    <div id="ai-output-container" class="mt-8 hidden">
+                        <div id="ai-output" class="p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed prose max-w-none" aria-live="polite">
+                            </div>
+
+                        <div id="gemini-extra-features" class="mt-6 flex flex-col sm:flex-row justify-center gap-4 hidden">
+                            <button id="ai-maintenance-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
+                                <i class="fas fa-tools mr-2"></i> ✨ Gợi ý Bảo trì ✨
+                            </button>
+                            <button id="ai-accessories-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
+                                <i class="fas fa-puzzle-piece mr-2"></i> ✨ Gợi ý Phụ kiện ✨
+                            </button>
+                        </div>
+                         <div id="ai-maintenance-loading" class="mt-4 text-teal-600 hidden flex items-center justify-center">
+                            <i class="fas fa-spinner fa-spin mr-2"></i> Đang tải gợi ý bảo trì...
+                        </div>
+                        <div id="ai-accessories-loading" class="mt-4 text-indigo-600 hidden flex items-center justify-center">
+                            <i class="fas fa-spinner fa-spin mr-2"></i> Đang tải gợi ý phụ kiện...
+                        </div>
+
+                        <div id="ai-maintenance-output" class="mt-4 p-4 bg-teal-50 border border-teal-200 rounded-lg text-teal-700 leading-relaxed hidden prose max-w-none"></div>
+                        <div id="ai-accessories-output" class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-700 leading-relaxed hidden prose max-w-none"></div>
                     </div>
                 </div>
             </div>
@@ -266,52 +249,16 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Project Showcase</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        A glimpse into the quality and diversity of boat docks, piers, and marine structures we've crafted.
-                    </p>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">A glimpse into the quality and diversity of boat docks, piers, and marine structures we've crafted.</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="images/albums/dock1.jpg" alt="KhaDock Project Album Image 1 - Custom Dock" class="album-image" loading="lazy" width="600" height="450">
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100"><img src="images/albums/dock1.jpg" alt="KhaDock Project 1" class="album-image" loading="lazy" width="600" height="450"></div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="150"><img src="images/albums/dock2.jpg" alt="KhaDock Project 2" class="album-image" loading="lazy" width="600" height="450"></div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200"><img src="images/albums/dock3.jpg" alt="KhaDock Project 3" class="album-image" loading="lazy" width="600" height="450"></div>
+                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250"><img src="images/albums/dock4.jpg" alt="KhaDock Project 4" class="album-image" loading="lazy" width="600" height="450"></div>
                     </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="images/albums/dock2.jpg" alt="KhaDock Project Album Image 2 - Boat Lift" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="images/albums/dock3.jpg" alt="KhaDock Project Album Image 3 - Dock Remodel" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="images/albums/dock4.jpg" alt="KhaDock Project Album Image 4 - Dock Repair" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="images/albums/dock5.jpg" alt="KhaDock Project Album Image 5 - New Construction" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="350">
-                        <img src="images/albums/dock6.jpg" alt="KhaDock Project Album Image 6 - Waterfront View" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="images/albums/dock7.jpg" alt="KhaDock Project Album Image 7 - Dock Accessories" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="450">
-                        <img src="images/albums/dock8.jpg" alt="KhaDock Project Album Image 8 - Completed Project" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="images/albums/dock9.jpg" alt="KhaDock Project Album Image 9" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="550">
-                        <img src="images/albums/dock10.jpg" alt="KhaDock Project Album Image 10" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
-                        <img src="images/albums/dock11.jpg" alt="KhaDock Project Album Image 11" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="650">
-                        <img src="images/designs/design1.jpg" alt="KhaDock Design 1" class="album-image" loading="lazy" width="600" height="450">
-                    </div>
-                </div>
                 <div class="text-center mt-12 md:mt-16">
-                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">
-                        View Full Portfolio
-                    </a>
+                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">View Full Portfolio</a>
                 </div>
             </div>
         </section>
@@ -319,23 +266,16 @@
         <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="zoom-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-shadow">Ready to Start Your Dream Dock Project?</h2>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-100">
-                    Let's discuss your vision. Contact KhaDock today for a personalized consultation and a no-obligation, free estimate.
-                </p>
-                <a href="contact.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 hover:bg-slate-100">
-                    Schedule Your Consultation
-                </a>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-100">Let's discuss your vision. Contact KhaDock today for a personalized consultation and a no-obligation, free estimate.</p>
+                <a href="contact.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 hover:bg-slate-100">Schedule Your Consultation</a>
             </div>
         </section>
     </main>
 
     <div id="footer-placeholder">
-        <div class="bg-slate-900 text-slate-300 py-6 text-center">
-            <p class="text-sm">Loading footer...</p>
         </div>
-    </div>
 
-    <button id="scrollToTopBtn" title="Go to top"
+    <button id="scrollToTopBtn" title="Lên đầu trang"
             class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
                    w-12 h-12 md:w-14 md:h-14 rounded-full shadow-xl items-center justify-center
                    focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
@@ -346,6 +286,5 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/generateDesign.js" type="module"></script>
-</body>
+    <script src="js/generateDesign.js" type="module" defer></script> </body>
 </html>

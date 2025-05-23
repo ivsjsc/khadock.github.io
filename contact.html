@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact KhaDock.com - Florida's Dock Experts</title>
     <meta name="description" content="Contact KhaDock - Design and Remodel for a free consultation and quote for your dock design, construction, or remodeling project in Florida.">
-    
+
     <meta property="og:title" content="Contact KhaDock - Florida's Dock Experts">
     <meta property="og:description" content="Connect with KhaDock in Lakeland, FL. Phone: +1 813-939-3989, Email: doduykha007@gmail.com.">
-    <meta property="og:image" content="images/logo/logoicon.png"> 
-    <meta property="og:url" content="https://KhaDock.com/contact.html"> 
+    <meta property="og:image" content="images/logo/logoicon.png">
+    <meta property="og:url" content="https://KhaDock.com/contact.html">
     <meta property="og:type" content="website">
 
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
@@ -26,36 +26,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        .contact-banner-bg { /* Custom class for contact page banner */
-             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/pages/khadockbanner.jpeg'); /* Placeholder */
-             background-size: cover;
-             background-position: center 30%; /* Adjust position to focus better */
-        }
-        .text-shadow {
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-        }
-        .contact-icon-circle {
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .contact-info-item a:hover .contact-icon-circle,
-        .contact-info-item a:focus .contact-icon-circle {
-            background-color: #0ea5e9; /* sky-500 */
-            color: white;
-        }
-        .social-icon-link i {
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-        .social-icon-link:hover i {
-            transform: scale(1.15) translateY(-2px);
-        }
-        /* Ensure map iframe is responsive */
-        .map-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+        /* .text-shadow class đã có trong styles.css */
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
@@ -125,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="bg-slate-50 p-8 rounded-xl shadow-2xl" data-aos="fade-left" data-aos-delay="200">
                             <h3 class="text-2xl font-bold text-slate-800 mb-8 text-center md:text-left">Follow Us & Connect</h3>
                             <p class="text-slate-600 leading-relaxed mb-8 text-center md:text-left">
@@ -154,12 +125,43 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="text-center mt-12 md:mt-16" data-aos="fade-up" data-aos-delay="300">
-                         <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Send Us a Message</h2>
-                         <p class="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
-                            Message us now—even if it's just an idea. We'll work with you to make it perfect.
-                         </p>                    
+                    <div class="mt-12 md:mt-16 bg-slate-50 p-8 sm:p-10 rounded-2xl shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-center mb-8">
+                            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Send Us a Message</h2>
+                            <p class="text-lg text-slate-600 max-w-xl mx-auto">
+                                Have a question or ready to start your project? Fill out the form below.
+                            </p>
+                        </div>
+                        <form id="contactForm" action="YOUR_FORM_SUBMISSION_ENDPOINT" method="POST" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                                    <input type="text" name="name" id="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 shadow-sm text-sm" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                                    <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 shadow-sm text-sm" placeholder="you@example.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Phone Number (Optional)</label>
+                                <input type="tel" name="phone" id="phone" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 shadow-sm text-sm" placeholder="(555) 123-4567">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+                                <input type="text" name="subject" id="subject" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 shadow-sm text-sm" placeholder="Dock Design Inquiry">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                                <textarea name="message" id="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 shadow-sm text-sm resize-y" placeholder="Tell us about your project or question..."></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-base">
+                                    Send Message
+                                </button>
+                            </div>
+                            <div id="form-status" class="mt-4 text-center text-sm"></div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -171,11 +173,11 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Find Us On The Map</h2>
                 </div>
                 <div class="map-container aspect-w-16 aspect-h-9 rounded-xl shadow-2xl overflow-hidden relative h-[300px] md:h-[450px] lg:h-[550px]">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3511.701535081706!2d-81.9008490849238!3d28.11690098250791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dd3f0e4a8b5555%3A0x7e2a724708868711!2s3850%20Rollingsford%20Cir%2C%20Lakeland%2C%20FL%2033810%2C%20USA!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.250708266883!2d-81.89606868520574!3d28.10176598256916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dd3f0777f15395%3A0x1f1f0b9e48f8b680!2s3850%20Rollingsford%20Cir%2C%20Lakeland%2C%20FL%2033810%2C%20USA!5e0!3m2!1sen!2s!4v1678886400000!5m2!1sen!2s"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         title="Location of KhaDock on map - 3850 Rollingsford Cir, Lakeland, FL">
                     </iframe>
@@ -185,10 +187,10 @@
     </main>
 
     <div id="footer-placeholder"></div>
-    
-    <button id="scrollToTopBtn" title="Go to top" 
-            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
-                   w-14 h-14 rounded-full shadow-xl items-center justify-center 
+
+    <button id="scrollToTopBtn" title="Go to top"
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
+                   w-14 h-14 rounded-full shadow-xl items-center justify-center
                    focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
                    transition-all duration-300 z-40 text-xl">
         <i class="fas fa-arrow-up"></i>
@@ -197,66 +199,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            AOS.init({
-                duration: 700,
-                offset: 100,
-                once: true,
-                easing: 'ease-out-quad',
-            });
-
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            if (scrollToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                        scrollToTopBtn.classList.remove('hidden');
-                        scrollToTopBtn.classList.add('flex');
-                    } else {
-                        scrollToTopBtn.classList.add('hidden');
-                        scrollToTopBtn.classList.remove('flex');
-                    }
-                }, { passive: true });
-                scrollToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-
-            // Contact Form Submission (Example)
-            const contactForm = document.getElementById('contactForm');
-            const formStatus = document.getElementById('form-status');
-            if (contactForm && formStatus) {
-                contactForm.addEventListener('submit', async function(event) {
-                    event.preventDefault();
-                    const formData = new FormData(contactForm);
-                    formStatus.innerHTML = '<p class="text-slate-600">Sending...</p>';
-                    
-                    try {
-                        // IMPORTANT: Replace 'YOUR_FORM_SUBMISSION_ENDPOINT' with your actual backend URL or a service like Formspree
-                        const response = await fetch(contactForm.action, { 
-                            method: 'POST', 
-                            body: formData, 
-                            headers: {'Accept': 'application/json'}
-                        });
-
-                        if (response.ok) {
-                            formStatus.innerHTML = '<p class="text-green-600 bg-green-50 p-3 rounded-md">Thank you! Your message has been sent successfully.</p>';
-                            contactForm.reset();
-                        } else {
-                            response.json().then(data => {
-                                const errorMessage = data.errors ? data.errors.map(error => error.message).join(", ") : "Oops! There was a problem submitting your form.";
-                                formStatus.innerHTML = `<p class="text-red-600 bg-red-50 p-3 rounded-md">${errorMessage}</p>`;
-                            }).catch(() => {
-                                formStatus.innerHTML = '<p class="text-red-600 bg-red-50 p-3 rounded-md">Error processing server response. Please try again.</p>';
-                            });
-                        }
-                    } catch (error) {
-                        console.error("Form submission error:", error);
-                        formStatus.innerHTML = '<p class="text-red-600 bg-red-50 p-3 rounded-md">A network error occurred. Please check your connection and try again.</p>';
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="js/contact-page.js" type="module" defer></script>
 </body>
 </html>

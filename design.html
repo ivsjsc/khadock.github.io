@@ -6,35 +6,32 @@
     <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)">
 
-    <title>KhaDock - Florida's Premier Boat Dock Solutions</title>
-    <meta name="description" content="KhaDock specializes in custom boat dock design, robust construction, professional remodeling, and boat lift installations across Florida. Your trusted marine construction partner.">
-    <meta name="keywords" content="boat docks Florida, dock design, dock construction, dock repair, dock remodeling, boat lifts, marine construction Florida, KhaDock">
+    <title>KhaDock - Dock Design & AI Generator | Florida</title>
+    <meta name="description" content="Explore KhaDock's innovative dock design concepts and use our AI Design Generator to visualize your dream dock in Florida. Custom solutions, premium materials.">
+    <meta name="keywords" content="AI dock design, boat dock design Florida, custom docks, dock concepts, KhaDock design tool, waterfront design">
 
-    <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions">
-    <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Building your waterfront dreams.">
-    <meta property="og:image" content="/api/placeholder/400/320">
-    <meta property="og:url" content="https://khadock.com">
+    <meta property="og:title" content="KhaDock - Innovative Dock Design & AI Generator">
+    <meta property="og:description" content="Visualize your perfect Florida dock with KhaDock's design expertise and our unique AI Design Generator.">
+    <meta property="og:image" content="images/designs/khadockdesign.png"> <meta property="og:url" content="https://khadock.com/design.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KhaDock">
 
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
-    
+
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
-    
-    <link rel="icon" href="/api/placeholder/32/32" type="image/png">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/loadComponents.js" type="module" defer></script>
-    <script src="js/app.js" type="module" defer></script>
-    <script src="js/generateDesign.js" type="module" defer></script> 
+
+    <link rel="icon" href="images/logo/logoicon.png" type="image/png"> <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        sky: { 
+                        sky: {
                             50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
                             400: '#38bdf8', 500: '#0EA5E9', 600: '#0284C7', 700: '#0369A1',
                             800: '#075985', 900: '#0c4a6e'
@@ -48,31 +45,21 @@
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif']
                     },
-                    animation: {
+                    animation: { // Kept for potential use by design-page.js or specific components
                         'fade-in': 'fadeIn 0.6s ease-in-out',
                         'slide-up': 'slideUp 0.8s ease-out',
-                        'float': 'float 3s ease-in-out infinite',
+                        'float': 'floatEffect 3s ease-in-out infinite', // Renamed to avoid conflict
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(30px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' }
-                        }
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(30px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        floatEffect: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-10px)' } }
                     }
                 }
             }
         }
     </script>
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -80,263 +67,15 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
-        .hero-section-main {
-            background-size: cover;
-            background-position: center;
-            will-change: transform;
-            position: relative;
-        }
-
-        .hero-section-main::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.8), rgba(15, 23, 42, 0.7));
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .service-card {
-            transition: all 0.4s ease;
-            transform-origin: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .album-image-wrapper {
-            transition: all 0.4s ease;
-            overflow: hidden;
-            border-radius: 12px;
-            position: relative;
-        }
-
-        .album-image-wrapper:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-        }
-
-        .album-image-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(14, 165, 233, 0.3), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .album-image-wrapper:hover::after {
-            opacity: 1;
-        }
-
-        .album-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .album-image-wrapper:hover .album-image {
-            transform: scale(1.1);
-        }
-
-        .dropdown .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #1e293b;
-            z-index: 50;
-            min-width: 230px;
-            border-radius: 0.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-            margin-top: 0.5rem;
-            padding: 0.5rem 0;
-            left: 0;
-            backdrop-filter: blur(10px);
-        }
-
-        .dropdown:hover .dropdown-menu,
-        .dropdown.open .dropdown-menu {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .dropdown-menu a {
-            padding: 0.75rem 1rem;
-            display: block;
-            color: #cbd5e1;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            text-decoration: none;
-        }
-
-        .dropdown-menu a:hover,
-        .dropdown-menu a:focus {
-            background-color: #334155;
-            color: #f1f5f9;
-            outline: none;
-            transform: translateX(4px);
-        }
-
-        .ai-design-section {
-            position: relative;
-            isolation: isolate;
-        }
-
-        .ai-design-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 70%);
-            z-index: -1;
-        }
-
-        .ai-design-section textarea {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .ai-design-section textarea:focus {
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
-            border-color: #0EA5E9;
-        }
-
-        .ai-design-section button {
-            transition: all 0.3s ease;
-        }
-
-        .ai-design-section button:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .ai-design-section #ai-output {
-            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-            transition: opacity 0.3s ease;
-        }
-
-        .text-shadow-strong {
-            text-shadow: 0px 2px 8px rgba(0,0,0,0.6);
-        }
-
-        .text-shadow {
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, #ffffff, #f8fafc);
-            border: 1px solid rgba(14, 165, 233, 0.1);
-            transition: all 0.4s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(14, 165, 233, 0.15);
-            border-color: rgba(14, 165, 233, 0.3);
-        }
-
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #0EA5E9;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-        }
-
-        .shake {
-            animation: shake 0.5s ease-in-out;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-
-        .nav-header {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .footer-section {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #0369a1, #0284c7);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .stats-counter {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #0EA5E9;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(59, 130, 246, 0.05));
-            border-left: 4px solid #0EA5E9;
-        }
+        /* .text-shadow classes đã có trong styles.css */
     </style>
 </head>
 
 <body class="bg-slate-100 text-slate-800 antialiased font-inter">
-    <!-- Navigation Header -->
-    <header>
-        <!-- header.html -->
-    </header>
-
-    <main id="main-content-area">
-        <section class="w-full" data-aos="fade-in" id="home">
+    <div id="header-placeholder"></div> <main id="main-content-area" class="pt-20"> <section class="w-full" data-aos="fade-in" id="home">
             <div class="w-full aspect-[1920/400] overflow-hidden">
-                <img 
-                    src="/images/logo/logo.jpg" 
-                    alt="KhaDock - Florida's Premier Boat Dock Solutions"
+                <img
+                    src="images/designs/khadockdesign.png" alt="KhaDock - Dock Design Concepts"
                     class="w-full h-full object-cover"
                     loading="eager"
                     width="1920"
@@ -345,737 +84,157 @@
             </div>
         </section>
 
-        <!-- Divider -->
         <div class="w-full flex justify-center my-0">
             <div class="h-1 w-3/4 bg-gradient-to-r from-transparent via-sky-400 to-transparent rounded-full shadow-lg"></div>
         </div>
 
-        <!-- Hero Section -->
-        <section 
-            class="hero-section-main relative min-h-[60vh] flex items-center justify-center text-center -mt-8"
-            style="background-image: url('/api/placeholder/1920/800');"
-            data-aos="fade-in"
+        <section
+            class="hero-section-main design-hero-section-main relative min-h-[60vh] flex items-center justify-center text-center -mt-8"
+            style="background-image: url('images/albums/dock1.jpg');" data-aos="fade-in"
         >
-            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-white py-16">
+            <div class="design-hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-white py-16">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-shadow-strong animate-slide-up" data-aos="fade-down" data-aos-delay="100">
-                    KhaDock.com
+                    Innovative Dock Designs
                 </h1>
                 <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-shadow-strong animate-slide-up" data-aos="fade-down" data-aos-delay="200">
-                    YOUR TRUSTED PARTNER IN FLORIDA
+                    Crafting Your Florida Waterfront Vision
                 </h2>
                 <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-100 text-shadow mb-8 animate-slide-up" data-aos="fade-up" data-aos-delay="300">
-                    Building Finest Boat Dock Experiences: Custom Design, Durable Construction, and Expert Remodeling.
+                    Explore cutting-edge design concepts and leverage our AI tool to bring your ideal boat dock to life.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-6 animate-slide-up" data-aos="fade-up" data-aos-delay="400">
                     <a href="#projects" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 rounded-lg text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
                         View Our Portfolio
                     </a>
                     <a href="#ai-design-generator" class="bg-white text-sky-700 font-bold py-4 px-10 rounded-lg text-lg shadow-xl hover:bg-sky-50 hover:text-sky-900 transition-all duration-300 transform hover:scale-105 border-2 border-sky-300">
-                        AI Design Generator
+                        Try AI Design Generator
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Stats Section -->
         <section class="py-16 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div class="feature-card p-6 rounded-xl">
-                        <div class="stats-counter" data-count="50">50+</div>
-                        <p class="text-slate-600 font-medium">Projects Completed</p>
+                    <div class="design-feature-card p-6 rounded-xl">
+                        <div class="stats-counter" data-count="50">0+</div>
+                        <p class="text-slate-600 font-medium">Unique Designs Created</p>
                     </div>
-                    <div class="feature-card p-6 rounded-xl">
-                        <div class="stats-counter" data-count=" >10"> >10 </div>
-                        <p class="text-slate-600 font-medium">Years Experience</p>
+                    <div class="design-feature-card p-6 rounded-xl">
+                        <div class="stats-counter" data-count="10">0+</div> <p class="text-slate-600 font-medium">Years Design Experience</p>
                     </div>
-                    <div class="feature-card p-6 rounded-xl">
-                        <div class="stats-counter" data-count="50"> 50+ </div>
-                        <p class="text-slate-600 font-medium">Happy Clients</p>
+                    <div class="design-feature-card p-6 rounded-xl">
+                        <div class="stats-counter" data-count="98">0%</div> <p class="text-slate-600 font-medium">Client Satisfaction</p>
                     </div>
-                    <div class="feature-card p-6 rounded-xl">
-                        <div class="stats-counter" data-count="24"> 24/7 </div>
-                        <p class="text-slate-600 font-medium">Support Hours</p>
+                    <div class="design-feature-card p-6 rounded-xl">
+                        <div class="stats-counter" data-count="24/7">24/7</div> <p class="text-slate-600 font-medium">Design Support</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Overview -->
-        <section class="py-20 bg-slate-50" id="services" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Our Core Services</h2>
-                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-                        From concept to completion, we provide comprehensive dock and marine construction services tailored to your unique needs.
-                    </p>
-                </div>
-                <div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="service-card bg-white p-8 rounded-2xl shadow-lg text-center" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="text-sky-500 mb-6">
-                            <i class="fas fa-drafting-compass fa-4x"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-800 mb-4">Custom Dock Design & Remodeling</h3>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Tailored designs and expert remodeling to perfectly suit your waterfront property and lifestyle, enhancing both beauty and functionality.
-                        </p>
-                        <a href="#design" class="text-sky-600 hover:text-sky-700 font-bold inline-flex items-center group">
-                            Learn More <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                    <div class="service-card bg-white p-8 rounded-2xl shadow-lg text-center" data-aos="zoom-in-up" data-aos-delay="200">
-                        <div class="text-sky-500 mb-6">
-                            <i class="fas fa-tools fa-4x"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-800 mb-4">Repair & Maintenance</h3>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Comprehensive repair and maintenance services to keep your dock in pristine condition, ensuring safety and extending its lifespan.
-                        </p>
-                        <a href="#repair" class="text-sky-600 hover:text-sky-700 font-bold inline-flex items-center group">
-                            Learn More <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                    <div class="service-card bg-white p-8 rounded-2xl shadow-lg text-center" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="text-sky-500 mb-6">
-                            <i class="fas fa-anchor fa-4x"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-800 mb-4">Dock Upgrades & Accessories</h3>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Upgrade materials, add premium amenities like boat lifts, lighting, and enhance your dock for superior functionality and style.
-                        </p>
-                        <a href="#upgrades" class="text-sky-600 hover:text-sky-700 font-bold inline-flex items-center group">
-                            Learn More <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="text-center mt-16">
-                    <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-12 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xl">
-                        Explore All Services
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose KhaDock -->
-        <section class="py-20 bg-white" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Why Choose KhaDock?</h2>
-                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-                        We are committed to delivering superior quality, exceptional service, and lasting value to every client throughout Florida.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="feature-card p-8 rounded-2xl" data-aos="fade-right" data-aos-delay="100">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-sky-100 p-4 rounded-full mr-4">
-                                <i class="fas fa-medal fa-2x text-sky-500"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-700">Florida Marine Expertise</h3>
-                        </div>
-                        <p class="text-slate-600 leading-relaxed">
-                            Deep understanding of Florida's unique coastal conditions, permitting processes, and stringent building codes for optimal results.
-                        </p>
-                    </div>
-                    <div class="feature-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-sky-100 p-4 rounded-full mr-4">
-                                <i class="fas fa-gem fa-2x text-sky-500"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-700">Premium Quality Materials</h3>
-                        </div>
-                        <p class="text-slate-600 leading-relaxed">
-                            We exclusively use top-tier marine-grade lumber, composite decking, and premium hardware to ensure maximum longevity and resilience.
-                        </p>
-                    </div>
-                    <div class="feature-card p-8 rounded-2xl" data-aos="fade-left" data-aos-delay="300">
-                        <div class="flex items-center mb-6">
-                            <div class="bg-sky-100 p-4 rounded-full mr-4">
-                                <i class="fas fa-handshake-angle fa-2x text-sky-500"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-700">Customer-Focused Approach</h3>
-                        </div>
-                        <p class="text-slate-600 leading-relaxed">
-                            Your complete satisfaction is our top priority. We collaborate closely with you from initial consultation to final walkthrough.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Design Generator Section -->
-        <section class="ai-design-section py-20 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50" data-aos="fade-up" id="ai-design-generator">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 flex items-center justify-center gap-3">
-                        <i class="fas fa-lightbulb text-sky-500 animate-pulse-slow"></i> 
-                        Generate Your Dream Dock Idea
+        <section class="ai-design-section design-page-ai py-20 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50" data-aos="fade-up" id="ai-design-generator">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
+                        <i class="fas fa-lightbulb text-sky-500"></i> Generate Your Dream Dock Idea
                     </h2>
-                    <p class="text-xl text-slate-700 max-w-3xl mx-auto mb-4">
-                        Describe your ideal dock—its style, materials, or features—and let our advanced AI craft a unique, Florida-inspired design concept just for you!
+                    <p class="text-lg text-slate-700 max-w-2xl mx-auto">
+                        Describe your ideal dock—its style, materials, or features—and let our AI craft a unique, Florida-inspired design concept just for you!
                     </p>
-                    <div class="text-slate-500">
+                    <div class="mt-4 text-slate-500 text-sm">
                         <strong>KhaDock AI Designer</strong> is developed by <a href="https://ivsacademy.edu.vn" class="text-sky-600 hover:underline" target="_blank" rel="noopener">IVS Celestech</a>, a division of IVS JSC.
                     </div>
                 </div>
 
-                <div class="max-w-4xl mx-auto bg-white p-8 sm:p-12 rounded-3xl shadow-2xl border border-sky-200 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500"></div>
-                    
+                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-2xl border border-sky-200 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-500 to-blue-600"></div>
                     <textarea
                         id="ai-design-input"
-                        class="w-full p-6 border-2 border-slate-300 rounded-xl focus:ring-4 focus:ring-sky-200 focus:border-sky-500 mb-8 resize-y min-h-[150px] text-slate-800 text-lg placeholder-slate-400"
-                        placeholder="Example: 'A modern dock with a covered lounge area, composite materials, LED lighting, and boat lift for a quiet Florida cove.'"
+                        class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
+                        placeholder="Example: 'A modern T-shaped dock with composite decking, a covered seating area, and two boat slips for a bayfront property in Sarasota.'"
+                        aria-label="Describe your ideal dock"
                     ></textarea>
 
-                    <div class="flex flex-col sm:flex-row justify-between items-center gap-6 mb-8">
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
                         <button
                             id="ai-generate-btn"
-                            class="bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center text-lg"
+                            class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
                         >
-                            <i class="fas fa-magic mr-3"></i> Generate Design Idea
+                            <i class="fas fa-magic mr-2"></i> Generate Design Idea
                         </button>
-                        
-                        <button
+                         <button
                             id="ai-clear-btn"
-                            class="bg-slate-500 hover:bg-slate-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300"
+                            class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-3 px-6 rounded-lg transition-all duration-300 text-sm sm:text-base"
                         >
                             <i class="fas fa-eraser mr-2"></i> Clear
                         </button>
                     </div>
 
-                    <!-- Loading Indicator -->
-                    <div id="ai-loading" class="text-sky-600 hidden mb-6">
-                        <div class="flex items-center justify-center">
-                            <div class="loading-spinner mr-3"></div>
-                            <span id="ai-loading-text" class="text-lg font-medium">Generating your design idea...</span>
-                        </div>
+                    <div id="ai-loading" class="mt-6 text-sky-600 hidden flex items-center justify-center">
+                        <div class="loading-spinner mr-3"></div>
+                        <span id="ai-loading-text">Generating your idea...</span>
                     </div>
 
-                    <!-- Error Message -->
-                    <div id="ai-error" class="mb-6 p-6 bg-red-50 border-2 border-red-200 text-red-800 rounded-xl hidden">
-                        <div class="flex items-center">
-                            <i class="fas fa-exclamation-triangle mr-3 text-red-500"></i>
-                            <span class="font-medium">Error generating design</span>
-                        </div>
-                    </div>
+                    <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden" role="alert"></div>
 
-                    <!-- Output -->
-                    <div id="ai-output" class="p-8 bg-gradient-to-br from-slate-50 to-blue-50 border-2 border-slate-200 rounded-xl hidden">
-                        <h4 class="font-bold text-2xl mb-4 text-sky-700 flex items-center">
-                            <i class="fas fa-star mr-3"></i>
-                            KhaDock AI Design Concept:
-                        </h4>
-                        <div id="ai-output-content" class="text-slate-700 leading-relaxed prose max-w-none"></div>
+                    <div id="ai-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden" aria-live="polite">
+                        <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
+                         <div id="ai-output-content" class="prose prose-sm sm:prose-base max-w-none"></div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Project Showcase -->
+
         <section class="py-20 bg-white" id="projects" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Our Project Showcase</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Design Inspirations</h2>
                     <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-                        Explore the quality and diversity of boat docks, piers, and marine structures we've expertly crafted across Florida.
+                        Explore a gallery of stunning dock designs to spark your imagination.
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    <div class="album-image-wrapper" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="/api/placeholder/400/300" alt="KhaDock Project - Custom Dock Design" class="album-image" loading="lazy">
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="images/designs/design1.jpg" alt="KhaDock Design Inspiration 1" class="design-album-image" loading="lazy">
                     </div>
-                    <div class="album-image-wrapper" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="/api/placeholder/400/300" alt="KhaDock Project - Boat Lift Installation" class="album-image" loading="lazy">
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="150">
+                        <img src="images/designs/design2.jpg" alt="KhaDock Design Inspiration 2" class="design-album-image" loading="lazy">
                     </div>
-                    <div class="album-image-wrapper" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="/api/placeholder/400/300" alt="KhaDock Project - Dock Remodeling" class="album-image" loading="lazy">
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="images/designs/design3.jpg" alt="KhaDock Design Inspiration 3" class="design-album-image" loading="lazy">
                     </div>
-                    <div class="album-image-wrapper" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="/api/placeholder/400/300" alt="KhaDock Project - Dock Repair" class="album-image" loading="lazy">
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="250">
+                        <img src="images/designs/design4.jpg" alt="KhaDock Design Inspiration 4" class="design-album-image" loading="lazy">
                     </div>
-                    <div class="album-image-wrapper" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="/api/placeholder/400/300" alt="KhaDock Project - New Construction" class="album-image" loading="lazy">
                     </div>
-                    <div class="album-image-wrapper" data-aos="zoom-in" data-aos-delay="350">
-                        <img src="/api/placeholder/400/300" alt="KhaDock Project - Waterfront View" class="album-image" loading="lazy">
-                    </div>
-                    <div class="album-image-wrapper" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="/api/placeholder/400/300" alt="KhaDock Project - Premium Accessories" class="album-image" loading="lazy">
-                    </div>
-                    <div class="album-image-wrapper" data-aos="zoom-in" data-aos-delay="450">
-                        <img src="/api/placeholder/400/300" alt="KhaDock Project - Completed Project" class="album-image" loading="lazy">
-                    </div>
-                </div>
-                <div class="text-center mt-16">
-                    <a href="#contact.html" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-12 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xl">
-                        View Full Portfolio
-                    </a>
-                </div>
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section class="py-20 bg-slate-50" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">What Our Clients Say</h2>
-                    <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-                        Don't just take our word for it. Here's what our satisfied customers have to say about KhaDock.
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex items-center mb-4">
-                            <div class="flex text-yellow-400 mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-slate-600 font-medium">5.0</span>
-                        </div>
-                        <p class="text-slate-700 mb-6 leading-relaxed">
-                            "KhaDock transformed our waterfront property with an absolutely stunning dock. Their attention to detail and quality craftsmanship exceeded our expectations."
-                        </p>
-                        <div class="flex items-center">
-                            <img src="/api/placeholder/50/50" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-bold text-slate-800">Sarah Johnson</h4>
-                                <p class="text-slate-600 text-sm">Tampa Bay</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center mb-4">
-                            <div class="flex text-yellow-400 mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-slate-600 font-medium">5.0</span>
-                        </div>
-                        <p class="text-slate-700 mb-6 leading-relaxed">
-                            "Professional, reliable, and incredibly skilled. KhaDock delivered exactly what they promised, on time and within budget. Highly recommended!"
-                        </p>
-                        <div class="flex items-center">
-                            <img src="/api/placeholder/50/50" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-bold text-slate-800">Mike Rodriguez</h4>
-                                <p class="text-slate-600 text-sm">Miami</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                        <div class="flex items-center mb-4">
-                            <div class="flex text-yellow-400 mr-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-slate-600 font-medium">5.0</span>
-                        </div>
-                        <p class="text-slate-700 mb-6 leading-relaxed">
-                            "From design to completion, KhaDock made the entire process seamless. Our new dock is not just functional but truly beautiful."
-                        </p>
-                        <div class="flex items-center">
-                            <img src="/api/placeholder/50/50" alt="Client" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-bold text-slate-800">Lisa Chen</h4>
-                                <p class="text-slate-600 text-sm">Fort Lauderdale</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Contact/CTA Section -->
         <section class="cta-section py-20 text-white relative" id="contact" data-aos="zoom-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-shadow">Ready to Start Your Dream Dock Project?</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-shadow">Ready to Design Your Dream Dock?</h2>
                 <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-slate-100 leading-relaxed">
-                    Let's discuss your vision and bring it to life. Contact KhaDock today for a personalized consultation and comprehensive, no-obligation estimate.
+                    Our experts are here to help. Contact KhaDock today for a personalized design consultation.
                 </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-                        <i class="fas fa-phone fa-2x mb-4 text-sky-200"></i>
-                        <h3 class="text-xl font-bold mb-2">Call Us</h3>
-                        <p class="text-sky-100">(555) 123-DOCK</p>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-                        <i class="fas fa-envelope fa-2x mb-4 text-sky-200"></i>
-                        <h3 class="text-xl font-bold mb-2">Email Us</h3>
-                        <p class="text-sky-100">info@khadock.com</p>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-                        <i class="fas fa-map-marker-alt fa-2x mb-4 text-sky-200"></i>
-                        <h3 class="text-xl font-bold mb-2">Visit Us</h3>
-                        <p class="text-sky-100">Serving All Florida</p>
-                    </div>
-                </div>
-                
-                <a href="#ai-design-generator" class="bg-white text-sky-700 font-bold py-5 px-12 rounded-xl text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-sky-50 inline-flex items-center">
-                    <i class="fas fa-calendar-check mr-3"></i>
-                    Schedule Your Consultation
+                <a href="contact.html" class="bg-white text-sky-700 font-bold py-5 px-12 rounded-xl text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-sky-50 inline-flex items-center">
+                    <i class="fas fa-drafting-compass mr-3"></i>
+                    Start Designing
                 </a>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer-section py-16 text-slate-300">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                <div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <img src="/api/placeholder/40/40" alt="KhaDock Logo" class="h-10 w-10 rounded-full">
-                        <span class="text-white font-bold text-2xl">KhaDock</span>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed mb-6">
-                        Florida's premier boat dock construction company, specializing in custom design, quality construction, and expert marine services.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-slate-400 hover:text-sky-400 transition-colors">
-                            <i class="fab fa-facebook fa-lg"></i>
-                        </a>
-                        <a href="#" class="text-slate-400 hover:text-sky-400 transition-colors">
-                            <i class="fab fa-instagram fa-lg"></i>
-                        </a>
-                        <a href="#" class="text-slate-400 hover:text-sky-400 transition-colors">
-                            <i class="fab fa-linkedin fa-lg"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-6">Services</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#design" class="text-slate-400 hover:text-white transition-colors">Custom Design</a></li>
-                        <li><a href="#construction" class="text-slate-400 hover:text-white transition-colors">Construction</a></li>
-                        <li><a href="#repair" class="text-slate-400 hover:text-white transition-colors">Repair & Maintenance</a></li>
-                        <li><a href="#upgrades" class="text-slate-400 hover:text-white transition-colors">Upgrades</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-6">Company</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#about" class="text-slate-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#projects" class="text-slate-400 hover:text-white transition-colors">Projects</a></li>
-                        <li><a href="#contact" class="text-slate-400 hover:text-white transition-colors">Contact</a></li>
-                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-6">Contact Info</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center">
-                            <i class="fas fa-phone mr-3 text-sky-400"></i>
-                            <span class="text-slate-400">(555) 123-DOCK</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope mr-3 text-sky-400"></i>
-                            <span class="text-slate-400">info@khadock.com</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-3 text-sky-400"></i>
-                            <span class="text-slate-400">Serving All Florida</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-slate-700 pt-8 text-center">
-                <p class="text-slate-400">
-                    © 2024 KhaDock. All rights reserved. | 
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a> | 
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" title="Go to top"
-            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
-                   w-14 h-14 rounded-full shadow-2xl flex items-center justify-center 
+    <div id="footer-placeholder"></div> <button id="scrollToTopBtn" title="Go to top"
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
+                   w-14 h-14 rounded-full shadow-2xl flex items-center justify-center
                    focus:outline-none focus:ring-4 focus:ring-sky-400 focus:ring-opacity-75
-                   transition-all duration-300 z-50 text-xl animate-float">
-        <i class="fas fa-arrow-up"></i>
+                   transition-all duration-300 z-50 text-xl animate-floatEffect"> <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-
-        // Scroll to Top Button
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.remove('hidden');
-                scrollToTopBtn.classList.add('flex');
-            } else {
-                scrollToTopBtn.classList.add('hidden');
-                scrollToTopBtn.classList.remove('flex');
-            }
-        });
-        
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Stats Counter Animation
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 100;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current) + (target >= 100 ? '+' : '');
-            }, 20);
-        }
-
-        // Intersection Observer for Stats
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.dataset.count);
-                    animateCounter(entry.target, target);
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        document.querySelectorAll('.stats-counter').forEach(counter => {
-            statsObserver.observe(counter);
-        });
-
-        // AI Design Generator
-        const aiInput = document.getElementById('ai-design-input');
-        const aiGenerateBtn = document.getElementById('ai-generate-btn');
-        const aiClearBtn = document.getElementById('ai-clear-btn');
-        const aiLoading = document.getElementById('ai-loading');
-        const aiError = document.getElementById('ai-error');
-        const aiOutput = document.getElementById('ai-output');
-        const aiOutputContent = document.getElementById('ai-output-content');
-
-        // Mock AI responses for demonstration
-        const mockResponses = [
-            {
-                title: "Modern Florida Waterfront Dock Design",
-                content: `<p><strong>Design Overview:</strong> A sleek, contemporary dock featuring composite decking with integrated LED strip lighting for evening ambiance.</p>
-                
-                <h4>Key Features:</h4>
-                <ul>
-                    <li><strong>Covered Lounge Area:</strong> 12x16 foot pavilion with cedar post construction and metal roofing</li>
-                    <li><strong>Premium Materials:</strong> Trex composite decking in Gravel Path color with matching fascia</li>
-                    <li><strong>Smart Lighting:</strong> Weather-resistant LED strip lighting with smartphone control</li>
-                    <li><strong>Boat Lift Integration:</strong> Pre-wired for 10,000 lb capacity boat lift with remote operation</li>
-                </ul>
-                
-                <h4>Florida-Specific Considerations:</h4>
-                <ul>
-                    <li>Hurricane-rated construction meeting current building codes</li>
-                    <li>Saltwater-resistant hardware and fasteners</li>
-                    <li>Proper drainage design for heavy rainfall</li>
-                    <li>Native landscaping integration for shoreline protection</li>
-                </ul>
-                
-                <p><strong>Estimated Timeline:</strong> 3-4 weeks including permitting</p>
-                <p><strong>Special Features:</strong> Built-in seating, storage lockers, and electrical outlets for convenience.</p>`
-            },
-            {
-                title: "Classic Florida Keys Style Dock",
-                content: `<p><strong>Design Concept:</strong> A charming, traditional dock inspired by classic Florida Keys architecture with natural materials and relaxed coastal vibes.</p>
-                
-                <h4>Design Elements:</h4>
-                <ul>
-                    <li><strong>Natural Wood Construction:</strong> Premium marine-grade cedar with natural weathering finish</li>
-                    <li><strong>Thatched Shade Structure:</strong> Authentic palm frond tiki-style covering for tropical appeal</li>
-                    <li><strong>Multi-Level Platform:</strong> Stepped design accommodating varying water levels</li>
-                    <li><strong>Fishing Station:</strong> Dedicated area with rod holders and cleaning station</li>
-                </ul>
-                
-                <h4>Functional Features:</h4>
-                <ul>
-                    <li>Wide walkways for easy boat access</li>
-                    <li>Built-in cooler storage and tackle box compartments</li>
-                    <li>Rope and fender storage solutions</li>
-                    <li>Solar-powered accent lighting for eco-friendly operation</li>
-                </ul>
-                
-                <p><strong>Perfect For:</strong> Fishing enthusiasts and those seeking authentic Florida coastal charm.</p>`
-            },
-            {
-                title: "Luxury Resort-Style Dock Complex",
-                content: `<p><strong>Premium Design:</strong> An expansive, resort-quality dock system designed for luxury waterfront living with multiple entertainment zones.</p>
-                
-                <h4>Luxury Amenities:</h4>
-                <ul>
-                    <li><strong>Entertainment Deck:</strong> 20x24 foot elevated platform with outdoor kitchen prep area</li>
-                    <li><strong>Swim Platform:</strong> Low-profile floating section with ladder and handrails</li>
-                    <li><strong>Boat House Integration:</strong> Covered slip with automatic boat lift system</li>
-                    <li><strong>Outdoor Living Space:</strong> Weather-resistant furniture arrangement area</li>
-                </ul>
-                
-                <h4>Premium Materials & Features:</h4>
-                <ul>
-                    <li>Ipe hardwood decking with stainless steel railings</li>
-                    <li>Integrated sound system with marine-grade speakers</li>
-                    <li>Automated shade sails with wind sensors</li>
-                    <li>Underwater LED lighting for nighttime ambiance</li>
-                </ul>
-                
-                <p><strong>Engineering Excellence:</strong> Designed to withstand Category 4 hurricane conditions while maintaining elegant aesthetics.</p>`
-            }
-        ];
-
-        aiGenerateBtn.addEventListener('click', async () => {
-            const input = aiInput.value.trim();
-            
-            if (!input) {
-                aiError.textContent = 'Please describe your dock idea first.';
-                aiError.classList.remove('hidden');
-                aiError.classList.add('shake');
-                setTimeout(() => aiError.classList.remove('shake'), 500);
-                return;
-            }
-
-            // Hide previous results
-            aiError.classList.add('hidden');
-            aiOutput.classList.add('hidden');
-            
-            // Show loading
-            aiLoading.classList.remove('hidden');
-            aiGenerateBtn.disabled = true;
-            
-            // Simulate AI processing time
-            await new Promise(resolve => setTimeout(resolve, 2000 + Math.random() * 2000));
-            
-            // Generate response
-            const randomResponse = mockResponses[Math.floor(Math.random() * mockResponses.length)];
-            
-            // Hide loading
-            aiLoading.classList.add('hidden');
-            aiGenerateBtn.disabled = false;
-            
-            // Show result
-            aiOutputContent.innerHTML = randomResponse.content;
-            aiOutput.classList.remove('hidden');
-            
-            // Scroll to result
-            aiOutput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-
-        aiClearBtn.addEventListener('click', () => {
-            aiInput.value = '';
-            aiError.classList.add('hidden');
-            aiOutput.classList.add('hidden');
-            aiInput.focus();
-        });
-
-        // Enhanced Navigation Scroll Effect
-        let lastScroll = 0;
-        const nav = document.getElementById('main-nav');
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll <= 0) {
-                nav.classList.remove('shadow-lg');
-                return;
-            }
-            
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                // Scrolling down
-                nav.style.transform = 'translateY(-100%)';
-            } else if (currentScroll < lastScroll) {
-                // Scrolling up
-                nav.style.transform = 'translateY(0)';
-                nav.classList.add('shadow-lg');
-            }
-            
-            lastScroll = currentScroll;
-        });
-
-        // Lazy Loading for Images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src || img.src;
-                        img.classList.remove('opacity-0');
-                        img.classList.add('opacity-100');
-                        observer.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-                img.classList.add('opacity-0', 'transition-opacity', 'duration-300');
-                imageObserver.observe(img);
-            });
-        }
-
-        // Enhanced Error Handling
-        window.addEventListener('error', (e) => {
-            console.error('Page Error:', e.error);
-        });
-
-        // Performance Monitoring
-        window.addEventListener('load', () => {
-            if ('performance' in window) {
-                const loadTime = performance.now();
-                console.log(`Page loaded in ${Math.round(loadTime)}ms`);
-            }
-        });
-    </script>
-</body>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/loadComponents.js" type="module" defer></script>
+    <script src="js/app.js" type="module" defer></script>
+    <script src="js/generateDesign.js" type="module" defer></script> <script src="js/design-page.js" type="module" defer></script>   </body>
 </html>

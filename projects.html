@@ -4,140 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0EA5E9">
-    
-    <!-- Enhanced SEO -->
+
     <title>Our Dock & Marine Projects - KhaDock.com Florida</title>
     <meta name="description" content="Explore a portfolio of completed boat dock designs, new constructions, and remodels by KhaDock - Design and Remodel in Florida.">
-    
-    <!-- Open Graph -->
+
     <meta property="og:title" content="KhaDock Projects - Florida Marine Construction Excellence">
     <meta property="og:description" content="View our gallery of high-quality marine construction projects, showcasing our expertise in building and remodeling docks, piers, and seawalls across Florida.">
     <meta property="og:image" content="https://khadock.com/images/logo/logoicon.png">
     <meta property="og:url" content="https://khadock.com/projects.html">
     <meta property="og:type" content="website">
 
-    <!-- Preload critical assets -->
     <link rel="preload" href="images/logo/logoicon.png" as="image">
     <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
-    
-    <!-- Favicon -->
+
     <link rel="icon" type="image/png" sizes="32x32" href="images/logo/logoicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logo/logoicon.png">
-    
-    <!-- Stylesheets -->
+
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/projects.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
     <style>
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-color: #f1f5f9; 
+            /* background-color: #f1f5f9; Tailwind class bg-slate-100 sẽ xử lý */
         }
-        .banner-bg {
-             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/albums/dock15.jpg'); 
-             background-size: cover;
-             background-position: center;
-        }
-        .text-shadow {
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-
-        .filter-button {
-            transition: all 0.3s ease-in-out;
-            border: 1px solid #e2e8f0; 
-        }
-        .filter-button:hover {
-            background-color: #f0f9ff; 
-            border-color: #7dd3fc; 
-            color: #0369a1; 
-        }
-        .filter-button.active {
-            background-color: #0ea5e9; 
-            color: white;
-            border-color: #0ea5e9; 
-            box-shadow: 0 4px 12px -1px rgba(14, 165, 233, 0.3), 0 2px 8px -1px rgba(14, 165, 233, 0.2);
-        }
-
-        .project-card {
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-        }
-        .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.07);
-        }
-        .project-card .project-image-container {
-            height: 260px; 
-            overflow: hidden;
-            background-color: #e2e8f0; 
-        }
-        .project-card img { 
-            transition: transform 0.4s ease, filter 0.3s ease;
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-        }
-        .project-card:hover img {
-            transform: scale(1.05);
-        }
-        .project-card-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 170px; 
-        }
-        .project-tag {
-            transition: background-color 0.2s ease, color 0.2s ease;
-            font-size: 0.7rem; 
-        }
-
-        .album-scroll-container {
-            padding-bottom: 1rem; 
-        }
-        .album-image-item { 
-            flex-shrink: 0; 
-            overflow: hidden; 
-            border-radius: 0.75rem; 
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 280px; 
-            height: 180px; 
-        }
-        .album-image-item:hover {
-            transform: translateY(-5px) scale(1.03); 
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12); 
-        }
-        .album-image-horizontal { 
-            height: 100%; 
-            width: 100%;  
-            object-fit: cover;
-            display: block; 
-        }
-
-        .scrollbar-thin::-webkit-scrollbar {
-            height: 8px; 
-        }
-        .scrollbar-thin::-webkit-scrollbar-track {
-            background: #e2e8f0; 
-            border-radius: 10px;
-        }
-        .scrollbar-thin::-webkit-scrollbar-thumb {
-            background: #94a3b8; 
-            border-radius: 10px;
-            border: 2px solid #e2e8f0; 
-        }
-        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-            background: #64748b; 
-        }
+        /* .text-shadow class đã có trong styles.css */
+        /* .scrollbar-thin classes đã có trong styles.css */
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
@@ -145,7 +44,7 @@
     <div id="header-placeholder"></div>
 
     <main class="pt-20">
-        <section class="banner-bg text-white py-24 md:py-32" data-aos="fade-in">
+        <section class="banner-bg projects-banner-bg text-white py-24 md:py-32" data-aos="fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-shadow" data-aos="fade-down" data-aos-delay="200">Our Portfolio</h1>
                 <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-200 text-shadow" data-aos="fade-up" data-aos-delay="400">
@@ -156,9 +55,9 @@
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
                 <div class="w-full md:w-2/3" data-aos="zoom-in-right">
-                    <video 
-                        src="videos/project1.mp4" 
-                        controls 
+                    <video
+                        src="videos/project1.mp4"
+                        controls
                         poster="images/albums/dock15.jpg"
                         class="w-full rounded-xl shadow-lg"
                         preload="metadata"
@@ -199,14 +98,14 @@
                     <button class="filter-button active px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="all">All Projects</button>
                     <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="design">Custom Design</button>
                     <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="remodel">Remodeling</button>
-                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="maintenance">Repair & Maintenance</button> 
+                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="maintenance">Repair & Maintenance</button>
                 </div>
 
                 <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="100">
                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images/pages/DockConstruction.jpeg" alt="Luxury Private Dock in Miami by KhaDock">
+                                <img src="images/pages/DockConstruction.jpeg" alt="Luxury Private Dock in Miami by KhaDock" loading="lazy">
                             </div>
                             <div class="p-6 project-card-content flex-grow">
                                 <div>
@@ -224,7 +123,7 @@
                     <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="construction" data-aos="zoom-in-up" data-aos-delay="200">
                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images/albums/dock7.jpg" alt="Commercial Pier Fort Lauderdale by KhaDock">
+                                <img src="images/albums/dock7.jpg" alt="Commercial Pier Fort Lauderdale by KhaDock" loading="lazy">
                             </div>
                             <div class="p-6 project-card-content flex-grow">
                                 <div>
@@ -241,7 +140,7 @@
                     <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="remodel" data-aos="zoom-in-up" data-aos-delay="300">
                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images/albums/dock6.jpg" alt="Classic Dock Remodel Palm Beach by KhaDock">
+                                <img src="images/albums/dock6.jpg" alt="Classic Dock Remodel Palm Beach by KhaDock" loading="lazy">
                             </div>
                             <div class="p-6 project-card-content flex-grow">
                                 <div>
@@ -257,7 +156,7 @@
                     <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="maintenance design" data-aos="zoom-in-up" data-aos-delay="100">
                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images/pages/Repair&Maintenance.jpeg" alt="Waterfront Deck Repair & Enhancement - Key West">
+                                <img src="images/pages/Repair&Maintenance.jpeg" alt="Waterfront Deck Repair & Enhancement - Key West" loading="lazy">
                             </div>
                             <div class="p-6 project-card-content flex-grow">
                                 <div>
@@ -274,7 +173,7 @@
                     <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="200">
                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images/albums/dock8.jpg" alt="Floating Dock System - Naples">
+                                <img src="images/albums/dock8.jpg" alt="Floating Dock System - Naples" loading="lazy">
                             </div>
                             <div class="p-6 project-card-content flex-grow">
                                 <div>
@@ -390,10 +289,10 @@
     </main>
 
     <div id="footer-placeholder"></div>
-    
-    <button id="scrollToTopBtn" title="Go to top" 
-            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
-                   w-14 h-14 rounded-full shadow-xl items-center justify-center 
+
+    <button id="scrollToTopBtn" title="Go to top"
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
+                   w-14 h-14 rounded-full shadow-xl items-center justify-center
                    focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
                    transition-all duration-300 z-40 text-xl">
         <i class="fas fa-arrow-up"></i>
@@ -402,55 +301,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/projects-page.js" type="module" defer></script> </body>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            AOS.init({
-                duration: 700,
-                offset: 100, 
-                once: true,
-                easing: 'ease-out-quad',
-            });
-
-            const filterButtons = document.querySelectorAll('#project-filters .filter-button');
-            const projectCards = document.querySelectorAll('#project-grid .project-card');
-
-            if (filterButtons.length > 0 && projectCards.length > 0) {
-                filterButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        filterButtons.forEach(btn => btn.classList.remove('active', 'bg-sky-500', 'text-white', 'border-sky-500'));
-                        button.classList.add('active', 'bg-sky-500', 'text-white', 'border-sky-500');
-                        
-                        const filterValue = button.getAttribute('data-filter');
-
-                        projectCards.forEach(card => {
-                            const categories = card.getAttribute('data-category');
-                            if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
-                                card.style.display = 'flex'; 
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                });
-            }
-
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            if (scrollToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                        scrollToTopBtn.classList.remove('hidden');
-                        scrollToTopBtn.classList.add('flex');
-                    } else {
-                        scrollToTopBtn.classList.add('hidden');
-                        scrollToTopBtn.classList.remove('flex');
-                    }
-                }, { passive: true });
-                scrollToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-        });
-    </script>
+    <script src="js/projects-page.js" type="module" defer></script>
 </body>
 </html>
