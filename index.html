@@ -20,7 +20,8 @@
     <link rel="preload" href="images/logo/logoicon.png" as="image" fetchpriority="high">
     <link rel="preload" href="fonts/Inter-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style"> <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
+    <link rel="preload" href="css/styles.css" as="style">
     <link rel="preload" as="image" href="images/albums/dock15.jpg">
 
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
@@ -29,7 +30,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css"> <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -49,7 +52,7 @@
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif']
                     },
-                    animation: { // Added for loading spinners or other effects
+                    animation: {
                         'spin-slow': 'spin 2s linear infinite',
                     }
                 }
@@ -63,15 +66,15 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        /* Additional styles for AI Gemini features, if needed, will be in styles.css */
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased font-inter">
 
     <div id="header-placeholder">
-        </div>
+    </div>
 
-    <main id="main-content-area" class="pt-20"> <article class="w-full" data-aos="fade-in">
+    <main id="main-content-area" class="pt-20">
+        <article class="w-full" data-aos="fade-in">
             <div class="w-full aspect-[1920/400] md:aspect-[1920/400] lg:aspect-[1920/400] overflow-hidden">
                 <picture>
                     <source srcset="images/logo/logo.jpg" type="image/jpg">
@@ -152,7 +155,7 @@
         </section>
 
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why Choose KhaDock?</h2>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">We are committed to delivering superior quality, exceptional service, and lasting value to every client in Florida.</p>
@@ -193,7 +196,7 @@
                     <textarea
                         id="ai-design-input"
                         class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
-                        placeholder="Ví dụ: 'Một cầu tàu hiện đại hình chữ T, vật liệu composite, có khu vực mái che, đèn LED và chỗ đậu cho 2 tàu thuyền ở Sarasota.'"
+                        placeholder="E.g., 'A modern T-shaped dock with composite decking, a covered seating area, and two boat slips for a bayfront property in Sarasota.'"
                         aria-label="Describe your ideal dock"
                     ></textarea>
 
@@ -202,19 +205,19 @@
                             id="ai-generate-btn"
                             class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
                         >
-                            <i class="fas fa-magic mr-2"></i> Tạo Ý Tưởng Thiết Kế
+                            <i class="fas fa-magic mr-2"></i> Generate Design Idea
                         </button>
                          <button
                             id="ai-clear-input-btn"
                             class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-3 px-6 rounded-lg shadow-sm transition duration-300 text-sm sm:text-base"
                         >
-                            <i class="fas fa-eraser mr-2"></i> Xóa Input
+                            <i class="fas fa-eraser mr-2"></i> Clear Input
                         </button>
                     </div>
 
                     <div id="ai-loading" class="mt-6 text-sky-600 hidden flex items-center justify-center">
                         <i class="fas fa-spinner fa-spin mr-2 text-xl"></i>
-                        <span id="ai-loading-text" class="font-medium">Đang tạo ý tưởng...</span>
+                        <span id="ai-loading-text" class="font-medium">Generating your idea...</span>
                     </div>
 
                     <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden" role="alert"></div>
@@ -222,22 +225,20 @@
                     <div id="ai-output-container" class="mt-8 hidden">
                         <div id="ai-output" class="p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed prose max-w-none" aria-live="polite">
                             </div>
-
                         <div id="gemini-extra-features" class="mt-6 flex flex-col sm:flex-row justify-center gap-4 hidden">
                             <button id="ai-maintenance-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
-                                <i class="fas fa-tools mr-2"></i> ✨ Gợi ý Bảo trì ✨
+                                <i class="fas fa-tools mr-2"></i> ✨ Suggest Maintenance Tips ✨
                             </button>
                             <button id="ai-accessories-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
-                                <i class="fas fa-puzzle-piece mr-2"></i> ✨ Gợi ý Phụ kiện ✨
+                                <i class="fas fa-puzzle-piece mr-2"></i> ✨ Suggest Accessories ✨
                             </button>
                         </div>
                          <div id="ai-maintenance-loading" class="mt-4 text-teal-600 hidden flex items-center justify-center">
-                            <i class="fas fa-spinner fa-spin mr-2"></i> Đang tải gợi ý bảo trì...
+                            <i class="fas fa-spinner fa-spin mr-2"></i> Loading maintenance tips...
                         </div>
                         <div id="ai-accessories-loading" class="mt-4 text-indigo-600 hidden flex items-center justify-center">
-                            <i class="fas fa-spinner fa-spin mr-2"></i> Đang tải gợi ý phụ kiện...
+                            <i class="fas fa-spinner fa-spin mr-2"></i> Loading accessory suggestions...
                         </div>
-
                         <div id="ai-maintenance-output" class="mt-4 p-4 bg-teal-50 border border-teal-200 rounded-lg text-teal-700 leading-relaxed hidden prose max-w-none"></div>
                         <div id="ai-accessories-output" class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-700 leading-relaxed hidden prose max-w-none"></div>
                     </div>
@@ -246,7 +247,7 @@
         </section>
 
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Project Showcase</h2>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">A glimpse into the quality and diversity of boat docks, piers, and marine structures we've crafted.</p>
@@ -256,7 +257,7 @@
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="150"><img src="images/albums/dock2.jpg" alt="KhaDock Project 2" class="album-image" loading="lazy" width="600" height="450"></div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200"><img src="images/albums/dock3.jpg" alt="KhaDock Project 3" class="album-image" loading="lazy" width="600" height="450"></div>
                     <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250"><img src="images/albums/dock4.jpg" alt="KhaDock Project 4" class="album-image" loading="lazy" width="600" height="450"></div>
-                    </div>
+                </div>
                 <div class="text-center mt-12 md:mt-16">
                     <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">View Full Portfolio</a>
                 </div>
@@ -273,9 +274,9 @@
     </main>
 
     <div id="footer-placeholder">
-        </div>
+    </div>
 
-    <button id="scrollToTopBtn" title="Lên đầu trang"
+    <button id="scrollToTopBtn" title="Go to top"
             class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
                    w-12 h-12 md:w-14 md:h-14 rounded-full shadow-xl items-center justify-center
                    focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
@@ -286,5 +287,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/generateDesign.js" type="module" defer></script> </body>
+    <script src="js/generateDesign.js" type="module" defer></script>
+</body>
 </html>
