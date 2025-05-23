@@ -133,6 +133,7 @@ a:hover, a:focus {
     visibility: hidden;
     opacity: 0;
     pointer-events: none; /* Disable interaction when hidden */
+    z-index: 51; /* Đã cập nhật z-index để hiển thị trên header */
 }
 
 #mobile-menu-panel.open {
