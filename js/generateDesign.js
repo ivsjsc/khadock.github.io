@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Updated function to call your backend proxy
     async function callBackendAPI(promptText, targetLanguage = "English", type = "design") {
         // Endpoint for your backend proxy. Adjust if necessary.
-        const backendApiUrl = "/api/khadock-gemini-proxy"; // Example backend endpoint
+        const backendApiUrl = "http://localhost:3001/api/khadock-gemini-proxy";
 
         // The payload to send to your backend.
         // Your backend will then use this to construct the full request to Gemini.
