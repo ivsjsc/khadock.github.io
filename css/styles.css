@@ -441,7 +441,10 @@ a:hover, a:focus {
 .design-album-image-wrapper::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(45deg, rgba(14, 165, 233, 0.3), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -678,8 +681,7 @@ a:hover, a:focus {
     #gemini-output strong, #ai-output strong, #ai-output-content strong {
         color: #f1f5f9;
     }
-     #gemini-output h3, #gemini-output h4,
-     #ai-output h3, #ai-output h4, #ai-output-content h3, #ai-output-content h4 {
+     #gemini-output h3, #ai-output h3, #ai-output-content h3, #ai-output-content h4 {
         color: #7dd3fc;
     }
     #gemini-output p, #ai-output p, #ai-output-content p {
