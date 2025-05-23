@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsletterEmail = document.getElementById('newsletter-email');
     const newsletterMessage = document.getElementById('newsletter-message');
 
-    // Initialize AOS
+    // Khởi tạo AOS
     if (AOS) {
         AOS.init({
             duration: 800,
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle sticky header and scroll-to-top button
+    // Xử lý sticky header và nút cuộn lên đầu trang
     window.addEventListener('scroll', () => {
         if (header) {
             if (window.scrollY > 50) {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Listen for headerLoaded event from loadComponents.js
+    // Lắng nghe sự kiện headerLoaded từ loadComponents.js
     document.addEventListener('headerLoaded', () => {
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenuPanel = document.getElementById('mobile-menu-panel');
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const megaMenuContainer = document.querySelector('.mega-menu-container');
         const servicesMegaMenu = document.getElementById('services-mega-menu');
 
-        // Toggle mobile menu
+        // Chuyển đổi menu mobile
         if (mobileMenuButton && mobileMenuPanel && iconMenuOpen && iconMenuClose) {
             mobileMenuButton.addEventListener('click', () => {
                 const isOpen = mobileMenuPanel.classList.toggle('open');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Mobile submenu toggle
+        // Chuyển đổi submenu mobile
         const mobileSubmenuToggle = document.querySelector('.mobile-submenu-toggle');
         const mobileServicesSubmenuItems = document.getElementById('mobile-services-submenu-items');
 
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Desktop search functionality
+        // Chức năng tìm kiếm trên desktop
         if (desktopSearchButton && desktopSearchContainer && desktopSearchInput && desktopSearchClose) {
             desktopSearchButton.addEventListener('click', () => {
                 const isExpanded = desktopSearchContainer.classList.contains('hidden');
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 desktopSearchButton.setAttribute('aria-expanded', 'false');
             });
 
-            // Hide search results when clicking outside
+            // Ẩn kết quả tìm kiếm khi nhấp ra ngoài
             document.addEventListener('click', (event) => {
                 const desktopSearchWrapper = document.getElementById('desktop-search-wrapper');
                 if (desktopSearchWrapper && !desktopSearchWrapper.contains(event.target) && !desktopSearchButton.contains(event.target)) {
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Search input logic (Desktop)
+        // Logic nhập liệu tìm kiếm (Desktop)
         if (desktopSearchInput && searchResults) {
             desktopSearchInput.addEventListener('input', async () => {
                 const query = desktopSearchInput.value.trim();
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Search input logic (Mobile)
+        // Logic nhập liệu tìm kiếm (Mobile)
         if (mobileSearchInput && mobileSearchResults) {
             mobileSearchInput.addEventListener('input', async () => {
                 const query = mobileSearchInput.value.trim();
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Mega Menu hover/toggle
+        // Chuyển đổi/hover Mega Menu
         if (megaMenuContainer && servicesMegaMenu) {
             megaMenuContainer.addEventListener('mouseenter', () => {
                 servicesMegaMenu.classList.remove('hidden');
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Set active navigation link
+        // Đặt liên kết điều hướng đang hoạt động
         const currentPath = window.location.pathname.split('/').pop();
         const navLinks = document.querySelectorAll('nav a');
         navLinks.forEach(link => {
@@ -157,11 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (linkPath === currentPath || (linkPath === '' && currentPath === 'index.html')) {
                 link.classList.add('text-sky-400');
             } else {
-                link.classList.remove('text-sky-400'); // Ensure only one is active
+                link.classList.remove('text-sky-400'); // Đảm bảo chỉ một liên kết hoạt động
             }
         });
 
-        // Set active bottom navigation item
+        // Đặt mục điều hướng dưới cùng đang hoạt động
         const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
         bottomNavItems.forEach(item => {
             const itemPath = item.href.split('/').pop();
@@ -173,51 +173,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Listen for footerLoaded event from loadComponents.js
+    // Lắng nghe sự kiện footerLoaded từ loadComponents.js
     document.addEventListener('footerLoaded', () => {
-        // Newsletter form logic
+        // Logic form đăng ký nhận tin
         if (newsletterForm && newsletterEmail && newsletterMessage) {
             newsletterForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const email = newsletterEmail.value;
 
                 if (!email || !email.includes('@')) {
-                    newsletterMessage.textContent = 'Please enter a valid email address.';
+                    newsletterMessage.textContent = 'Vui lòng nhập địa chỉ email hợp lệ.';
                     newsletterMessage.className = 'mt-2 text-sm text-red-400';
                     return;
                 }
 
                 try {
-                    const response = await fetch('/api/subscribe', { // Replace with your actual API endpoint
+                    const response = await fetch('/api/subscribe', { // Thay thế bằng endpoint API thực tế của bạn
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email })
                     });
 
                     if (response.ok) {
-                        newsletterMessage.textContent = 'Thank you for subscribing!';
+                        newsletterMessage.textContent = 'Cảm ơn bạn đã đăng ký!';
                         newsletterMessage.className = 'mt-2 text-sm text-green-400';
                         newsletterEmail.value = '';
                     } else {
                         const errorData = await response.json();
-                        throw new Error(errorData.message || 'Subscription failed.');
+                        throw new Error(errorData.message || 'Đăng ký không thành công.');
                     }
 
                 } catch (error) {
-                    console.error('Newsletter error:', error);
-                    newsletterMessage.textContent = `Subscription failed: ${error.message}`;
+                    console.error('Lỗi đăng ký nhận tin:', error);
+                    newsletterMessage.textContent = `Đăng ký không thành công: ${error.message}`;
                     newsletterMessage.className = 'mt-2 text-sm text-red-400';
                 }
             });
         }
 
-        // Google Maps initialization
+        // Khởi tạo Google Maps
         function initMap() {
             const mapDiv = document.getElementById('footer-map');
             if (!mapDiv) return;
 
             const map = new google.maps.Map(mapDiv, {
-                center: { lat: 28.0430, lng: -81.9430 },
+                center: { lat: 28.0430, lng: -81.9430 }, // Lakeland, FL
                 zoom: 12,
                 styles: [
                     {
@@ -279,13 +279,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Helper function for search results
+    // Hàm trợ giúp cho kết quả tìm kiếm
     async function fetchAndDisplaySearchResults(query, resultsDiv) {
         try {
-            const geminiApiKey = ""; // Canvas will provide this in runtime
+            const geminiApiKey = ""; // Canvas sẽ cung cấp khóa này trong thời gian chạy
             const geminiApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`;
 
-            const prompt = `Suggest relevant search results for a website about dock construction and home renovation, based on the query: "${query}". Provide results as a simple list of page titles and short descriptions, one result per line.`;
+            const prompt = `Gợi ý kết quả tìm kiếm có liên quan cho một trang web về xây dựng bến tàu và cải tạo nhà, dựa trên truy vấn: "${query}". Cung cấp kết quả dưới dạng danh sách đơn giản gồm tiêu đề trang và mô tả ngắn, mỗi kết quả trên một dòng.`;
             const payload = {
                 contents: [{ role: "user", parts: [{ text: prompt }] }]
             };
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const items = text.split('\n').filter(line => line.trim() !== '');
                 resultsDiv.innerHTML = '';
                 if (items.length === 0) {
-                    resultsDiv.innerHTML = '<p class="text-slate-400 p-2">No suggestions found.</p>';
+                    resultsDiv.innerHTML = '<p class="text-slate-400 p-2">Không tìm thấy gợi ý nào.</p>';
                 } else {
                     const ul = document.createElement('ul');
                     ul.className = 'space-y-1';
@@ -318,12 +318,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 resultsDiv.style.display = 'block';
             } else {
-                resultsDiv.innerHTML = '<p class="text-slate-400 p-2">No suggestions found.</p>';
+                resultsDiv.innerHTML = '<p class="text-slate-400 p-2">Không tìm thấy gợi ý nào.</p>';
                 resultsDiv.style.display = 'block';
             }
         } catch (error) {
-            console.error('Search suggestion error:', error);
-            resultsDiv.innerHTML = '<p class="text-red-400 p-2">Error fetching suggestions.</p>';
+            console.error('Lỗi gợi ý tìm kiếm:', error);
+            resultsDiv.innerHTML = '<p class="text-red-400 p-2">Lỗi khi tìm nạp gợi ý.</p>';
             resultsDiv.style.display = 'block';
         }
     }
