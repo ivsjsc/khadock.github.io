@@ -122,6 +122,26 @@ a:hover, a:focus {
     to { opacity: 1; transform: translateY(0) translateX(-50%); }
 }
 
+#mobile-menu-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    transform: translateX(-100%); /* Initial hidden state */
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none; /* Disable interaction when hidden */
+}
+
+#mobile-menu-panel.open {
+    transform: translateX(0); /* Visible state */
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto; /* Enable interaction when open */
+}
+
 .mobile-submenu-content {
     overflow: hidden;
     max-height: 0;
@@ -217,7 +237,7 @@ a:hover, a:focus {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
-.album-image-wrapper.design-album-hover:hover::after {
+.album-image-wrapper:hover::after {
     opacity: 1;
 }
 .album-image {

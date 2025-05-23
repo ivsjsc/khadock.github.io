@@ -52,13 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Toggle mobile menu
     mobileMenuButton.addEventListener('click', () => {
-        mobileMenuPanel.classList.toggle('hidden');
-        mobileMenuPanel.classList.toggle('-translate-x-full');
-        mobileMenuPanel.classList.toggle('translate-x-0');
-        iconMenuOpen.classList.toggle('hidden');
-        iconMenuClose.classList.toggle('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', mobileMenuPanel.classList.contains('translate-x-0'));
+        const isOpen = mobileMenuPanel.classList.toggle('open');
+        mobileMenuButton.setAttribute('aria-expanded', isOpen);
+        iconMenuOpen.classList.toggle('hidden', isOpen);
+        iconMenuClose.classList.toggle('hidden', !isOpen);
     });
 
     const mobileSubmenuToggle = document.querySelector('.mobile-submenu-toggle');
@@ -133,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     contents: [{ role: "user", parts: [{ text: prompt }] }]
                 };
 
-                const response = await fetch(geminiApiUrl, {
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
