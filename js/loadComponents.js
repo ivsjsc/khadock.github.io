@@ -31,31 +31,22 @@ async function initializePageComponents() {
         // Dispatch a custom event after the header is successfully loaded and injected
         // App.js will listen for this to initialize header-dependent functionalities
         document.dispatchEvent(new CustomEvent('headerLoaded'));
+        console.log('headerLoaded event dispatched.'); // Thêm log này
     }
 
     const footerLoaded = await loadHTMLComponent('components/footer.html', 'footer-placeholder', 'Footer');
     if (footerLoaded) {
-        // Initialize any footer-specific interactions here if needed
-        // For example, updating the copyright year (though app.js might also handle this if it's global)
         const yearSpan = document.getElementById('current-year');
         if (yearSpan) {
             yearSpan.textContent = new Date().getFullYear();
         }
          document.dispatchEvent(new CustomEvent('footerLoaded'));
+         console.log('footerLoaded event dispatched.'); // Thêm log này
     }
 }
 
-
-// Main execution flow for loadComponents.js
-// This script is a module, so it executes when imported.
-// We want to ensure it runs after the basic DOM structure is available.
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializePageComponents);
 } else {
     initializePageComponents();
 }
-
-// This module primarily focuses on loading components.
-// Other initializations (AOS, scroll-to-top, complex event handling)
-// are now centralized in app.js.
-// No exports needed if it's self-executing its primary task.
