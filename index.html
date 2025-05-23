@@ -70,15 +70,22 @@
         }
         .hero-banner-container {
             width: 100%;
+            height: 60vh; /* Default height for mobile */
+            min-height: 380px; /* Minimum height to ensure content visibility */
+            max-height: 550px; /* Maximum height */
             overflow: hidden;
             position: relative;
         }
-        .hero-banner-image {
+        .hero-banner-image { /* Applied to the <img> tag */
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
             object-fit: cover;
             object-position: center;
+            z-index: 0; /* Image behind content */
         }
         .hero-banner-content {
             position: absolute;
@@ -87,13 +94,35 @@
             width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: column; /* Stack content vertically */
             align-items: center;
             justify-content: center;
             text-align: center;
             background-color: rgba(0, 0, 0, 0.6); /* Overlay for text readability */
             color: white;
-            z-index: 1;
+            z-index: 1; /* Content on top of image */
+            padding: 1rem; /* Basic padding for the overlay itself */
+            overflow-y: auto; /* Allow scrolling if content is too tall */
         }
+        /* Responsive adjustments for the inner container's padding */
+        .hero-banner-content .container {
+             padding-top: 1.5rem; /* Reduced padding for mobile */
+             padding-bottom: 1.5rem; /* Reduced padding for mobile */
+             width: 100%; /* Ensure container takes full width of parent */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            .hero-banner-container {
+                height: 70vh; /* Taller banner for desktop */
+                min-height: 450px;
+                max-height: 650px;
+            }
+            .hero-banner-content .container {
+                 padding-top: 3.5rem; /* Restore original md:py-14 */
+                 padding-bottom: 3.5rem; /* Restore original md:py-14 */
+            }
+        }
+
         .full-width-image-section {
             width: 100%;
             overflow: hidden;
@@ -132,12 +161,10 @@
                     alt="KhaDock - Florida's Premier Boat Dock Solutions"
                     class="hero-banner-image"
                     loading="eager"
-                    width="1920"
-                    height="400"
                 >
             </picture>
             <div class="hero-banner-content">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 z-10 py-10 md:py-14">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 z-10"> {/* Removed py-10 md:py-14 here, handled by CSS */}
                     <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 text-shadow-strong" data-aos="fade-down" data-aos-delay="100">
                         KhaDock.com
                     </h1>
@@ -154,8 +181,8 @@
                         <a href="design.html" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
                             KhaDock's Design
                         </a>
-                        <a href="service.html" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
-                            Our Service
+                        <a href="services.html" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
+                            Our Services
                         </a>
                     </div>
                 </div>
