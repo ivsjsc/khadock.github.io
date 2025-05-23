@@ -24,6 +24,7 @@ body {
 
 main {
     padding-top: 5rem;
+    /* padding-bottom will be handled by body on mobile for the fixed bottom-nav */
 }
 
 img {
@@ -126,21 +127,31 @@ a:hover, a:focus {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
-    transform: translateX(-100%);
+    height: 100%; /* Panel takes full height */
+    transform: translateX(-100%); /* Initial hidden state */
     transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
     visibility: hidden;
     opacity: 0;
-    pointer-events: none;
-    z-index: 51;
+    pointer-events: none; /* Disable interaction when hidden */
+    z-index: 51; /* Ensure it's above the header */
+    /* width: 80%; Removed to allow Tailwind w-full to take effect */
 }
 
 #mobile-menu-panel.open {
-    transform: translateX(0);
+    transform: translateX(0); /* Visible state */
     visibility: visible;
     opacity: 1;
-    pointer-events: auto;
+    pointer-events: auto; /* Enable interaction when open */
 }
+
+/* The <nav> inside #mobile-menu-panel will handle scrolling */
+/* #mobile-menu-panel nav {
+    padding-top: 5rem; /* Space for the header */
+/* padding-bottom: 5rem; /* Space for the bottom nav and some buffer */
+/* height: 100%;
+    overflow-y: auto;
+}
+*/
 
 .mobile-submenu-content {
     overflow: hidden;
@@ -603,9 +614,9 @@ a:hover, a:focus {
 
 #scrollToTopBtn {
     position: fixed;
-    bottom: 2rem;
+    /* bottom: 2rem; Default, will be overridden for mobile */
     right: 2rem;
-    z-index: 50;
+    z-index: 50; /* Ensure it's above bottom-nav if they overlap without spacing */
     background-color: #0EA5E9;
     color: #ffffff;
     border: none;
@@ -620,7 +631,7 @@ a:hover, a:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition-property: opacity, visibility, transform;
+    transition-property: opacity, visibility, transform, bottom; /* Added bottom to transition */
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
 }
@@ -692,11 +703,16 @@ a:hover, a:focus {
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) { /* lg */
 }
-@media (max-width: 768px) {
+
+@media (max-width: 767px) { /* md breakpoint, where bottom-nav becomes visible */
+    body {
+        /* Height of bottom-nav (4rem or 64px) + 1.5rem (24px) spacing */
+        padding-bottom: 5.5rem; /* approx 88px */
+    }
     main {
-        padding-top: 4rem;
+        padding-top: 4rem; /* Adjust if header shrinks on mobile */
     }
     .mega-menu {
         min-width: 90vw;
@@ -708,11 +724,22 @@ a:hover, a:focus {
     .mega-menu .grid-cols-2 {
         grid-template-columns: 1fr;
     }
+    #scrollToTopBtn {
+        /* Default fixed bottom is 2rem (from Tailwind's bottom-8 or explicit CSS) */
+        /* New bottom: height of bottom-nav (4rem) + 1.5rem desired spacing */
+        bottom: 5.5rem; /* approx 88px */
+        right: 1rem; /* Adjust right spacing if needed on mobile */
+        width: 2.5rem; /* Smaller button on mobile */
+        height: 2.5rem;
+        font-size: 1rem;
+    }
 }
 
 .bottom-nav {
-    color: white;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    /* Tailwind: md:hidden fixed bottom-0 left-0 w-full bg-slate-800 shadow-t z-50 */
+    /* Height is h-16 (4rem) via its child div */
+    color: white; /* Ensure text color is appropriate if not set by Tailwind */
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* Consistent shadow */
 }
 
 .bottom-nav-item {
@@ -725,16 +752,16 @@ a:hover, a:focus {
     padding-top: 0.5rem;
     padding-bottom: 0.25rem;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-    color: #cbd5e1;
+    color: #cbd5e1; /* Default color for icons/text */
 }
 
 .bottom-nav-item:hover,
-.bottom-nav-item.active {
-    background-color: #334155;
-    color: #7dd3fc;
+.bottom-nav-item.active { /* Ensure .active class is applied by JS */
+    background-color: #334155; /* Example active/hover background */
+    color: #7dd3fc; /* Example active/hover text color */
 }
 
 .bottom-nav-label {
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
+    font-size: 0.75rem; /* text-xs */
+    margin-top: 0.25rem; /* mt-1 */
 }
