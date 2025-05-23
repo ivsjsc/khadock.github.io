@@ -6,23 +6,25 @@
     <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)">
 
-    <title>KhaDock - Dock Design & AI Generator | Florida</title>
-    <meta name="description" content="Explore KhaDock's innovative dock design concepts and use our AI Design Generator to visualize your dream dock in Florida. Custom solutions, premium materials.">
-    <meta name="keywords" content="AI dock design, boat dock design Florida, custom docks, dock concepts, KhaDock design tool, waterfront design">
+    <title>KhaDock - Dock Design, Video Showcase & AI Generator | Florida</title>
+    <meta name="description" content="Explore KhaDock's innovative dock design concepts, watch our design showcase video, and use our AI Design Generator to visualize your dream dock in Florida.">
+    <meta name="keywords" content="AI dock design, boat dock design Florida, custom docks, dock concepts, KhaDock design tool, waterfront design, dock design video">
 
-    <meta property="og:title" content="KhaDock - Innovative Dock Design & AI Generator">
-    <meta property="og:description" content="Visualize your perfect Florida dock with KhaDock's design expertise and our unique AI Design Generator.">
-    <meta property="og:image" content="images/designs/khadockdesign.png"> <meta property="og:url" content="https://khadock.com/design.html">
+    <meta property="og:title" content="KhaDock - Innovative Dock Design, Video & AI Generator">
+    <meta property="og:description" content="Watch our design showcase and visualize your perfect Florida dock with KhaDock's design expertise and our unique AI Design Generator.">
+    <meta property="og:image" content="images/designs/khadockdesign.png">
+    <meta property="og:url" content="https://khadock.com/design.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KhaDock">
 
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
 
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
-    <link rel="icon" href="images/logo/logoicon.png" type="image/png"> <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="images/logo/logoicon.png" type="image/png">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
 
@@ -45,10 +47,10 @@
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif']
                     },
-                    animation: { // Kept for potential use by design-page.js or specific components
+                    animation: {
                         'fade-in': 'fadeIn 0.6s ease-in-out',
                         'slide-up': 'slideUp 0.8s ease-out',
-                        'float': 'floatEffect 3s ease-in-out infinite', // Renamed to avoid conflict
+                        'float': 'floatEffect 3s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
@@ -67,15 +69,43 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        /* .text-shadow classes đã có trong styles.css */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px; /* Max width for the video */
+            margin: 0 auto; /* Center the video container */
+            aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+            border-radius: 0.75rem; /* rounded-xl */
+            overflow: hidden; /* Ensure video stays within rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* shadow-xl */
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the container, might crop */
+        }
+        .guide-step {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .guide-step:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(14, 165, 233, 0.15);
+        }
     </style>
 </head>
 
 <body class="bg-slate-100 text-slate-800 antialiased font-inter">
-    <div id="header-placeholder"></div> <main id="main-content-area" class="pt-20"> <section class="w-full" data-aos="fade-in" id="home">
+    <div id="header-placeholder"></div>
+
+    <main id="main-content-area" class="pt-20">
+        <section class="w-full" data-aos="fade-in" id="home">
             <div class="w-full aspect-[1920/400] overflow-hidden">
                 <img
-                    src="images/designs/khadockdesign.png" alt="KhaDock - Dock Design Concepts"
+                    src="images/designs/khadockdesign.png"
+                    alt="KhaDock - Dock Design Concepts"
                     class="w-full h-full object-cover"
                     loading="eager"
                     width="1920"
@@ -88,25 +118,40 @@
             <div class="h-1 w-3/4 bg-gradient-to-r from-transparent via-sky-400 to-transparent rounded-full shadow-lg"></div>
         </div>
 
+        <section class="py-12 md:py-16 bg-slate-50" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">Khám Phá Quy Trình Thiết Kế</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">Xem video giới thiệu về cách KhaDock tạo ra những thiết kế cầu tàu độc đáo và chất lượng.</p>
+                </div>
+                <div class="video-container">
+                    <video controls poster="images/designs/design_video_poster.jpg" preload="metadata">
+                        <source src="videos/design1.mp4" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ thẻ video. Bạn có thể tải video <a href="videos/design1.mp4">tại đây</a>.
+                    </video>
+                </div>
+            </div>
+        </section>
+
         <section
-            class="hero-section-main design-hero-section-main relative min-h-[60vh] flex items-center justify-center text-center -mt-8"
+            class="hero-section-main design-hero-section-main relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center text-center"
             style="background-image: url('images/albums/dock1.jpg');" data-aos="fade-in"
         >
-            <div class="design-hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-white py-16">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-shadow-strong animate-slide-up" data-aos="fade-down" data-aos-delay="100">
+            <div class="design-hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-white py-12 md:py-16">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-shadow-strong animate-slide-up" data-aos="fade-down" data-aos-delay="100">
                     Innovative Dock Designs
                 </h1>
-                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-shadow-strong animate-slide-up" data-aos="fade-down" data-aos-delay="200">
+                <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-6 leading-tight text-shadow-strong animate-slide-up" data-aos="fade-down" data-aos-delay="200">
                     Crafting Your Florida Waterfront Vision
                 </h2>
-                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-100 text-shadow mb-8 animate-slide-up" data-aos="fade-up" data-aos-delay="300">
+                <p class="text-md md:text-lg lg:text-xl max-w-3xl mx-auto text-slate-100 text-shadow mb-8 animate-slide-up" data-aos="fade-up" data-aos-delay="300">
                     Explore cutting-edge design concepts and leverage our AI tool to bring your ideal boat dock to life.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-6 animate-slide-up" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#projects" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 rounded-lg text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 animate-slide-up" data-aos="fade-up" data-aos-delay="400">
+                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 sm:py-4 sm:px-10 rounded-lg text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
                         View Our Portfolio
                     </a>
-                    <a href="#ai-design-generator" class="bg-white text-sky-700 font-bold py-4 px-10 rounded-lg text-lg shadow-xl hover:bg-sky-50 hover:text-sky-900 transition-all duration-300 transform hover:scale-105 border-2 border-sky-300">
+                    <a href="#ai-design-generator" class="bg-white text-sky-700 font-bold py-3 px-6 sm:py-4 sm:px-10 rounded-lg text-base sm:text-lg shadow-xl hover:bg-sky-50 hover:text-sky-900 transition-all duration-300 transform hover:scale-105 border-2 border-sky-300">
                         Try AI Design Generator
                     </a>
                 </div>
@@ -115,35 +160,38 @@
 
         <section class="py-16 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div class="design-feature-card p-6 rounded-xl">
-                        <div class="stats-counter" data-count="50">0+</div>
-                        <p class="text-slate-600 font-medium">Unique Designs Created</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+                    <div class="design-feature-card p-4 md:p-6 rounded-xl">
+                        <div class="stats-counter text-3xl md:text-4xl" data-count="50">0+</div>
+                        <p class="text-slate-600 font-medium text-sm md:text-base">Unique Designs Created</p>
                     </div>
-                    <div class="design-feature-card p-6 rounded-xl">
-                        <div class="stats-counter" data-count="10">0+</div> <p class="text-slate-600 font-medium">Years Design Experience</p>
+                    <div class="design-feature-card p-4 md:p-6 rounded-xl">
+                        <div class="stats-counter text-3xl md:text-4xl" data-count="10">0+</div>
+                        <p class="text-slate-600 font-medium text-sm md:text-base">Years Design Experience</p>
                     </div>
-                    <div class="design-feature-card p-6 rounded-xl">
-                        <div class="stats-counter" data-count="98">0%</div> <p class="text-slate-600 font-medium">Client Satisfaction</p>
+                    <div class="design-feature-card p-4 md:p-6 rounded-xl">
+                        <div class="stats-counter text-3xl md:text-4xl" data-count="98">0%</div>
+                        <p class="text-slate-600 font-medium text-sm md:text-base">Client Satisfaction</p>
                     </div>
-                    <div class="design-feature-card p-6 rounded-xl">
-                        <div class="stats-counter" data-count="24/7">24/7</div> <p class="text-slate-600 font-medium">Design Support</p>
+                    <div class="design-feature-card p-4 md:p-6 rounded-xl">
+                        <div class="stats-counter text-3xl md:text-4xl" data-count="24/7">24/7</div>
+                        <p class="text-slate-600 font-medium text-sm md:text-base">Design Support</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="ai-design-section design-page-ai py-20 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50" data-aos="fade-up" id="ai-design-generator">
+        <section class="ai-design-section design-page-ai py-16 md:py-20 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50" data-aos="fade-up" id="ai-design-generator">
              <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
-                        <i class="fas fa-lightbulb text-sky-500"></i> Generate Your Dream Dock Idea
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3 flex items-center justify-center gap-2">
+                        <i class="fas fa-lightbulb text-sky-500"></i> ✨ AI Dock Design Studio ✨
                     </h2>
                     <p class="text-lg text-slate-700 max-w-2xl mx-auto">
-                        Describe your ideal dock—its style, materials, or features—and let our AI craft a unique, Florida-inspired design concept just for you!
+                        Sử dụng trí tuệ nhân tạo để phác thảo ý tưởng cầu tàu độc đáo cho riêng bạn!
                     </p>
-                    <div class="mt-4 text-slate-500 text-sm">
-                        <strong>KhaDock AI Designer</strong> is developed by <a href="https://ivsacademy.edu.vn" class="text-sky-600 hover:underline" target="_blank" rel="noopener">IVS Celestech</a>, a division of IVS JSC.
+                    <div class="mt-3 text-slate-500 text-xs sm:text-sm">
+                        <strong>KhaDock AI Designer</strong> được phát triển bởi <a href="https://ivsacademy.edu.vn" class="text-sky-600 hover:underline" target="_blank" rel="noopener">IVS Celestech</a>, một bộ phận của IVS JSC.
                     </div>
                 </div>
 
@@ -152,49 +200,107 @@
                     <textarea
                         id="ai-design-input"
                         class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
-                        placeholder="Example: 'A modern T-shaped dock with composite decking, a covered seating area, and two boat slips for a bayfront property in Sarasota.'"
+                        placeholder="Ví dụ: 'Một cầu tàu hiện đại hình chữ T, vật liệu composite, có khu vực mái che, đèn LED và chỗ đậu cho 2 tàu thuyền ở Sarasota.'"
                         aria-label="Describe your ideal dock"
                     ></textarea>
 
-                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                         <button
                             id="ai-generate-btn"
                             class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
                         >
-                            <i class="fas fa-magic mr-2"></i> Generate Design Idea
+                            <i class="fas fa-magic mr-2"></i> Tạo Ý Tưởng Thiết Kế
                         </button>
                          <button
-                            id="ai-clear-btn"
-                            class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-3 px-6 rounded-lg transition-all duration-300 text-sm sm:text-base"
+                            id="ai-clear-input-btn"
+                            class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-3 px-6 rounded-lg shadow-sm transition duration-300 text-sm sm:text-base"
                         >
-                            <i class="fas fa-eraser mr-2"></i> Clear
+                            <i class="fas fa-eraser mr-2"></i> Xóa Input
                         </button>
                     </div>
 
                     <div id="ai-loading" class="mt-6 text-sky-600 hidden flex items-center justify-center">
-                        <div class="loading-spinner mr-3"></div>
-                        <span id="ai-loading-text">Generating your idea...</span>
+                        <i class="fas fa-spinner fa-spin mr-2 text-xl"></i>
+                        <span id="ai-loading-text" class="font-medium">Đang tạo ý tưởng...</span>
                     </div>
 
                     <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden" role="alert"></div>
 
-                    <div id="ai-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden" aria-live="polite">
-                        <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
-                         <div id="ai-output-content" class="prose prose-sm sm:prose-base max-w-none"></div>
+                    <div id="ai-output-container" class="mt-8 hidden">
+                        <div id="ai-output" class="p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed prose max-w-none" aria-live="polite">
+                        </div>
+                        <div id="gemini-extra-features" class="mt-6 flex flex-col sm:flex-row justify-center gap-4 hidden">
+                            <button id="ai-maintenance-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
+                                <i class="fas fa-tools mr-2"></i> ✨ Gợi ý Bảo trì ✨
+                            </button>
+                            <button id="ai-accessories-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
+                                <i class="fas fa-puzzle-piece mr-2"></i> ✨ Gợi ý Phụ kiện ✨
+                            </button>
+                        </div>
+                        <div id="ai-maintenance-loading" class="mt-4 text-teal-600 hidden flex items-center justify-center">
+                            <i class="fas fa-spinner fa-spin mr-2"></i> Đang tải gợi ý bảo trì...
+                        </div>
+                        <div id="ai-accessories-loading" class="mt-4 text-indigo-600 hidden flex items-center justify-center">
+                            <i class="fas fa-spinner fa-spin mr-2"></i> Đang tải gợi ý phụ kiện...
+                        </div>
+                        <div id="ai-maintenance-output" class="mt-4 p-4 bg-teal-50 border border-teal-200 rounded-lg text-teal-700 leading-relaxed hidden prose max-w-none"></div>
+                        <div id="ai-accessories-output" class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-700 leading-relaxed hidden prose max-w-none"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-20 bg-white" id="projects" data-aos="fade-up">
+        <section class="py-16 md:py-20 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Design Inspirations</h2>
-                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-                        Explore a gallery of stunning dock designs to spark your imagination.
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">Hướng Dẫn Sử Dụng AI Dock Design Studio</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">Làm theo các bước đơn giản sau để nhận ý tưởng thiết kế cầu tàu từ AI của chúng tôi.</p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <div class="guide-step bg-slate-50 p-6 rounded-lg shadow-md flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold">1</div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-sky-700 mb-1">Nhập Mô Tả Cầu Tàu</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Trong ô "Describe your ideal dock", hãy nhập mô tả chi tiết về cầu tàu bạn mong muốn. Càng chi tiết, AI càng dễ tạo ra ý tưởng sát với mong muốn của bạn. Ví dụ: loại vật liệu, kích thước, hình dáng, mục đích sử dụng, các tiện ích đi kèm (mái che, ghế ngồi, đèn,...), hoặc phong cách thiết kế.</p>
+                        </div>
+                    </div>
+                    <div class="guide-step bg-slate-50 p-6 rounded-lg shadow-md flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold">2</div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-sky-700 mb-1">Nhấn Nút "Tạo Ý Tưởng"</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Sau khi nhập xong mô tả, nhấn vào nút "Tạo Ý Tưởng Thiết Kế". Hệ thống AI sẽ phân tích yêu cầu và đưa ra một bản phác thảo ý tưởng chi tiết cho bạn.</p>
+                        </div>
+                    </div>
+                    <div class="guide-step bg-slate-50 p-6 rounded-lg shadow-md flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold">3</div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-sky-700 mb-1">Xem Kết Quả & Khám Phá Thêm</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Kết quả sẽ hiển thị ngay bên dưới, bao gồm tên khái niệm, tầm nhìn, đặc điểm, vật liệu gợi ý, và phong cách. Sau đó, bạn có thể nhấn vào các nút "✨ Gợi ý Bảo trì ✨" hoặc "✨ Gợi ý Phụ kiện ✨" để nhận thêm thông tin hữu ích liên quan đến thiết kế vừa được tạo.</p>
+                        </div>
+                    </div>
+                     <div class="guide-step bg-slate-50 p-6 rounded-lg shadow-md flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold">4</div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-sky-700 mb-1">Xóa và Thử Lại (Nếu Cần)</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Nếu bạn muốn thử một ý tưởng khác, nhấn nút "Xóa Input" để làm trống ô mô tả và bắt đầu lại. Bạn có thể thử nghiệm với nhiều mô tả khác nhau để tìm ra ý tưởng ưng ý nhất.</p>
+                        </div>
+                    </div>
+                </div>
+                 <p class="text-center text-sm text-slate-500 mt-8">
+                    Lưu ý: AI Design Studio cung cấp các gợi ý ban đầu. Để có thiết kế chi tiết và báo giá chính xác, vui lòng <a href="contact.html" class="text-sky-600 hover:underline font-medium">liên hệ trực tiếp</a> với KhaDock.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-20 bg-white" id="projects-preview" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">Nguồn Cảm Hứng Thiết Kế</h2>
+                    <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                        Khám phá một số mẫu thiết kế cầu tàu ấn tượng để khơi nguồn sáng tạo cho dự án của bạn.
                     </p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                     <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="100">
                         <img src="images/designs/design1.jpg" alt="KhaDock Design Inspiration 1" class="design-album-image" loading="lazy">
                     </div>
@@ -207,34 +313,43 @@
                     <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="250">
                         <img src="images/designs/design4.jpg" alt="KhaDock Design Inspiration 4" class="design-album-image" loading="lazy">
                     </div>
-                    </div>
+                </div>
+                 <div class="text-center mt-10 md:mt-12">
+                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-base sm:text-lg">
+                        Xem Thêm Dự Án
+                    </a>
+                </div>
             </div>
         </section>
 
-
-        <section class="cta-section py-20 text-white relative" id="contact" data-aos="zoom-in">
+        <section class="cta-section py-16 md:py-20 text-white relative" id="contact-cta" data-aos="zoom-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-shadow">Ready to Design Your Dream Dock?</h2>
-                <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-slate-100 leading-relaxed">
-                    Our experts are here to help. Contact KhaDock today for a personalized design consultation.
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-shadow">Sẵn Sàng Thiết Kế Cầu Tàu Mơ Ước?</h2>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-slate-100 leading-relaxed">
+                    Các chuyên gia của chúng tôi luôn sẵn sàng hỗ trợ. Liên hệ KhaDock ngay hôm nay để được tư vấn thiết kế cá nhân hóa.
                 </p>
-                <a href="contact.html" class="bg-white text-sky-700 font-bold py-5 px-12 rounded-xl text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-sky-50 inline-flex items-center">
+                <a href="contact.html" class="bg-white text-sky-700 font-bold py-4 px-10 sm:py-5 sm:px-12 rounded-xl text-lg sm:text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-sky-50 inline-flex items-center">
                     <i class="fas fa-drafting-compass mr-3"></i>
-                    Start Designing
+                    Bắt Đầu Thiết Kế
                 </a>
             </div>
         </section>
     </main>
 
-    <div id="footer-placeholder"></div> <button id="scrollToTopBtn" title="Go to top"
+    <div id="footer-placeholder"></div>
+
+    <button id="scrollToTopBtn" title="Lên đầu trang"
             class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
-                   w-14 h-14 rounded-full shadow-2xl flex items-center justify-center
+                   w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl flex items-center justify-center
                    focus:outline-none focus:ring-4 focus:ring-sky-400 focus:ring-opacity-75
-                   transition-all duration-300 z-50 text-xl animate-floatEffect"> <i class="fas fa-arrow-up"></i>
+                   transition-all duration-300 z-50 text-xl animate-floatEffect">
+        <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/generateDesign.js" type="module" defer></script> <script src="js/design-page.js" type="module" defer></script>   </body>
+    <script src="js/generateDesign.js" type="module" defer></script>
+    <script src="js/design-page.js" type="module" defer></script>
+</body>
 </html>
