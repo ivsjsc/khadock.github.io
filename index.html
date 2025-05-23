@@ -12,21 +12,33 @@
 
     <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions">
     <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Building your waterfront dreams.">
-    <meta property="og:image" content="images/logo/logoicon.png"> <meta property="og:url" content="https://khadock.com"> <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo/logoicon.png">
+    <meta property="og:url" content="https://khadock.com">
+    <meta property="og:type" content="website">
     <meta property="og:site_name" content="KhaDock">
 
-    <link rel="preload" href="images/logo/logoicon.png" as="image" fetchpriority="high"> <link rel="preload" href="fonts/Inter-VariableFont.woff2" as="font" type="font/woff2" crossorigin> <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preload" href="images/logo/logoicon.png" as="image" fetchpriority="high">
+    <link rel="preload" href="fonts/Inter-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
     <link rel="preload" href="css/styles.css" as="style">
-    <link rel="preload" as="image" href="images/albums/dock15.jpg"> <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg"> <link rel="apple-touch-icon" href="images/logo/logoicon.png"> <link rel="manifest" href="manifest.json"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="css/styles.css"> <link rel="stylesheet" href="css/responsive.css"> <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preload" as="image" href="images/albums/dock15.jpg">
+
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="images/logo/logoicon.png">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        sky: { 
+                        sky: {
                             50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
                             400: '#38bdf8', 500: '#0EA5E9', 600: '#0284C7', 700: '#0369A1',
                             800: '#075985', 900: '#0c4a6e'
@@ -44,169 +56,12 @@
             }
         }
     </script>
-
     <style>
         body {
             font-family: 'inter', sans-serif;
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-        }
-        .hero-section-main { /* Unique class for the main hero */
-            background-size: cover;
-            background-position: center;
-            will-change: transform; /* Optimize performance */
-        }
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-        }
-        .album-image-wrapper { /* For the new album section */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .album-image-wrapper:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-        .album-image {
-            width: 100%;
-            height: 100%; /* Ensure image fills wrapper */
-            object-fit: cover;
-        }
-        /* Styles for dropdown menu if loaded dynamically */
-        .dropdown .dropdown-menu {
-            display: none; position: absolute; background-color: #1e293b; 
-            z-index: 50; min-width: 230px; border-radius: 0.375rem; 
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-            margin-top: 0.5rem; padding: 0.25rem 0; left:0;
-        }
-        .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { display: block; }
-        .dropdown-menu a {
-            padding: 0.75rem 1rem; display: block; color: #cbd5e1; 
-            transition: background-color 0.2s, color 0.2s; white-space: nowrap; text-decoration: none;
-        }
-        .dropdown-menu a:hover, .dropdown-menu a:focus { background-color: #334155; color: #f1f5f9; outline: none; }
-        
-        /* Styling for Gemini AI Output */
-        #gemini-output h3, #gemini-output h4 { /* Target h3 and h4 specifically for Gemini output */
-            font-size: 1.125rem; /* text-lg */
-            font-weight: 600; /* font-semibold */
-            color: #0369a1; /* sky-700 */
-            margin-top: 1rem; /* mt-4 */
-            margin-bottom: 0.5rem; /* mb-2 */
-        }
-         #gemini-output strong { /* Make sure bold text is clearly visible */
-            color: #0f172a; /* slate-900 */
-        }
-        #gemini-output ul {
-            list-style-type: disc;
-            margin-left: 1.5rem; /* ml-6 */
-            margin-bottom: 1rem; /* mb-4 */
-            padding-left: 0.5rem; /* Add some padding for list items */
-        }
-        #gemini-output li {
-            margin-bottom: 0.375rem; /* mb-1.5 */
-            line-height: 1.6;
-        }
-        #gemini-output p {
-            margin-bottom: 0.75rem; /* mb-3 */
-            line-height: 1.625; 
-        }
-        .text-shadow-strong { text-shadow: 0px 2px 5px rgba(0,0,0,0.5); }
-        .text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-
-        /* AI Design Section Styles */
-        .ai-design-section {
-            position: relative;
-            isolation: isolate;
-        }
-
-        .ai-design-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('images/ai-pattern.png') center center / cover;
-            opacity: 0.05;
-            z-index: -1;
-        }
-
-        .ai-design-section .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .ai-design-section textarea {
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .ai-design-section textarea:focus {
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
-        }
-
-        .ai-design-section button {
-            transition: all 0.3s ease;
-        }
-
-        .ai-design-section button:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .ai-design-section #ai-output {
-            background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
-            transition: opacity 0.3s ease;
-        }
-
-        .ai-design-section #ai-error {
-            animation: shake 0.3s ease;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-        }
-
-        /* Ensure all interactive elements are clickable */
-        a, button {
-            cursor: pointer !important;
-            pointer-events: auto !important;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Fix for elements potentially blocking clicks */
-        .hero-section-main::before {
-            pointer-events: none;
-        }
-
-        .service-card {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Ensure AOS animations don't interfere with clicking */
-        [data-aos] {
-            pointer-events: auto !important;
-        }
-
-        /* Remove any potential click blockers */
-        .container {
-            position: relative;
-            z-index: 1;
         }
     </style>
 </head>
@@ -220,14 +75,13 @@
 
     <main id="main-content-area">
 
-        <!-- Banner Image Section -->
         <article class="w-full" data-aos="fade-in">
             <div class="w-full aspect-[1920/400] md:aspect-[1920/400] lg:aspect-[1920/400] overflow-hidden">
                 <picture>
                     <source srcset="images/logo/logo.jpg" type="image/jpg">
                     <source srcset="images/logo/logo.jpg" type="image/jpeg">
-                    <img 
-                        src="images/logo/logo.jpg" 
+                    <img
+                        src="images/logo/logo.jpg"
                         alt="KhaDock - Florida's Premier Boat Dock Solutions"
                         class="w-full h-full object-cover block"
                         loading="eager"
@@ -239,16 +93,14 @@
             </div>
         </article>
 
-        <!-- Divider for clear separation -->
         <div class="w-full flex justify-center my-0">
             <div class="h-0.5 w-3/4 bg-sky-400 rounded-full shadow-lg opacity-80"></div>
         </div>
 
-        <!-- Hero Section -->
-        <section 
+        <section
             class="hero-section-main relative min-h-[40vh] md:min-h-[50vh] flex items-center justify-center text-center bg-cover bg-center bg-blend-multiply bg-black/60 -mt-8"
             style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/albums/dock15.jpg');"
-            data-aos="fade-in" 
+            data-aos="fade-in"
         >
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-white z-10 py-10 md:py-14">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 text-shadow-strong" data-aos="fade-down" data-aos-delay="100">
@@ -367,56 +219,49 @@
 
         <section class="ai-design-section py-16 md:py-24 bg-gradient-to-br from-sky-50 to-blue-100" data-aos="fade-up" id="ai-design-generator">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Header -->
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
-                <i class="fas fa-lightbulb text-sky-500"></i> Generate Your Dream Dock Idea
-                </h2>
-                <p class="text-lg text-slate-700 max-w-2xl mx-auto">
-                Describe your ideal dock—its style, materials, or features—and let our AI craft a unique, Florida-inspired design concept just for you!
-                </p>
-                <div class="mt-4 text-slate-500 text-sm">
-                <strong>KhaDock AI Designer</strong> is developed by <a href="https://ivsacademy.edu.vn" class="text-sky-600 hover:underline" target="_blank" rel="noopener">IVS Celestech</a>, a division of IVS JSC.
-                </div>
-            </div>
-
-            <!-- AI Input Form -->
-            <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-2xl border border-sky-200 relative overflow-hidden">
-                <!-- Decorative Element -->
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-500 to-blue-600"></div>
-                <textarea
-                id="ai-design-input"
-                class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
-                placeholder="Example: 'A modern dock with a covered lounge area, composite materials, for a quiet Florida cove.'"
-                ></textarea>
-
-                <!-- Buttons -->
-                <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-                <button
-                    id="ai-generate-btn"
-                    class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
-                >
-                    <i class="fas fa-magic mr-2"></i> Generate Design Idea
-                </button>      
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
+                        <i class="fas fa-lightbulb text-sky-500"></i> Generate Your Dream Dock Idea
+                    </h2>
+                    <p class="text-lg text-slate-700 max-w-2xl mx-auto">
+                        Describe your ideal dock—its style, materials, or features—and let our AI craft a unique, Florida-inspired design concept just for you!
+                    </p>
+                    <div class="mt-4 text-slate-500 text-sm">
+                        <strong>KhaDock AI Designer</strong> is developed by <a href="https://ivsacademy.edu.vn" class="text-sky-600 hover:underline" target="_blank" rel="noopener">IVS Celestech</a>, a division of IVS JSC.
+                    </div>
                 </div>
 
-                <!-- Loading Indicator -->
-                <div id="ai-loading" class="mt-6 text-sky-600 hidden">
-                <i class="fas fa-spinner fa-spin mr-2"></i> 
-                <span id="ai-loading-text">Generating your idea...</span>
-                </div>
+                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-2xl border border-sky-200 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-500 to-blue-600"></div>
+                    <textarea
+                        id="ai-design-input"
+                        class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
+                        placeholder="Example: 'A modern dock with a covered lounge area, composite materials, for a quiet Florida cove.'"
+                        aria-label="Describe your ideal dock"
+                    ></textarea>
 
-                <!-- Error Message -->
-                <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden"></div>
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <button
+                            id="ai-generate-btn"
+                            class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
+                        >
+                            <i class="fas fa-magic mr-2"></i> Generate Design Idea
+                        </button>
+                    </div>
 
-                <!-- Output -->
-                <div id="ai-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none">
-                <h4 class="font-semibold text-lg mb-3 text-sky-700">KhaDock AI Design Concept:</h4>
+                    <div id="ai-loading" class="mt-6 text-sky-600 hidden">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>
+                        <span id="ai-loading-text">Generating your idea...</span>
+                    </div>
+
+                    <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden" role="alert"></div>
+
+                    <div id="ai-output" class="mt-8 p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed hidden prose max-w-none" aria-live="polite">
+                    </div>
                 </div>
-            </div>
             </div>
         </section>
-        
+
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
@@ -491,8 +336,8 @@
     </div>
 
     <button id="scrollToTopBtn" title="Go to top"
-            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white 
-                   w-12 h-12 md:w-14 md:h-14 rounded-full shadow-xl items-center justify-center 
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
+                   w-12 h-12 md:w-14 md:h-14 rounded-full shadow-xl items-center justify-center
                    focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
                    transition-all duration-300 z-40 text-xl md:text-2xl">
         <i class="fas fa-arrow-up"></i>
