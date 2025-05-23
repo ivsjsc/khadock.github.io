@@ -1,65 +1,106 @@
-document.addEventListener('DOMContentLoaded', function() {
-    function loadHTMLComponent(componentPath, placeholderId, callback) {
-        const componentURL = new URL(componentPath, window.location.href).href;
-
-        fetch(componentURL)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Failed to load ${componentURL}. Status: ${response.status} ${response.statusText}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                const placeholder = document.getElementById(placeholderId);
-                if (placeholder) {
-                    if (placeholder.parentNode) {
-                        placeholder.outerHTML = data; 
-                        if (callback) {
-                           requestAnimationFrame(callback);
-                        }
-                    } else {
-                        console.error(`[LoadComponents] Parent node of placeholder '${placeholderId}' not found.`);
-                    }
-                } else {
-                    console.error(`[LoadComponents] Placeholder element with ID '${placeholderId}' not found.`);
-                }
-            })
-            .catch(error => {
-                console.error(`[LoadComponents] Error loading component ${componentPath}:`, error);
-                const placeholder = document.getElementById(placeholderId);
-                if(placeholder) {
-                    placeholder.innerHTML = `<div style="color:red; background-color: #ffebee; border: 1px solid red; padding: 10px; border-radius: 5px; text-align: center;">Error loading ${componentPath}. Please check the file path and ensure it's accessible.</div>`;
-                }
-            });
-    }
-
-    loadHTMLComponent('components/header.html', 'header-placeholder', () => {
-        if (typeof initializeHeaderLogic === 'function') {
-            initializeHeaderLogic(); 
-        } else {
-            console.error("[LoadComponents] 'initializeHeaderLogic' function is not defined.");
-        }
-    });
-
-    loadHTMLComponent('components/footer.html', 'footer-placeholder', () => {
-        if (typeof initializeFooterLogic === 'function') {
-            initializeFooterLogic(); 
-        } else {
-            console.error("[LoadComponents] 'initializeFooterLogic' function is not defined.");
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize header and footer
+    initializeHeaderLogic();
+    initializeFooterLogic();
+    
+    // Initialize click events for all interactive elements
+    initializeClickEvents();
+    
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
     });
 });
 
-// Define the function to initialize header logic
-export function initializeHeaderLogic() {
-    console.log('Initializing header logic...');
-    // Add your header initialization code here
-    // For example, code to handle navigation menu interactions, etc.
+function initializeHeaderLogic() {
+    const headerPlaceholder = document.getElementById('header-placeholder');
+    if (headerPlaceholder) {
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                headerPlaceholder.innerHTML = data;
+                // Initialize any header-specific interactions here
+                initializeNavigation();
+            })
+            .catch(error => console.error('Error loading header:', error));
+    }
 }
 
-// Define the function to initialize footer logic
-export function initializeFooterLogic() {
-    console.log('Initializing footer logic...');
-    // Add your footer initialization code here
-    // For example, code to handle footer links, etc.
+function initializeFooterLogic() {
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (footerPlaceholder) {
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                footerPlaceholder.innerHTML = data;
+                // Initialize any footer-specific interactions here
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    }
 }
+
+function initializeClickEvents() {
+    // Make sure all links are clickable
+    document.querySelectorAll('a').forEach(link => {
+        link.style.cursor = 'pointer';
+        link.style.pointerEvents = 'auto';
+    });
+
+    // Make sure all buttons are clickable
+    document.querySelectorAll('button').forEach(button => {
+        button.style.cursor = 'pointer';
+        button.style.pointerEvents = 'auto';
+    });
+
+    // Initialize scroll to top button
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('hidden');
+                scrollToTopBtn.classList.add('flex');
+            } else {
+                scrollToTopBtn.classList.add('hidden');
+                scrollToTopBtn.classList.remove('flex');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
+
+function initializeNavigation() {
+    // Handle dropdown menus
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        const trigger = dropdown.querySelector('.dropdown-trigger');
+        const menu = dropdown.querySelector('.dropdown-menu');
+
+        if (trigger && menu) {
+            // Handle click events
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdown.classList.toggle('open');
+            });
+
+            // Handle hover events
+            dropdown.addEventListener('mouseenter', () => {
+                dropdown.classList.add('open');
+            });
+
+            dropdown.addEventListener('mouseleave', () => {
+                dropdown.classList.remove('open');
+            });
+        }
+    });
+}
+
+// Export functions for use in other modules
+export { initializeHeaderLogic, initializeFooterLogic };
