@@ -126,21 +126,20 @@ a:hover, a:focus {
     position: fixed;
     top: 0;
     left: 0;
-    width: 80%;
     height: 100%;
-    transform: translateX(-100%); /* Initial hidden state */
+    transform: translateX(-100%);
     transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
     visibility: hidden;
     opacity: 0;
-    pointer-events: none; /* Disable interaction when hidden */
-    z-index: 51; /* Đã cập nhật z-index để hiển thị trên header */
+    pointer-events: none;
+    z-index: 51;
 }
 
 #mobile-menu-panel.open {
-    transform: translateX(0); /* Visible state */
+    transform: translateX(0);
     visibility: visible;
     opacity: 1;
-    pointer-events: auto; /* Enable interaction when open */
+    pointer-events: auto;
 }
 
 .mobile-submenu-content {
