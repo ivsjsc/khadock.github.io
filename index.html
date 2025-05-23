@@ -179,6 +179,35 @@
             50% { transform: translateX(5px); }
             75% { transform: translateX(-5px); }
         }
+
+        /* Ensure all interactive elements are clickable */
+        a, button {
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Fix for elements potentially blocking clicks */
+        .hero-section-main::before {
+            pointer-events: none;
+        }
+
+        .service-card {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ensure AOS animations don't interfere with clicking */
+        [data-aos] {
+            pointer-events: auto !important;
+        }
+
+        /* Remove any potential click blockers */
+        .container {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased font-inter">
