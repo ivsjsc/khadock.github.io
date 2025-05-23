@@ -1,106 +1,61 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize header and footer
-    initializeHeaderLogic();
-    initializeFooterLogic();
-    
-    // Initialize click events for all interactive elements
-    initializeClickEvents();
-    
-    // Initialize AOS (Animate On Scroll)
-    AOS.init({
-        duration: 800,
-        once: true,
-        offset: 100
-    });
-});
+// js/loadComponents.js
 
-function initializeHeaderLogic() {
-    const headerPlaceholder = document.getElementById('header-placeholder');
-    if (headerPlaceholder) {
-        fetch('components/header.html')
-            .then(response => response.text())
-            .then(data => {
-                headerPlaceholder.innerHTML = data;
-                // Initialize any header-specific interactions here
-                initializeNavigation();
-            })
-            .catch(error => console.error('Error loading header:', error));
+// Function to fetch and inject HTML components
+async function loadHTMLComponent(componentPath, placeholderId, componentName) {
+    const placeholder = document.getElementById(placeholderId);
+    if (!placeholder) {
+        console.error(`Placeholder element with ID '${placeholderId}' not found for ${componentName}.`);
+        return false;
     }
-}
 
-function initializeFooterLogic() {
-    const footerPlaceholder = document.getElementById('footer-placeholder');
-    if (footerPlaceholder) {
-        fetch('components/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                footerPlaceholder.innerHTML = data;
-                // Initialize any footer-specific interactions here
-            })
-            .catch(error => console.error('Error loading footer:', error));
-    }
-}
-
-function initializeClickEvents() {
-    // Make sure all links are clickable
-    document.querySelectorAll('a').forEach(link => {
-        link.style.cursor = 'pointer';
-        link.style.pointerEvents = 'auto';
-    });
-
-    // Make sure all buttons are clickable
-    document.querySelectorAll('button').forEach(button => {
-        button.style.cursor = 'pointer';
-        button.style.pointerEvents = 'auto';
-    });
-
-    // Initialize scroll to top button
-    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    if (scrollToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.remove('hidden');
-                scrollToTopBtn.classList.add('flex');
-            } else {
-                scrollToTopBtn.classList.add('hidden');
-                scrollToTopBtn.classList.remove('flex');
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-}
-
-function initializeNavigation() {
-    // Handle dropdown menus
-    const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach(dropdown => {
-        const trigger = dropdown.querySelector('.dropdown-trigger');
-        const menu = dropdown.querySelector('.dropdown-menu');
-
-        if (trigger && menu) {
-            // Handle click events
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                dropdown.classList.toggle('open');
-            });
-
-            // Handle hover events
-            dropdown.addEventListener('mouseenter', () => {
-                dropdown.classList.add('open');
-            });
-
-            dropdown.addEventListener('mouseleave', () => {
-                dropdown.classList.remove('open');
-            });
+    try {
+        const response = await fetch(componentPath);
+        if (!response.ok) {
+            throw new Error(`Failed to load ${componentName}. Status: ${response.status}`);
         }
-    });
+        const data = await response.text();
+        placeholder.innerHTML = data;
+        console.log(`${componentName} loaded successfully into #${placeholderId}.`);
+        return true;
+    } catch (error) {
+        console.error(`Error loading ${componentName}:`, error);
+        placeholder.innerHTML = `<p class="text-red-500 text-center py-4">Error loading ${componentName}. Please try refreshing.</p>`;
+        return false;
+    }
 }
 
-// Export functions for use in other modules
-export { initializeHeaderLogic, initializeFooterLogic };
+// Initialize header and footer loading
+async function initializePageComponents() {
+    const headerLoaded = await loadHTMLComponent('components/header.html', 'header-placeholder', 'Header');
+    if (headerLoaded) {
+        // Dispatch a custom event after the header is successfully loaded and injected
+        // App.js will listen for this to initialize header-dependent functionalities
+        document.dispatchEvent(new CustomEvent('headerLoaded'));
+    }
+
+    const footerLoaded = await loadHTMLComponent('components/footer.html', 'footer-placeholder', 'Footer');
+    if (footerLoaded) {
+        // Initialize any footer-specific interactions here if needed
+        // For example, updating the copyright year (though app.js might also handle this if it's global)
+        const yearSpan = document.getElementById('current-year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+         document.dispatchEvent(new CustomEvent('footerLoaded'));
+    }
+}
+
+
+// Main execution flow for loadComponents.js
+// This script is a module, so it executes when imported.
+// We want to ensure it runs after the basic DOM structure is available.
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePageComponents);
+} else {
+    initializePageComponents();
+}
+
+// This module primarily focuses on loading components.
+// Other initializations (AOS, scroll-to-top, complex event handling)
+// are now centralized in app.js.
+// No exports needed if it's self-executing its primary task.
