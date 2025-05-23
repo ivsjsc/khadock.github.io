@@ -94,7 +94,17 @@
             color: white;
             z-index: 1;
         }
-        /* Loại bỏ các style liên quan đến .full-width-image-section vì nó sẽ bị xóa */
+        .full-width-image-section {
+            width: 100%;
+            overflow: hidden;
+        }
+        .full-width-image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased font-inter">
@@ -103,6 +113,17 @@
     </div>
 
     <main id="main-content-area" class="pt-20">
+        <section class="full-width-image-section" data-aos="fade-in">
+            <img
+                src="images/logo/logo.jpg"
+                alt="KhaDock Logo Banner"
+                class="w-full h-auto object-cover block"
+                loading="eager"
+                width="1920"
+                height="400"
+            >
+        </section>
+
         <section class="hero-banner-container" data-aos="fade-in">
             <picture>
                 <source srcset="images/albums/dock15.jpg" media="(min-width: 768px)">
