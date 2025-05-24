@@ -1,0 +1,20 @@
+{
+  "short_name": "KhaDock",
+  "name": "KhaDock - Florida's Premier Boat Dock Solutions",
+  "icons": [
+    {
+      "src": "images/logo/logoicon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/logo/logoicon_512.png", // Assuming you have a 512x512 version
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#0EA5E9",
+  "background_color": "#ffffff"
+}
