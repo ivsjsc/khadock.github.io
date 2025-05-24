@@ -17,11 +17,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+        .banner-bg {
+            background-image: url('https://placehold.co/1920x600/0EA5E9/ffffff?text=KhaDock+Services+Banner'); /* Placeholder for a relevant banner image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }
+        .banner-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+            z-index: -1;
+        }
+        /* Subtle hover effect for images */
+        .service-image {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .service-image:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
     </style>
 </head>
@@ -31,7 +57,7 @@
 
     <main class="pt-20">
         <section class="banner-bg text-white py-20 md:py-28" data-aos="fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center bg-black bg-opacity-60 p-8 md:p-10 rounded-lg">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center bg-black bg-opacity-60 p-8 md:p-10 rounded-lg shadow-xl">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Our Comprehensive Services</h1>
                 <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
                     Comprehensive solutions for your home and property improvement projects in Florida.
@@ -47,8 +73,12 @@
                         From initial concept to completion and maintenance, KhaDock is with you every step of the way.
                     </p>
                 </div>
+            </div>
+        </section>
 
-                <article id="design" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <article id="design" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
                     <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="100">
                         <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Design</span>
                         <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Custom & Creative Dock Design</h3>
@@ -65,15 +95,19 @@
                         <p class="text-slate-700 font-semibold mt-auto">For more details, please <a href="contact.html" class="text-sky-600 hover:underline">contact us directly</a>.</p>
                     </div>
                     <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
-                        <img src="images/pages/DockDesign.jpeg" alt="Professional custom dock design by KhaDock" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]">
+                        <img src="https://placehold.co/600x450/0EA5E9/ffffff?text=Custom+Dock+Design" alt="Professional custom dock design by KhaDock" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3] service-image">
                     </div>
                 </article>
+            </div>
+        </section>
 
-                <article id="remodel" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
-                    <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="100">
-                         <img src="images/pages/Remodeling&Upgrades.jpeg" alt="Professional dock remodeling and upgrades by KhaDock" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]">
+        <section class="py-16 md:py-24 bg-slate-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <article id="remodel" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+                    <div class="order-1 md:order-2" data-aos="fade-right" data-aos-delay="100">
+                        <img src="https://placehold.co/600x450/10B981/ffffff?text=Dock+Remodeling+Upgrade" alt="Professional dock remodeling and upgrades by KhaDock" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3] service-image">
                     </div>
-                    <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="200">
+                    <div class="order-2 md:order-1" data-aos="fade-left" data-aos-delay="200">
                         <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Renovation</span>
                         <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Dock Remodeling & Upgrades</h3>
                         <p class="text-slate-600 leading-relaxed mb-4">
@@ -88,8 +122,12 @@
                         <p class="text-slate-700 font-semibold mt-auto">For more details, please <a href="contact.html" class="text-sky-600 hover:underline">contact us directly</a>.</p>
                     </div>
                 </article>
+            </div>
+        </section>
 
-                <article id="repair" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <article id="repair" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
                     <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="100">
                         <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Maintenance</span>
                         <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Routine Dock Repair & Maintenance</h3>
@@ -105,16 +143,20 @@
                         </ul>
                         <p class="text-slate-700 font-semibold mt-auto">For more details, please <a href="contact.html" class="text-sky-600 hover:underline">contact us directly</a>.</p>
                     </div>
-                     <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
-                        <img src="images/pages/Repair&Maintenance.jpeg" alt="Dock repair and maintenance services by KhaDock" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]">
+                    <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
+                        <img src="https://placehold.co/600x450/F59E0B/ffffff?text=Dock+Repair+Maintenance" alt="Dock repair and maintenance services by KhaDock" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3] service-image">
                     </div>
                 </article>
+            </div>
+        </section>
 
-                <article id="construction" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
-                     <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="images/pages/DockConstruction.jpeg" alt="High-quality dock construction by KhaDock" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]">
+        <section class="py-16 md:py-24 bg-slate-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <article id="construction" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+                    <div class="order-1 md:order-2" data-aos="fade-right" data-aos-delay="100">
+                        <img src="https://placehold.co/600x450/3B82F6/ffffff?text=New+Dock+Construction" alt="High-quality dock construction by KhaDock" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3] service-image">
                     </div>
-                    <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="200">
+                    <div class="order-2 md:order-1" data-aos="fade-left" data-aos-delay="200">
                         <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Construction</span>
                         <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Precise & Durable Dock Construction</h3>
                         <p class="text-slate-600 leading-relaxed mb-4">
@@ -130,8 +172,12 @@
                         <p class="text-slate-700 font-semibold mt-auto">For more details, please <a href="contact.html" class="text-sky-600 hover:underline">contact us directly</a>.</p>
                     </div>
                 </article>
+            </div>
+        </section>
 
-                <article id="floor-remodeling" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <article id="floor-remodeling" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
                     <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="100">
                         <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Flooring</span>
                         <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Professional Floor Remodeling</h3>
@@ -148,15 +194,19 @@
                         <p class="text-slate-700 font-semibold mt-auto">For more details, please <a href="contact.html" class="text-sky-600 hover:underline">contact us directly</a>.</p>
                     </div>
                     <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
-                        <img src="https://placehold.co/600x450/0EA5E9/ffffff?text=Floor+Remodeling" alt="Professional floor remodeling services" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]">
+                        <img src="https://placehold.co/600x450/0EA5E9/ffffff?text=New+Floor+Installation" alt="Professional floor remodeling services" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3] service-image">
                     </div>
                 </article>
+            </div>
+        </section>
 
-                <article id="paint" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
-                    <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="100">
-                        <img src="https://placehold.co/600x450/0EA5E9/ffffff?text=Painting+Services" alt="Expert interior and exterior painting" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]">
+        <section class="py-16 md:py-24 bg-slate-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <article id="paint" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+                    <div class="order-1 md:order-2" data-aos="fade-right" data-aos-delay="100">
+                        <img src="https://placehold.co/600x450/10B981/ffffff?text=Fresh+House+Painting" alt="Expert interior and exterior painting" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3] service-image">
                     </div>
-                    <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="200">
+                    <div class="order-2 md:order-1" data-aos="fade-left" data-aos-delay="200">
                         <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Painting</span>
                         <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Expert Interior & Exterior Painting</h3>
                         <p class="text-slate-600 leading-relaxed mb-4">
@@ -172,8 +222,12 @@
                         <p class="text-slate-700 font-semibold mt-auto">For more details, please <a href="contact.html" class="text-sky-600 hover:underline">contact us directly</a>.</p>
                     </div>
                 </article>
+            </div>
+        </section>
 
-                <article id="bathroom-remodeling" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16 md:mb-24" data-aos="fade-up">
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <article id="bathroom-remodeling" class="service-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
                     <div class="order-2 md:order-1" data-aos="fade-right" data-aos-delay="100">
                         <span class="text-sky-500 font-semibold text-sm uppercase tracking-wider">Bathroom</span>
                         <h3 class="text-3xl font-bold text-slate-800 mt-2 mb-6">Comprehensive Bathroom Remodeling</h3>
@@ -190,10 +244,14 @@
                         <p class="text-slate-700 font-semibold mt-auto">For more details, please <a href="contact.html" class="text-sky-600 hover:underline">contact us directly</a>.</p>
                     </div>
                     <div class="order-1 md:order-2" data-aos="fade-left" data-aos-delay="200">
-                        <img src="https://placehold.co/600x450/0EA5E9/ffffff?text=Bathroom+Remodeling" alt="Comprehensive bathroom remodeling services" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3]">
+                        <img src="https://placehold.co/600x450/F59E0B/ffffff?text=Modern+Bathroom+Remodel" alt="Comprehensive bathroom remodeling services" class="rounded-lg shadow-xl w-full h-auto object-cover aspect-[4/3] service-image">
                     </div>
                 </article>
+            </div>
+        </section>
 
+        <section class="py-16 md:py-24 bg-slate-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mt-12 md:mt-16" data-aos="fade-up">
                     <h3 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">And Many More Home Renovation Categories</h3>
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
@@ -203,7 +261,6 @@
                     </p>
                     <p class="text-slate-700 font-semibold">For a complete list of our services or to discuss your specific project, please <a href="contact.html" class="text-sky-600 hover:underline">contact us directly</a>.</p>
                 </div>
-
             </div>
         </section>
 
@@ -237,7 +294,7 @@
                         >
                             <i class="fas fa-magic mr-2"></i> Generate Renovation Idea
                         </button>
-                         <button
+                        <button
                             id="ai-renovation-clear-input-btn"
                             class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-3 px-6 rounded-lg shadow-sm transition duration-300 text-sm sm:text-base"
                         >
@@ -259,7 +316,6 @@
                 </div>
             </div>
         </section>
-
 
         <section class="py-20 md:py-32 bg-gradient-to-r from-blue-700 to-sky-800 text-white text-center relative overflow-hidden" data-aos="zoom-in">
             <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0V0h2v36h-2zM0 0h2v36H0V0zm0 36h36v2H0v-2z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
@@ -292,5 +348,15 @@
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
     <script src="js/generateRenovationIdea.js" type="module" defer></script>
+    <script>
+        AOS.init({
+            offset: 120, // Offset (in px) from the top of the screen to trigger animations
+            duration: 900, // Duration of animation (in ms)
+            easing: 'ease-out-quad', // Easing type for the animation
+            once: true, // Whether animation should only happen once - while scrolling down
+            mirror: false, // Whether elements should animate out while scrolling past them
+            anchorPlacement: 'top-bottom', // Defines which position of the element should trigger the animation
+        });
+    </script>
 </body>
 </html>
