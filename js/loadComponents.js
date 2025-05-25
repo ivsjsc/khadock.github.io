@@ -22,7 +22,7 @@ async function loadComponent(placeholderId, filePath) {
 }
 
 async function loadAppComponents(callback) {
-    // Sử dụng đường dẫn tương đối
+    // ĐÃ SỬA: Sử dụng đường dẫn tương đối
     const HEADER_COMPONENT_URL = './components/header.html';
     const FOOTER_COMPONENT_URL = './components/footer.html';
 
@@ -36,6 +36,8 @@ async function loadAppComponents(callback) {
     }
     document.dispatchEvent(new CustomEvent('allAppComponentsLoaded'));
 }
+
+// ... (phần còn lại của tệp loadComponents.js giữ nguyên) ...
 
 function initializeHeaderFeatures() {
     initializeMobileMenu();

@@ -761,7 +761,9 @@ a:hover, a:focus {
     color: #7dd3fc; /* Example active/hover text color */
 }
 
+/* ... (các quy tắc CSS khác) ... */
 .bottom-nav-label {
     font-size: 0.75rem; /* text-xs */
     margin-top: 0.25rem; /* mt-1 */
 }
+
