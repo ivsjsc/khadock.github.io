@@ -2,7 +2,7 @@ async function loadComponent(placeholderId, filePath) {
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
-            throw new Error(`Failed to load component from ${filePath}: ${response.statusText}`);
+            throw new Error(`Không thể tải component từ ${filePath}: ${response.statusText}`);
         }
         const html = await response.text();
         const placeholder = document.getElementById(placeholderId);
@@ -10,21 +10,20 @@ async function loadComponent(placeholderId, filePath) {
             placeholder.innerHTML = html;
             document.dispatchEvent(new CustomEvent(`${placeholderId}Loaded`, { detail: { placeholderId, filePath } }));
         } else {
-            console.error(`[Script] Placeholder element with id '${placeholderId}' not found.`);
+            console.error(`[Script] Không tìm thấy phần tử placeholder với id '${placeholderId}'.`);
         }
     } catch (error) {
-        console.error(`[Script] Error loading component from ${filePath}:`, error);
+        console.error(`[Script] Lỗi khi tải component từ ${filePath}:`, error);
         const placeholder = document.getElementById(placeholderId);
         if (placeholder) {
-            placeholder.innerHTML = `<p style="color: red;">Error loading component: ${error.message || error}</p>`;
+            placeholder.innerHTML = `<p style="color: red;">Lỗi tải component: ${error.message || error}</p>`;
         }
     }
 }
 
 async function loadAppComponents(callback) {
-    // ĐÃ SỬA: Sử dụng đường dẫn tương đối
-    const HEADER_COMPONENT_URL = './components/header.html';
-    const FOOTER_COMPONENT_URL = './components/footer.html';
+    const HEADER_COMPONENT_URL = '/components/header.html';
+    const FOOTER_COMPONENT_URL = '/components/footer.html';
 
     await Promise.all([
         loadComponent('header-placeholder', HEADER_COMPONENT_URL),
@@ -36,8 +35,6 @@ async function loadAppComponents(callback) {
     }
     document.dispatchEvent(new CustomEvent('allAppComponentsLoaded'));
 }
-
-// ... (phần còn lại của tệp loadComponents.js giữ nguyên) ...
 
 function initializeHeaderFeatures() {
     initializeMobileMenu();
@@ -112,14 +109,14 @@ function initializeHeaderFeatures() {
 }
 
 function initializeFooterFeatures() {
-    const currentYearSpan = document.getElementById('currentYearFooter');
+    const currentYearSpan = document.getElementById('current-year');
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 
-    const newsletterForm = document.getElementById('newsletterForm');
-    const newsletterEmail = document.getElementById('newsletterEmail');
-    const newsletterMessage = document.getElementById('newsletterMessage');
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterEmail = document.getElementById('newsletter-email');
+    const newsletterMessage = document.getElementById('newsletter-message');
 
     if (newsletterForm && newsletterEmail && newsletterMessage) {
         newsletterForm.addEventListener('submit', async (e) => {
@@ -167,7 +164,7 @@ function initializeFooterFeatures() {
                     newsletterMessage.className = 'text-sm mt-3 text-red-500 dark:text-red-400';
                 }
             } catch (error) {
-                console.error('[Script] Error submitting newsletter:', error);
+                console.error('[Script] Lỗi khi gửi bản tin:', error);
                 newsletterMessage.textContent = translations.error;
                 newsletterMessage.className = 'text-sm mt-3 text-red-500 dark:text-red-400';
             } finally {
@@ -185,10 +182,10 @@ function initializeMobileMenu() {
     const iconMenuClose = document.getElementById('icon-menu-close');
 
     if (!mobileMenuButton || !mobileMenuPanel) {
-        console.warn('Mobile menu elements not found for initialization.');
+        console.warn('Không tìm thấy các phần tử menu di động để khởi tạo.');
         return;
     }
-    
+
     if (mobileMenuButton.__menuInitialized) return;
 
 
@@ -231,7 +228,7 @@ function initializeMobileMenu() {
             closeMobileMenu();
         }
     });
-    
+
     const mobileMenuLinks = mobileMenuPanel.querySelectorAll('a');
     mobileMenuLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -300,24 +297,43 @@ function initializeSubmenuToggles() {
 
 function highlightActivePage() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinks = document.querySelectorAll('#mobile-menu-panel a[href], .nav-links a[href]');
+    const navLinks = document.querySelectorAll('#mobile-menu-panel a[href], header nav a[href]');
+
     navLinks.forEach(link => {
-        link.classList.remove('text-sky-300', 'bg-slate-600', 'active');
-        const href = link.getAttribute('href').split('/').pop();
-        if (href === currentPage || (currentPage === 'index.html' && (href === '' || href === 'index.html'))) {
+        link.classList.remove('text-sky-300', 'bg-slate-600', 'active', 'text-sky-400');
+        const linkHref = link.getAttribute('href').split('/').pop() || 'index.html';
+
+        let isActive = false;
+        if (linkHref === currentPage) {
+            isActive = true;
+        } else if (currentPage === 'index.html' && (linkHref === '' || link.id === 'nav-index')) {
+            isActive = true;
+        }
+
+
+        if (isActive) {
             if(link.closest('#mobile-menu-panel')) {
                 link.classList.add('text-sky-300', 'bg-slate-600');
             } else {
-                link.classList.add('active');
+                link.classList.add('text-sky-400', 'active');
             }
         }
     });
 }
 
+
 document.addEventListener('header-placeholderLoaded', initializeHeaderFeatures);
 document.addEventListener('footer-placeholderLoaded', initializeFooterFeatures);
 
 document.addEventListener('DOMContentLoaded', function() {
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+    }
     initializeMobileMenu();
     highlightActivePage();
 });
@@ -334,8 +350,7 @@ window.addEventListener('resize', function() {
 });
 
 if (typeof window !== 'undefined') {
-    window.loadAppComponents = loadAppComponents; // Giữ lại nếu bạn muốn truy cập hàm này toàn cục
-    // Tự động tải các components khi script này được thực thi
+    window.loadAppComponents = loadAppComponents;
     loadAppComponents().catch(error => {
         console.error("[Script] Lỗi trong quá trình tải components ban đầu:", error);
     });
