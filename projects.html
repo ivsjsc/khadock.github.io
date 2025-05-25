@@ -69,6 +69,26 @@
             height: 100%;
             object-fit: cover;
         }
+                .banner-bg {
+            background-image: url('images/logo/logonoi.png'); /* Placeholder for a relevant banner image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }
+        .banner-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+            z-index: -1;
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }    
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
@@ -76,6 +96,15 @@
     <div id="header-placeholder"></div>
 
     <main class="pt-20">
+
+        <section class="banner-bg text-white py-20 md:py-28" data-aos="fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center bg-black bg-opacity-60 p-8 md:p-10 rounded-lg shadow-xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Our Project Portfolio</h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+                    Explore our diverse range of completed projects, showcasing our commitment to quality and innovation.
+                </p>
+            </div>
+        </section>
 
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
@@ -183,7 +212,7 @@
                     <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="maintenance design" data-aos="zoom-in-up" data-aos-delay="100">
                         <a href="#" class="block group h-full flex flex-col">
                             <div class="project-image-container">
-                                <img src="images/pages/Repair&Maintenance.jpeg" alt="Waterfront Deck Repair & Enhancement - Key West" loading="lazy">
+                                <img src="images/albums/flooring.png" alt="Waterfront Deck Repair & Enhancement - Key West" loading="lazy">
                             </div>
                             <div class="p-6 project-card-content flex-grow">
                                 <div>
@@ -227,6 +256,21 @@
                 <div class="video-container">
                     <video controls poster="images/designs/design_video_poster.jpg" preload="metadata" autoplay muted playsinline>
                         <source src="videos/design1.mp4" type="video/mp4">
+                        Your browser does not support the video tag. You can download the video <a href="videos/design1.mp4">here</a>.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-16 bg-slate-50" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">Discover Our Design Process</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">Watch our introductory video on how KhaDock creates unique and high-quality dock designs.</p>
+                </div>
+                <div class="video-container">
+                    <video controls poster="images/designs/design_video_poster.jpg" preload="metadata" autoplay muted playsinline>
+                        <source src="videos/deckvideo.mp4" type="video/mp4">
                         Your browser does not support the video tag. You can download the video <a href="videos/design1.mp4">here</a>.
                     </video>
                 </div>
