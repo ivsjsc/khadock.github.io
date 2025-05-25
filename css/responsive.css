@@ -1,0 +1,174 @@
+/* ===== MOBILE MENU FIXES ===== */
+
+/* Header z-index override - must be higher than Tailwind's z-50 */
+.nav-header {
+    z-index: 60 !important; /* Override Tailwind z-50 */
+}
+
+/* Mobile menu panel fixes - must be higher than header */
+#mobile-menu-panel {
+    z-index: 70 !important; /* Override Tailwind z-40, higher than header */
+    background-color: rgba(51, 65, 85, 0.98) !important; /* Match bg-slate-700/95 */
+}
+
+/* Mobile menu content */
+#mobile-menu-panel nav {
+    padding-top: 5rem; /* Space for fixed header - matches h-20 (5rem) */
+    padding-bottom: 2rem;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Mobile menu button z-index */
+#mobile-menu-button {
+    z-index: 80 !important; /* Higher than menu panel for proper interaction */
+    position: relative;
+}
+
+/* Hero section adjustments */
+.hero-section-main {
+    z-index: 1; /* Lower than header and menu */
+}
+
+/* Ensure hero content doesn't overlap with header */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    /* Remove padding-top as it's handled by sticky header */
+}
+
+/* ===== MOBILE RESPONSIVE BREAKPOINTS ===== */
+
+/* Mobile First - up to 480px */
+@media (max-width: 480px) {
+    /* Header stays h-20 as in Tailwind classes */
+    .nav-header .logo {
+        height: 2.5rem;
+        width: auto;
+    }
+    
+    .hero-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    /* Mobile menu adjustments */
+    #mobile-menu-panel nav {
+        padding-top: 5rem; /* Match h-20 header height */
+    }
+}
+
+/* Small Mobile - 481px to 640px */
+@media (min-width: 481px) and (max-width: 640px) {
+    /* Header maintains h-20 from Tailwind */
+}
+
+/* Tablet Portrait - 641px to 768px */
+@media (min-width: 641px) and (max-width: 768px) {
+    /* Header maintains h-20 from Tailwind */
+    
+    /* Show desktop menu, hide mobile menu */
+    #mobile-menu-panel {
+        display: none !important;
+    }
+}
+
+/* Tablet Landscape - 769px to 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .mega-menu {
+        min-width: 500px;
+    }
+}
+
+/* Desktop - 1025px and up */
+@media (min-width: 1025px) {
+    /* Header maintains sticky positioning from Tailwind */
+    #mobile-menu-panel {
+        display: none !important;
+    }
+}
+
+/* ===== MENU OVERLAY FIXES ===== */
+
+/* Menu overlay for mobile */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== SCROLL TO TOP BUTTON MOBILE FIXES ===== */
+@media (max-width: 767px) {
+    #scrollToTopBtn {
+        bottom: 6rem !important; /* Above bottom navigation (h-16 = 4rem + 2rem spacing) */
+        right: 1rem;
+        z-index: 55 !important; /* Between header (60) and menu (70) */
+    }
+}
+
+/* ===== MOBILE MENU ANIMATIONS ===== */
+
+/* Hamburger animation for #mobile-menu-button */
+#mobile-menu-button i {
+    transition: transform 0.3s ease;
+}
+
+/* Mobile submenu animations - matching existing CSS structure */
+.mobile-submenu-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out; /* Match existing transition */
+}
+
+.mobile-submenu-content.open {
+    max-height: 500px; /* Adjust based on content */
+}
+
+/* Mobile submenu icon rotation */
+.mobile-submenu-toggle[aria-expanded="true"] .mobile-submenu-icon {
+    transform: rotate(180deg);
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Focus states for mobile menu */
+@media (max-width: 768px) {
+    .mobile-menu-link:focus,
+    .mobile-submenu-btn:focus {
+        outline: 2px solid #7dd3fc;
+        outline-offset: 2px;
+        background-color: rgba(125, 211, 252, 0.1);
+    }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* GPU acceleration for mobile animations */
+#mobile-menu-panel,
+.mobile-submenu-content,
+.hamburger-line {
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    #mobile-menu-panel,
+    .mobile-submenu-content,
+    .hamburger-line,
+    .menu-overlay {
+        transition: none;
+    }
+}
