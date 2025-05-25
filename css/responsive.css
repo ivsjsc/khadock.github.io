@@ -31,11 +31,7 @@
 }
 
 /* Ensure hero content doesn't overlap with header */
-.hero-content {
-    position: relative;
-    z-index: 2;
-    /* Remove padding-top as it's handled by sticky header */
-}
+/* .hero-content rule was removed as it's identical in styles.css */
 
 /* ===== MOBILE RESPONSIVE BREAKPOINTS ===== */
 
@@ -47,7 +43,7 @@
         width: auto;
     }
     
-    .hero-content {
+    .hero-content { /* This specific hero-content rule for padding is fine if it's an override for mobile */
         padding: 1.5rem 1rem;
     }
     
@@ -111,9 +107,10 @@
 /* ===== SCROLL TO TOP BUTTON MOBILE FIXES ===== */
 @media (max-width: 767px) {
     #scrollToTopBtn {
-        bottom: 6rem !important; /* Above bottom navigation (h-16 = 4rem + 2rem spacing) */
-        right: 1rem;
-        z-index: 55 !important; /* Between header (60) and menu (70) */
+        bottom: 6rem !important; /* Above bottom navigation, from original responsive.css */
+        right: 1rem; /* Consistent with styles.css for mobile */
+        z-index: 55 !important; /* Higher z-index from original responsive.css */
+        /* width, height, font-size are handled by styles.css for mobile */
     }
 }
 
@@ -125,11 +122,7 @@
 }
 
 /* Mobile submenu animations - matching existing CSS structure */
-.mobile-submenu-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease-in-out; /* Match existing transition */
-}
+/* .mobile-submenu-content rule was removed as it's identical in styles.css */
 
 .mobile-submenu-content.open {
     max-height: 500px; /* Adjust based on content */
@@ -156,7 +149,7 @@
 
 /* GPU acceleration for mobile animations */
 #mobile-menu-panel,
-.mobile-submenu-content,
+.mobile-submenu-content, /* Kept here for will-change, even if base styles are in styles.css */
 .hamburger-line {
     will-change: transform;
     -webkit-transform: translateZ(0);
@@ -166,7 +159,7 @@
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
     #mobile-menu-panel,
-    .mobile-submenu-content,
+    .mobile-submenu-content, /* Kept here for will-change */
     .hamburger-line,
     .menu-overlay {
         transition: none;
