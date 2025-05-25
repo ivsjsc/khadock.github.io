@@ -22,8 +22,9 @@ async function loadComponent(placeholderId, filePath) {
 }
 
 async function loadAppComponents(callback) {
-    const HEADER_COMPONENT_URL = '/components/header.html';
-    const FOOTER_COMPONENT_URL = '/components/footer.html';
+    // Sử dụng đường dẫn tương đối
+    const HEADER_COMPONENT_URL = './components/header.html';
+    const FOOTER_COMPONENT_URL = './components/footer.html';
 
     await Promise.all([
         loadComponent('header-placeholder', HEADER_COMPONENT_URL),
