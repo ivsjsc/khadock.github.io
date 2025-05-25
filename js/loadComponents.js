@@ -334,5 +334,9 @@ window.addEventListener('resize', function() {
 });
 
 if (typeof window !== 'undefined') {
-    window.loadAppComponents = loadAppComponents;
+    window.loadAppComponents = loadAppComponents; // Giữ lại nếu bạn muốn truy cập hàm này toàn cục
+    // Tự động tải các components khi script này được thực thi
+    loadAppComponents().catch(error => {
+        console.error("[Script] Lỗi trong quá trình tải components ban đầu:", error);
+    });
 }
