@@ -324,11 +324,7 @@ function highlightActivePage() {
 document.addEventListener('header-placeholderLoaded', initializeHeaderFeatures);
 document.addEventListener('footer-placeholderLoaded', initializeFooterFeatures);
 
-// Khởi tạo menu mobile và highlight trang hiện tại khi DOM đã tải đầy đủ
-document.addEventListener('DOMContentLoaded', function() {
-    initializeMobileMenu();
-    highlightActivePage();
-});
+// Đã loại bỏ: document.addEventListener('DOMContentLoaded', function() { initializeMobileMenu(); highlightActivePage(); });
 
 // Đóng menu mobile khi thay đổi kích thước cửa sổ lên desktop
 window.addEventListener('resize', function() {

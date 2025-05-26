@@ -45,11 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Lắng nghe sự kiện headerLoaded từ loadComponents.js
+    // Logic menu mobile và submenu đã được chuyển sang loadComponents.js
     document.addEventListener('headerLoaded', () => {
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenuPanel = document.getElementById('mobile-menu-panel');
-        const iconMenuOpen = document.getElementById('icon-menu-open');
-        const iconMenuClose = document.getElementById('icon-menu-close');
         const desktopSearchButton = document.getElementById('desktop-search-button');
         const desktopSearchContainer = document.getElementById('desktop-search-container');
         const desktopSearchInput = document.getElementById('desktop-search-input');
@@ -59,31 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileSearchResults = document.getElementById('mobile-search-results');
         const megaMenuContainer = document.querySelector('.mega-menu-container');
         const servicesMegaMenu = document.getElementById('services-mega-menu');
-
-        // Chuyển đổi menu mobile
-        if (mobileMenuButton && mobileMenuPanel && iconMenuOpen && iconMenuClose) {
-            mobileMenuButton.addEventListener('click', () => {
-                const isOpen = mobileMenuPanel.classList.toggle('open'); // Chuyển đổi class 'open'
-                mobileMenuButton.setAttribute('aria-expanded', isOpen); // Cập nhật trạng thái aria-expanded
-                iconMenuOpen.classList.toggle('hidden', isOpen); // Ẩn/hiện icon mở menu
-                iconMenuClose.classList.toggle('hidden', !isOpen); // Ẩn/hiện icon đóng menu
-            });
-        }
-
-        // Chuyển đổi submenu mobile
-        const mobileSubmenuToggle = document.querySelector('.mobile-submenu-toggle');
-        const mobileServicesSubmenuItems = document.getElementById('mobile-services-submenu-items');
-
-        if (mobileSubmenuToggle && mobileServicesSubmenuItems) {
-            mobileSubmenuToggle.addEventListener('click', () => {
-                const isExpanded = mobileSubmenuToggle.getAttribute('aria-expanded') === 'true'; // Kiểm tra trạng thái mở rộng
-                mobileSubmenuToggle.setAttribute('aria-expanded', !isExpanded); // Cập nhật trạng thái aria-expanded
-                // Điều chỉnh chiều cao tối đa để mở/đóng mượt mà
-                mobileServicesSubmenuItems.style.maxHeight = isExpanded ? null : mobileServicesSubmenuItems.scrollHeight + 'px';
-                // Xoay icon submenu
-                mobileSubmenuToggle.querySelector('.mobile-submenu-icon').classList.toggle('rotate-180', !isExpanded);
-            });
-        }
 
         // Chức năng tìm kiếm trên desktop
         if (desktopSearchButton && desktopSearchContainer && desktopSearchInput && desktopSearchClose) {
@@ -138,17 +110,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Chuyển đổi/hover Mega Menu
+        // Sử dụng setTimeout để tạo độ trễ khi ẩn menu, tránh bị mất khi di chuyển chuột nhanh
+        let megaMenuTimeout;
         if (megaMenuContainer && servicesMegaMenu) {
             megaMenuContainer.addEventListener('mouseenter', () => {
+                clearTimeout(megaMenuTimeout); // Xóa timeout ẩn nếu có
                 servicesMegaMenu.classList.remove('hidden'); // Hiển thị mega menu
                 servicesMegaMenu.classList.add('block');
                 servicesMegaMenu.setAttribute('aria-expanded', 'true');
             });
 
             megaMenuContainer.addEventListener('mouseleave', () => {
-                servicesMegaMenu.classList.add('hidden'); // Ẩn mega menu
-                servicesMegaMenu.classList.remove('block');
-                servicesMegaMenu.setAttribute('aria-expanded', 'false');
+                megaMenuTimeout = setTimeout(() => {
+                    servicesMegaMenu.classList.add('hidden'); // Ẩn mega menu sau một khoảng thời gian
+                    servicesMegaMenu.classList.remove('block');
+                    servicesMegaMenu.setAttribute('aria-expanded', 'false');
+                }, 200); // Độ trễ 200ms
+            });
+
+            // Ngăn việc ẩn menu nếu chuột di chuyển vào chính menu con
+            servicesMegaMenu.addEventListener('mouseenter', () => {
+                clearTimeout(megaMenuTimeout);
+            });
+
+            servicesMegaMenu.addEventListener('mouseleave', () => {
+                 megaMenuTimeout = setTimeout(() => {
+                    servicesMegaMenu.classList.add('hidden');
+                    servicesMegaMenu.classList.remove('block');
+                    servicesMegaMenu.setAttribute('aria-expanded', 'false');
+                }, 200);
             });
         }
 
