@@ -339,6 +339,15 @@
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
     <script>
+        // Gọi hàm loadAppComponents sau khi DOM đã sẵn sàng
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window.loadAppComponents === 'function') {
+                window.loadAppComponents();
+            } else {
+                console.error('loadAppComponents function not found on window object.');
+            }
+        });
+
         AOS.init({
             offset: 120, // Offset (in px) from the top of the screen to trigger animations
             duration: 900, // Duration of animation (in ms)
