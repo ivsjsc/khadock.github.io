@@ -12,22 +12,18 @@
 
     <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions with AI Design">
     <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Try our AI Design Generator!">
-    <meta property="og:image" content="images/logo/logoicon_512.png">
-    <meta property="og:url" content="https://khadock.com">
+    <meta property="og:image" content="images/logo/logoicon_512.png">  <meta property="og:url" content="https://khadock.com">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KhaDock">
 
-    <link rel="preload" href="images/logo/logoicon_512.png" as="image" fetchpriority="high">
-    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" crossorigin="anonymous">
-    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="images/logo/logoicon_512.png" as="image" fetchpriority="high">  <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" crossorigin="anonymous">  <link rel="preload" href="css/styles.css" as="style">
     <link rel="preload" as="image" href="images/albums/dock15.jpg">
     <link rel="preload" as="image" href="images/logo/logo.jpg">
 
 
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
-    <link rel="apple-touch-icon" href="images/logo/logoicon_512.png">
-    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/logo/logoicon_512.png">  <link rel="manifest" href="manifest.json">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -99,7 +95,7 @@
             text-align: center;
             background-color: rgba(0, 0, 0, 0.6); /* Overlay for text readability */
             color: white;
-            z-index: 1; /* Content on top of image */
+            z-index: 2; /* Content on top of image */
             padding: 1rem; /* Basic padding for the overlay itself */
             overflow-y: auto; /* Allow scrolling if content is too tall */
         }
@@ -255,16 +251,16 @@
             </div>
         </section>
 
-        <section class="ai-design-section py-16 md:py-24 bg-gradient-to-br from-sky-50 to-blue-100" data-aos="fade-up" id="ai-design-generator">
+        <section class="ai-design-section py-16 md:py-20 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50" data-aos="fade-up" id="ai-renovation-generator">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
-                        <i class="fas fa-lightbulb text-sky-500"></i> ✨ AI Dock Design Studio ✨
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3 flex items-center justify-center gap-2">
+                        <i class="fas fa-lightbulb text-sky-500"></i> ✨ AI Renovation Idea Studio ✨
                     </h2>
                     <p class="text-lg text-slate-700 max-w-2xl mx-auto">
-                        Describe your ideal dock—its style, materials, or features—and let our AI craft a unique, Florida-inspired design concept just for you!
+                        Describe your ideal renovation project—its style, materials, or features—and let our AI craft unique, Florida-inspired design concepts just for you!
                     </p>
-                    <div class="mt-4 text-slate-500 text-sm">
+                    <div class="mt-3 text-slate-500 text-xs sm:text-sm">
                         <strong>KhaDock AI Designer</strong> is developed by <a href="https://ivsacademy.edu.vn" class="text-sky-600 hover:underline" target="_blank" rel="noopener">IVS Celestech</a>, a division of IVS JSC.
                     </div>
                 </div>
@@ -272,153 +268,82 @@
                 <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-2xl border border-sky-200 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-500 to-blue-600"></div>
                     <textarea
-                        id="ai-design-input"
+                        id="ai-renovation-input"
                         class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
-                        placeholder="E.g., 'A modern T-shaped dock with composite decking, a covered seating area, and two boat slips for a bayfront property in Sarasota.'"
-                        aria-label="Describe your ideal dock"
+                        placeholder="Example: 'A modern kitchen renovation with an island, light wood cabinets, and smart appliances in a coastal style.'"
+                        aria-label="Describe your ideal renovation project"
                     ></textarea>
 
                     <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                         <button
-                            id="ai-generate-btn"
+                            id="ai-renovation-generate-btn"
                             class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
                         >
-                            <i class="fas fa-magic mr-2"></i> Generate Design Idea
+                            <i class="fas fa-magic mr-2"></i> Generate Renovation Idea
                         </button>
-                         <button
-                            id="ai-clear-input-btn"
+                        <button
+                            id="ai-renovation-clear-input-btn"
                             class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-3 px-6 rounded-lg shadow-sm transition duration-300 text-sm sm:text-base"
                         >
                             <i class="fas fa-eraser mr-2"></i> Clear Input
                         </button>
                     </div>
-                    <section class="py-16 md:py-20 bg-white" data-aos="fade-up">
-                        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                            <div class="max-w-md mx-auto bg-red-600 text-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105">
-                                <h3 class="text-2xl font-bold mb-2">This Amazing</h3>
-                                <p class="text-4xl font-extrabold animate-pulse-slow">COMING SOON</p>
-                            </div>
-                        </div>
-                    </section>
 
-                    <div id="ai-loading" class="mt-6 text-sky-600 hidden flex items-center justify-center">
+                    <div id="ai-renovation-loading" class="mt-6 text-sky-600 hidden flex items-center justify-center">
                         <i class="fas fa-spinner fa-spin mr-2 text-xl"></i>
-                        <span id="ai-loading-text" class="font-medium">Generating your idea...</span>
+                        <span id="ai-renovation-loading-text" class="font-medium">Generating your idea...</span>
                     </div>
 
-                    <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden" role="alert"></div>
+                    <div id="ai-renovation-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden" role="alert"></div>
 
-                    <div id="ai-output-container" class="mt-8 hidden">
-                        <div id="ai-output" class="p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed prose max-w-none" aria-live="polite">
-                            </div>
-                        <div id="gemini-extra-features" class="mt-6 flex flex-col sm:flex-row justify-center gap-4 hidden">
-                            <button id="ai-maintenance-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
-                                <i class="fas fa-tools mr-2"></i> ✨ Suggest Maintenance Tips ✨
-                            </button>
-                            <button id="ai-accessories-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
-                                <i class="fas fa-puzzle-piece mr-2"></i> ✨ Suggest Accessories ✨
-                            </button>
+                    <div id="ai-renovation-output-container" class="mt-8 hidden">
+                        <div id="ai-renovation-output" class="p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed prose max-w-none" aria-live="polite">
                         </div>
-                         <div id="ai-maintenance-loading" class="mt-4 text-teal-600 hidden flex items-center justify-center">
-                            <i class="fas fa-spinner fa-spin mr-2"></i> Loading maintenance tips...
-                        </div>
-                        <div id="ai-accessories-loading" class="mt-4 text-indigo-600 hidden flex items-center justify-center">
-                            <i class="fas fa-spinner fa-spin mr-2"></i> Loading accessory suggestions...
-                        </div>
-                        <div id="ai-maintenance-output" class="mt-4 p-4 bg-teal-50 border border-teal-200 rounded-lg text-teal-700 leading-relaxed hidden prose max-w-none"></div>
-                        <div id="ai-accessories-output" class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-700 leading-relaxed hidden prose max-w-none"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Project Showcase</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">A glimpse into the quality and diversity of boat docks, piers, and marine structures we've crafted.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="100"><img src="images/albums/dock1.jpg" alt="KhaDock Project 1" class="album-image" loading="lazy" width="600" height="450"></div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="150"><img src="images/albums/dock2.jpg" alt="KhaDock Project 2" class="album-image" loading="lazy" width="600" height="450"></div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="200"><img src="images/albums/dock3.jpg" alt="KhaDock Project 3" class="album-image" loading="lazy" width="600" height="450"></div>
-                    <div class="album-image-wrapper overflow-hidden rounded-lg shadow-lg" data-aos="zoom-in" data-aos-delay="250"><img src="images/albums/dock4.jpg" alt="KhaDock Project 4" class="album-image" loading="lazy" width="600" height="450"></div>
-                </div>
-                <div class="text-center mt-12 md:mt-16">
-                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">View Full Portfolio</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Simple 4-Step Process</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        We follow a clear and efficient process to ensure your dock project is completed smoothly and to your exact specifications.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-                    <div class="process-step bg-slate-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="zoom-in-up" data-aos-delay="100">
-                        <div class="flex items-center mb-4">
-                            <div class="step-number bg-sky-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">1</div>
-                            <h3 class="text-xl font-semibold text-slate-700">Consultation & Design</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">We discuss your needs, assess your site, and create a custom dock design that aligns with your vision and budget.</p>
-                    </div>
-                    <div class="process-step bg-slate-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="zoom-in-up" data-aos-delay="200">
-                        <div class="flex items-center mb-4">
-                            <div class="step-number bg-sky-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">2</div>
-                            <h3 class="text-xl font-semibold text-slate-700">Planning & Permitting</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">We handle all necessary permits and planning, ensuring compliance with local regulations and environmental standards.</p>
-                    </div>
-                    <div class="process-step bg-slate-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="zoom-in-up" data-aos-delay="300">
-                        <div class="flex items-center mb-4">
-                            <div class="step-number bg-sky-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">3</div>
-                            <h3 class="text-xl font-semibold text-slate-700">Construction</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">Our skilled team constructs your dock with precision and care, using high-quality materials and proven techniques.</p>
-                    </div>
-                    <div class="process-step bg-slate-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="zoom-in-up" data-aos-delay="400">
-                        <div class="flex items-center mb-4">
-                            <div class="step-number bg-sky-500 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">4</div>
-                            <h3 class="text-xl font-semibold text-slate-700">Completion & Handover</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">We complete the final touches, conduct a thorough inspection, and hand over your beautiful new dock.</p>
-                    </div>
-                </div>
-                <div class="text-center mt-12 md:mt-16">
-                    <a href="contact.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">
-                        Get Started Today
+        <section class="py-20 md:py-32 bg-gradient-to-r from-blue-700 to-sky-800 text-white text-center relative overflow-hidden" data-aos="zoom-in">
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0V0h2v36h-2zM0 0h2v36H0V0zm0 36h36v2H0v-2z\'/%3E%3C/g%3E%3C/g%3E%3Csvg%3E');"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-shadow-strong">Ready to Transform Your Waterfront?</h2>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-slate-100 leading-relaxed text-shadow">
+                    Explore innovative dock designs with our AI tool or contact us for a personalized consultation and a free estimate.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="design.html" class="bg-white text-sky-700 font-bold py-4 px-10 sm:py-5 sm:px-12 rounded-xl text-lg sm:text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-sky-50 inline-flex items-center">
+                        <i class="fas fa-drafting-compass mr-3"></i>
+                        Start Designing Today
+                    </a>
+                    <a href="contact.html" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 sm:py-5 sm:px-12 rounded-xl text-lg sm:text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+                        <i class="fas fa-phone-alt mr-3"></i>
+                        Request a Free Quote
                     </a>
                 </div>
             </div>
         </section>
-
-        <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="zoom-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-shadow">Ready to Start Your Dream Dock Project?</h2>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-slate-100">Let's discuss your vision. Contact KhaDock today for a personalized consultation and a no-obligation, free estimate.</p>
-                <a href="contact.html" class="bg-white text-sky-700 font-bold py-3.5 px-10 rounded-lg text-lg shadow-xl transition duration-300 transform hover:scale-105 hover:bg-sky-50 inline-flex items-center">Schedule Your Consultation</a>
-            </div>
-        </section>
     </main>
 
-    <div id="footer-placeholder">
-    </div>
+    <div id="footer-placeholder"></div>
 
-    <button id="scrollToTopBtn" title="Go to top"
-            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
-                   w-12 h-12 md:w-14 md:h-14 rounded-full shadow-xl items-center justify-center
-                   focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
-                   transition-all duration-300 z-40 text-xl md:text-2xl">
+    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/generateDesign.js" type="module" defer></script>
+    <script src="js/generateRenovationIdea.js" type="module" defer></script>
+    <script>
+        AOS.init({
+            offset: 120, // Offset (in px) from the top of the screen to trigger animations
+            duration: 900, // Duration of animation (in ms)
+            easing: 'ease-out-quad', // Easing type for the animation
+            once: true, // Whether animation should only happen once - while scrolling down
+            mirror: false, // Whether elements should animate out while scrolling past them
+            anchorPlacement: 'top-bottom', // Defines which position of the element should trigger the animation
+        });
+    </script>
 </body>
 </html>
