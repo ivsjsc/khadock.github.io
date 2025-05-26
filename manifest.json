@@ -3,12 +3,12 @@
   "name": "KhaDock - Florida's Premier Boat Dock Solutions",
   "icons": [
     {
-      "src": "images/logo/logoicon.png",
+      "src": "images/logo/logoicon_512.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "images/logo/logoicon_512.png", // Assuming you have a 512x512 version
+      "src": "images/logo/logoicon_512.png", 
       "type": "image/png",
       "sizes": "512x512"
     }
