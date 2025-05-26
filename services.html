@@ -347,15 +347,24 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/generateRenovationIdea.js" type="module" defer></script>
+    <script src="js/generateRenovationIdea.js" type="module" defer></script> 
     <script>
+        // Gọi hàm loadAppComponents sau khi DOM đã sẵn sàng
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window.loadAppComponents === 'function') {
+                window.loadAppComponents();
+            } else {
+                console.error('loadAppComponents function not found on window object.');
+            }
+        });
+
         AOS.init({
-            offset: 120, // Offset (in px) from the top of the screen to trigger animations
-            duration: 900, // Duration of animation (in ms)
-            easing: 'ease-out-quad', // Easing type for the animation
-            once: true, // Whether animation should only happen once - while scrolling down
-            mirror: false, // Whether elements should animate out while scrolling past them
-            anchorPlacement: 'top-bottom', // Defines which position of the element should trigger the animation
+            offset: 120,
+            duration: 900,
+            easing: 'ease-out-quad',
+            once: true,
+            mirror: false,
+            anchorPlacement: 'top-bottom',
         });
     </script>
 </body>

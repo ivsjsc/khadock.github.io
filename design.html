@@ -355,10 +355,28 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/loadComponents.js" type="module" defer></script>
-    <script src="js/app.js" type="module" defer></script>
     <script src="js/generateDesign.js" type="module" defer></script>
     <script src="js/design-page.js" type="module" defer></script>
+    <script src="js/loadComponents.js" type="module" defer></script>
+    <script src="js/app.js" type="module" defer></script>
+    <script>
+        // Gọi hàm loadAppComponents sau khi DOM đã sẵn sàng
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window.loadAppComponents === 'function') {
+                window.loadAppComponents();
+            } else {
+                console.error('loadAppComponents function not found on window object.');
+            }
+        });
+
+        AOS.init({
+            offset: 120,
+            duration: 900,
+            easing: 'ease-out-quad',
+            once: true,
+            mirror: false,
+            anchorPlacement: 'top-bottom',
+        });
+    </script>
 </body>
 </html>
