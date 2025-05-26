@@ -22,8 +22,9 @@ async function loadComponent(placeholderId, filePath) {
 }
 
 async function loadAppComponents(callback) {
-    const HEADER_COMPONENT_URL = '/components/header.html';
-    const FOOTER_COMPONENT_URL = '/components/footer.html';
+    // Đã thay đổi đường dẫn từ tuyệt đối sang tương đối
+    const HEADER_COMPONENT_URL = 'components/header.html';
+    const FOOTER_COMPONENT_URL = 'components/footer.html';
 
     await Promise.all([
         loadComponent('header-placeholder', HEADER_COMPONENT_URL),
@@ -109,14 +110,14 @@ function initializeHeaderFeatures() {
 }
 
 function initializeFooterFeatures() {
-    const currentYearSpan = document.getElementById('currentYearFooter');
+    const currentYearSpan = document.getElementById('current-year'); // Đã sửa ID ở đây
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 
-    const newsletterForm = document.getElementById('newsletterForm');
-    const newsletterEmail = document.getElementById('newsletterEmail');
-    const newsletterMessage = document.getElementById('newsletterMessage');
+    const newsletterForm = document.getElementById('newsletter-form'); // Đã sửa ID ở đây
+    const newsletterEmail = document.getElementById('newsletter-email'); // Đã sửa ID ở đây
+    const newsletterMessage = document.getElementById('newsletter-message'); // Đã sửa ID ở đây
 
     if (newsletterForm && newsletterEmail && newsletterMessage) {
         newsletterForm.addEventListener('submit', async (e) => {
@@ -306,14 +307,16 @@ function initializeSubmenuToggles() {
 
 function highlightActivePage() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinks = document.querySelectorAll('#mobile-menu-panel a[href], .nav-links a[href]');
+    const navLinks = document.querySelectorAll('#mobile-menu-panel a[href], .nav-links a[href], .bottom-nav-item[href]'); // Thêm .bottom-nav-item
     navLinks.forEach(link => {
         link.classList.remove('text-sky-300', 'bg-slate-600', 'active'); // Xóa các lớp active cũ
         const href = link.getAttribute('href').split('/').pop();
         if (href === currentPage || (currentPage === 'index.html' && (href === '' || href === 'index.html'))) {
             if(link.closest('#mobile-menu-panel')) { // Kiểm tra nếu là menu mobile
                 link.classList.add('text-sky-300', 'bg-slate-600');
-            } else { // Menu desktop hoặc bottom nav
+            } else if (link.closest('.bottom-nav')) { // Kiểm tra nếu là bottom nav
+                link.classList.add('active');
+            } else { // Menu desktop
                 link.classList.add('active');
             }
         }
@@ -323,8 +326,6 @@ function highlightActivePage() {
 // Lắng nghe sự kiện khi header và footer được tải
 document.addEventListener('header-placeholderLoaded', initializeHeaderFeatures);
 document.addEventListener('footer-placeholderLoaded', initializeFooterFeatures);
-
-// Đã loại bỏ: document.addEventListener('DOMContentLoaded', function() { initializeMobileMenu(); highlightActivePage(); });
 
 // Đóng menu mobile khi thay đổi kích thước cửa sổ lên desktop
 window.addEventListener('resize', function() {
