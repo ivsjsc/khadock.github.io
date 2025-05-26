@@ -126,7 +126,7 @@
                     <p class="text-lg text-slate-600 max-w-2xl mx-auto">Watch our introductory video on how KhaDock creates unique and high-quality dock designs.</p>
                 </div>
                 <div class="video-container">
-                    <video controls poster="images/designs/design_video_poster.jpg" preload="metadata" autoplay muted playsinline>
+                    <video controls poster="images/logo/logonoi.png" preload="metadata" autoplay muted playsinline>
                         <source src="videos/design1.mp4" type="video/mp4">
                         Your browser does not support the video tag. You can download the video <a href="videos/design1.mp4">here</a>.
                     </video>
@@ -355,27 +355,10 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="js/design-page.js" type="module" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script>
-        // Gọi hàm loadAppComponents sau khi DOM đã sẵn sàng
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof window.loadAppComponents === 'function') {
-                window.loadAppComponents();
-            } else {
-                console.error('loadAppComponents function not found on window object.');
-            }
-        });
-
-        AOS.init({
-            offset: 120,
-            duration: 900,
-            easing: 'ease-out-quad',
-            once: true,
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-        });
-    </script>
+    <script src="js/generateDesign.js" type="module" defer></script>
+    <script src="js/design-page.js" type="module" defer></script>
 </body>
 </html>
