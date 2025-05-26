@@ -670,6 +670,98 @@ a:hover, a:focus {
     pointer-events: none;
 }
 [data-aos].aos-animate {
-
     pointer-events: auto;
+}
+
+:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #0f172a;
+        color: #e2e8f0;
+    }
+    .service-card, .design-card, .project-card, .album-item-horizontal,
+    .value-card, .feature-item, .design-feature-card, .design-service-card {
+        background-color: #1e293b;
+        border-color: #334155;
+    }
+    .ai-design-section #ai-output, .ai-design-section #ai-output-content {
+        background: linear-gradient(to bottom, #1e293b, #0f172a);
+    }
+    #gemini-output strong, #ai-output strong, #ai-output-content strong {
+        color: #f1f5f9;
+    }
+     #gemini-output h3, #ai-output h3, #ai-output-content h3, #ai-output-content h4 {
+        color: #7dd3fc;
+    }
+    #gemini-output p, #ai-output p, #ai-output-content p {
+        color: #cbd5e1;
+    }
+}
+
+@media (max-width: 1024px) { /* lg */
+}
+
+@media (max-width: 767px) { /* md breakpoint, where bottom-nav becomes visible */
+    body {
+        /* Height of bottom-nav (4rem or 64px) + 1.5rem (24px) spacing */
+        padding-bottom: 5.5rem; /* approx 88px */
+    }
+    main {
+        padding-top: 4rem; /* Adjust if header shrinks on mobile */
+    }
+    .mega-menu {
+        min-width: 90vw;
+        left: 0;
+        transform: translateX(0);
+        width: 100%;
+        border-radius: 0;
+    }
+    .mega-menu .grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    #scrollToTopBtn {
+        /* Default fixed bottom is 2rem (from Tailwind's bottom-8 or explicit CSS) */
+        /* New bottom: height of bottom-nav (4rem) + 1.5rem desired spacing */
+        bottom: 5.5rem; /* approx 88px */
+        right: 1rem; /* Adjust right spacing if needed on mobile */
+        width: 2.5rem; /* Smaller button on mobile */
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+}
+
+.bottom-nav {
+    /* Tailwind: md:hidden fixed bottom-0 left-0 w-full bg-slate-800 shadow-t z-50 */
+    /* Height is h-16 (4rem) via its child div */
+    color: white; /* Ensure text color is appropriate if not set by Tailwind */
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* Consistent shadow */
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.25rem;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    color: #cbd5e1; /* Default color for icons/text */
+}
+
+.bottom-nav-item:hover,
+.bottom-nav-item.active { /* Ensure .active class is applied by JS */
+    background-color: #334155; /* Example active/hover background */
+    color: #7dd3fc; /* Example active/hover text color */
+}
+
+.bottom-nav-label {
+    font-size: 0.75rem; /* text-xs */
+    margin-top: 0.25rem; /* mt-1 */
 }
