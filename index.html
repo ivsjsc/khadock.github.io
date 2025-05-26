@@ -97,7 +97,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.6); /* Overlay for text readability */
+            background-color: rgba(0, 0, 0, 0.8); /* Changed from 0.6 to 0.8 for clearer background */
             color: white;
             z-index: 2; /* Content on top of image */
             padding: 1rem; /* Basic padding for the overlay itself */
@@ -165,9 +165,20 @@
             <div class="hero-banner-content">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
                     <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 text-shadow-strong" data-aos="fade-down" data-aos-delay="100">
-                        KhaDock.com
+                        Our Services
                     </h1>
                     <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+                        <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            Our Projects
+                        </a>
+                        <a href="design.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            KhaDock's Design
+                        </a>
+                        <a href="about.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            About Us
+                        </a>
+                    </div>
+                    <div class="mt-4 flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="500">
                         <a href="services.html#design" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
                             Custom Dock Design
                         </a>
@@ -389,6 +400,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
+    <script src="js/generateRenovationIdea.js" type="module" defer></script> 
     <script>
         // Gọi hàm loadAppComponents sau khi DOM đã sẵn sàng
         document.addEventListener('DOMContentLoaded', function() {
@@ -400,12 +412,12 @@
         });
 
         AOS.init({
-            offset: 120, // Offset (in px) from the top of the screen to trigger animations
-            duration: 900, // Duration of animation (in ms)
-            easing: 'ease-out-quad', // Easing type for the animation
-            once: true, // Whether animation should only happen once - while scrolling down
-            mirror: false, // Whether elements should animate out while scrolling past them
-            anchorPlacement: 'top-bottom', // Defines which position of the element should trigger the animation
+            offset: 120,
+            duration: 900,
+            easing: 'ease-out-quad',
+            once: true,
+            mirror: false,
+            anchorPlacement: 'top-bottom',
         });
     </script>
 </body>
