@@ -54,7 +54,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                         <a href="https://www.google.com/maps/search/?api=1&query=3850+Rollingsford+Cir,+Lakeland,+FL+33810,+USA" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 transition-colors">
-                           <span>3850 Rollinsford Cir, Lakeland, FL 33810, USA</span>
+                            <span>3850 Rollinsford Cir, Lakeland, FL 33810, USA</span>
                         </a>
                     </p>
                     <p class="flex items-center">
@@ -72,9 +72,9 @@
                 </address>
                 <div class="mt-8">
                     <h3 class="text-lg font-semibold text-white mb-5">Subscribe to Our Newsletter</h3>
-                    <form id="newsletter-form" class="mt-4">
+                    <form id="newsletter-form" action="https://formspree.io/f/xyzwqdoa" method="POST" class="mt-4">
                         <label for="newsletter-email" class="sr-only">Your Email</label>
-                        <input type="email" id="newsletter-email" placeholder="Your Email" class="w-full px-4 py-2 bg-slate-800 rounded-md text-slate-300 focus:ring-2 focus:ring-sky-500 focus:outline-none placeholder-slate-500">
+                        <input type="email" id="newsletter-email" name="email" placeholder="Your Email" class="w-full px-4 py-2 bg-slate-800 rounded-md text-slate-300 focus:ring-2 focus:ring-sky-500 focus:outline-none placeholder-slate-500" required>
                         <button type="submit" class="w-full mt-3 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-md transition-colors">Subscribe</button>
                     </form>
                     <div id="newsletter-message" class="mt-2 text-sm text-green-400"></div>
@@ -84,12 +84,47 @@
 
         <div class="border-t border-slate-700 pt-8 text-center text-sm">
             <p class="text-slate-400 mb-1">© <span id="current-year">2025</span> KhaDock.com - All rights reserved.</p>
-            <p class="text-slate-400">Designed by <a href="https://ivsacademy.edu.vn/Pages/webdesign.html"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-sky-400 hover:text-sky-300 underline transition-colors">
-                IVS Celestech, IVS JSC.
-            </a></p>
+            <p class="text-slate-400">Designed by <a href="https://ivsacademy.edu.vn/Pages/webdesign.html" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 underline transition-colors">IVS Celestech, IVS JSC.</a></p>
         </div>
     </div>
+
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const form = event.target;
+            const email = form.querySelector('#newsletter-email').value;
+            const messageDiv = document.getElementById('newsletter-message');
+
+            // Clear previous messages
+            messageDiv.textContent = '';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+
+                if (response.ok) {
+                    messageDiv.textContent = 'Thank you for subscribing! You will receive updates soon.';
+                    messageDiv.classList.remove('text-red-400');
+                    messageDiv.classList.add('text-green-400');
+                    form.reset(); // Clear the form
+                } else {
+                    const errorData = await response.json();
+                    messageDiv.textContent = errorData.error || 'Something went wrong. Please try again.';
+                    messageDiv.classList.remove('text-green-400');
+                    messageDiv.classList.add('text-red-400');
+                }
+            } catch (error) {
+                messageDiv.textContent = 'An error occurred. Please try again later.';
+                messageDiv.classList.remove('text-green-400');
+                messageDiv.classList.add('text-red-400');
+            }
+        });
+    </script>
 </footer>
