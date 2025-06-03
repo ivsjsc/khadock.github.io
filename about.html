@@ -3,96 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - HomeRemodeling.com</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <meta name="theme-color" content="#0EA5E9">
+    
+    <title>About KhaDock.com - Florida's Premier Dock Experts | Our Story</title>
+    <meta name="description" content="Learn about KhaDock's commitment to excellence in dock construction and meet our director Đỗ Duy Kha. Discover why we're Florida's trusted dock experts.">
+    <meta property="og:title" content="About KhaDock - Our Story & Florida's Dock Experts">
+    <meta property="og:description" content="KhaDock: Led by the dedicated Đỗ Duy Kha, we are committed to delivering innovative and high-quality dock solutions across Florida.">
+    <meta property="og:image" content="images/logo/logoicon_512.png">
+    <meta property="og:url" content="https://KhaDock.com/about.html">
+    <meta property="og:type" content="website">
+
+    <link rel="preload" href="images/logo/logo.jpg" as="image">
+    <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" crossorigin="anonymous">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo/logoicon_512.png">
+    
+    <link rel="stylesheet" href="css/styles.css">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f1f5f9;
+        }
+        .about-banner-bg {
+             background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/logo/logo.jpg');
+             background-size: cover;
+             background-position: center;
+        }
+        .text-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .profile-image-container {
+            width: 220px;
+            height: 220px;
+            overflow: hidden;
+        }
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        @media (min-width: 768px) {
+            .profile-image-container {
+                width: 280px;
+                height: 280px;
+            }
+        }
+        .value-card {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.06);
+        }
+        .value-card:hover .value-icon {
+            transform: scale(1.1) rotate(-5deg);
+            color: #0ea5e9;
+        }
+        .value-icon {
+            transition: transform 0.3s ease-out, color 0.3s ease-out;
+        }
+        .feature-item:hover .feature-icon-bg {
+             background-color: #0ea5e9;
+             color: white;
+        }
+        .feature-icon-bg {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    </style>
 </head>
-<body class="font-inter">
+<body class="bg-slate-100 text-slate-800 antialiased">
+
     <div id="header-placeholder"></div>
 
-    <main class="container mx-auto p-4 py-8">
-        <section id="about-hero" class="relative bg-cover bg-center rounded-lg shadow-lg mb-12" style="background-image: url('https://placehold.co/1200x400/1B6B93/FFFFFF?text=About+Us'); height: 400px;">
-            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg flex items-center justify-center">
-                <h1 class="text-5xl font-bold text-white text-center">About HomeRemodeling.com</h1>
+    <main class="pt-20">
+        <section class="about-banner-bg text-white py-24 md:py-36" data-aos="fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-shadow leading-tight" data-aos="fade-down" data-aos-delay="200">
+                    About KhaDock.com
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-slate-100 text-shadow font-medium" data-aos="fade-up" data-aos-delay="400">
+                    Building trust and outstanding dock structures, shaping Florida's coastal experience with passion and precision.
+                </p>
             </div>
         </section>
 
-        <section id="our-story" class="mb-12">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6 text-center">Our Story</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="rounded-lg overflow-hidden shadow-md">
-                    <img src="https://placehold.co/600x400/F28C38/FFFFFF?text=Our+Team" alt="Our Team" class="w-full h-auto object-cover">
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div data-aos="fade-right" data-aos-delay="100" class="md:pr-8">
+                        <img src="images/albums/dock14.jpg" alt="KhaDock - Team planning a dock project" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-[4/3]" loading="lazy" width="800" height="600">
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="200">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-6">Our Story: Crafting Coastal Dreams</h2>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            At KhaDock.com, our journey began with a singular passion: to craft exceptional boat dock solutions that elevate Florida's unique coastal lifestyle. We believe a dock is more than a structure; it's the heart of your boat-dock experience, a gateway to relaxation, recreation, and lasting memories.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            Our seasoned team brings years of dedicated industry experience to every project. At KhaDock, we are defined by our meticulous attention to detail, unwavering commitment to client satisfaction, and deep expertise in all facets of marine construction.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            From innovative design and robust new builds to transformative remodels and diligent maintenance. Your vision is our blueprint.
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                        HomeRemodeling.com was founded with a vision to transform living spaces into dream homes. With years of experience in the home remodeling industry, our team is dedicated to delivering exceptional craftsmanship and unparalleled customer service. We believe that every home has a unique story, and we are here to help you write its next chapter.
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-sky-700 text-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                    <div class="md:w-2/5 lg:w-1/3 flex justify-center md:justify-start" data-aos="fade-right" data-aos-delay="100">
+                        <div class="profile-image-container rounded-full shadow-2xl border-4 border-sky-400 p-1 bg-white">
+                             <img src="images/logo/doduykha.png" alt="Mr. Đỗ Duy Kha - Director of KhaDock" class="rounded-full" loading="lazy" width="280" height="280">
+                        </div>
+                    </div>
+                    <div class="md:w-3/5 lg:w-2/3 text-center md:text-left" data-aos="fade-left" data-aos-delay="200">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-3">Meet Our Dedicated Leader</h2>
+                        <p class="text-2xl md:text-3xl font-semibold text-sky-300 mb-2">Mr. Đỗ Duy Kha</p>
+                        <p class="text-lg font-medium text-sky-100 mb-6 tracking-wider">KhaDock.com</p>
+
+                        <p class="text-lg leading-relaxed mb-4 text-slate-100">
+                            Behind every successful KhaDock project is the vision and tireless dedication of Director Đỗ Duy Kha. With a fervent passion for the marine construction industry and a desire to deliver outstanding structures.
+                        </p>
+                        <p class="text-lg leading-relaxed mb-4 text-slate-100">
+                            He is not only a leader but also a very hard worker, always encouraging the team to explore <strong class="font-semibold text-sky-200 hover:text-white transition-colors">breakthrough ideas</strong> and apply the latest technical solutions. Mr. Đỗ Duy Kha's <strong class="font-semibold text-sky-200 hover:text-white transition-colors">dedication and passion</strong> are evident in every detail of each project, from conception and design to completion and handover.
+                        </p>
+                        <blockquote class="text-lg italic leading-relaxed text-sky-200 border-l-4 border-sky-400 pl-6 py-2 my-6">
+                            "At KhaDock, we don't just build docks; we create vibrant boat-dock spaces where every moment becomes precious."
+                        </blockquote>
+                        <p class="text-md text-slate-200">- Đỗ Duy Kha</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Philosophy</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">The foundation for all of KhaDock's success and sustainable growth.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="value-card bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="value-icon text-slate-400 mb-6">
+                            <i class="fas fa-bullseye fa-4x"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3">Our Mission</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            To provide safe, durable, aesthetic, and convenient dock solutions, from new designs to complete remodels, enhancing the value and boat-dock living experience for our clients in Florida.
+                        </p>
+                    </div>
+                    <div class="value-card bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="value-icon text-slate-400 mb-6">
+                            <i class="fas fa-eye fa-4x"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3">Our Vision</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            To be the leading dock design, construction, and remodeling company in Florida, known for superior quality, professional service, and continuous innovation.
+                        </p>
+                    </div>
+                    <div class="value-card bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center" data-aos="zoom-in-up" data-aos-delay="300">
+                        <div class="value-icon text-slate-400 mb-6">
+                            <i class="fas fa-heart-pulse fa-4x"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3">Core Values</h3>
+                        <ul class="text-slate-600 text-sm space-y-2 list-none text-left self-start w-full pl-4 sm:pl-6">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Superior Quality</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Absolute Safety</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Client Reliability</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Utmost Professionalism</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Dedicated Service</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-sky-500 fa-sm mr-3"></i>Creative Innovation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Why We Specialize in Florida</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        KhaDock doesn't just build or remodel docks; we build trust and peace of mind tailored to Florida's unique environment.
                     </p>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        From minor updates to major renovations, we approach every project with passion and precision, ensuring that your vision becomes a beautiful reality. Our commitment to quality and transparency sets us apart, making us a trusted partner in your home improvement journey.
-                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="order-last md:order-first md:pr-8" data-aos="fade-right" data-aos-delay="200">
+                        <ul class="space-y-6">
+                            <li class="feature-item flex items-start p-6 bg-slate-50 rounded-xl hover:shadow-lg transition-shadow duration-300">
+                                <div class="feature-icon-bg flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl shadow">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-slate-700 mb-1">Local Environmental Expertise</h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed">
+                                        We possess extensive knowledge of Florida's specific hydrological conditions, climate patterns, and marine ecosystem, crucial for optimizing design, materials, and construction methods.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="feature-item flex items-start p-6 bg-slate-50 rounded-xl hover:shadow-lg transition-shadow duration-300">
+                                <div class="feature-icon-bg flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl shadow">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-slate-700 mb-1">Strict Regulatory Adherence</h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed">
+                                        Our team is well-versed in and strictly adheres to all Florida state and local county building codes, permitting processes, and environmental regulations, ensuring your project is fully compliant.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="feature-item flex items-start p-6 bg-slate-50 rounded-xl hover:shadow-lg transition-shadow duration-300">
+                                <div class="feature-icon-bg flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl shadow">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-slate-700 mb-1">Hurricane-Resistant Solutions</h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed">
+                                        We employ advanced engineering techniques and robust materials specifically chosen to enhance your dock's resilience against Florida's challenging weather, including frequent hurricanes.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                     <div data-aos="fade-left" data-aos-delay="100" class="md:pl-8">
+                        <img src="images/pages/waterways.png" alt="Florida Coastline and Waterways - KhaDock Expertise" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-square md:aspect-[4/3]" loading="lazy" width="600" height="600">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="our-values" class="bg-gray-100 p-8 rounded-lg shadow-md mb-12">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6 text-center">Our Values</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center p-6 bg-white rounded-lg shadow-sm">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Quality Craftsmanship</h3>
-                    <p class="text-gray-600">We pride ourselves on delivering superior quality in every detail, ensuring lasting beauty and functionality.</p>
-                </div>
-                <div class="text-center p-6 bg-white rounded-lg shadow-sm">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Client-Centric Approach</h3>
-                    <p class="text-gray-600">Your satisfaction is our priority. We listen, understand, and tailor our services to your unique needs.</p>
-                </div>
-                <div class="text-center p-6 bg-white rounded-lg shadow-sm">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Integrity & Transparency</h3>
-                    <p class="text-gray-600">We operate with honesty and clarity, providing clear communication and fair pricing throughout the process.</p>
-                </div>
+        <section class="py-16 md:py-24 bg-sky-600 text-white" data-aos="zoom-in-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Build Your Perfect boat-dock Space With KhaDock</h2>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+                    Contact KhaDock today for a free consultation and let us help you realize your ideal dock project in Florida.
+                </p>
+                <a href="contact.html" class="bg-white text-sky-600 font-bold py-3.5 px-10 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
+                    Get in Touch
+                </a>
             </div>
-        </section>
-
-        <section id="meet-the-team" class="mb-12">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6 text-center">Meet Our Team</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center bg-white p-6 rounded-lg shadow-md">
-                    <img src="https://placehold.co/150x150/1B6B93/FFFFFF?text=John+D" alt="John Doe" class="w-36 h-36 rounded-full mx-auto mb-4 object-cover">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">John Doe</h3>
-                    <p class="text-orange-500 font-medium mb-2">Founder & CEO</p>
-                    <p class="text-gray-600">With over 20 years of experience, John leads our team with a passion for innovative design and quality construction.</p>
-                </div>
-                <div class="text-center bg-white p-6 rounded-lg shadow-md">
-                    <img src="https://placehold.co/150x150/1B6B93/FFFFFF?text=Jane+S" alt="Jane Smith" class="w-36 h-36 rounded-full mx-auto mb-4 object-cover">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Jane Smith</h3>
-                    <p class="text-orange-500 font-medium mb-2">Lead Designer</p>
-                    <p class="text-gray-600">Jane's creative vision and keen eye for aesthetics bring unique and personalized designs to life for our clients.</p>
-                </div>
-                <div class="text-center bg-white p-6 rounded-lg shadow-md">
-                    <img src="https://placehold.co/150x150/1B6B93/FFFFFF?text=Mike+R" alt="Mike Ross" class="w-36 h-36 rounded-full mx-auto mb-4 object-cover">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Mike Ross</h3>
-                    <p class="text-orange-500 font-medium mb-2">Project Manager</p>
-                    <p class="text-gray-600">Mike ensures every project runs smoothly, on time, and within budget, with meticulous attention to detail.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="our-commitment" class="bg-blue-800 text-white p-8 rounded-lg shadow-lg text-center">
-            <h2 class="text-4xl font-bold mb-4">Our Commitment to You</h2>
-            <p class="text-xl leading-relaxed mb-6">
-                At HomeRemodeling.com, we are committed to transforming your home with integrity, expertise, and a dedication to your complete satisfaction. We look forward to partnering with you on your next remodeling project.
-            </p>
-            <a href="contact.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                Get a Free Consultation
-            </a>
         </section>
     </main>
 
     <div id="footer-placeholder"></div>
 
-    <script src="js/loadComponents.js"></script>
+    <button id="scrollToTopBtn" title="Go to top"
+            class="hidden fixed bottom-8 right-8 bg-sky-500 hover:bg-sky-600 text-white
+                   w-14 h-14 rounded-full shadow-xl items-center justify-center
+                   focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75
+                   transition-all duration-300 z-40 text-xl">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+   
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/loadComponents.js" type="module" defer></script>
+    <script src="js/app.js" type="module" defer></script>
     <script>
-        loadComponents();
+        // Gọi hàm loadAppComponents sau khi DOM đã sẵn sàng
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window.loadAppComponents === 'function') {
+                window.loadAppComponents();
+            } else {
+                console.error('loadAppComponents function not found on window object.');
+            }
+        });
+
+        AOS.init({
+            offset: 120,
+            duration: 900,
+            easing: 'ease-out-quad',
+            once: true,
+            mirror: false,
+            anchorPlacement: 'top-bottom',
+        });
     </script>
 </body>
 </html>

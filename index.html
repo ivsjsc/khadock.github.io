@@ -3,131 +3,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeRemodeling.com - Your Home Transformation Partner</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta name="theme-color" content="#0EA5E9" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)">
+
+    <title>KhaDock - Florida's Premier Boat Dock Solutions</title>
+    <meta name="description" content="KhaDock specializes in custom boat dock design, robust construction, professional remodeling, and boat lift installations across Florida. Your trusted marine construction partner.">
+    <meta name="keywords" content="boat docks Florida, dock design, dock construction, dock repair, dock remodeling, boat lifts, marine construction Florida, KhaDock, AI dock design">
+
+    <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions with AI Design">
+    <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Try our AI Design Generator!">
+    <meta property="og:image" content="images/logo/logoicon_512.png">
+    <meta property="og:url" content="https://khadock.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KhaDock">
+
+    <link rel="preload" href="images/logo/logoicon_512.png" as="image" fetchpriority="high">
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" crossorigin="anonymous">
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" as="image" href="images/albums/dock15.jpg">
+    <link rel="preload" as="image" href="images/logo/logo.jpg">
+
+
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="images/logo/logoicon_512.png">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sky: {
+                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
+                            400: '#38bdf8', 500: '#0EA5E9', 600: '#0284C7', 700: '#0369A1',
+                            800: '#075985', 900: '#0c4a6e'
+                        },
+                        slate: {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+                            800: '#1e293b', 900: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'spin-slow': 'spin 2s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .hero-banner-container {
+            width: 100%;
+            height: 60vh; /* Default height for mobile */
+            min-height: 380px; /* Minimum height to ensure content visibility */
+            max-height: 550px; /* Maximum height */
+            overflow: hidden;
+            position: relative;
+        }
+        .hero-banner-image { /* Applied to the <img> tag */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0; /* Image behind content */
+        }
+        .hero-banner-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8); /* Changed from 0.6 to 0.8 for clearer background */
+            color: white;
+            z-index: 2; /* Content on top of image */
+            padding: 1rem; /* Basic padding for the overlay itself */
+            overflow-y: auto; /* Allow scrolling if content is too tall */
+        }
+        /* Responsive adjustments for the inner container's padding */
+        .hero-banner-content .container {
+             padding-top: 1.5rem; /* Reduced padding for mobile */
+             padding-bottom: 1.5rem; /* Reduced padding for mobile */
+             width: 100%; /* Ensure container takes full width of parent */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            .hero-banner-container {
+                height: 70vh; /* Taller banner for desktop */
+                min-height: 450px;
+                max-height: 650px;
+            }
+            .hero-banner-content .container {
+                 padding-top: 3.5rem; /* Restore original md:py-14 */
+                 padding-bottom: 3.5rem; /* Restore original md:py-14 */
+            }
+        }
+
+        .full-width-image-section {
+            width: 100%;
+            overflow: hidden;
+        }
+        .full-width-image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
 </head>
-<body class="font-inter">
-    <div id="header-placeholder"></div>
+<body class="bg-slate-100 text-slate-800 antialiased font-inter">
 
-    <main>
-        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('https://placehold.co/1920x1080/1B6B93/FFFFFF?text=Your+Dream+Home');">
-            <div class="absolute inset-0 bg-black opacity-50"></div>
-            <div class="text-center z-10 p-4">
-                <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-fade-in-down">Transform Your Home with HomeRemodeling.com</h1>
-                <p class="text-xl md:text-2xl mb-8 animate-fade-in-up">Real Work, Real Results, Right Now.</p>
-                <a href="services.html" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 animate-zoom-in">
-                    Explore Our Services
-                </a>
+    <div id="header-placeholder">
+    </div>
+
+    <main id="main-content-area" class="pt-20">
+        <section class="full-width-image-section" data-aos="fade-in">
+            <img
+                src="images/logo/logo.jpg"
+                alt="KhaDock Logo Banner"
+                class="w-full h-auto object-cover block"
+                loading="eager"
+                width="1920"
+                height="400"
+            >
+        </section>
+
+        <section class="hero-banner-container" data-aos="fade-in">
+            <picture>
+                <source srcset="images/albums/dock15.jpg" media="(min-width: 768px)">
+                <img
+                    src="images/albums/dock15.jpg"
+                    alt="KhaDock - Florida's Premier Boat Dock Solutions"
+                    class="hero-banner-image"
+                    loading="eager"
+                >
+            </picture>
+            <div class="hero-banner-content">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+                        <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            Our Projects
+                        </a>
+                        <a href="design.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            KhaDock's Design
+                        </a>
+                        <a href="about.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
+                            About Us
+                        </a>
+                    </div>
+                    <div class="mt-4 flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="500">
+                        <a href="services.html#design" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
+                            Custom Dock Design
+                        </a>
+                        <a href="services.html#construction" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
+                            Dock Construction
+                        </a>
+                        <a href="services.html#remodel" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
+                            Dock Remodeling
+                        </a>
+                         <a href="services.html#repair" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
+                            Repair & Maintenance
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="about-us" class="py-16 bg-gray-100">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold text-gray-800 mb-8">About HomeRemodeling.com</h2>
-                <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">
-                    HomeRemodeling.com is your trusted partner for all home renovation needs in Florida. We specialize in delivering high-quality, efficient, and transparent remodeling services tailored to your vision and the local climate.
-                </p>
-                <a href="about.html" class="inline-block bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                    Learn More About Us
-                </a>
+        <div class="w-full flex justify-center my-0">
+            <div class="h-0.5 w-3/4 bg-sky-400 rounded-full shadow-lg opacity-80"></div>
+        </div>
+
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up" id="design-summary">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Innovative Dock Design</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="images/designs/design1.jpg" alt="KhaDock Design Inspiration 1" class="design-album-image" loading="lazy">
+                    </div>
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="150">
+                        <img src="images/designs/design2.jpg" alt="KhaDock Design Inspiration 2" class="design-album-image" loading="lazy">
+                    </div>
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="images/designs/design3.jpg" alt="KhaDock Design Inspiration 3" class="design-album-image" loading="lazy">
+                    </div>
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="250">
+                        <img src="images/designs/design4.jpg" alt="KhaDock Design Inspiration 4" class="design-album-image" loading="lazy">
+                    </div>
+                </div>
+                <div class="text-center mt-12 md:mt-16">
+                    <a href="design.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">Explore Designs</a>
+                </div>
             </div>
         </section>
 
-        <section id="services" class="py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-gray-800 text-center mb-12">Our Core Services</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                        <img src="https://placehold.co/600x400/F28C38/FFFFFF?text=Kitchen+Remodel" alt="Kitchen Remodeling" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Kitchen Remodeling</h3>
-                            <p class="text-gray-600 mb-4">Transform your kitchen into a modern, functional, and beautiful space for cooking and entertaining.</p>
-                            <a href="services.html#kitchen" class="text-blue-600 hover:underline font-medium">View Details &rarr;</a>
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up" id="projects-overview">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Our Featured Projects</h2>
+                </div>
+                <div class="album-scroll-container overflow-x-auto whitespace-nowrap py-4 px-1 scrollbar-thin">
+                    <div class="flex gap-4 md:gap-5">
+                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="100">
+                            <img src="images/albums/dock1.jpg" alt="Completed dock project 1" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                        <img src="https://placehold.co/600x400/1B6B93/FFFFFF?text=Bathroom+Remodel" alt="Bathroom Remodeling" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Bathroom Remodeling</h3>
-                            <p class="text-gray-600 mb-4">Create a spa-like retreat with our expert bathroom renovation services.</p>
-                            <a href="services.html#bathroom" class="text-blue-600 hover:underline font-medium">View Details &rarr;</a>
+                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="150">
+                            <img src="images/albums/dock2.jpg" alt="Completed dock project 2" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                        <img src="https://placehold.co/600x400/DDE1E6/1B6B93?text=Exterior+Renovation" alt="Exterior Remodeling" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Exterior Remodeling</h3>
-                            <p class="text-gray-600 mb-4">Enhance your home's curb appeal and protect it from the elements with our exterior solutions.</p>
-                            <a href="services.html#exterior" class="text-blue-600 hover:underline font-medium">View Details &rarr;</a>
+                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="200">
+                            <img src="images/albums/dock3.jpg" alt="Completed dock project 3" class="album-image-horizontal" loading="lazy"/>
+                        </div>
+                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="250">
+                            <img src="images/albums/dock4.jpg" alt="Completed dock project 4" class="album-image-horizontal" loading="lazy"/>
+                        </div>
+                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="300">
+                            <img src="images/albums/dock5.jpg" alt="Completed dock project 5" class="album-image-horizontal" loading="lazy"/>
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-12">
-                    <a href="services.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                        See All Services
+                <div class="text-center mt-12 md:mt-16">
+                    <a href="projects.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">View All Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up" id="about-us-overview">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div data-aos="fade-right" data-aos-delay="100" class="md:pr-8">
+                        <img src="images/albums/dock14.jpg" alt="KhaDock - Team planning a dock project" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-[4/3]" loading="lazy" width="800" height="600">
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="200">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-6">About Us: Crafting Coastal Dreams</h2>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            At KhaDock.com, our journey began with a singular passion: to craft exceptional boat dock solutions that elevate Florida's unique coastal lifestyle.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            Our seasoned team brings years of dedicated industry experience to every project. KhaDock is defined by our meticulous attention to detail, unwavering commitment to client satisfaction, and deep expertise in all facets of marine construction.
+                        </p>
+                        <div class="text-center md:text-left mt-8">
+                            <a href="about.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">Learn More About Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up" id="contact-overview">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    <div class="bg-slate-800 p-8 rounded-xl shadow-2xl" data-aos="fade-right" data-aos-delay="100">
+                        <h3 class="text-2xl font-bold text-white mb-8 text-center md:text-left">Direct Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="contact-info-item flex items-start group">
+                                <div class="contact-icon-circle flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 shadow-md">
+                                    <i class="fas fa-map-marker-alt fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white">Our Office</h4>
+                                    <p class="text-slate-300">3850 Rollingsford Cir, Lakeland, FL 33810, USA</p>
+                                </div>
+                            </div>
+                            <div class="contact-info-item flex items-start group">
+                                <div class="contact-icon-circle flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 shadow-md">
+                                    <i class="fas fa-phone fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white">Phone</h4>
+                                    <a href="tel:+18139393989" class="text-slate-300 hover:text-sky-300 transition-colors duration-300">+1 813-939-3989</a>
+                                </div>
+                            </div>
+                            <div class="contact-info-item flex items-start group">
+                                <div class="contact-icon-circle flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 shadow-md">
+                                    <i class="fas fa-envelope fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white">Email</h4>
+                                    <a href="mailto:doduykha007@gmail.com" class="text-slate-300 hover:text-sky-300 transition-colors duration-300">doduykha007@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-xl shadow-2xl" data-aos="fade-left" data-aos-delay="200">
+                        <div class="flex flex-col items-center mb-8">
+                            <div class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-sky-500 shadow-lg mb-3">
+                                <img src="images/logo/doduykha.png" alt="Mr. Kha - KhaDock" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-lg font-semibold text-slate-700">Mr. Kha</span>
+                            <span class="text-sm text-sky-600">Founder & Director</span>
+                        </div>
+                        <div class="flex justify-center gap-6">
+                            <a href="https://www.facebook.com/profile.php?id=61575043076973" target="_blank" rel="noopener noreferrer" aria-label="KhaDock Facebook" class="social-icon-link text-slate-500 hover:text-blue-600">
+                                <i class="fab fa-facebook-f fa-3x"></i>
+                            </a>
+                            <a href="http://m.me/doduy.kha" target="_blank" rel="noopener noreferrer" aria-label="KhaDock Messenger" class="social-icon-link text-slate-500 hover:text-blue-500">
+                                <i class="fab fa-facebook-messenger fa-3x"></i>
+                            </a>
+                            <a href="https://www.instagram.com/khadock/" target="_blank" rel="noopener noreferrer" aria-label="KhaDock Instagram" class="social-icon-link text-slate-500 hover:text-pink-600">
+                                <i class="fab fa-instagram fa-3x"></i>
+                            </a>
+                            <a href="https://wa.me/18139393989" target="_blank" rel="noopener noreferrer" aria-label="KhaDock WhatsApp" class="social-icon-link text-slate-500 hover:text-green-500">
+                                <i class="fab fa-whatsapp fa-3x"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12 md:mt-16">
+                    <a href="contact.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-lg">Contact Us Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-32 bg-gradient-to-r from-blue-700 to-sky-800 text-white text-center relative overflow-hidden" data-aos="zoom-in">
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0V0h2v36h-2zM0 0h2v36H0V0zm0 36h36v2H0v-2z\'/%3E%3C/g%3E%3C/g%3E%3Csvg%3E');"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-shadow-strong">Ready to Transform Your boat-dock?</h2>
+                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-slate-100 leading-relaxed text-shadow">
+                    Explore innovative dock designs with our AI tool or contact us for a personalized consultation and a free estimate.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="design.html" class="bg-white text-sky-700 font-bold py-4 px-10 sm:py-5 sm:px-12 rounded-xl text-lg sm:text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-sky-50 inline-flex items-center">
+                        <i class="fas fa-drafting-compass mr-3"></i>
+                        Start Designing Today
+                    </a>
+                    <a href="contact.html" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 sm:py-5 sm:px-12 rounded-xl text-lg sm:text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+                        <i class="fas fa-phone-alt mr-3"></i>
+                        Request a Free Quote
                     </a>
                 </div>
             </div>
         </section>
-
-        <section id="projects" class="py-16 bg-gray-100">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-gray-800 text-center mb-12">Our Latest Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                        <img src="https://placehold.co/600x400/1B6B93/FFFFFF?text=Project+Kitchen" alt="Project Kitchen" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Modern Kitchen Makeover</h3>
-                            <p class="text-gray-600 mb-4">A complete transformation of a dated kitchen into a contemporary culinary space.</p>
-                            <a href="projects.html#project1" class="text-blue-600 hover:underline font-medium">View Project &rarr;</a>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                        <img src="https://placehold.co/600x400/F28C38/FFFFFF?text=Project+Bathroom" alt="Project Bathroom" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Luxury Bathroom Renovation</h3>
-                            <p class="text-gray-600 mb-4">An outdated bathroom converted into a luxurious and functional retreat.</p>
-                            <a href="projects.html#project2" class="text-blue-600 hover:underline font-medium">View Project &rarr;</a>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
-                        <img src="https://placehold.co/600x400/DDE1E6/1B6B93?text=Project+Outdoor" alt="Project Outdoor" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Outdoor Living Space</h3>
-                            <p class="text-gray-600 mb-4">Creating a beautiful and functional outdoor area for relaxation and entertainment.</p>
-                            <a href="projects.html#project3" class="text-blue-600 hover:underline font-medium">View Project &rarr;</a>
-                        </div>
+    
+        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-2/3" data-aos="zoom-in-right">
+                    <div class="project-video-wrapper rounded-xl shadow-lg">
+                        <video
+                            src="videos/project1.mp4"
+                            controls
+                            poster="images/albums/dock15.jpg"
+                            preload="metadata"
+                            autoplay muted playsinline
+                        >
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
-                <div class="text-center mt-12">
-                    <a href="projects.html" class="inline-block bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                        View All Projects
-                    </a>
+                <div class="w-full md:w-1/3" data-aos="fade-left" data-aos-delay="200">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-700 mb-4">KhaDock Project Resilience</h2>
+                    <ul class="list-disc pl-5 text-lg text-slate-700 space-y-3">
+                        <li>
+                            <span class="font-semibold">Our project remains 100% intact after a major storm.</span>
+                        </li>
+                        <li>
+                            <span class="font-semibold">KhaDock Commitment:</span> Quality, durability, and peace of mind for every client.
+                        </li>
+                        <li>
+                            <span class="font-semibold">Guaranteed craftsmanship</span> for all marine construction.
+                        </li>
+                        <li>
+                            <span class="font-semibold">Trusted by Florida boat-dock owners.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </section>    
 
-        <section id="cta" class="py-16 bg-blue-800 text-white text-center">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-4">Ready to Start Your Home Remodeling Project?</h2>
-                <p class="text-xl leading-relaxed mb-8 max-w-3xl mx-auto">
-                    Contact HomeRemodeling.com today for a free consultation and let us help you bring your vision to life.
-                </p>
-                <a href="contact.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-10 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                    Get a Free Quote
-                </a>
-            </div>
-        </section>
     </main>
 
     <div id="footer-placeholder"></div>
 
-    <script src="js/loadComponents.js"></script>
-    <script src="js/app.js"></script>
+    <button id="scrollToTopBtn" title="Go to top" class="hidden fixed bottom-6 right-6 bg-sky-500 hover:bg-sky-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center focus:outline-none transition-opacity duration-300 z-40">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/loadComponents.js" type="module" defer></script>
+    <script src="js/app.js" type="module" defer></script>
+    <script src="js/generateRenovationIdea.js" type="module" defer></script> 
     <script>
-        loadComponents();
+        // Gọi hàm loadAppComponents sau khi DOM đã sẵn sàng
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window.loadAppComponents === 'function') {
+                window.loadAppComponents();
+            } else {
+                console.error('loadAppComponents function not found on window object.');
+            }
+        });
+
+        AOS.init({
+            offset: 120,
+            duration: 900,
+            easing: 'ease-out-quad',
+            once: true,
+            mirror: false,
+            anchorPlacement: 'top-bottom',
+        });
     </script>
 </body>
 </html>
