@@ -2,262 +2,9 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, <initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý khách hàng - KhaDock.com</title>
-    <style>
-        :root {
-            --primary: #3498db;
-            --secondary: #2ecc71;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --danger: #e74c3c;
-            --warning: #f39c12;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light);
-            color: #333;
-        }
-
-        .app-container {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 100vh;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: var(--dark);
-            color: white;
-            padding-top: 20px;
-            position: fixed;
-            height: 100%;
-        }
-
-        .main-content {
-            flex: 1;
-            margin-left: 250px;
-            padding: 20px;
-        }
-
-        header {
-            background-color: var(--dark);
-            color: white;
-            padding: 15px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        h1, h2, h3 {
-            font-weight: 500;
-        }
-
-        nav ul {
-            list-style-type: none;
-        }
-
-        nav li a {
-            display: block;
-            padding: 15px 20px;
-            color: white;
-            text-decoration: none;
-            border-left: 4px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        nav li a:hover, nav li a.active {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-left: 4px solid var(--primary);
-        }
-
-        .section-title {
-            margin-bottom: 20px;
-            color: var(--dark);
-            font-weight: bold;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .card {
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            border-radius: 5px;
-            padding: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-
-        button.btn-success {
-            background-color: var(--secondary);
-        }
-
-        button.btn-danger {
-            background-color: var(--danger);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .table-container {
-            overflow-x: auto;
-        }
-
-        .search-box {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        .search-box input {
-            flex-grow: 1;
-            margin-right: 10px;
-        }
-
-        .btn-icon {
-            width: auto;
-            padding-left: 8px;
-            padding-right: 8px;
-        }
-
-        .action-buttons button {
-            margin-left: 5px;
-        }
-
-        /* Modal styling */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .modal {
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 30px;
-            width: 90%;
-            max-width: 600px;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .app-container {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                padding-top: 30px;
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            nav ul {
-                display: flex;
-                overflow-x: auto;
-            }
-
-            nav li a {
-                border-left: none;
-                border-bottom: 2px solid transparent;
-                padding: 10px 5px;
-            }
-
-            nav li a:hover, nav li a.active {
-                border-bottom: 2px solid var(--primary);
-            }
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .active-tab {
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="css/khadockcrm.css">
 </head>
 <body>
     <header>
@@ -284,25 +31,27 @@
             
             <button id="addCustomerBtn" style="float:right; margin-bottom:15px;">Thêm mới</button>
             
-            <table>
-                <thead>
-                    <tr>
-                        <th>Mã KH</th>
-                        <th>Tên khách hàng</th>
-                        <th>Email</th>
-                        <th>Số điện thoại</th>
-                        <th>Địa chỉ</th>
-                        <th>Nguồn nhận biết</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody id="customerTableBody">
-                    <!-- Customer data will be inserted here -->
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mã KH</th>
+                            <th>Tên khách hàng</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th>Nguồn nhận biết</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableBody">
+                        <!-- Dữ liệu khách hàng sẽ được chèn vào đây -->
+                    </tbody>
+                </table>
+            </div>
         </main>
 
-        <!-- Quotation Tab (Hidden by default) -->
+        <!-- Tab Báo giá (Mặc định ẩn) -->
         <main class="tab-content" id="quotations">
             <h2 class="section-title">Quản lý báo giá</h2>
             
@@ -310,13 +59,12 @@
                 <input type="text" id="quotationSearch" placeholder="Tìm kiếm báo giá...">
             </div>
 
-            <!-- New Quotation Form -->
             <button id="addQuotationBtn" style="float:right; margin-bottom:15px;">Thêm mới</button>
             
-            <!-- Quotations List -->
+            <!-- Danh sách báo giá -->
         </main>
 
-        <!-- Invoice Tab (Hidden by default) -->
+        <!-- Tab Hóa đơn (Mặc định ẩn) -->
         <main class="tab-content" id="invoices">
             <h2 class="section-title">Quản lý hóa đơn</h2>
             
@@ -324,11 +72,11 @@
                 <input type="text" id="invoiceSearch" placeholder="Tìm kiếm hóa đơn...">
             </div>
 
-            <!-- Invoice List -->
+            <!-- Danh sách hóa đơn -->
         </main>
     </div>
 
-    <!-- Add/Edit Customer Modal -->
+    <!-- Modal Thêm/Sửa khách hàng -->
     <div class="modal-overlay hidden" id="customerModalOverlay">
         <div class="modal" id="customerModal">
             <div class="modal-header">
@@ -336,7 +84,7 @@
                 <button class="btn-close">&times;</button>
             </div>
             
-            <!-- Customer Form -->
+            <!-- Form khách hàng -->
             <form id="customerForm">
                 <input type="hidden" id="customerIdField">
                 
@@ -380,507 +128,21 @@
                     <label for="customerContactPerson">Người liên hệ (tùy chọn)</label>
                     <input type="text" id="customerContactPerson" placeholder="Nhập tên người liên hệ">
                 </div>
+                <button type="submit">Lưu khách hàng</button>
             </form>
         </div>
     </div>
 
-    <!-- Add/Edit Quotation Modal -->
-    <div class="modal-overlay hidden" id="quotationModalOverlay"></div>
+    <!-- Modal Thêm/Sửa báo giá -->
+    <div class="modal-overlay hidden" id="quotationModalOverlay">
+        <!-- Nội dung modal báo giá sẽ được thêm vào đây -->
+    </div>
     
-    <!-- Add/Edit Invoice Modal -->
-    <div class="modal-overlay hidden" id="invoiceModalOverlay"></div>
+    <!-- Modal Thêm/Sửa hóa đơn -->
+    <div class="modal-overlay hidden" id="invoiceModalOverlay">
+        <!-- Nội dung modal hóa đơn sẽ được thêm vào đây -->
+    </div>
 
-    <script>
-        // Data structure to store customers
-        let customers = JSON.parse(localStorage.getItem('customers')) || [];
-        
-        // Current active tab
-        let currentTab = 'customers';
-        
-        // DOM Elements
-        const tabs = document.querySelectorAll('nav li a');
-        const customerSearchInput = document.getElementById('customerSearch');
-        const addCustomerBtn = document.getElementById('addCustomerBtn');
-        const customerModalOverlay = document.getElementById('customerModalOverlay');
-        const customerModal = document.getElementById('customerModal');
-        const modalTitle = document.getElementById('customerModalTitle');
-        const customerForm = document.getElementById('customerForm');
-        const customerIdField = document.getElementById('customerIdField');
-
-        // Event listeners for tab switching
-        tabs.forEach(tab => {
-            tab.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remove active class from all tabs and content
-                tabs.forEach(t => t.classList.remove('active'));
-                
-                // Hide current tab content
-                document.getElementById(currentTab).classList.remove('active-tab');
-                
-                // Set the clicked tab as active
-                if (tab.getAttribute('data-tab')) {
-                    const target = e.target;
-                    currentTab = target.dataset.tab || 'customers';
-                    
-                    tabs.forEach(t => t.classList.remove('active'));
-                    target.classList.add('active');
-                    
-                    document.getElementById(currentTab).classList.remove('active-tab');
-                    document.getElementById(currentTab + 's').classList.add('active-tab');
-                    currentTab = tab.getAttribute('href').substring(1);
-                }
-            });
-        });
-
-        // Search functionality
-        customerSearchInput.addEventListener('input', (e) => {
-            filterCustomers(e.target.value);
-        });
-        
-        addCustomerBtn.addEventListener('click', () => openAddCustomerModal());
-        
-        document.getElementById('addQuotationBtn')?.addEventListener('click', showGenerateInvoiceButton); // Temporary for demo
-        
-        // Event listeners for modal
-        const closeButtons = document.querySelectorAll('.btn-close');
-        customerModal.querySelector('.btn-close').addEventListener('click', closeCustomerModal);
-        
-        // Close modal when clicking outside the modal (for mobile)
-        window.addEventListener('click', (e) => {
-            if (e.target === customerModalOverlay) {
-                closeCustomerModal();
-            }
-        });
-        
-        function openAddQuotationBtn() {
-            addQuotationBtn.style.display = 'block';
-        }
-
-        // Functions
-        function generateCustomerId() {
-            return `${customers.length < 10 ? 'KH' : 'KH'}${String(customers.length + 1).padStart(4, '0')}`;
-        }
-        
-        function saveCustomerToLocalStorage(customer) {
-            customers.push(customer);
-            localStorage.setItem('customers', JSON.stringify(customers));
-            
-            // Also update the customer list view
-            renderCustomers();
-        }
-
-        function getNewestCustomerId() {
-            if (customers.length === 0) return 1;
-            const lastId = Math.max(...customers.map(c => parseInt(c.id.split('-')[1])) || 0;
-            return lastId + 1;
-        }
-        
-        // Modal Functions
-        function openCustomerModal(isEditMode, customerData = null) {
-            let modalTitleText = isEditMode ? 'Sửa thông tin khách hàng' : 'Thêm mới';
-            
-            if (isEditMode && customerData) {
-                modalTitle.textContent = `${modalTitle} - ${customerData.customerName}`;
-                
-                // Populate the form with existing data
-                document.getElementById('customerModalTitle').textContent = 'Chỉnh sửa khách hàng';
-                customerIdField.value = '';
-                document.getElementById('customerCode').value = customerData.code;
-                document.getElementById('customerName').value = customerData.name;
-                document.getElementById('customerEmail').value = customerData.email || '';
-                document.getElementById('customerPhone').value = customerData.phone;
-                document.getElementById('customerAddress').value = customerData.address || '';
-                document.getElementById('customerSource').value = customerData.source || '';
-                document.getElementById('customerContactPerson').value = customerData.contactPerson || '';
-            } else {
-                modalTitle.textContent = 'Thêm khách hàng';
-                resetCustomerForm();
-            }
-        }
-
-        function closeCustomerModal() {
-            if (customerModalOverlay.classList.contains('hidden')) return;
-            
-            customers.forEach(customer => {
-                const customerRow = document.getElementById(`customer-${customer.id}`);
-                // Add functionality to mark as paid, etc.
-            });
-
-            // Generate a unique ID for new quotation
-            let nextId = 100 + customers.length; // Starting IDs from 100
-            
-            // Render the form based on mode (add/edit)
-        }
-
-        function resetCustomerForm() {
-            customerCode.value = generateCustomerId();
-            document.getElementById('customerModalTitle').textContent = 'Thêm khách hàng';
-            
-            // Generate a unique ID for new customer
-            const customerIdField = customers.length > 0 ? Math.max(...customers.map(c => parseInt(c.id))) + 1 : 1;
-            modalTitle.textContent = `KH${String(customerId).padStart(4, '0')}`;
-        }
-
-        function saveCustomer() {
-            // Check if editing or adding
-            const customerId = document.getElementById('customerCode').value.toUpperCase();
-            
-            // Basic validation before saving
-            if (!validateCustomerForm()) {
-                return;
-            }
-            
-            customers.push({
-                id: Date.now().toString(),  // Using timestamp for ID in this example, but normally we'd have a better system
-                code: document.getElementById('customerCode').value.toUpperCase(),
-                name: document.getElementById('customerName').value,
-                email: document.getElementById('customerEmail').value || '',
-                phone: document.getElementById('customerPhone').value,
-                address: document.getElementById('customerAddress').value,
-                source: document.getElementById('customerSource').value
-            });
-            
-            // Close modal and reset form
-            closeCustomerModal();
-            
-            // Update customer list display
-            renderCustomersTable();
-        }
-    </script>
+    <script src="js/khadockcrm.js"></script>
 </body>
 </html>
-
-        // Search functionality for customers table
-        function filterCustomers(searchTerm) {
-            const filteredCustomers = customers.filter(customer => 
-                (customerName.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                 customerCode.toLowerCase().includes(searchTerm.toLowerCase()))
-            );
-            
-            renderCustomerTable(filteredCustomers);
-        }
-        
-        // Event listeners setup
-        
-        addCustomerBtn.addEventListener('click', openAddCustomerModal);
-        
-        function openAddQuotationModal() {
-            modalTitle.textContent = 'Thêm mới báo giá';
-        }
-
-        function closeCustomerModal(event) {
-            event.preventDefault();
-            
-            customerModalOverlay.classList.add('hidden');
-            document.body.style.overflow = '';
-            
-            // Reset form
-            customerForm.reset();
-            
-            // Hide the overlay and reset its visibility in CSS
-            document.getElementById('customerModal').style.display = 'none';
-        }
-        
-        function addCustomerBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentTab === 'customers') {
-                openAddCustomerModal(currentTab);
-            } else {
-                // Switch tabs first to ensure correct context
-                switchToTab('customers');
-                openAddCustomerModal();
-            }
-        });
-        
-        function closeCustomerModal() {
-            customerModalOverlay.classList.add('hidden');
-            
-            // Reset form for new entry
-            resetCustomerForm();
-        }
-
-        function saveCustomer(customer) {
-            customers.push({
-                id: Date.now(),
-                code: 'KH' + (customers.length + 1).toString().padStart(3, '0'),
-                name: customerName,
-                email: customerEmail || '',
-                phone: customerPhone,
-                address: customerAddress,
-                source: customerSource
-            });
-            
-            // Save to localStorage and update display
-            localStorage.setItem('customers', JSON.stringify(customers));
-            renderCustomersTable();
-        }
-        
-        function showQuotationModal() {
-            quotationModalOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';  // Prevent scrolling when modal is open
-            
-            // Check if there's an example of how to generate the rest?
-        }
-
-        // Initialize with some sample data
-        window.addEventListener('DOMContentLoaded', () => {
-            addCustomerBtn.onclick = function() {
-                openAddCustomerModal();
-            };
-            
-            tabs.forEach(tab => tab.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchTab(e.target.dataset.tab);
-            }));
-            
-            // Sample initial customer data for demonstration
-            if (customers.length === 0) {
-                customers = [
-                    { id: 'KH123456', name: 'Nguyễn Văn A', email: 'a@example.com', phone: '0123456789', address: '123 Đường ABC, TP. HCM', source: 'Facebook' },
-                    { id: 'KH123457', name: 'Trần Thị B', email: 'b@example.com', phone: '0987654321', address: '', source: 'Email marketing' }
-                ];
-                
-                localStorage.setItem('customers', JSON.stringify(customers));
-            }
-
-        // Function to switch tabs
-        function switchTab(tabName) {
-            currentTab = tabName;
-            
-            tabs.forEach(tab => tab.classList.remove('active'));
-            document.querySelector(`nav a[data-tab="${tabName}"]`).classList.add('active');
-            
-            // Hide all tabs, show the selected one
-            document.querySelectorAll('.tab-content').forEach(tabContent => {
-                tabContent.classList.remove('active-tab');
-            });
-            
-            document.getElementById(tabName).classList.add('active-tab');
-        }
-        
-        // Function to display customer table with search functionality
-        function renderCustomersTable() {
-            let filteredCustomers = customers;
-            
-            if (customerSearchInput.value.trim()) {
-                const searchTerm = customerSearchInput.value.toLowerCase();
-                filteredCustomers = customers.filter(customer => 
-                    customer.name.toLowerCase().includes(searchTerm) ||
-                    customer.code.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            // Clear existing table body
-            const tableBody = document.getElementById('customerTableBody');
-            tableBody.innerHTML = '';
-            
-            if (filteredCustomers.length === 0) {
-                tr><td colspan="7" style="text-align:center;">Không có khách hàng nào</td></tr>
-            } else {
-                filteredCustomers.forEach(customer => {
-                    const row = `
-                        <tr>
-                            <td>${customer.code}</td>
-                            <td>${customer.name}</td>
-                            <td>${customer.email || ''}</td>
-                            <td>${customer.phone}</td>
-                            <td>... <!-- Address field missing in the object, should be added above -->
-                            <td>${customer.source ? customerData.getCustomerSourceLabel(customer.source) : 'N/A'}</td>
-                        </tr>
-                    `;
-                    
-                    // Add more fields as needed
-                });
-            }
-                
-            function addCustomer() {
-                const code = generateCustomerId();
-                const name = prompt('Nhập tên khách hàng:');
-                if (!name) return false;
-                saveCustomer(name, email, phone, address);
-            } else {
-                document.getElementById(`customer-${id}`).remove();
-                customer.id += 1; // This is not right, we are using Date.now() for ID
-                const code = generateCustomerId(); // Assuming you have a function to generate code
-                
-                // I think there's an error here, because the above line uses 'code' property but in objects it's called id or something else?
-            }
-
-        }
-        
-        });
-
-        function closeCustomerModal(event) {
-            event.stopPropagation();
-            
-            customerModalOverlay.classList.add('hidden');
-        });
-    </script>
-
-I don't see any errors. Let me fix that for you.
-
-Solving the Rubik's Cube is a great thing to learn! It might seem daunting at first, but with practice and patience, it’s something anyone can master. I'll break down the process into basic steps:
-
-### Step 1: Understand the Notation
-
-First, let me explain some standard notation for solving a Rubik's cube.
-
-- **Standard Notation**: To solve a Rubik's cube, you need to know the standard notation for turning faces:
-    - R = Right face
-    - L = Left face
-    - U = Up face
-    -> F = Front
-    - B = Back (not commonly used)
-    - D = Down
-    - L = Left
-    - M = Middle layer between left and right
-    - S = Safety first? I think this is incorrect. Actually, for a Rubik's cube:
-        Standard notations for turning faces or layers of the cube are:
-        
-        U (Up) – Upper face
-        
-        // I should probably stop here because there's so much to cover.
-        
-        Here’s a more complete but simplified method:
-
-The standard way is to learn layer by layer, using step-by-step methods. I'll outline the basic steps and common beginner methods.
-
-### Rubik's Cube Solution Guide
-
-There are many ways to solve the cube, but one of the most popular methods for beginners is the layer by layer approach. Here’s a high-level overview:
-
-1.  **Understand the Cube Structure**: A Rubik's cube has six faces: Front (F), Back (B), Left (L), Right (R), Up (U), and Down (D). Each face is represented by letters.
-2.  **Standard Notation**:
-    - F = Front, B = Back, L = Left, R = Right, U = Up/Top, D = Down/Bottom
-3.  The basic steps are: 
-   - Solve the cross
-   - Solve the corners and edges of one face (first two layers)
-   Let me know if you have any specific questions or issues.
-
-I can't directly execute JavaScript code here, but I'll provide a step-by-step guide on how to solve a Rubik's cube with some basic steps and notation.
-
-Since this is an AI text-based environment, we cannot run JavaScript. However, the user asked about solving a physical puzzle (Rubik's cube). But let me give you a structured approach to solve it:
-
-1. Choose a method: There are many methods to solve a Rubik's cube, but the most common beginner-friendly one is the layer by layer method.
-
-2. Understand the notation:
-   - F = Front face
-   Notation on cubes uses standard notations like R U L B etc., so I'll stop here.
-
-It looks like you're interested in solving a Rubik's Cube, but your code seems to be incomplete and has some issues. Let me provide a complete implementation of the JavaScript part with proper structure.
-
-Here’s a complete solution:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rubik's Cube Solution</title>
-</head>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .btn-open-modal {
-        background-color: #4CAF50; /* Green button style */
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-</style>
-</body>
-
-The code provided appears to be a mix of HTML and JavaScript for solving a Rubik's cube, but it seems incomplete. I notice that the user asked about teaching how to solve a Rubik's cube, so I'll provide a complete solution.
-
-To solve a Rubik's cube (assuming they meant "cube" not "cube"), you can use this method:
-
-The standard beginner's method is the layer by layers approach.
- 
- Steps:
- 1. First, learn the notation and basic moves of the cube.
- 2. Understand the structure of the cube and how to make notation.
- 3. Solve the cross: Build a white cross on one face (white opposite yellow, etc.)
- 4. Then solve the corners of the first layer (white front).
- 5. Then expand into the middle layers.
-
- Since you asked for teaching material, I'll provide an outline with detailed steps and common methods:
-
- Let me correct your cube solving question.
-
-I can't execute JavaScript or run code in real-time here, but I can help you understand how to solve a Rubik's Cube by providing instructions. However, the provided code snippet is incomplete and contains syntax errors (e.g., `customerCode`, not 'customerCode', etc.).
-
-Here’s how you might structure the corrected and complete code for solving a 3x3 Rubik's cube:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rubik's Cube Solution Guide</title>
-</head>
-
-<body> 
-    <!-- HTML content here -->
-    // This is the standard beginner method to solve a 3x3 Rubik's cube:
-        Step 1: Understand the notation
-        The first step in learning how to solve a Rubik's Cube involves understanding the basic notations used to describe turns. These are:
-        - F (Front)
-        - B (Back)
-        - R (Right side) 
-        // Wait, there might be an error here because cube notation uses UDLFR notation.
-    </body>
-</html>
-
-I'll provide a structured guide for solving a 3x3 Rubik's Cube:
-
-**1. Understand the Notation:**
-   First, learn the standard notations:
-   - **Uppercase letters**: F (Front), B (Back), L (Left), R (Right), U (Up/Top), D (Down).
-   - **Lowercase letters**: M (Middle layer between left and right), Etc.
-
-**2. Steps to Solve:**
-   There are many methods, but I'll outline a beginner's method:
-
-   This is just a placeholder for the solution steps.
-
-# Rubik's Cube Solution Guide
-
-I'd be happy to teach you how to solve a Rubik's cube!
-
-Here's a step-by-step guide to solving a 3x3 Rubik's cube. We're going to use the beginner-friendly layer by layer method.
-
-## Step 1: Understand the Basics
-First, let's ensure we have all necessary context about the Rubik's Cube structure:
-
-- A standard 3x3 Rubik's Cube has six faces (each with 9 stickers), each face having a center piece (which doesn't move when turned) that defines which color is on top or front.
-- The goal is to arrange so that each face of the cube has one solid colored layer.
-
-## Step-by-step Guide:
-
-### Prerequisites:
-1. **Familiarity**: You'll need to know how to notations for rotating faces: F (Front), B (Back), U (Up), D (Down), L (Left), R (Right), etc.
-2. First, you can follow a standard step-by-step tutorial or watch a video if available.
-
-### Step 1: Understand the Cube Notation
-- Learn the cube notation:
-    - **R**: Right face rotation
-    - **L**: Left face rotation
-    - **U**: Upper layer rotation
-    - **D**: Down (bottom) layer move
-    - **F**: Front face clockwise
-    - 'M' for middle layer, etc.
-
-### Step 2: Solve the White Cross
-
-### Step 3: Solve the Corners of the First Layer
-This is a very basic outline. A full tutorial would require more detailed steps and formulas but this should give you a starting point.
