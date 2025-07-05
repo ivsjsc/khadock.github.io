@@ -114,6 +114,31 @@
                 >
             </div>
 
+            <section class="py-16 md:py-20 bg-slate-50" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10 md:mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">Featured Designs</h2>
+                    <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                        A selection of our top dock designs to inspire your project.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="images/designs/design1.jpg" alt="KhaDock Design Inspiration 1" class="design-album-image" loading="lazy">
+                    </div>
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="150">
+                        <img src="images/designs/design2.jpg" alt="KhaDock Design Inspiration 2" class="design-album-image" loading="lazy">
+                    </div>
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="images/designs/design3.jpg" alt="KhaDock Design Inspiration 3" class="design-album-image" loading="lazy">
+                    </div>
+                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="250">
+                        <img src="images/designs/design4.jpg" alt="KhaDock Design Inspiration 4" class="design-album-image" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="py-16 md:py-20 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10 md:mb-12">
@@ -237,164 +262,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="py-16 md:py-20 bg-slate-50" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10 md:mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">Featured Designs</h2>
-                    <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                        A selection of our top dock designs to inspire your project.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="images/designs/design1.jpg" alt="KhaDock Design Inspiration 1" class="design-album-image" loading="lazy">
-                    </div>
-                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="images/designs/design2.jpg" alt="KhaDock Design Inspiration 2" class="design-album-image" loading="lazy">
-                    </div>
-                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="images/designs/design3.jpg" alt="KhaDock Design Inspiration 3" class="design-album-image" loading="lazy">
-                    </div>
-                    <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="images/designs/design4.jpg" alt="KhaDock Design Inspiration 4" class="design-album-image" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="ai-design-section design-page-ai py-16 md:py-20 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50" data-aos="fade-up" id="ai-design-generator">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10 md:mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3 flex items-center justify-center gap-2">
-                        <i class="fas fa-lightbulb text-sky-500"></i> ✨ AI Dock Design Studio ✨
-                    </h2>
-                    <p class="text-lg text-slate-700 max-w-2xl mx-auto">
-                        Use artificial intelligence to sketch your unique dock ideas!
-                    </p>
-                    <div class="mt-3 text-slate-500 text-xs sm:text-sm">
-                        <strong>KhaDock AI Designer</strong> is developed by <a href="https://ivsacademy.edu.vn" class="text-sky-600 hover:underline" target="_blank" rel="noopener">IVS Celestech</a>, a division of IVS JSC.
-                    </div>
-                </div>
-
-                <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-2xl border border-sky-200 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-500 to-blue-600"></div>
-                    <textarea
-                        id="ai-design-input"
-                        class="w-full p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 mb-6 resize-y min-h-[120px] text-slate-800 text-sm sm:text-base"
-                        placeholder="Example: 'A modern T-shaped dock, composite material, with a covered area, LED lights, and docking for 2 boats in Sarasota.'"
-                        aria-label="Describe your ideal dock"
-                    ></textarea>
-
-                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                        <button
-                            id="ai-generate-btn"
-                            class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 sm:px-8 rounded-lg shadow-md transition duration-300 transform hover:scale-105 inline-flex items-center justify-center text-sm sm:text-base"
-                        >
-                            <i class="fas fa-magic mr-2"></i> Generate Design Idea
-                        </button>
-                         <button
-                            id="ai-clear-input-btn"
-                            class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-3 px-6 rounded-lg shadow-sm transition duration-300 text-sm sm:text-base"
-                        >
-                            <i class="fas fa-eraser mr-2"></i> Clear Input
-                        </button>
-                    </div>
-                    <section class="py-16 md:py-20 bg-white" data-aos="fade-up">
-                        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                            <div class="max-w-md mx-auto bg-red-600 text-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105">
-                                <h3 class="text-2xl font-bold mb-2">This Amazing</h3>
-                                <p class="text-4xl font-extrabold animate-pulse-slow">COMING SOON</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <div id="ai-loading" class="mt-6 text-sky-600 hidden flex items-center justify-center">
-                        <i class="fas fa-spinner fa-spin mr-2 text-xl"></i>
-                        <span id="ai-loading-text" class="font-medium">Generating idea...</span>
-                    </div>
-
-                    <div id="ai-error" class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-left hidden" role="alert"></div>
-
-                    <div id="ai-output-container" class="mt-8 hidden">
-                        <div id="ai-output" class="p-4 sm:p-6 bg-slate-50 border border-slate-200 rounded-lg text-left text-slate-700 leading-relaxed prose max-w-none" aria-live="polite">
-                        </div>
-                        <div id="gemini-extra-features" class="mt-6 flex flex-col sm:flex-row justify-center gap-4 hidden">
-                            <button id="ai-maintenance-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
-                                <i class="fas fa-tools mr-2"></i> ✨ Maintenance Tips ✨
-                            </button>
-                            <button id="ai-accessories-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md transition duration-300 transform hover:scale-105 text-sm inline-flex items-center">
-                                <i class="fas fa-puzzle-piece mr-2"></i> ✨ Accessory Ideas ✨
-                            </button>
-                        </div>
-                        <div id="ai-maintenance-loading" class="mt-4 text-teal-600 hidden flex items-center justify-center">
-                            <i class="fas fa-spinner fa-spin mr-2"></i> Loading maintenance tips...
-                        </div>
-                        <div id="ai-accessories-loading" class="mt-4 text-indigo-600 hidden flex items-center justify-center">
-                            <i class="fas fa-spinner fa-spin mr-2"></i> Loading accessory ideas...
-                        </div>
-                        <div id="ai-maintenance-output" class="mt-4 p-4 bg-teal-50 border border-teal-200 rounded-lg text-teal-700 leading-relaxed hidden prose max-w-none"></div>
-                        <div id="ai-accessories-output" class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-700 leading-relaxed hidden prose max-w-none"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 md:py-20 bg-white" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10 md:mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">How to Use AI Dock Design Studio</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">Follow these simple steps to get dock design ideas from our AI.</p>
-                </div>
-                <div class="max-w-3xl mx-auto space-y-6">
-                    <div class="guide-step bg-slate-50 p-6 rounded-lg shadow-md flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold">1</div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-sky-700 mb-1">Enter Dock Description</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">In the "Describe your ideal dock" box, enter a detailed description of your desired dock. The more detailed you are, the better the AI can generate ideas close to your wishes. For example: material type, size, shape, purpose of use, accompanying amenities (roof, seating, lights,...), or design style.</p>
-                        </div>
-                    </div>
-                    <div class="guide-step bg-slate-50 p-6 rounded-lg shadow-md flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold">2</div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-sky-700 mb-1">Click "Generate Idea" Button</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">After entering the description, click the "Generate Design Idea" button. The AI system will analyze your request and provide a detailed conceptual sketch for you.</p>
-                        </div>
-                    </div>
-                    <div class="guide-step bg-slate-50 p-6 rounded-lg shadow-md flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold">3</div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-sky-700 mb-1">View Results & Explore More</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">The results will be displayed below, including concept name, vision, features, suggested materials, and style. You can then click on the "✨ Maintenance Tips ✨" or "✨ Accessory Ideas ✨" buttons to get more useful information related to the newly generated design.</p>
-                        </div>
-                    </div>
-                     <div class="guide-step bg-slate-50 p-6 rounded-lg shadow-md flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center text-xl font-bold">4</div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-sky-700 mb-1">Clear and Try Again (If Needed)</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">If you want to try a different idea, click the "Clear Input" button to empty the description box and start over. You can experiment with different descriptions to find the idea that suits you best.</p>
-                        </div>
-                    </div>
-                </div>
-                 <p class="text-center text-sm text-slate-500 mt-8">
-                    Note: AI Design Studio provides initial suggestions. For detailed design and accurate quotes, please <a href="contact.html" class="text-sky-600 hover:underline font-medium">contact KhaDock directly</a>.
-                </p>
-            </div>
-        </section>
-
-        <section class="cta-section py-16 md:py-20 text-white relative" id="contact-cta" data-aos="zoom-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-shadow">Ready to Design Your Dream Dock?</h2>
-                <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-slate-100 leading-relaxed">
-                    Our experts are ready to assist. Contact KhaDock today for a personalized design consultation.
-                </p>
-                <a href="contact.html" class="bg-white text-sky-700 font-bold py-4 px-10 sm:py-5 sm:px-12 rounded-xl text-lg sm:text-xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-sky-50 inline-flex items-center">
-                    <i class="fas fa-drafting-compass mr-3"></i>
-                    Start Designing
-                </a>
-            </div>
-        </section>
+        </section>    
     </main>
 
     <div id="footer-placeholder"></div>
