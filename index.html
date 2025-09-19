@@ -12,53 +12,95 @@
 
     <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions with AI Design">
     <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Try our AI Design Generator!">
-    <meta property="og:image" content="images/logo/logoicon_512.png">
+    <meta property="og:image" content="https://khadock.com/images/logo/logoicon_512.png">
     <meta property="og:url" content="https://khadock.com">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KhaDock">
 
-    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
-    <link rel="apple-touch-icon" href="images/logo/logoicon_512.png">
+    <link rel="icon" href="https://khadock.com/images/logo/logo.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="https://khadock.com/images/logo/logoicon_512.png">
     <link rel="manifest" href="manifest.json">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sky: {
-                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
-                            400: '#38bdf8', 500: '#0EA5E9', 600: '#0284C7', 700: '#0369A1',
-                            800: '#075985', 900: '#0c4a6e'
-                        },
-                        slate: {
-                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
-                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
-                            800: '#1e293b', 900: '#0f172a'
-                        }
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
-                    },
-                    animation: {
-                        'spin-slow': 'spin 2s linear infinite',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         body {
             font-family: 'inter', sans-serif;
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        .full-width-image-section {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .hero-banner-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero-banner-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .hero-banner-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .design-album-image-wrapper {
+            @apply rounded-xl overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:scale-105;
+        }
+
+        .design-album-image {
+            @apply w-full h-full object-cover rounded-xl;
+            aspect-ratio: 4/3;
+        }
+
+        .album-scroll-container {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .album-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .album-scroll-container::-webkit-scrollbar-thumb {
+            @apply bg-sky-600 rounded-full;
+        }
+
+        .album-image-item {
+            @apply flex-none w-80 md:w-96 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105;
+        }
+
+        .album-image-horizontal {
+            @apply w-full h-full object-cover rounded-xl;
+        }
+
+        .contact-icon-circle {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .group:hover .contact-icon-circle {
+            @apply bg-sky-500 text-white;
         }
     </style>
 </head>
@@ -70,7 +112,7 @@
         <section class="full-width-image-section" data-aos="fade-in">
             <!-- Thay thế thẻ <img> bằng thẻ <video> -->
             <video
-                src="videos/logo-banner-video.mp4"
+                src="https://khadock.com/videos/logo-banner-video.mp4"
                 autoplay
                 loop
                 muted
@@ -84,12 +126,14 @@
 
         <section class="hero-banner-container" data-aos="fade-in">
             <picture>
-                <source srcset="images/albums/dock15.jpg" media="(min-width: 768px)">
+                <source srcset="https://khadock.com/images/albums/dock15.jpg" media="(min-width: 768px)">
                 <img
-                    src="images/albums/dock15.jpg"
+                    src="https://khadock.com/images/albums/dock15.jpg"
                     alt="KhaDock - Florida's Premier Boat Dock Solutions"
                     class="hero-banner-image"
                     loading="eager"
+                    width="1920"
+                    height="1080"
                 >
             </picture>
             <div class="hero-banner-content">
@@ -106,18 +150,7 @@
                         </a>
                     </div>
                     <div class="mt-4 flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="500">
-<<<<<<< HEAD
-                        <a href="services.html#construction" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
-                            Dock Construction
-                        </a>
-                        <a href="services.html#remodel" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
-                            Dock Remodeling
-=======
-                        <a href="services.html#design" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
-                            Custom Dock Design
->>>>>>> 68d3c79e4255658608f18849f233ffe8f6911b8d
-                        </a>
-                         <a href="services.html#repair" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
+                        <a href="services.html#repair" class="bg-white text-sky-700 font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:bg-sky-100 hover:text-sky-900 transition duration-300 transform hover:scale-105 border border-sky-500">
                             Repair & Maintenance
                         </a>
                         <a href="about.html" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg text-base shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
@@ -139,16 +172,16 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                     <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="images/designs/design1.jpg" alt="KhaDock Design Inspiration 1" class="design-album-image" loading="lazy">
+                        <img src="https://khadock.com/images/designs/design1.jpg" alt="KhaDock Design Inspiration 1" class="design-album-image" loading="lazy" width="800" height="600">
                     </div>
                     <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="images/designs/design2.jpg" alt="KhaDock Design Inspiration 2" class="design-album-image" loading="lazy">
+                        <img src="https://khadock.com/images/designs/design2.jpg" alt="KhaDock Design Inspiration 2" class="design-album-image" loading="lazy" width="800" height="600">
                     </div>
                     <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="images/designs/design3.jpg" alt="KhaDock Design Inspiration 3" class="design-album-image" loading="lazy">
+                        <img src="https://khadock.com/images/designs/design3.jpg" alt="KhaDock Design Inspiration 3" class="design-album-image" loading="lazy" width="800" height="600">
                     </div>
                     <div class="design-album-image-wrapper" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="images/designs/design4.jpg" alt="KhaDock Design Inspiration 4" class="design-album-image" loading="lazy">
+                        <img src="https://khadock.com/images/designs/design4.jpg" alt="KhaDock Design Inspiration 4" class="design-album-image" loading="lazy" width="800" height="600">
                     </div>
                 </div>
                 <div class="text-center mt-12 md:mt-16">
@@ -162,7 +195,7 @@
             <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-8">This is a project completed by the KhaDock team in Clearwater.</p>
             <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl mx-auto max-w-4xl">
                 <iframe
-                    src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F61575043076973%2Fvideos%2F708708102018929%2F&show_text=false&width="
+                    src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F61575043076973%2Fvideos%2F708708102018929%2F&show_text=false&width=560"
                     width="560"
                     height="314"
                     style="border:none;overflow:hidden"
@@ -184,19 +217,19 @@
                 <div class="album-scroll-container overflow-x-auto whitespace-nowrap py-4 px-1 scrollbar-thin">
                     <div class="flex gap-4 md:gap-5">
                         <div class="album-image-item" data-aos="fade-right" data-aos-delay="100">
-                            <img src="images/albums/dock1.jpg" alt="Completed dock project 1" class="album-image-horizontal" loading="lazy"/>
+                            <img src="https://khadock.com/images/albums/dock1.jpg" alt="Completed dock project 1" class="album-image-horizontal" loading="lazy" width="1024" height="768"/>
                         </div>
                         <div class="album-image-item" data-aos="fade-right" data-aos-delay="150">
-                            <img src="images/albums/dock2.jpg" alt="Completed dock project 2" class="album-image-horizontal" loading="lazy"/>
+                            <img src="https://khadock.com/images/albums/dock2.jpg" alt="Completed dock project 2" class="album-image-horizontal" loading="lazy" width="1024" height="768"/>
                         </div>
                         <div class="album-image-item" data-aos="fade-right" data-aos-delay="200">
-                            <img src="images/albums/dock3.jpg" alt="Completed dock project 3" class="album-image-horizontal" loading="lazy"/>
+                            <img src="https://khadock.com/images/albums/dock3.jpg" alt="Completed dock project 3" class="album-image-horizontal" loading="lazy" width="1024" height="768"/>
                         </div>
                         <div class="album-image-item" data-aos="fade-right" data-aos-delay="250">
-                            <img src="images/albums/dock4.jpg" alt="Completed dock project 4" class="album-image-horizontal" loading="lazy"/>
+                            <img src="https://khadock.com/images/albums/dock4.jpg" alt="Completed dock project 4" class="album-image-horizontal" loading="lazy" width="1024" height="768"/>
                         </div>
                         <div class="album-image-item" data-aos="fade-right" data-aos-delay="300">
-                            <img src="images/albums/dock5.jpg" alt="Completed dock project 5" class="album-image-horizontal" loading="lazy"/>
+                            <img src="https://khadock.com/images/albums/dock5.jpg" alt="Completed dock project 5" class="album-image-horizontal" loading="lazy" width="1024" height="768"/>
                         </div>
                     </div>
                 </div>
@@ -210,7 +243,7 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <div data-aos="fade-right" data-aos-delay="100" class="md:pr-8">
-                        <img src="images/albums/dock14.jpg" alt="KhaDock - Team planning a dock project" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-[4/3]" loading="lazy" width="800" height="600">
+                        <img src="https://khadock.com/images/albums/dock14.jpg" alt="KhaDock - Team planning a dock project" class="rounded-xl shadow-2xl w-full h-auto object-cover aspect-[4/3]" loading="lazy" width="800" height="600">
                     </div>
                     <div data-aos="fade-left" data-aos-delay="200">
                         <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-6">About Us: Crafting Coastal Dreams</h2>
@@ -227,17 +260,21 @@
                 </div>
             </div>
         </section>
-    
+
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
                 <div class="w-full md:w-2/3" data-aos="zoom-in-right">
                     <div class="project-video-wrapper rounded-xl shadow-lg">
                         <video
-                            src="videos/project1.mp4"
+                            src="https://khadock.com/videos/project1.mp4"
                             controls
-                            poster="images/albums/dock15.jpg"
+                            poster="https://khadock.com/images/albums/dock15.jpg"
                             preload="metadata"
-                            autoplay muted playsinline
+                            muted
+                            playsinline
+                            class="w-full h-auto object-cover"
+                            width="1280"
+                            height="720"
                         >
                             Your browser does not support the video tag.
                         </video>
@@ -261,7 +298,7 @@
                     </ul>
                 </div>
             </div>
-        </section>    
+        </section>
         <section class="py-20 md:py-32 bg-gradient-to-r from-blue-700 to-sky-800 text-white text-center relative overflow-hidden" data-aos="zoom-in">
             <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0V0h2v36h-2zM0 0h2v36H0V0zm0 36h36v2H0v-2z\'/%3E%3C/g%3E%3C/g%3E%3Csvg%3E');"></div>
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -319,7 +356,7 @@
                     <div class="bg-slate-50 p-8 rounded-xl shadow-2xl" data-aos="fade-left" data-aos-delay="200">
                         <div class="flex flex-col items-center mb-8">
                             <div class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-sky-500 shadow-lg mb-3">
-                                <img src="images/logo/doduykha.png" alt="Mr. Kha Do - KhaDock" class="w-full h-full object-cover">
+                                <img src="https://khadock.com/images/logo/doduykha.png" alt="Mr. Kha Do - KhaDock" class="w-full h-full object-cover">
                             </div>
                             <span class="text-lg font-semibold text-slate-700">Mr. Kha Do</span>
                             <span class="text-sm text-sky-600">Founder & Director</span>
@@ -345,7 +382,7 @@
                 </div>
             </div>
         </section>
-        
+
     </main>
 
     <div id="fab-container-placeholder"></div>
@@ -358,23 +395,10 @@
                    transition-all duration-300 z-40 text-xl">
         <i class="fas fa-arrow-up"></i>
     </button>
-
-    <script src="js/loadComponents.js"></script>
-    <script src="js/fab-container.js"></script>      
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script src="js/app.js"></script>
-    
     <script>
-        // Thay đổi từ DOMContentLoaded sang window.onload để đảm bảo tất cả các script đã tải hoàn chỉnh
+        // Khởi tạo thư viện AOS (Animate on Scroll)
         window.onload = function() {
-            if (typeof loadAppComponents === 'function') {
-                loadAppComponents();
-            } else {
-                console.error('Lỗi: Hàm loadAppComponents không được tìm thấy. Vui lòng kiểm tra tệp js/loadComponents.js hoặc đảm bảo nó xuất hàm ra phạm vi toàn cục.');
-            }
-
-            // Khởi tạo thư viện AOS (Animate on Scroll)
             if (typeof AOS !== 'undefined') {
                 AOS.init({
                     offset: 120,
@@ -388,6 +412,24 @@
                 console.error('Lỗi: Thư viện AOS không được tải.');
             }
         };
+
+        // Hàm xử lý nút cuộn lên đầu trang
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.classList.remove('hidden');
+                scrollToTopBtn.classList.add('flex');
+            } else {
+                scrollToTopBtn.classList.add('hidden');
+                scrollToTopBtn.classList.remove('flex');
+            }
+        };
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
 </body>
 </html>
