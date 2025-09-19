@@ -54,38 +54,61 @@
         .project-card-full:hover img {
             transform: scale(1.05);
         }
-        .album-grid img {
+        .album-grid-item img {
             transition: transform 0.3s ease-in-out;
+            aspect-ratio: 4 / 3;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
-        .album-grid img:hover {
+        .album-grid-item img:hover {
             transform: scale(1.05);
         }
-        .before-after-container {
-            position: relative;
-            overflow: hidden;
-        }
-        .before-after-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
+        .before-after-grid img {
+            aspect-ratio: 16 / 9;
+            width: 100%;
             height: 100%;
-            background-image: url('images/pages/Remodeling&Upgrades.jpeg');
-            background-size: cover;
-            background-position: center;
-            border-right: 2px solid white;
+            object-fit: cover;
+            border-radius: 0.75rem; /* rounded-xl */
         }
-        .before-after-handle {
+        /* Modal (Lightbox) Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 0.75rem;
+        }
+        .close {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
             cursor: pointer;
-            z-index: 10;
+        }
+        .close:hover,
+        .close:focus {
+            color: #999;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -122,7 +145,7 @@
                 <!-- Before & After Comparison -->
                 <div class="bg-slate-50 p-8 rounded-xl shadow-lg mb-12" data-aos="fade-up" data-aos-delay="200">
                     <h3 class="text-2xl font-bold text-sky-700 mb-4 text-center">Before & After Renovation</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 before-after-grid">
                         <div class="relative">
                             <img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-before.jpg" alt="Before renovation" class="w-full h-auto object-cover rounded-xl shadow-md" loading="lazy" width="1280" height="720">
                             <span class="absolute top-4 left-4 bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded-full">Before</span>
@@ -139,7 +162,7 @@
                     <!-- Stage 2: Construction & Execution -->
                     <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-right">
                         <div class="mb-4">
-                            <img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-construction.jpg" alt="Construction & Execution" class="rounded-lg w-full h-48 object-cover">
+                            <img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-construction.jpg" alt="Construction & Execution">
                         </div>
                         <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 1: Construction & Execution</h3>
                         <p class="text-slate-700 text-sm">
@@ -150,7 +173,7 @@
                     <!-- Stage 3: Completion & Handover -->
                     <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-left">
                         <div class="mb-4">
-                            <img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-final-1.webp" alt="Completion & Handover" class="rounded-lg w-full h-48 object-cover">
+                            <img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-final-1.webp" alt="Completion & Handover">
                         </div>
                         <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 2: Completion & Handover</h3>
                         <p class="text-slate-700 text-sm">
@@ -163,17 +186,17 @@
                 <div class="mt-12 md:mt-16 text-center" data-aos="fade-up">
                     <h3 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6">Gallery of Photos</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 album-grid">
-                        <img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-extra-1.webp" alt="Mr. Jimmy's Dock Additional Photo 1" class="rounded-lg shadow-md w-full h-auto object-cover" loading="lazy">
-                        <img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-extra-2.webp" alt="Mr. Jimmy's Dock Additional Photo 2" class="rounded-lg shadow-md w-full h-auto object-cover" loading="lazy">
-                        <img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-extra-3.webp" alt="Mr. Jimmy's Dock Additional Photo 3" class="rounded-lg shadow-md w-full h-auto object-cover" loading="lazy">
-                        <img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-extra-4.jpg" alt="Mr. Jimmy's Dock Additional Photo 4" class="rounded-lg shadow-md w-full h-auto object-cover" loading="lazy">
+                        <div class="album-grid-item cursor-pointer"><img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-extra-1.webp" alt="Mr. Jimmy's Dock Additional Photo 1" loading="lazy"></div>
+                        <div class="album-grid-item cursor-pointer"><img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-extra-2.webp" alt="Mr. Jimmy's Dock Additional Photo 2" loading="lazy"></div>
+                        <div class="album-grid-item cursor-pointer"><img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-extra-3.webp" alt="Mr. Jimmy's Dock Additional Photo 3" loading="lazy"></div>
+                        <div class="album-grid-item cursor-pointer"><img src="images/projects/Mr.Jimmy-SaintPetersburg/jimmy-extra-4.jpg" alt="Mr. Jimmy's Dock Additional Photo 4" loading="lazy"></div>
                     </div>
                 </div>
 
                 <!-- Client Testimonial for Project 2 -->
                 <div class="py-16 md:py-24 bg-white text-center" data-aos="fade-up">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8">Client Testimonial</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8">A Word From Our Client</h2>
                         <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
                             <p class="text-xl italic text-slate-600 leading-relaxed mb-6">
                                 "The KhaDock team went above and beyond to transform my old dock. The new design is stunning and the quality is exceptional. I couldn't be happier with the result."
@@ -224,7 +247,7 @@
                     
                     <!-- Stage 2: Construction & Execution -->
                     <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-right">
-                        <div class="mb-4">
+                        <div class="mb-4 stage-image">
                             <img src="images/albums/dock11.jpg" alt="Construction & Execution" class="rounded-lg w-full h-48 object-cover">
                         </div>
                         <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 1: Construction & Execution</h3>
@@ -235,7 +258,7 @@
 
                     <!-- Stage 3: Completion & Handover -->
                     <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-left">
-                        <div class="mb-4">
+                        <div class="mb-4 stage-image">
                             <img src="images/albums/dock6.jpg" alt="Completion & Handover" class="rounded-lg w-full h-48 object-cover">
                         </div>
                         <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 2: Completion & Handover</h3>
@@ -247,7 +270,7 @@
                 <!-- Client Testimonial for Project 1 -->
                 <div class="py-16 md:py-24 bg-white text-center" data-aos="fade-up">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8">Client Testimonial</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8">A Word From Our Client</h2>
                         <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
                             <p class="text-xl italic text-slate-600 leading-relaxed mb-6">
                                 "KhaDock brilliantly brought my dock idea to life. Their professionalism and dedication throughout the process left me completely satisfied."
@@ -271,73 +294,73 @@
                 </div>
                 <div class="album-scroll-container overflow-x-auto whitespace-nowrap py-4 px-1 scrollbar-thin">
                     <div class="flex gap-4 md:gap-5">
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="100">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="100">
                             <img src="images/albums/dock1.jpg" alt="Completed KhaDock Project Album Image 1" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="150">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="150">
                             <img src="images/albums/dock2.jpg" alt="Completed KhaDock Project Album Image 2" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="200">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="200">
                             <img src="images/albums/dock3.jpg" alt="Completed KhaDock Project Album Image 3" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="250">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="250">
                             <img src="images/albums/dock4.jpg" alt="Completed KhaDock Project Album Image 4" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="300">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="300">
                             <img src="images/albums/dock5.jpg" alt="Completed KhaDock Project Album Image 5" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="350">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="350">
                             <img src="images/albums/dock6.jpg" alt="Completed KhaDock Project Album Image 6" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="400">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="400">
                             <img src="images/albums/dock7.jpg" alt="Completed KhaDock Project Album Image 7" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="450">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="450">
                             <img src="images/albums/dock8.jpg" alt="Completed KhaDock Project Album Image 8" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="500">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="500">
                             <img src="images/albums/dock9.jpg" alt="Completed KhaDock Project Album Image 9" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="550">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="550">
                             <img src="images/albums/dock10.jpg" alt="Completed KhaDock Project Album Image 10" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="600">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="600">
                             <img src="images/albums/dock11.jpg" alt="Completed KhaDock Project Album Image 11" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="650">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="650">
                             <img src="images/albums/dock12.jpg" alt="Completed KhaDock Project Album Image 12" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="700">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="700">
                             <img src="images/albums/dock13.jpg" alt="Completed KhaDock Project Album Image 13" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="750">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="750">
                             <img src="images/albums/dock14.jpg" alt="Completed KhaDock Project Album Image 14" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="800">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="800">
                             <img src="images/albums/dock15.jpg" alt="Completed KhaDock Project Album Image 15" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="850">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="850">
                             <img src="images/albums/dock16.jpg" alt="Completed KhaDock Project Album Image 16" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="900">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="900">
                             <img src="images/albums/dock17.jpg" alt="Completed KhaDock Project Album Image 17" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="950">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="950">
                             <img src="images/albums/dock18.jpg" alt="Completed KhaDock Project Album Image 18" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="1000">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="1000">
                             <img src="images/albums/dock19.jpg" alt="Completed KhaDock Project Album Image 19" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="1050">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="1050">
                             <img src="images/designs/design1.jpg" alt="Design Project 1" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="1100">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="1100">
                             <img src="images/designs/design2.jpg" alt="Design Project 2" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="1150">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="1150">
                             <img src="images/designs/design3.jpg" alt="Design Project 3" class="album-image-horizontal" loading="lazy"/>
                         </div>
-                        <div class="album-image-item" data-aos="fade-right" data-aos-delay="1200">
+                        <div class="album-image-item cursor-pointer" data-aos="fade-right" data-aos-delay="1200">
                             <img src="images/designs/design4.jpg" alt="Design Project 4" class="album-image-horizontal" loading="lazy"/>
                         </div>
                     </div>
@@ -358,6 +381,12 @@
         </section>
 
     </main>
+
+    <!-- The Modal (Lightbox) -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
     <div id="fab-container-placeholder"></div>
     <div id="footer-placeholder"></div>
@@ -392,6 +421,30 @@
             mirror: false,
             anchorPlacement: 'top-bottom',
         });
+        
+        // Lightbox functionality
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        const galleryImages = document.querySelectorAll('.album-grid img, .project-section img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+            });
+        });
+
+        closeBtn.onclick = function() { 
+            modal.style.display = "none";
+        }
+        
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
