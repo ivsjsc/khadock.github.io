@@ -15,9 +15,7 @@
     <meta property="og:type" content="website">
 
     <link rel="preload" href="images/logo/logoicon_512.png" as="image">
-    <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" crossorigin="anonymous">
-
 
     <link rel="icon" type="image/png" sizes="32x32" href="images/logo/logoicon_512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logo/logoicon_512.png">
@@ -26,74 +24,72 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        /* Đảm bảo video-container có tỷ lệ 16:9 */
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100%) */
-            height: 0;
-            overflow: hidden;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        /* Style cho video trong phần Project Resilience */
-        .project-video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-        }
-        .project-video-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-                .banner-bg {
-            background-image: url('images/logo/logonoi.png'); /* Placeholder for a relevant banner image */
+        .banner-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/albums/dock15.jpg');
             background-size: cover;
             background-position: center;
-            position: relative;
-            z-index: 1;
         }
-        .banner-bg::before {
-            content: '';
+        .project-card-full {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card-full:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .project-card-full .image-section {
+            background-color: #e2e8f0;
+        }
+        .project-card-full img {
+            transition: transform 0.4s ease, filter 0.3s ease;
+        }
+        .project-card-full:hover img {
+            transform: scale(1.05);
+        }
+        .album-grid img {
+            transition: transform 0.3s ease-in-out;
+        }
+        .album-grid img:hover {
+            transform: scale(1.05);
+        }
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .before-after-slider {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
-            z-index: -1;
+            width: 50%;
+            height: 100%;
+            background-image: url('images/pages/Remodeling&Upgrades.jpeg');
+            background-size: cover;
+            background-position: center;
+            border-right: 2px solid white;
         }
-        .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }    
+        .before-after-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+        }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 antialiased">
+<body class="bg-slate-100 text-slate-800 antialiased font-inter">
 
     <div id="header-placeholder"></div>
 
@@ -108,23 +104,98 @@
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
-                <div class="w-full md:w-2/3" data-aos="zoom-in-right">
-                    <div class="project-video-wrapper rounded-xl shadow-lg">
-                        <video
-                            src="videos/project1.mp4"
-                            controls
-                            poster="images/albums/dock15.jpg"
-                            preload="metadata"
-                            autoplay muted playsinline
-                        >
-                            Your browser does not support the video tag.
-                        </video>
+        <!-- Project Section 1 (Mr. Jimmy's Dock) -->
+        <section class="py-16 md:py-24 bg-white project-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Project: Mr. Jimmy's Dock in Saint Petersburg</h2>
+                    <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                        A full renovation project, upgrading an old wooden dock into a modern and safe outdoor living space.
+                    </p>
+                </div>
+
+                <!-- Final Project Image -->
+                <div class="mb-12" data-aos="zoom-in">
+                    <img src="images/albums/dock3.jpg" alt="Final view of the renovated dock" class="rounded-xl shadow-lg w-full h-auto object-cover" loading="lazy" width="1280" height="720">
+                </div>
+                
+                <!-- Before & After Comparison -->
+                <div class="bg-slate-50 p-8 rounded-xl shadow-lg mb-12" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">Before & After Renovation</h3>
+                    <div class="before-after-container">
+                        <img src="images/albums/dock5.jpg" alt="Before renovation" class="w-full h-auto object-cover rounded-xl shadow-md" loading="lazy" width="1280" height="720">
                     </div>
                 </div>
-                <div class="w-full md:w-1/3" data-aos="fade-left" data-aos-delay="200">
-                    <h2 class="text-2xl md:text-3xl font-bold text-sky-700 mb-4">KhaDock Project Resilience</h2>
+
+                <!-- Project Stages as a grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-12">
+                    <!-- Stage 1: Design & Planning -->
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-right">
+                        <div class="mb-4">
+                            <img src="images/designs/design6.jpg" alt="Design & Planning" class="rounded-lg w-full h-48 object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 1: Design & Planning</h3>
+                        <p class="text-slate-700 text-sm">
+                           We collaborated with the client to modernize the dock's layout, adding a new lift system and creating a spacious lounge area.
+                        </p>
+                    </div>
+                    
+                    <!-- Stage 2: Construction & Execution -->
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-up">
+                        <div class="mb-4">
+                            <img src="images/albums/dock9.jpg" alt="Construction & Execution" class="rounded-lg w-full h-48 object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 2: Construction & Execution</h3>
+                        <p class="text-slate-700 text-sm">
+                           The old structure was removed, and new composite decking and durable railings were installed to enhance safety and aesthetics.
+                        </p>
+                    </div>
+
+                    <!-- Stage 3: Completion & Handover -->
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-left">
+                        <div class="mb-4">
+                            <img src="images/albums/dock3.jpg" alt="Completion & Handover" class="rounded-lg w-full h-48 object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 3: Completion & Handover</h3>
+                        <p class="text-slate-700 text-sm">
+                           The new dock was completed, providing a stylish and functional space that seamlessly integrates with the client's backyard.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Client Testimonial for Project 2 -->
+                <div class="py-16 md:py-24 bg-white text-center" data-aos="fade-up">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8">Client Testimonial</h2>
+                        <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                            <p class="text-xl italic text-slate-600 leading-relaxed mb-6">
+                                "The KhaDock team went above and beyond to transform my old dock. The new design is stunning and the quality is exceptional. I couldn't be happier with the result."
+                            </p>
+                            <p class="font-semibold text-sky-700 text-lg">- Mr. Jimmy, Saint Petersburg</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Section 2 (Resilient Dock) -->
+        <section class="py-16 md:py-24 bg-white project-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Featured Project: A Resilient Dock in Clearwater</h2>
+                    <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                        This project is a testament to our quality, craftsmanship, and commitment to building durable docks that withstand Florida's challenging climate.
+                    </p>
+                </div>
+
+                <!-- Final Project Image -->
+                <div class="mb-12" data-aos="zoom-in">
+                    <img src="images/albums/dock1.jpg" alt="Overall view of the completed dock" class="rounded-xl shadow-lg w-full h-auto object-cover" loading="lazy" width="1280" height="720">
+                </div>
+                
+                <!-- KhaDock Project Resilience Section -->
+                <div class="bg-sky-50 p-8 rounded-xl shadow-lg mb-12" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-sky-700 mb-4">KhaDock Project Resilience</h3>
                     <ul class="list-disc pl-5 text-lg text-slate-700 space-y-3">
                         <li>
                             <span class="font-semibold">Our project remains 100% intact after a major storm.</span>
@@ -140,156 +211,59 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-        </section>
-        <!-- Facebook Video Embed Section -->
-        <section class="py-8 px-4 bg-white rounded-xl shadow-lg mb-12" data-aos="fade-up" data-aos-delay="300">
-            <h2 class="text-3xl md:text-4xl font-bold text-sky-700 mb-4 text-center">Watch Our Video</h2>
-            <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-8">This is a project completed by the KhaDock team in Clearwater.</p>
-            <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl mx-auto max-w-4xl">
-                <iframe 
-                    src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F61575043076973%2Fvideos%2F708708102018929%2F&show_text=false&width=560&t=0" 
-                    width="560" 
-                    height="314" 
-                    style="border:none;overflow:hidden" 
-                    scrolling="no" 
-                    frameborder="0" 
-                    allowfullscreen="true" 
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
-                    allowFullScreen="true"
-                    class="absolute inset-0 w-full h-full rounded-xl"
-                    loading="lazy"
-                ></iframe>
-            </div>
-        </section>
-        <section class="py-16 md:py-24 bg-slate-50">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Featured Dock & Marine Projects</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Each project showcases our commitment to excellence, durability, and complete client satisfaction.
-                    </p>
+                
+                <!-- Project Stages as a grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-12">
+                    <!-- Stage 1: Design & Planning -->
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-right">
+                        <div class="mb-4">
+                            <img src="images/designs/design8.jpg" alt="Design & Planning" class="rounded-lg w-full h-48 object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 1: Design & Planning</h3>
+                        <p class="text-slate-700 text-sm">
+                           We transform client ideas into detailed, intuitive 3D plans through on-site surveys and expert consultation.
+                        </p>
+                    </div>
+                    
+                    <!-- Stage 2: Construction & Execution -->
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-up">
+                        <div class="mb-4">
+                            <img src="images/albums/dock11.jpg" alt="Construction & Execution" class="rounded-lg w-full h-48 object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 2: Construction & Execution</h3>
+                        <p class="text-slate-700 text-sm">
+                           Using high-quality materials, our team builds with precision, adhering to the strictest safety and durability standards.
+                        </p>
+                    </div>
+
+                    <!-- Stage 3: Completion & Handover -->
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-md" data-aos="fade-left">
+                        <div class="mb-4">
+                            <img src="images/albums/dock6.jpg" alt="Completion & Handover" class="rounded-lg w-full h-48 object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-sky-700 mb-2">Phase 3: Completion & Handover</h3>
+                        <p class="text-slate-700 text-sm">
+                           We perform final inspections to ensure every detail is perfect before handing over the completed project for your enjoyment.
+                        </p>
+                    </div>
                 </div>
-
-                <div id="project-filters" class="flex flex-wrap justify-center gap-3 mb-10 md:mb-12" data-aos="fade-up" data-aos-delay="100">
-                    <button class="filter-button active px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="all">All Projects</button>
-                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="design">Custom Design</button>
-                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="remodel">Remodeling</button>
-                    <button class="filter-button px-5 py-2.5 text-sm font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" data-filter="maintenance">Repair & Maintenance</button>
-                </div>
-
-                <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="100">
-                        <a href="#" class="block group h-full flex flex-col">
-                            <div class="project-image-container">
-                                <img src="images/pages/DockConstruction.jpeg" alt="Luxury Private Dock in Miami by KhaDock" loading="lazy">
-                            </div>
-                            <div class="p-6 project-card-content flex-grow">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Luxury Private Dock - Miami</h3>
-                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Custom-designed fixed dock featuring premium composite decking, integrated LED lighting, and a dual boat lift system for ultimate convenience.</p>
-                                </div>
-                                <div class="mt-auto pt-4 border-t border-slate-100">
-                                    <span class="project-tag inline-block bg-sky-100 text-sky-700 font-semibold px-2.5 py-1 rounded-full mr-2 mb-1 hover:bg-sky-200">Design</span>
-                                    <span class="project-tag inline-block bg-emerald-100 text-emerald-700 font-semibold px-2.5 py-1 rounded-full mb-1 hover:bg-emerald-200">Construction</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="construction" data-aos="zoom-in-up" data-aos-delay="200">
-                        <a href="#" class="block group h-full flex flex-col">
-                            <div class="project-image-container">
-                                <img src="images/albums/dock7.jpg" alt="Commercial Pier Fort Lauderdale by KhaDock" loading="lazy">
-                            </div>
-                            <div class="p-6 project-card-content flex-grow">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Commercial Pier - Fort Lauderdale</h3>
-                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Robust construction of a public access pier, engineered for high traffic and harsh marine environments, featuring ADA-compliant ramps and durable materials.</p>
-                                </div>
-                                <div class="mt-auto pt-4 border-t border-slate-100">
-                                    <span class="project-tag inline-block bg-emerald-100 text-emerald-700 font-semibold px-2.5 py-1 rounded-full hover:bg-emerald-200">Construction</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="remodel" data-aos="zoom-in-up" data-aos-delay="300">
-                        <a href="#" class="block group h-full flex flex-col">
-                            <div class="project-image-container">
-                                <img src="images/albums/dock6.jpg" alt="Classic Dock Remodel Palm Beach by KhaDock" loading="lazy">
-                            </div>
-                            <div class="p-6 project-card-content flex-grow">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Classic Dock Remodel - Palm Beach</h3>
-                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Complete renovation of an aging wooden dock, upgraded with modern composite materials, new pilings, custom railings, and enhanced safety features.</p>
-                                </div>
-                                <div class="mt-auto pt-4 border-t border-slate-100">
-                                    <span class="project-tag inline-block bg-amber-100 text-amber-700 font-semibold px-2.5 py-1 rounded-full hover:bg-amber-200">Remodeling</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="maintenance design" data-aos="zoom-in-up" data-aos-delay="100">
-                        <a href="#" class="block group h-full flex flex-col">
-                            <div class="project-image-container">
-                                <img src="images/albums/flooring.png" alt="boat-dock Deck Repair & Enhancement - Key West" loading="lazy">
-                            </div>
-                            <div class="p-6 project-card-content flex-grow">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Deck Repair & Enhancement - Key West</h3>
-                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Structural repairs and aesthetic upgrades to a boat-dock deck, including piling reinforcement, new decking, and custom seating areas. Design consultation provided.</p>
-                                </div>
-                                <div class="mt-auto pt-4 border-t border-slate-100">
-                                    <span class="project-tag inline-block bg-red-100 text-red-700 font-semibold px-2.5 py-1 rounded-full mr-2 mb-1 hover:bg-red-200">Maintenance</span>
-                                    <span class="project-tag inline-block bg-sky-100 text-sky-700 font-semibold px-2.5 py-1 rounded-full mr-2 mb-1 hover:bg-sky-200">Design</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden flex flex-col" data-category="design construction" data-aos="zoom-in-up" data-aos-delay="200">
-                        <a href="#" class="block group h-full flex flex-col">
-                            <div class="project-image-container">
-                                <img src="images/albums/dock8.jpg" alt="Floating Dock System - Naples" loading="lazy">
-                            </div>
-                            <div class="p-6 project-card-content flex-grow">
-                                <div>
-                                    <h3 class="text-xl font-semibold text-slate-800 mb-2 group-hover:text-sky-600 transition-colors">Floating Dock System - Naples</h3>
-                                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Installation of a versatile floating dock system, ideal for fluctuating water levels, complete with kayak launch and secure mooring.</p>
-                                </div>
-                                <div class="mt-auto pt-4 border-t border-slate-100">
-                                    <span class="project-tag inline-block bg-sky-100 text-sky-700 font-semibold px-2.5 py-1 rounded-full mr-2 mb-1 hover:bg-sky-200">Design</span>
-                                    <span class="project-tag inline-block bg-emerald-100 text-emerald-700 font-semibold px-2.5 py-1 rounded-full mb-1 hover:bg-emerald-200">Construction</span>
-                                </div>
-                            </div>
-                        </a>
+                <!-- Client Testimonial for Project 1 -->
+                <div class="py-16 md:py-24 bg-white text-center" data-aos="fade-up">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8">Client Testimonial</h2>
+                        <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl">
+                            <p class="text-xl italic text-slate-600 leading-relaxed mb-6">
+                                "KhaDock brilliantly brought my dock idea to life. Their professionalism and dedication throughout the process left me completely satisfied."
+                            </p>
+                            <p class="font-semibold text-sky-700 text-lg">- Mr. David Lee, Client in Clearwater</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-12 md:py-16 bg-slate-50" data-aos="fade-up">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10 md:mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-3">Discover Our Design Process</h2>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">Watch our introductory video on how KhaDock creates unique and high-quality dock designs.</p>
-                </div>
-                <div class="video-container">
-                    <video controls poster="images/logo/logonoi.png" preload="metadata" autoplay muted playsinline>
-                        <source src="videos/design1.mp4" type="video/mp4">
-                        Your browser does not support the video tag. You can download the video <a href="videos/design1.mp4">here</a>.
-                    </video>
-                </div>
 
-                <div class="video-container">
-                    <video controls poster="images/logo/logonoi.png" preload="metadata" autoplay muted playsinline>
-                        <source src="videos/deckvideo.mp4" type="video/mp4">
-                        Your browser does not support the video tag. You can download the video <a href="videos/deckvideo.mp4">here</a>.
-                    </video>
-                </div>
-            </div>
-        </section>
-
+        <!-- More Projects Album Section -->
         <section class="py-16 md:py-24 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 md:mb-16">
@@ -378,13 +352,14 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Inspired by Our Work?</h2>
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                    Let KhaDock - Design and Remodel bring your boat-dock vision to life. Contact us for a detailed consultation and a free, no-obligation estimate.
+                    Let KhaDock bring your vision to life. Contact us for a detailed consultation and a free, no-obligation estimate.
                 </p>
                 <a href="contact.html" class="bg-white text-sky-600 font-bold py-3.5 px-10 rounded-lg text-lg shadow-lg transition duration-300 transform hover:scale-105 hover:bg-slate-100">
                     Start Your Project Today
                 </a>
             </div>
         </section>
+
     </main>
 
     <div id="fab-container-placeholder"></div>
@@ -398,13 +373,12 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="js/fab-container.js"></script>  
+    <script src="js/fab-container.js"></script>
     <script src="js/projects-page.js" type="module" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
     <script>
-        // Gọi hàm loadAppComponents sau khi DOM đã sẵn sàng
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof window.loadAppComponents === 'function') {
                 window.loadAppComponents();
