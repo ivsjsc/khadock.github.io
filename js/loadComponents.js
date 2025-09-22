@@ -22,14 +22,27 @@ async function loadComponent(placeholderId, filePath) {
 }
 
 async function loadAppComponents(callback) {
-    // Đã thay đổi đường dẫn từ tuyệt đối sang tương đối
+    // Component URLs
     const HEADER_COMPONENT_URL = 'components/header.html';
     const FOOTER_COMPONENT_URL = 'components/footer.html';
+    const MOBILE_BOTTOM_NAV_URL = 'components/mobile-bottom-nav.html';
 
+    // Load all components
     await Promise.all([
         loadComponent('header-placeholder', HEADER_COMPONENT_URL),
         loadComponent('footer-placeholder', FOOTER_COMPONENT_URL)
     ]);
+
+    // Load mobile bottom navigation only on mobile devices
+    if (window.innerWidth <= 768) {
+        // Check if we need to create a placeholder for mobile bottom nav
+        if (!document.getElementById('mobile-bottom-nav-placeholder')) {
+            const placeholder = document.createElement('div');
+            placeholder.id = 'mobile-bottom-nav-placeholder';
+            document.body.appendChild(placeholder);
+        }
+        await loadComponent('mobile-bottom-nav-placeholder', MOBILE_BOTTOM_NAV_URL);
+    }
 
     if (typeof callback === 'function') {
         callback();
