@@ -62,7 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayError(message) {
         if (!errorDiv) return;
-        errorDiv.textContent = message;
+        const errorMessageEl = document.getElementById('ai-error-message');
+        if (errorMessageEl) {
+            errorMessageEl.textContent = message;
+        } else {
+            errorDiv.textContent = message;
+        }
         errorDiv.classList.remove('hidden');
         if (outputContainer) outputContainer.classList.add('hidden');
     }
