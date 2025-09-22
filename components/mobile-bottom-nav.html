@@ -1,0 +1,91 @@
+<!-- Mobile Bottom Navigation - Only visible on mobile devices -->
+<nav class="mobile-bottom-nav fixed bottom-0 left-0 right-0 bg-slate-800/95 backdrop-blur-sm border-t border-slate-600 py-2 px-4 md:hidden z-50" aria-label="Mobile bottom navigation">
+    <div class="flex justify-around items-center max-w-md mx-auto">
+        <!-- Home -->
+        <a href="index.html" class="bottom-nav-item flex flex-col items-center py-2 px-3 rounded-lg transition-all duration-200 hover:bg-slate-700 group">
+            <i class="fas fa-home text-lg text-slate-300 group-hover:text-sky-400 mb-1" aria-hidden="true"></i>
+            <span class="text-xs text-slate-300 group-hover:text-sky-400 font-medium">Home</span>
+        </a>
+        
+        <!-- Services -->
+        <a href="services.html" class="bottom-nav-item flex flex-col items-center py-2 px-3 rounded-lg transition-all duration-200 hover:bg-slate-700 group">
+            <i class="fas fa-tools text-lg text-slate-300 group-hover:text-sky-400 mb-1" aria-hidden="true"></i>
+            <span class="text-xs text-slate-300 group-hover:text-sky-400 font-medium">Services</span>
+        </a>
+        
+        <!-- Projects -->
+        <a href="projects.html" class="bottom-nav-item flex flex-col items-center py-2 px-3 rounded-lg transition-all duration-200 hover:bg-slate-700 group">
+            <i class="fas fa-images text-lg text-slate-300 group-hover:text-sky-400 mb-1" aria-hidden="true"></i>
+            <span class="text-xs text-slate-300 group-hover:text-sky-400 font-medium">Projects</span>
+        </a>
+        
+        <!-- Design -->
+        <a href="design.html" class="bottom-nav-item flex flex-col items-center py-2 px-3 rounded-lg transition-all duration-200 hover:bg-slate-700 group">
+            <i class="fas fa-drafting-compass text-lg text-slate-300 group-hover:text-sky-400 mb-1" aria-hidden="true"></i>
+            <span class="text-xs text-slate-300 group-hover:text-sky-400 font-medium">Design</span>
+        </a>
+        
+        <!-- Contact -->
+        <a href="contact.html" class="bottom-nav-item flex flex-col items-center py-2 px-3 rounded-lg transition-all duration-200 hover:bg-slate-700 group">
+            <i class="fas fa-phone text-lg text-slate-300 group-hover:text-sky-400 mb-1" aria-hidden="true"></i>
+            <span class="text-xs text-slate-300 group-hover:text-sky-400 font-medium">Contact</span>
+        </a>
+    </div>
+</nav>
+
+<style>
+/* Mobile Bottom Navigation Styles */
+.mobile-bottom-nav {
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    min-height: 70px;
+}
+
+.bottom-nav-item.active {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+}
+
+.bottom-nav-item.active i {
+    color: #38bdf8;
+}
+
+.bottom-nav-item.active span {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+/* Add padding to body for bottom nav space */
+@media (max-width: 767px) {
+    body {
+        padding-bottom: 80px !important;
+    }
+}
+
+/* Touch optimization for bottom nav */
+.bottom-nav-item {
+    min-height: 54px;
+    min-width: 54px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-item:active {
+    transform: scale(0.95);
+    background-color: rgba(56, 189, 248, 0.2);
+}
+
+/* Animation for bottom nav appearance */
+.mobile-bottom-nav {
+    animation: slideUpFromBottom 0.4s ease-out forwards;
+}
+
+@keyframes slideUpFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+</style>
