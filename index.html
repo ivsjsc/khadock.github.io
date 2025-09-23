@@ -26,6 +26,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-menu.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -428,6 +429,11 @@
             mirror: false,
             anchorPlacement: 'top-bottom',
         });
+        
+        // Load mobile menu script
+        const mobileMenuScript = document.createElement('script');
+        mobileMenuScript.src = 'js/mobile-menu.js';
+        document.body.appendChild(mobileMenuScript);
     </script>
 </body>
 </html>

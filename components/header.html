@@ -49,7 +49,7 @@
                 <a href="contact.html" id="nav-contact" class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 lg:px-5 lg:py-2.5 rounded-md font-semibold transition-colors duration-300 shadow-sm hover:shadow-md text-sm lg:text-base">Contact Us</a>
             </nav>
 
-            <button type="button" id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu-panel" class="md:hidden text-slate-300 hover:text-sky-400 focus:outline-none p-2 rounded-md transition-colors" aria-label="Open main menu">
+            <button type="button" id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu-panel" class="md:hidden text-slate-300 hover:text-sky-400 focus:outline-none p-2 rounded-md transition-colors bg-slate-700" aria-label="Open main menu">
                 <span class="sr-only">Open main menu</span>
                 <i class="fas fa-bars fa-lg" id="icon-menu-open" aria-hidden="true"></i>
                 <i class="fas fa-times fa-lg hidden" id="icon-menu-close" aria-hidden="true"></i>
@@ -58,52 +58,121 @@
     </div>
 
     <!-- NAV MOBILE - ĐÃ CẬP NHẬT THỨ TỰ -->
-    <div id="mobile-menu-panel" class="md:hidden bg-slate-700/95 backdrop-blur-sm fixed w-full h-full z-40 top-0 left-0 right-0 shadow-xl" aria-labelledby="mobile-menu-button">
-       <nav class="flex flex-col space-y-1.5 px-4 pt-20 pb-24 h-full overflow-y-auto" aria-label="Main mobile navigation">
-            <a href="index.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">Home</a>
-            <a href="projects.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">Projects</a>
-            <a href="design.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">Designs</a>
-            
-            <div>
-                <button type="button" class="mobile-submenu-toggle w-full text-left px-3 py-2.5 rounded-md hover:bg-slate-600 font-semibold text-sky-400 flex justify-between items-center transition-colors" aria-expanded="false" aria-controls="mobile-services-submenu-items">
-                    <span>Services</span>
-                    <i class="fas fa-chevron-down fa-xs mobile-submenu-icon transition-transform duration-200" aria-hidden="true"></i>
-                </button>
-                <div id="mobile-services-submenu-items" class="mobile-submenu-content pl-5 pr-3 pb-1 space-y-1 overflow-hidden max-h-0">
-                    <a href="services.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Services Overview</a>
-                    <a href="services.html#design" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Custom Dock Design</a>
-                    <a href="services.html#remodel" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Dock Remodeling</a>
-                    <a href="services.html#repair" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Repair & Maintenance</a>
-                    <a href="services.html#floor-remodeling" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Floor Remodeling</a>
-                    <a href="services.html#paint" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Painting Services</a>
-                    <a href="services.html#bathroom-remodeling" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 text-sm font-medium transition-colors">Bathroom Remodeling</a>
-                </div>
-            </div>
+    <div id="mobile-menu-panel" class="md:hidden bg-slate-800 fixed w-full h-full z-40 top-0 left-0 right-0 shadow-xl" aria-labelledby="mobile-menu-button">
+        <!-- Header của mobile menu -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-600 bg-slate-700">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="images/logo/logo-yellow.png" alt="KhaDock Logo" class="h-10 w-10 rounded-full" width="40" height="40">
+                <span class="text-xl font-bold text-sky-400">KhaDock.com</span>
+            </a>
+            <button type="button" id="mobile-menu-close" class="text-slate-300 hover:text-sky-400 focus:outline-none p-2 rounded-md">
+                <i class="fas fa-times fa-lg"></i>
+            </button>
+        </div>
 
-            <a href="about.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">About Us</a>
-            <a href="https://khahome.com" class="block px-3 py-2.5 rounded-md text-orange-500 hover:bg-slate-600 hover:text-orange-600 font-medium transition-colors" target="_blank" rel="noopener noreferrer">KhaHome.com</a>
-            <a href="contact.html" class="block px-3 py-2.5 rounded-md bg-sky-500 text-white hover:bg-sky-600 font-semibold text-center transition-colors shadow-sm hover:shadow-md">Contact Us</a>
-       </nav>
+        <nav class="flex flex-col px-4 py-4 h-full overflow-y-auto pb-24" aria-label="Main mobile navigation">
+            <!-- Menu items with icons -->
+            <div class="space-y-2">
+                <a href="index.html" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors">
+                    <i class="fas fa-home text-sky-400 w-5 text-center"></i>
+                    <span class="font-medium">Home</span>
+                </a>
+                
+                <a href="projects.html" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors">
+                    <i class="fas fa-hammer text-sky-400 w-5 text-center"></i>
+                    <span class="font-medium">Projects</span>
+                </a>
+                
+                <a href="design.html" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors">
+                    <i class="fas fa-magic text-sky-400 w-5 text-center"></i>
+                    <span class="font-medium">Designs</span>
+                </a>
+                
+                <!-- Services with dropdown -->
+                <div class="rounded-lg bg-slate-700 overflow-hidden">
+                    <button type="button" class="mobile-submenu-toggle w-full flex items-center justify-between px-4 py-3 hover:bg-slate-600 transition-colors" aria-expanded="false" aria-controls="mobile-services-submenu-items">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-tools text-sky-400 w-5 text-center"></i>
+                            <span class="font-medium">Services</span>
+                        </div>
+                        <i class="fas fa-chevron-down text-sky-400 mobile-submenu-icon transition-transform duration-200"></i>
+                    </button>
+                    
+                    <div id="mobile-services-submenu-items" class="mobile-submenu-content overflow-hidden max-h-0 bg-slate-600">
+                        <a href="services.html" class="flex items-center pl-12 pr-4 py-3 hover:bg-slate-500 transition-colors">
+                            <span class="font-medium">Services Overview</span>
+                        </a>
+                        <a href="services.html#design" class="flex items-center pl-12 pr-4 py-3 hover:bg-slate-500 transition-colors">
+                            <span class="font-medium">Custom Dock Design</span>
+                        </a>
+                        <a href="services.html#remodel" class="flex items-center pl-12 pr-4 py-3 hover:bg-slate-500 transition-colors">
+                            <span class="font-medium">Dock Remodeling</span>
+                        </a>
+                        <a href="services.html#repair" class="flex items-center pl-12 pr-4 py-3 hover:bg-slate-500 transition-colors">
+                            <span class="font-medium">Repair & Maintenance</span>
+                        </a>
+                        <a href="services.html#floor-remodeling" class="flex items-center pl-12 pr-4 py-3 hover:bg-slate-500 transition-colors">
+                            <span class="font-medium">Floor Remodeling</span>
+                        </a>
+                        <a href="services.html#paint" class="flex items-center pl-12 pr-4 py-3 hover:bg-slate-500 transition-colors">
+                            <span class="font-medium">Painting Services</span>
+                        </a>
+                        <a href="services.html#bathroom-remodeling" class="flex items-center pl-12 pr-4 py-3 hover:bg-slate-500 transition-colors">
+                            <span class="font-medium">Bathroom Remodeling</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="about.html" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors">
+                    <i class="fas fa-info-circle text-sky-400 w-5 text-center"></i>
+                    <span class="font-medium">About Us</span>
+                </a>
+                
+                <a href="https://khahome.com" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-home text-orange-500 w-5 text-center"></i>
+                    <span class="font-medium text-orange-500">KhaHome.com</span>
+                </a>
+                
+                <a href="contact.html" class="flex items-center space-x-3 px-4 py-3 rounded-lg bg-sky-500 hover:bg-sky-600 transition-colors">
+                    <i class="fas fa-envelope text-white w-5 text-center"></i>
+                    <span class="font-medium text-white">Contact Us</span>
+                </a>
+            </div>
+        </nav>
     </div>
 </header>
 
 <div class="bottom-nav md:hidden fixed bottom-0 left-0 w-full bg-slate-800 shadow-t z-50">
     <div class="flex justify-around items-center h-16">
         <a href="index.html" class="bottom-nav-item active">
-            <i class="fas fa-home fa-lg"></i>
+            <div class="bottom-nav-icon-container">
+                <i class="fas fa-home fa-lg"></i>
+            </div>
             <span class="bottom-nav-label">Home</span>
         </a>
         <a href="services.html" class="bottom-nav-item">
-            <i class="fas fa-tools fa-lg"></i>
+            <div class="bottom-nav-icon-container">
+                <i class="fas fa-tools fa-lg"></i>
+            </div>
             <span class="bottom-nav-label">Services</span>
         </a>
         <a href="projects.html" class="bottom-nav-item">
-            <i class="fas fa-hammer fa-lg"></i>
+            <div class="bottom-nav-icon-container">
+                <i class="fas fa-hammer fa-lg"></i>
+            </div>
             <span class="bottom-nav-label">Projects</span>
         </a>
         <a href="design.html" class="bottom-nav-item">
-            <i class="fas fa-magic fa-lg"></i>
+            <div class="bottom-nav-icon-container">
+                <i class="fas fa-magic fa-lg"></i>
+            </div>
             <span class="bottom-nav-label">Designer</span>
+        </a>
+        <a href="contact.html" class="bottom-nav-item">
+            <div class="bottom-nav-icon-container bg-sky-500">
+                <i class="fas fa-envelope fa-lg"></i>
+            </div>
+            <span class="bottom-nav-label">Contact</span>
         </a>
     </div>
 </div>
