@@ -41,6 +41,15 @@
             width: 100%;
             height: auto;
             overflow: hidden;
+            position: relative;
+        }
+        
+        .full-width-image-section.h-screen {
+            height: 100vh; /* Full viewport height */
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-banner-container {
@@ -113,15 +122,30 @@
     <div id="header-placeholder"></div>
 
     <main id="main-content-area">
-        <section class="full-width-image-section" data-aos="fade-in">
-            <video
+        <section class="full-width-image-section h-screen" data-aos="fade-in">
+            <!-- Hiển thị hình ảnh lớn -->
+            <div class="relative w-full h-full">
                 <img
-                    src="https://khadock.com/images/logo/logo1.jpg"
-                    class="w-full h-screen object-cover block"
-                    aria-label="KhaDock Logo Video Banner"
+                    src="images/logo/logo1.jpg"
+                    class="w-full h-full object-cover block absolute inset-0"
+                    alt="KhaDock Logo Banner"
                     width="1920"
                     height="1080"
                 >
+                <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 to-slate-900/70 flex items-center justify-center">
+                    <div class="text-center px-4">
+                        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">KhaDock</h1>
+                        <p class="text-xl md:text-2xl text-white mb-6 max-w-3xl mx-auto drop-shadow-md">Florida's Premier Boat Dock Solutions</p>
+                        <a href="contact.html" class="inline-block bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-300 text-lg">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="full-width-image-section" data-aos="fade-in">
+            <video
                 autoplay
                 loop
                 muted
@@ -131,6 +155,7 @@
                 width="1920"
                 height="400"
             >
+                <source src="videos/logo-banner-video.mp4" type="video/mp4">
                 Trình duyệt của bạn không hỗ trợ thẻ video.
             </video>
         </section>
