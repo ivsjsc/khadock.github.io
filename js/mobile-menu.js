@@ -55,16 +55,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Set active class for bottom navigation
-    const currentPath = window.location.pathname;
-    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
-    
-    bottomNavItems.forEach(item => {
-        const href = item.getAttribute('href');
-        if (currentPath.endsWith(href)) {
-            item.classList.add('active');
-        } else {
-            item.classList.remove('active');
-        }
-    });
+    // Bottom navigation code removed
 });
