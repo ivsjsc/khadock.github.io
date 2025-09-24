@@ -1,10 +1,10 @@
 [build]
   publish = "."
   command = "echo 'Static site - no build required'"
-  ignore = "git diff --quiet HEAD^ HEAD -- package.json"
 
 [build.environment]
   NODE_VERSION = "18"
+  SKIP_FRAMEWORK_DETECTION = "true"
 
 [[redirects]]
   from = "/api/*"
