@@ -1,9 +1,7 @@
 [build]
   publish = "."
-  command = "echo 'Static site - no build required'"
 
-[build.environment]
-  NODE_VERSION = "18"
+[context.production.environment]
   SKIP_FRAMEWORK_DETECTION = "true"
 
 [[redirects]]
