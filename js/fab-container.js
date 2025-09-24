@@ -2,7 +2,8 @@
 // This script handles the interactivity for the Floating Action Button (FAB).
 // It toggles the visibility of the social media icons when the main FAB button is clicked.
 
-document.addEventListener('DOMContentLoaded', function() {
+// Wait for all application components, including fab-container.html, to be loaded.
+document.addEventListener('allAppComponentsLoaded', function() {
     // Get references to the main FAB button and the container for social icons
     const mainFabBtn = document.getElementById('mainFabBtn');
     const socialIconsContainer = document.getElementById('socialIconsContainer');
