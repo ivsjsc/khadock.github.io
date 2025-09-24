@@ -10,14 +10,14 @@ import {
     signInWithPopup
 } from 'firebase/auth';
 
-// Firebase configuration (replace with your actual config)
+// Firebase configuration
 const firebaseConfig = {
-    apiKey: "your-api-key",
-    authDomain: "your-project.firebaseapp.com",
-    projectId: "your-project-id",
-    storageBucket: "your-project.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "your-app-id"
+    apiKey: "AIzaSyANwe5uC6icxUqlTTlcMzWRujK-xE6rpTw",
+    authDomain: "gen-lang-client-0011229021.firebaseapp.com",
+    projectId: "gen-lang-client-0011229021",
+    storageBucket: "gen-lang-client-0011229021.firebasestorage.app",
+    messagingSenderId: "717501634945",
+    appId: "1:717501634945:web:d9d83cb63613c7133f3080"
 };
 
 // Initialize Firebase

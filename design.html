@@ -478,98 +478,6 @@
         </section>
     </main>
 
-    <!-- Authentication Modal -->
-    <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-            <div class="flex justify-between items-center mb-6">
-                <h2 id="authModalTitle" class="text-2xl font-bold text-sky-800">Sign In</h2>
-                <button class="modal-close text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-
-            <!-- Sign In Form -->
-            <form id="signinForm" class="space-y-4">
-                <div>
-                    <label for="signin-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input type="email" id="signin-email" name="email" required
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
-                </div>
-                <div>
-                    <label for="signin-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                    <input type="password" id="signin-password" name="password" required
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
-                </div>
-                <button type="submit" 
-                        class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2 px-4 rounded-md transition-colors">
-                    Sign In
-                </button>
-                <button type="button" data-auth-google
-                        class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition-colors flex items-center justify-center">
-                    <i class="fab fa-google mr-2"></i>
-                    Sign in with Google
-                </button>
-                <p class="text-sm text-center text-gray-600">
-                    Don't have an account? 
-                    <button type="button" data-auth-signup class="text-sky-600 hover:text-sky-800">Sign up</button>
-                </p>
-            </form>
-
-            <!-- Sign Up Form -->
-            <form id="signupForm" class="space-y-4 hidden">
-                <div>
-                    <label for="signup-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input type="email" id="signup-email" name="email" required
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
-                </div>
-                <div>
-                    <label for="signup-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                    <input type="password" id="signup-password" name="password" required
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
-                </div>
-                <button type="submit" 
-                        class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2 px-4 rounded-md transition-colors">
-                    Create Account
-                </button>
-                <button type="button" data-auth-google
-                        class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition-colors flex items-center justify-center">
-                    <i class="fab fa-google mr-2"></i>
-                    Sign up with Google
-                </button>
-                <p class="text-sm text-center text-gray-600">
-                    Already have an account? 
-                    <button type="button" data-auth-login class="text-sky-600 hover:text-sky-800">Sign in</button>
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <!-- User Dashboard (shown after authentication) -->
-    <div id="userDashboard" class="fixed top-4 right-4 bg-white rounded-lg shadow-lg p-4 hidden z-40" data-auth-required>
-        <div class="flex items-center justify-between mb-2">
-            <span class="text-sm text-gray-600">Welcome, <span data-user-info></span>!</span>
-            <button data-auth-logout class="text-xs text-red-600 hover:text-red-800">Sign Out</button>
-        </div>
-        <button id="viewSavedDesigns" class="text-xs bg-sky-100 text-sky-700 px-2 py-1 rounded hover:bg-sky-200">
-            View Saved Designs
-        </button>
-    </div>
-
-    <!-- Saved Designs Modal -->
-    <div id="savedDesignsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[80vh] overflow-hidden">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold text-sky-800">Your Saved Designs</h2>
-                <button id="closeSavedDesigns" class="text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            <div id="savedDesignsList" class="overflow-y-auto max-h-96">
-                <!-- Saved designs will be loaded here -->
-            </div>
-        </div>
-    </div>
-
     <div id="fab-container-placeholder"></div>
     <div id="footer-placeholder"></div>
 
@@ -583,10 +491,9 @@
 
     <script src="js/fab-container.js"></script>    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/auth.js" type="module" defer></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/generateDesign.js" type="module" defer></script>
+    <script src="js/ai-design-simple.js" defer></script>
     <script src="js/design-page.js" type="module" defer></script>
 
     <script>

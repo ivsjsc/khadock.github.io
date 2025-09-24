@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhaDock Firebase Integration Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-sky-800 mb-6">KhaDock Firebase Integration Test</h1>
+        
+        <!-- Authentication Status -->
+        <div class="bg-white rounded-lg p-6 mb-6 shadow">
+            <h2 class="text-xl font-semibold mb-4">Authentication Status</h2>
+            <div id="authStatus" class="mb-4">
+                <p class="text-gray-600">Checking authentication status...</p>
+            </div>
+            
+            <!-- Auth Buttons -->
+            <div class="space-x-4">
+                <button id="loginBtn" data-auth-login class="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">
+                    Sign In
+                </button>
+                <button id="logoutBtn" data-auth-logout class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 hidden">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+
+        <!-- API Testing -->
+        <div class="bg-white rounded-lg p-6 mb-6 shadow">
+            <h2 class="text-xl font-semibold mb-4">AI Design Generator Test</h2>
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Design Prompt:</label>
+                <textarea id="testPrompt" rows="3" class="w-full border rounded px-3 py-2"
+                          placeholder="Describe your dream dock...">A luxury floating dock with seating area for a lakefront property</textarea>
+            </div>
+            <button id="testAIBtn" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 disabled:opacity-50" disabled>
+                Test AI Generator
+            </button>
+            <div id="aiTestResult" class="mt-4 hidden"></div>
+        </div>
+
+        <!-- Server Status -->
+        <div class="bg-white rounded-lg p-6 mb-6 shadow">
+            <h2 class="text-xl font-semibold mb-4">Server Status</h2>
+            <div id="serverStatus">
+                <button id="checkServerBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Check Server Status
+                </button>
+            </div>
+            <div id="serverResult" class="mt-4"></div>
+        </div>
+
+        <!-- Contact Form Test -->
+        <div class="bg-white rounded-lg p-6 shadow">
+            <h2 class="text-xl font-semibold mb-4">Contact Form Test</h2>
+            <form id="testContactForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Name:</label>
+                    <input type="text" name="name" required class="w-full border rounded px-3 py-2" placeholder="Test User">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email:</label>
+                    <input type="email" name="email" required class="w-full border rounded px-3 py-2" placeholder="test@example.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Message:</label>
+                    <textarea name="message" rows="3" required class="w-full border rounded px-3 py-2"
+                              placeholder="Test message for Firebase integration"></textarea>
+                </div>
+                <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                    Test Contact Form
+                </button>
+            </form>
+            <div id="contactResult" class="mt-4"></div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="authModalTitle" class="text-2xl font-bold text-sky-800">Sign In</h2>
+                <button class="modal-close text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Sign In Form -->
+            <form id="signinForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" name="email" required
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" name="password" required
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
+                </div>
+                <button type="submit" 
+                        class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2 px-4 rounded-md transition-colors">
+                    Sign In
+                </button>
+                <button type="button" data-auth-google
+                        class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition-colors flex items-center justify-center">
+                    <i class="fab fa-google mr-2"></i>
+                    Sign in with Google
+                </button>
+                <p class="text-sm text-center text-gray-600">
+                    Don't have an account? 
+                    <button type="button" data-auth-signup class="text-sky-600 hover:text-sky-800">Sign up</button>
+                </p>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signupForm" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" name="email" required
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" name="password" required
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
+                </div>
+                <button type="submit" 
+                        class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2 px-4 rounded-md transition-colors">
+                    Create Account
+                </button>
+                <button type="button" data-auth-google
+                        class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md transition-colors flex items-center justify-center">
+                    <i class="fab fa-google mr-2"></i>
+                    Sign up with Google
+                </button>
+                <p class="text-sm text-center text-gray-600">
+                    Already have an account? 
+                    <button type="button" data-auth-login class="text-sky-600 hover:text-sky-800">Sign in</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Include Firebase and Auth modules -->
+    <script src="js/auth.js" type="module"></script>
+    <script type="module">
+        import { getCurrentUser, makeAuthenticatedRequest, showAuthModal } from './js/auth.js';
+
+        // Update auth status
+        function updateAuthStatus(user) {
+            const authStatus = document.getElementById('authStatus');
+            const loginBtn = document.getElementById('loginBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const testAIBtn = document.getElementById('testAIBtn');
+
+            if (user) {
+                authStatus.innerHTML = `
+                    <div class="bg-green-100 p-3 rounded">
+                        <p class="text-green-800">✅ Authenticated as: <strong>${user.email}</strong></p>
+                        <p class="text-sm text-green-600">User ID: ${user.uid}</p>
+                    </div>
+                `;
+                loginBtn.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+                testAIBtn.disabled = false;
+            } else {
+                authStatus.innerHTML = `
+                    <div class="bg-yellow-100 p-3 rounded">
+                        <p class="text-yellow-800">⚠️ Not authenticated</p>
+                        <p class="text-sm text-yellow-600">Sign in to test AI features</p>
+                    </div>
+                `;
+                loginBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'none';
+                testAIBtn.disabled = true;
+            }
+        }
+
+        // Monitor auth state changes
+        const authInterval = setInterval(() => {
+            updateAuthStatus(getCurrentUser());
+        }, 1000);
+
+        // Test AI Generator
+        document.getElementById('testAIBtn').addEventListener('click', async () => {
+            const prompt = document.getElementById('testPrompt').value;
+            const resultDiv = document.getElementById('aiTestResult');
+            
+            if (!prompt.trim()) {
+                alert('Please enter a prompt');
+                return;
+            }
+
+            resultDiv.innerHTML = '<div class="bg-blue-100 p-3 rounded">Testing AI Generator...</div>';
+            resultDiv.classList.remove('hidden');
+
+            try {
+                const response = await makeAuthenticatedRequest('http://localhost:3001/api/khadock-gemini-proxy', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        prompt: prompt,
+                        targetLanguage: 'English',
+                        requestType: 'initialDesign'
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="bg-green-100 p-3 rounded">
+                            <h4 class="font-semibold text-green-800 mb-2">✅ AI Response:</h4>
+                            <div class="text-sm text-green-700 max-h-48 overflow-y-auto">${data.text}</div>
+                            ${data.saved ? '<p class="text-xs text-green-600 mt-2">✅ Design saved to your account</p>' : ''}
+                        </div>
+                    `;
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error?.message || 'API request failed');
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="bg-red-100 p-3 rounded">
+                        <h4 class="font-semibold text-red-800 mb-2">❌ Error:</h4>
+                        <p class="text-sm text-red-700">${error.message}</p>
+                    </div>
+                `;
+            }
+        });
+
+        // Test Server Status
+        document.getElementById('checkServerBtn').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('serverResult');
+            resultDiv.innerHTML = '<div class="bg-blue-100 p-3 rounded">Checking server...</div>';
+
+            try {
+                const response = await fetch('http://localhost:3001/api/health');
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <div class="bg-green-100 p-3 rounded">
+                        <h4 class="font-semibold text-green-800 mb-2">✅ Server Status:</h4>
+                        <pre class="text-sm text-green-700">${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="bg-red-100 p-3 rounded">
+                        <h4 class="font-semibold text-red-800 mb-2">❌ Server Error:</h4>
+                        <p class="text-sm text-red-700">${error.message}</p>
+                        <p class="text-xs text-red-600 mt-1">Make sure the server is running: npm start</p>
+                    </div>
+                `;
+            }
+        });
+
+        // Test Contact Form
+        document.getElementById('testContactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const resultDiv = document.getElementById('contactResult');
+            const formData = new FormData(e.target);
+            const contactData = Object.fromEntries(formData.entries());
+
+            resultDiv.innerHTML = '<div class="bg-blue-100 p-3 rounded">Submitting contact form...</div>';
+
+            try {
+                const response = await fetch('http://localhost:3001/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(contactData)
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="bg-green-100 p-3 rounded">
+                            <h4 class="font-semibold text-green-800 mb-2">✅ Contact Form Submitted:</h4>
+                            <p class="text-sm text-green-700">${data.message}</p>
+                        </div>
+                    `;
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error?.message || 'Form submission failed');
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="bg-red-100 p-3 rounded">
+                        <h4 class="font-semibold text-red-800 mb-2">❌ Contact Form Error:</h4>
+                        <p class="text-sm text-red-700">${error.message}</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
