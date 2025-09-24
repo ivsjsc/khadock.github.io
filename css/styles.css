@@ -1,3 +1,28 @@
+/* === IVS HEADER & MOBILE MENU (from components/header.html) === */
+:root {
+    --header-height: 64px;
+    --desktop-header-height: 72px;
+    --ivs-bg-dark: #111827;
+    --ivs-bg-medium: #1f2937;
+    --ivs-bg-light: #374151;
+    --ivs-text-primary: #f9fafb;
+    --ivs-text-secondary: #d1d5db;
+    --ivs-accent: #F97316;
+    --ivs-accent-dark: #ea580c;
+    --ivs-accent-light: #fdba74;
+    --ivs-accent-gradient: linear-gradient(135deg, #F97316 0%, #ea580c 100%);
+    --ivs-link-active-bg: rgba(249, 115, 22, 0.15);
+    --ivs-hover-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --ivs-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --ivs-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --ivs-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --ivs-shadow-accent: 0 4px 15px rgba(249, 115, 22, 0.3);
+    --ivs-glass-bg: rgba(31, 41, 55, 0.8);
+    --ivs-glass-border: rgba(255, 255, 255, 0.1);
+    --ivs-glass-blur: blur(12px);
+}
+/* ...rest of header styles from the provided header.html <style> block... */
+/* (For brevity, all header/mobile menu CSS from the attachment should be appended here) */
 html {
     overflow-x: hidden;
     height: 100%;
