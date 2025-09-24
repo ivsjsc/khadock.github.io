@@ -18,7 +18,7 @@
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
             <h2 class="text-2xl font-semibold text-sky-700 mb-4">
                 <i class="fas fa-magic mr-2"></i>
-                Mô tả ý tưởng thiết kế của bạn
+                Describe your dock design idea
             </h2>
             
             <div class="mb-4">
@@ -26,7 +26,7 @@
                     id="ai-design-input" 
                     rows="4" 
                     class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-sky-500 focus:border-transparent"
-                    placeholder="Ví dụ: Cầu tàu hiện đại cho biệt thự ven hồ, có chỗ ngồi thư giãn và bảo vệ khỏi nắng..."
+                    placeholder="Example: Modern floating dock for a sailboat, with LED lighting, composite decking, and a swim ladder. 30 feet long, space for entertaining guests."
                 ></textarea>
             </div>
 
@@ -36,14 +36,14 @@
                     class="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center"
                 >
                     <i class="fas fa-wand-magic-sparkles mr-2"></i>
-                    Tạo Thiết Kế
+                    Generate Design
                 </button>
                 <button 
                     id="ai-clear-input-btn" 
                     class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                 >
                     <i class="fas fa-eraser mr-2"></i>
-                    Xóa
+                    Clear
                 </button>
             </div>
 
@@ -51,7 +51,7 @@
             <div id="ai-loading" class="hidden bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
                 <div class="flex items-center">
                     <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-sky-500 mr-3"></div>
-                    <span id="ai-loading-text" class="text-blue-700">Đang tạo thiết kế sáng tạo...</span>
+                    <span id="ai-loading-text" class="text-blue-700">Generating your creative dock design...</span>
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
             <div id="ai-error" class="hidden bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
                 <div class="flex items-center">
                     <i class="fas fa-exclamation-triangle text-red-500 mr-3"></i>
-                    <span class="text-red-700">Có lỗi xảy ra</span>
+                    <span class="text-red-700">Something went wrong. Please try again.</span>
                 </div>
             </div>
 

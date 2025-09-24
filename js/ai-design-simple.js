@@ -105,9 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Simple API call function
     async function callAIAPI(prompt) {
-        // Allow overriding API base via window.KHADOCK_API_BASE if provided
-        const base = (window && window.KHADOCK_API_BASE) ? window.KHADOCK_API_BASE : "http://localhost:3001";
-        const apiUrl = `${base}/api/ai-design`;
+    // Allow overriding API base via window.KHADOCK_API_BASE if provided
+    const base = (window && window.KHADOCK_API_BASE) ? window.KHADOCK_API_BASE : "http://localhost:3001";
+    const apiUrl = `${base}/api/ai-design`;
 
         try {
             let response = await fetch(apiUrl, {
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     prompt: prompt,
-                    targetLanguage: "Vietnamese" // Change to Vietnamese for local use
+                    targetLanguage: "English" // Default to English for US market
                 })
             });
 
