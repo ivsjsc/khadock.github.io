@@ -105,10 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Simple API call function
     async function callAIAPI(prompt) {
-        const apiUrl = "http://localhost:3001/api/ai-design";
+        // Allow overriding API base via window.KHADOCK_API_BASE if provided
+        const base = (window && window.KHADOCK_API_BASE) ? window.KHADOCK_API_BASE : "http://localhost:3001";
+        const apiUrl = `${base}/api/ai-design`;
 
         try {
-            const response = await fetch(apiUrl, {
+            let response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -116,6 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     targetLanguage: "Vietnamese" // Change to Vietnamese for local use
                 })
             });
+
+            // If running on GitHub Pages or remote and localhost is not reachable, fallback to same-origin or a production API if defined
+            if (!response.ok && (response.status === 0 || response.status === 404)) {
+                const fallbackBase = (window && window.KHADOCK_API_BASE_FALLBACK) ? window.KHADOCK_API_BASE_FALLBACK : '';
+                if (fallbackBase) {
+                    try {
+                        response = await fetch(`${fallbackBase}/api/ai-design`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ prompt, targetLanguage: "Vietnamese" })
+                        });
+                    } catch (e) {
+                        // ignore and let error be handled below
+                    }
+                }
+            }
 
             if (!response.ok) {
                 let errorData;

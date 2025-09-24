@@ -1,5 +1,6 @@
 // js/design-page.js
-import { makeAuthenticatedRequest, getCurrentUser, showAuthModal } from './auth.js';
+// Note: Avoid importing ./auth.js directly because it uses bare imports (firebase/*),
+// which break in the browser without a bundler. We'll use optional globals if present.
 
 document.addEventListener('DOMContentLoaded', () => {
     // Stats Counter Animation (from design.html inline script)

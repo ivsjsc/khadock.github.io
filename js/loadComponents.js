@@ -25,10 +25,12 @@ async function loadAppComponents(callback) {
     // Đã thay đổi đường dẫn từ tuyệt đối sang tương đối
     const HEADER_COMPONENT_URL = 'components/header.html';
     const FOOTER_COMPONENT_URL = 'components/footer.html';
+    const FAB_COMPONENT_URL = 'components/fab-container.html';
 
     await Promise.all([
         loadComponent('header-placeholder', HEADER_COMPONENT_URL),
-        loadComponent('footer-placeholder', FOOTER_COMPONENT_URL)
+        loadComponent('footer-placeholder', FOOTER_COMPONENT_URL),
+        loadComponent('fab-container-placeholder', FAB_COMPONENT_URL)
     ]);
 
     if (typeof callback === 'function') {
