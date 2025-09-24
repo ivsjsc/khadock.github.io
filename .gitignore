@@ -1,0 +1,31 @@
+# Ignore environment variables
+.env
+.env.local
+.env.production
+
+# Ignore node modules
+node_modules/
+
+# Ignore logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore build files
+dist/
+build/
+
+# Ignore temporary files
+*.tmp
+*.temp
