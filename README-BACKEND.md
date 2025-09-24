@@ -85,8 +85,34 @@ Content-Type: application/json
 For production deployment:
 1. Set `NODE_ENV=production`
 2. Configure proper CORS origins
-3. Use a process manager like PM2
+3. Use a process manager like PM2 (if self-hosting)
 4. Set up SSL/TLS certificates
+
+### Deploy to Render (Free)
+
+We've included a `render.yaml` for one-click setup on Render.
+
+Steps:
+1. Push this repository to GitHub (already done).
+2. Go to https://render.com, create an account, click New -> Blueprint -> Connect this repo.
+3. Render reads `render.yaml` and configures a Web Service.
+4. Add Environment Variables:
+   - `GEMINI_API_KEY` = your key (required)
+   - `ALLOWED_ORIGINS` = `https://khadock.com,https://www.khadock.com,https://khadock.github.io`
+5. Deploy. After deploy, you'll get a URL like `https://khadock-ai-server.onrender.com`.
+
+Frontend integration (GitHub Pages):
+Add a small inline script before loading `js/ai-design-simple.js` on pages that use AI:
+
+```html
+<script>
+  window.KHADOCK_API_BASE = 'https://khadock-ai-server.onrender.com';
+  window.KHADOCK_API_BASE_FALLBACK = 'https://khadock-ai-server.onrender.com';
+</script>
+<script src="js/ai-design-simple.js" defer></script>
+```
+
+This makes the AI generator call your deployed server instead of `localhost`.
 
 ## 🐛 Troubleshooting
 

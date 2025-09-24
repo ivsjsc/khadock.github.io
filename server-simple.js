@@ -19,9 +19,30 @@ const port = process.env.PORT || 3001;
 const genAI = process.env.GEMINI_API_KEY ? new GoogleGenerativeAI(process.env.GEMINI_API_KEY) : null;
 
 // Middleware
+// CORS: allow localhost during dev, GitHub Pages, and custom domains; support env override via ALLOWED_ORIGINS
+const defaultAllowed = [
+    'http://localhost:3000',
+    'http://127.0.0.1:5500',
+    'http://localhost:3001',
+    'https://khadock.github.io',
+    'https://khadock.com',
+    'https://www.khadock.com'
+];
+const envAllowed = (process.env.ALLOWED_ORIGINS || '')
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean);
+const allowedOrigins = Array.from(new Set([...defaultAllowed, ...envAllowed]));
+
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://127.0.0.1:5500', 'https://khadock.github.io'],
-    credentials: true
+    origin: function (origin, callback) {
+        // Allow non-browser requests or same-origin
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) return callback(null, true);
+        return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
+    credentials: true,
+    optionsSuccessStatus: 200
 }));
 app.use(express.json());
 app.use(express.static('.'));

@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: khadock-ai-server
+    env: node
+    plan: free
+    runtime: node
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    branch: main
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: "https://khadock.com,https://www.khadock.com,https://ivsjsc.github.io,https://khadock.github.io"
