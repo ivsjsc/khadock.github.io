@@ -1,13 +1,20 @@
 [build]
   publish = "."
   command = "echo 'Static site - no build required'"
+  ignore = "git diff --quiet HEAD^ HEAD -- package.json"
 
 [build.environment]
   NODE_VERSION = "18"
 
+# Disable Next.js plugin for static site
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    enabled = false
+
 [[redirects]]
   from = "/api/*"
-  to = "https://your-render-app.onrender.com/:splat"
+  to = "https://khadock-backend.onrender.com/:splat"
   status = 200
 
 [[headers]]
