@@ -1,4 +1,6 @@
 // js/design-page.js
+import { makeAuthenticatedRequest, getCurrentUser, showAuthModal } from './auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     // Stats Counter Animation (from design.html inline script)
     function animateCounter(element, target) {
@@ -125,4 +127,78 @@ document.addEventListener('DOMContentLoaded', () => {
             aiInput.focus();
         });
     }
+
+    // User Dashboard and Saved Designs functionality
+    const viewSavedDesignsBtn = document.getElementById('viewSavedDesigns');
+    const savedDesignsModal = document.getElementById('savedDesignsModal');
+    const closeSavedDesignsBtn = document.getElementById('closeSavedDesigns');
+    const savedDesignsList = document.getElementById('savedDesignsList');
+
+    if (viewSavedDesignsBtn) {
+        viewSavedDesignsBtn.addEventListener('click', loadSavedDesigns);
+    }
+
+    if (closeSavedDesignsBtn) {
+        closeSavedDesignsBtn.addEventListener('click', () => {
+            savedDesignsModal.style.display = 'none';
+        });
+    }
+
+    async function loadSavedDesigns() {
+        if (!getCurrentUser()) {
+            alert('Please sign in to view your saved designs.');
+            return;
+        }
+
+        try {
+            savedDesignsList.innerHTML = '<div class="text-center py-4">Loading your designs...</div>';
+            savedDesignsModal.style.display = 'flex';
+
+            const response = await makeAuthenticatedRequest('/api/user/designs');
+            
+            if (!response.ok) {
+                throw new Error('Failed to load designs');
+            }
+
+            const data = await response.json();
+            displaySavedDesigns(data.designs || []);
+
+        } catch (error) {
+            console.error('Error loading saved designs:', error);
+            savedDesignsList.innerHTML = '<div class="text-center py-4 text-red-600">Error loading designs. Please try again.</div>';
+        }
+    }
+
+    function displaySavedDesigns(designs) {
+        if (designs.length === 0) {
+            savedDesignsList.innerHTML = '<div class="text-center py-8 text-gray-500">No saved designs yet. Generate your first design to see it here!</div>';
+            return;
+        }
+
+        const designsHtml = designs.map((design, index) => `
+            <div class="border border-gray-200 rounded-lg p-4 mb-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-semibold text-gray-800">Design #${index + 1}</h3>
+                    <small class="text-gray-500">${new Date(design.createdAt).toLocaleDateString()}</small>
+                </div>
+                <div class="bg-gray-50 p-3 rounded text-sm mb-2">
+                    <strong>Prompt:</strong> ${design.prompt}
+                </div>
+                <div class="text-sm text-gray-700 max-h-32 overflow-y-auto">
+                    ${design.generatedDesign.substring(0, 200)}${design.generatedDesign.length > 200 ? '...' : ''}
+                </div>
+                <button onclick="viewFullDesign('${design.id}')" class="mt-2 text-sky-600 hover:text-sky-800 text-sm">
+                    View Full Design
+                </button>
+            </div>
+        `).join('');
+
+        savedDesignsList.innerHTML = designsHtml;
+    }
+
+    // Make viewFullDesign available globally
+    window.viewFullDesign = function(designId) {
+        // This could open a detailed view modal or scroll to the AI output area
+        alert('Full design view feature coming soon!');
+    };
 });

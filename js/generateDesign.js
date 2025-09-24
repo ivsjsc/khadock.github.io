@@ -1,4 +1,5 @@
 // js/generateDesign.js
+import { makeAuthenticatedRequest, getCurrentUser, showAuthModal } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Main AI Design Elements
@@ -126,8 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return html + contentHtml; // Combine title and formatted content
     }
 
-    // Updated function to call your backend proxy
+    // Updated function to call your backend proxy with Firebase authentication
     async function callBackendAPI(promptText, targetLanguage = "English", type = "design") {
+        // Check if user is authenticated
+        const currentUser = getCurrentUser();
+        if (!currentUser) {
+            // Show auth modal if user is not authenticated
+            showAuthModal('signin');
+            throw new Error('Please sign in to use the AI Design Generator.');
+        }
+
         // Endpoint for your backend proxy. Adjust if necessary.
         const backendApiUrl = "http://localhost:3001/api/khadock-gemini-proxy";
 
@@ -140,9 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch(backendApiUrl, {
+            const response = await makeAuthenticatedRequest(backendApiUrl, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payloadToBackend)
             });
 
@@ -156,6 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 const errorMessage = errorData?.error?.message || errorData.message || `Backend request failed.`;
                 console.error("Backend Error Data:", errorData);
+                
+                // If unauthorized, show auth modal
+                if (response.status === 401) {
+                    showAuthModal('signin');
+                }
+                
                 throw new Error(errorMessage);
             }
 
@@ -163,6 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Assuming your backend forwards the 'text' part of the Gemini response
             if (result && result.text) {
+                // Show success message if design was saved
+                if (result.saved) {
+                    console.log('✅ Design saved to your account');
+                }
                 return result.text;
             } else if (result && result.error) { // Handle errors forwarded by backend
                 throw new Error(result.error.message || "An error occurred at the backend.");
