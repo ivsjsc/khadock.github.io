@@ -211,7 +211,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- AI Creative Design Section -->
         <section class="py-16 md:py-20 bg-gradient-to-r from-sky-50 to-blue-50" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -299,6 +299,163 @@
                 </div>
             </div>
         </section>    
+
+        <!-- AI Design Generator Section -->
+        <section id="ai-design-generator" class="py-16 md:py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <div class="inline-flex items-center px-4 py-2 rounded-full bg-sky-100 text-sky-700 font-medium mb-6" data-aos="zoom-in">
+                            <i class="fas fa-magic mr-2"></i>
+                            AI Design Generator
+                        </div>
+                        
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6" data-aos="fade-down">
+                            Design Your Dream Dock with AI
+                        </h2>
+                        
+                        <p class="text-lg md:text-xl text-slate-300 mb-8" data-aos="fade-up">
+                            Describe your vision and let our AI create a custom dock design for you
+                        </p>
+                    </div>
+
+                    <!-- AI Input Section -->
+                    <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-8" data-aos="fade-up" data-aos-delay="200">
+                        <div class="mb-6">
+                            <label for="ai-design-input" class="block text-lg font-semibold text-slate-800 mb-3">
+                                <i class="fas fa-lightbulb text-sky-500 mr-2"></i>
+                                Describe Your Dream Dock
+                            </label>
+                            <textarea 
+                                id="ai-design-input" 
+                                rows="4" 
+                                class="w-full px-4 py-3 border-2 border-slate-300 rounded-xl focus:border-sky-500 focus:outline-none transition-colors text-slate-700"
+                                placeholder="Example: I want a modern floating dock for my sailboat, with LED lighting, composite decking, and space for entertaining guests. The dock should be 30 feet long and include a swim ladder...">
+                            </textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button 
+                                id="ai-generate-btn" 
+                                class="flex-1 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <i class="fas fa-robot mr-2"></i>
+                                Generate Design
+                            </button>
+                            
+                            <button 
+                                id="ai-clear-input-btn" 
+                                class="px-6 py-4 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-xl transition-colors">
+                                <i class="fas fa-eraser mr-2"></i>
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Loading Animation -->
+                    <div id="ai-loading" class="hidden text-center py-8">
+                        <div class="inline-flex items-center px-6 py-3 bg-white rounded-xl shadow-lg">
+                            <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-sky-500 mr-3"></div>
+                            <span id="ai-loading-text" class="text-slate-700 font-medium">Generating your design...</span>
+                        </div>
+                    </div>
+
+                    <!-- Error Display -->
+                    <div id="ai-error" class="hidden bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            <span>Something went wrong. Please try again.</span>
+                        </div>
+                    </div>
+
+                    <!-- AI Output -->
+                    <div id="ai-output-container" class="hidden">
+                        <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-6 md:p-8 shadow-xl">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-check-circle text-green-500 text-2xl mr-3"></i>
+                                <h3 class="text-2xl font-bold text-slate-800">Your AI-Generated Design</h3>
+                            </div>
+                            <div id="ai-output" class="text-slate-700 prose prose-lg max-w-none">
+                                <!-- AI generated content will appear here -->
+                            </div>
+                            
+                            <!-- Additional Features -->
+                            <div id="gemini-extra-features" class="mt-8 pt-6 border-t border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-4">Get More Details</h4>
+                                <div class="flex flex-wrap gap-3">
+                                    <button id="ai-maintenance-btn" class="px-4 py-2 bg-sky-100 hover:bg-sky-200 text-sky-700 rounded-lg transition-colors">
+                                        <i class="fas fa-tools mr-2"></i>
+                                        Maintenance Tips
+                                    </button>
+                                    <button id="ai-accessories-btn" class="px-4 py-2 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-lg transition-colors">
+                                        <i class="fas fa-plus-circle mr-2"></i>
+                                        Accessories
+                                    </button>
+                                </div>
+                                
+                                <!-- Loading states for extra features -->
+                                <div id="ai-maintenance-loading" class="hidden mt-4">
+                                    <div class="flex items-center text-sky-600">
+                                        <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-sky-500 mr-2"></div>
+                                        Loading maintenance tips...
+                                    </div>
+                                </div>
+                                
+                                <div id="ai-accessories-loading" class="hidden mt-4">
+                                    <div class="flex items-center text-purple-600">
+                                        <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-purple-500 mr-2"></div>
+                                        Loading accessory suggestions...
+                                    </div>
+                                </div>
+                                
+                                <!-- Output for extra features -->
+                                <div id="ai-maintenance-output" class="hidden mt-4 p-4 bg-sky-50 rounded-lg"></div>
+                                <div id="ai-accessories-output" class="hidden mt-4 p-4 bg-purple-50 rounded-lg"></div>
+                            </div>
+                            
+                            <!-- Contact CTA -->
+                            <div class="mt-8 text-center">
+                                <p class="text-slate-600 mb-4">Love this design? Let's make it reality!</p>
+                                <a href="contact.html" class="inline-flex items-center px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-colors shadow-lg hover:shadow-xl">
+                                    <i class="fas fa-phone mr-2"></i>
+                                    Contact Us for Quote
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How to Use Instructions -->
+                    <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="text-2xl font-bold text-white mb-6">How to Use the AI Design Generator</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-slate-800 p-6 rounded-xl">
+                                <div class="w-12 h-12 bg-sky-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">1</span>
+                                </div>
+                                <h4 class="font-semibold text-white mb-2">Describe Your Vision</h4>
+                                <p class="text-slate-300 text-sm">Include details like size, materials, style, and intended use</p>
+                            </div>
+                            
+                            <div class="bg-slate-800 p-6 rounded-xl">
+                                <div class="w-12 h-12 bg-sky-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">2</span>
+                                </div>
+                                <h4 class="font-semibold text-white mb-2">Generate Design</h4>
+                                <p class="text-slate-300 text-sm">Our AI analyzes your requirements and creates a custom design</p>
+                            </div>
+                            
+                            <div class="bg-slate-800 p-6 rounded-xl">
+                                <div class="w-12 h-12 bg-sky-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-xl">3</span>
+                                </div>
+                                <h4 class="font-semibold text-white mb-2">Get Your Quote</h4>
+                                <p class="text-slate-300 text-sm">Contact us to turn your AI-generated design into reality</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Facebook Video Embed Section -->
         <section class="py-8 px-4 bg-white rounded-xl shadow-lg mb-12" data-aos="fade-up" data-aos-delay="300">
             <h2 class="text-3xl md:text-4xl font-bold text-sky-700 mb-4 text-center">Watch Our Video</h2>
