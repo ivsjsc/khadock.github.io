@@ -12,13 +12,13 @@
 
     <meta property="og:title" content="KhaDock - Florida's Premier Dock Solutions with AI Design">
     <meta property="og:description" content="Expert dock design, construction, remodeling, and maintenance services in Florida by KhaDock. Try our AI Design Generator!">
-    <meta property="og:image" content="https://khadock.com/images/logo/logoicon_512.png">
+    <meta property="og:image" content="images/logo/logoicon_512.png">
     <meta property="og:url" content="https://khadock.com">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KhaDock">
 
-    <link rel="icon" href="https://khadock.com/images/logo/logo.jpg" type="image/jpeg">
-    <link rel="apple-touch-icon" href="https://khadock.com/images/logo/logoicon_512.png">
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="images/logo/logoicon_512.png">
     <link rel="manifest" href="manifest.json">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -50,6 +50,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
         }
 
         .hero-banner-container {
@@ -123,7 +124,7 @@
 
     <main id="main-content-area">
         <section class="full-width-image-section h-screen" data-aos="fade-in">
-            <!-- Hiển thị hình ảnh lớn -->
+            <!-- Display a large image -->
             <div class="relative w-full h-full">
                 <img
                     src="images/logo/logo1.jpg"
@@ -416,7 +417,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <div id="fab-container-placeholder"></div>
@@ -437,6 +437,14 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Load the header component into the placeholder
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading header:', error));
+
             if (typeof window.loadAppComponents === 'function') {
                 window.loadAppComponents();
             } else {
