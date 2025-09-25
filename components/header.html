@@ -1,62 +1,110 @@
-<header class="fixed inset-x-0 top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <a href="/" class="flex items-center gap-3">
-            <img src="images/logo/favicon.ico" alt="KhaDock logo" class="h-10 w-10 rounded-md shadow-sm">
-            <div class="leading-tight">
-                <span class="text-xl font-semibold text-slate-900">KhaDock</span>
-                <span class="block text-xs tracking-wide text-slate-500">Dock &amp; Home Construction LLC</span>
+<header class="fixed inset-x-0 top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+            <!-- Logo & Brand -->
+            <div class="flex-shrink-0">
+                <a href="/" class="flex items-center gap-2">
+                    <img src="/images/logo/favicon.ico" alt="KhaDock" class="h-9 w-9">
+                    <div class="flex flex-col">
+                        <span class="text-lg font-semibold leading-none text-slate-900">KhaDock</span>
+                        <span class="text-xs text-slate-500">Dock & Home Construction LLC</span>
+                    </div>
+                </a>
             </div>
-        </a>
-
-        <nav class="hidden items-center gap-6 lg:flex">
-            <a href="/" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Home</a>
-            <a href="services.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Services</a>
-            <a href="gallery.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Gallery</a>
-            <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">AI Design</a>
-            <a href="contact.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Contact</a>
-            <a href="tel:+18335042262" class="rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-sky-700">Call Now</a>
-        </nav>
-
-        <button id="kd-mobile-toggle" class="rounded-lg p-2 lg:hidden hover:bg-slate-200/60" aria-label="Toggle navigation">
-            <svg class="h-6 w-6 text-slate-800" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex lg:items-center lg:gap-6">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/services.html" class="nav-link">Services</a>
+                <a href="/gallery.html" class="nav-link">Gallery</a>
+                <a href="/design.html" class="nav-link">AI Design</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+                <a href="tel:+18335042262" class="ml-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 transition-colors">
+                    Call Now
+                </a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button type="button" class="inline-flex lg:hidden items-center justify-center rounded-md p-2 text-slate-700 hover:bg-slate-100 hover:text-slate-900" aria-label="Main menu" aria-expanded="false" id="mobile-menu-button">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
     </div>
-
-    <div id="kd-mobile-menu" class="invisible flex flex-col gap-4 border-t border-slate-200 bg-white px-4 py-5 opacity-0 shadow transition-all duration-200 lg:hidden">
-        <a href="/" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Home</a>
-        <a href="services.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Services</a>
-        <a href="gallery.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Gallery</a>
-        <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">AI Design</a>
-        <a href="contact.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Contact</a>
-        <a href="tel:+18335042262" class="rounded-full bg-sky-600 px-4 py-3 text-center text-sm font-semibold text-white shadow transition hover:bg-sky-700">Call Now</a>
+    <!-- Mobile Menu Panel -->
+    <div class="hidden lg:hidden" id="mobile-menu">
+        <div class="space-y-1 px-4 pb-3 pt-2">
+            <a href="/" class="mobile-nav-link">Home</a>
+            <a href="/services.html" class="mobile-nav-link">Services</a>
+            <a href="/gallery.html" class="mobile-nav-link">Gallery</a>
+            <a href="/design.html" class="mobile-nav-link">AI Design</a>
+            <a href="/contact.html" class="mobile-nav-link">Contact</a>
+            <a href="tel:+18335042262" class="mobile-nav-link text-blue-600 font-medium">
+                Call Now
+            </a>
+        </div>
     </div>
 </header>
 
+<style>
+.nav-link {
+    position: relative;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #475569;
+    transition: color 0.2s;
+}
+.nav-link:hover { color: #2563eb; }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #2563eb;
+    transition: width 0.2s;
+}
+.nav-link:hover::after { width: 100%; }
+.mobile-nav-link {
+    display: block;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #475569;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+}
+.mobile-nav-link:hover {
+    background-color: #f1f5f9;
+    color: #2563eb;
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('kd-mobile-toggle');
-    const menu = document.getElementById('kd-mobile-menu');
-
-    if (!toggle || !menu) return;
-
-    const closeMenu = () => {
-        menu.classList.add('opacity-0', 'invisible', '-translate-y-2');
-    };
-    const openMenu = () => {
-        menu.classList.remove('opacity-0', 'invisible', '-translate-y-2');
-    };
-
-    toggle.addEventListener('click', () => {
-        const isHidden = menu.classList.contains('invisible');
-        isHidden ? openMenu() : closeMenu();
-    });
-
-    document.addEventListener('click', (evt) => {
-        if (!menu.contains(evt.target) && !toggle.contains(evt.target)) closeMenu();
-    });
-
-    closeMenu();
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => {
+            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            // Toggle menu icon
+            const icon = menuButton.querySelector('svg');
+            if (isExpanded) {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
+            } else {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>';
+            }
+        });
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                menuButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.classList.add('hidden');
+                const icon = menuButton.querySelector('svg');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
+            }
+        });
+    }
 });
 </script>
