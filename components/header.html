@@ -6,16 +6,16 @@
                 <span class="text-2xl font-bold text-sky-400 group-hover:text-sky-300 transition-colors">KhaDock.com</span>
             </a>
 
-            <!-- NAV DESKTOP -->
+            <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-4 lg:space-x-6 items-center" aria-label="Main desktop navigation">
-                <a href="index.html" id="nav-index" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base">
+                <a href="index.html" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base">
                     <img src="images/logo/logoicon_512.png" alt="" class="h-5 w-5 lg:h-6 lg:w-6 rounded-sm" width="24" height="24">
                     <span>Home</span>
                 </a>
-
-                <!-- Dropdown cho Services -->
+                
+                <!-- Services Dropdown -->
                 <div class="relative group">
-                    <button id="services-dropdown-btn" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base" aria-expanded="false" aria-controls="services-menu">
+                    <button class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base" aria-expanded="false" aria-controls="services-menu">
                         <span>Services</span>
                         <i class="fas fa-chevron-down text-xs ml-1 transition-transform duration-300 group-hover:rotate-180"></i>
                     </button>
@@ -32,17 +32,17 @@
                     </div>
                 </div>
 
-                <a href="projects.html" id="nav-projects" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base">
+                <a href="projects.html" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base">
                     <i class="fas fa-hammer"></i>
                     <span>Projects</span>
                 </a>
                 
-                <a href="design.html" id="nav-design" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base">
+                <a href="design.html" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base">
                     <i class="fas fa-drafting-compass"></i>
                     <span>AI Design</span>
                 </a>
 
-                <a href="about.html" id="nav-about" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base">
+                <a href="about.html" class="flex items-center space-x-2 hover:text-sky-400 transition-colors duration-300 font-medium px-3 py-2 rounded-md text-sm lg:text-base">
                     <i class="fas fa-info-circle"></i>
                     <span>About Us</span>
                 </a>
@@ -65,12 +65,12 @@
         </div>
     </div>
     
-    <!-- Mobile Menu - Invisible by default -->
+    <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed top-20 left-0 w-full bg-slate-800 text-slate-200 px-4 py-3 opacity-0 transition-all duration-300 transform -translate-y-2 md:hidden">
        <nav class="flex flex-col gap-3" aria-label="Mobile navigation">
             <a href="index.html" class="block px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors">Home</a>
             
-            <!-- Dropdown cho Mobile -->
+            <!-- Mobile Services Dropdown -->
             <div class="relative">
                 <button id="mobile-services-dropdown-btn" class="flex items-center justify-between w-full px-3 py-2.5 rounded-md hover:bg-slate-600 hover:text-sky-300 font-medium transition-colors" aria-expanded="false" aria-controls="mobile-services-menu">
                     <span>Services</span>
@@ -94,24 +94,3 @@
        </nav>
     </div>
 </header>
-
-<div class="bottom-nav md:hidden fixed bottom-0 left-0 w-full bg-slate-800 shadow-t z-50">
-    <div class="flex justify-around items-center h-16">
-        <a href="index.html" class="bottom-nav-item active">
-            <i class="fas fa-home fa-lg"></i>
-            <span class="bottom-nav-label">Home</span>
-        </a>
-        <a href="services.html" class="bottom-nav-item">
-            <i class="fas fa-tools fa-lg"></i>
-            <span class="bottom-nav-label">Services</span>
-        </a>
-        <a href="projects.html" class="bottom-nav-item">
-            <i class="fas fa-hammer fa-lg"></i>
-            <span class="bottom-nav-label">Projects</span>
-        </a>
-        <a href="contact.html" class="bottom-nav-item">
-            <i class="fas fa-phone-alt fa-lg"></i>
-            <span class="bottom-nav-label">Contact</span>
-        </a>
-    </div>
-</div>
