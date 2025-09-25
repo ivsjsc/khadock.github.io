@@ -1,0 +1,93 @@
+<header class="fixed inset-x-0 top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-3 sm:px-4 lg:px-8">
+        <div class="flex h-12 items-center justify-between">
+            <!-- Logo & Brand -->
+            <a href="/" class="flex items-center gap-2">
+                <img src="/images/logo/favicon.ico" alt="KhaDock" class="h-8 w-8">
+                <div class="flex flex-col leading-tight">
+                    <span class="text-base font-semibold text-slate-900">KhaDock</span>
+                    <span class="text-[10px] text-slate-500">Dock & Home Construction LLC</span>
+                </div>
+            </a>
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-4">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/services.html" class="nav-link">Services</a>
+                <a href="/gallery.html" class="nav-link">Gallery</a>
+                <a href="/design.html" class="nav-link">AI Design</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+                <a href="tel:+18335042262" class="ml-2 rounded-full bg-blue-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-700 transition-colors">Call Now</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button type="button" class="inline-flex lg:hidden items-center justify-center rounded-md p-2 text-slate-700 hover:bg-slate-100" aria-label="Main menu" aria-expanded="false" id="mobile-menu-button">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu Panel -->
+    <div class="hidden lg:hidden" id="mobile-menu">
+        <div class="space-y-1 px-3 pb-2 pt-2">
+            <a href="/" class="mobile-nav-link">Home</a>
+            <a href="/services.html" class="mobile-nav-link">Services</a>
+            <a href="/gallery.html" class="mobile-nav-link">Gallery</a>
+            <a href="/design.html" class="mobile-nav-link">AI Design</a>
+            <a href="/contact.html" class="mobile-nav-link">Contact</a>
+            <a href="tel:+18335042262" class="mobile-nav-link text-blue-600 font-medium">Call Now</a>
+        </div>
+    </div>
+</header>
+
+<style>
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #475569;
+    transition: color 0.2s;
+    padding: 0.25rem 0.5rem;
+}
+.nav-link:hover { color: #2563eb; }
+.mobile-nav-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #475569;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+}
+.mobile-nav-link:hover {
+    background-color: #f1f5f9;
+    color: #2563eb;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => {
+            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            // Toggle menu icon
+            const icon = menuButton.querySelector('svg');
+            if (isExpanded) {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
+            } else {
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>';
+            }
+        });
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                menuButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.classList.add('hidden');
+                const icon = menuButton.querySelector('svg');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
+            }
+        });
+    }
+});
+</script>
