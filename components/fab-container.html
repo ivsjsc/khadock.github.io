@@ -1,3 +1,35 @@
+<header class="fixed inset-x-0 top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+        <a href="/" class="flex items-center gap-3">
+            <img src="images/logo/favicon.ico" alt="KhaDock logo" class="h-10 w-10 rounded-md shadow-sm">
+            <div class="leading-tight">
+                <span class="text-xl font-semibold text-slate-900">KhaDock</span>
+                <span class="block text-xs tracking-wide text-slate-500">Dock &amp; Home Construction LLC</span>
+            </div>
+        </a>
+        <nav class="hidden items-center gap-6 lg:flex">
+            <a href="/" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Home</a>
+            <a href="services.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Services</a>
+            <a href="gallery.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Gallery</a>
+            <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">AI Design</a>
+            <a href="contact.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Contact</a>
+            <a href="tel:+18335042262" class="rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-sky-700">Call Now</a>
+        </nav>
+        <button id="kd-mobile-toggle" class="rounded-lg p-2 lg:hidden hover:bg-slate-200/60" aria-label="Toggle navigation">
+            <svg class="h-6 w-6 text-slate-800" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+    <div id="kd-mobile-menu" class="invisible flex flex-col gap-4 border-t border-slate-200 bg-white px-4 py-5 opacity-0 shadow transition-all duration-200 lg:hidden">
+        <a href="/" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Home</a>
+        <a href="services.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Services</a>
+        <a href="gallery.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Gallery</a>
+        <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">AI Design</a>
+        <a href="contact.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Contact</a>
+        <a href="tel:+18335042262" class="rounded-full bg-sky-600 px-4 py-3 text-center text-sm font-semibold text-white shadow transition hover:bg-sky-700">Call Now</a>
+    </div>
+</header>
 <div id="fab-container" class="fixed right-4 z-30 flex flex-col items-end space-y-5 bottom-5 md:bottom-3">
     
     <!-- Nút Cuộn lên đầu trang -->
@@ -7,48 +39,41 @@
         <i class="fas fa-arrow-up text-lg"></i>
     </button>
 
-    <!-- Nút FAB Chia Sẻ -->
-    <div class="relative group/fab">
-        <button id="share-main-btn" title="Chia sẻ" aria-label="Mở menu chia sẻ" aria-haspopup="true" aria-expanded="false" aria-controls="share-options"
-                class="fab-item flex items-center justify-center w-14 h-14 md:w-16 md:h-16 shadow-xl hover:shadow-2xl focus:ring-2 focus:ring-orange-400 outline-none"
-                tabindex="0" role="button">
-            <i class="fas fa-share-alt text-xl"></i>
-        </button>
-        <div id="share-options" 
-             class="fab-submenu-panel hidden absolute bottom-full mb-3 p-3 flex flex-wrap justify-start gap-2 transition-all duration-300 ease-out opacity-0 scale-95 transform origin-bottom-right pointer-events-none right-0 w-auto max-w-[calc(100vw-32px)] md:min-w-[240px] md:w-auto"
-             role="menu" aria-orientation="vertical" aria-labelledby="share-main-btn">
-            <!-- Nội dung cho share-options sẽ được JavaScript chèn vào đây -->
-        </div>
-    </div>
+    <!-- Nút Gọi điện -->
+    <button id="call-btn" title="Gọi điện" aria-label="Gọi điện"
+            class="fab-item flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
+            tabindex="0" role="button">
+        <i class="fas fa-phone text-lg"></i>
+    </button>
 
-    <!-- Nút FAB IVS Assistant -->
-    <div class="relative group/fab">
-        <button id="assistant-main-btn" title="IVS Assistant" aria-label="Mở IVS Assistant" aria-haspopup="true" aria-expanded="false" aria-controls="assistant-options"
-                class="fab-item flex items-center justify-center w-14 h-14 md:w-16 md:h-16 shadow-xl hover:shadow-2xl focus:ring-2 focus:ring-orange-400 outline-none"
-                tabindex="0" role="button">
-            <i class="fas fa-robot text-xl"></i>
-        </button>
-        <div id="assistant-options" 
-             class="fab-submenu-panel hidden absolute bottom-full mb-3 p-3 flex flex-wrap justify-start gap-2 transition-all duration-300 ease-out opacity-0 scale-95 transform origin-bottom-right pointer-events-none right-0 w-auto max-w-[calc(100vw-32px)] md:min-w-[260px] md:w-auto"
-             role="menu" aria-orientation="vertical" aria-labelledby="assistant-main-btn">
-            <!-- Nội dung cho assistant-options sẽ được JavaScript chèn vào đây -->
-        </div>
-    </div>
-
-    <!-- Nút FAB Liên Hệ (chính) -->
-    <div class="relative group/fab">
-        <button id="contact-main-btn" title="Liên hệ" aria-label="Mở menu liên hệ" aria-haspopup="true" aria-expanded="false" aria-controls="contact-options"
-                class="fab-item flex items-center justify-center w-14 h-14 md:w-16 md:h-16 shadow-xl hover:shadow-2xl focus:ring-2 focus:ring-orange-400 outline-none"
-                tabindex="0" role="button">
-            <i class="fas fa-comment-dots text-xl"></i>
-        </button>
-        <div id="contact-options" 
-             class="fab-submenu-panel hidden absolute bottom-full mb-3 p-3 flex flex-wrap justify-start gap-2 transition-all duration-300 ease-out opacity-0 scale-95 transform origin-bottom-right pointer-events-none right-0 w-auto max-w-[calc(100vw-32px)] md:min-w-[260px] md:w-auto"
-             role="menu" aria-orientation="vertical" aria-labelledby="contact-main-btn">
-            <!-- Nội dung cho contact-options sẽ được JavaScript chèn vào đây -->
-        </div>
-    </div>
+    <!-- Nút Chat -->
+    <button id="chat-btn" title="Chat" aria-label="Chat"
+            class="fab-item flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
+            tabindex="0" role="button">
+        <i class="fas fa-comment-dots text-lg"></i>
+    </button>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollBtn = document.getElementById('scroll-to-top-btn');
+    const callBtn = document.getElementById('call-btn');
+    const chatBtn = document.getElementById('chat-btn');
+
+    // Hiện nút cuộn lên khi cuộn xuống
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+            scrollBtn.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
+        } else {
+            scrollBtn.classList.add('opacity-0', 'scale-90', 'pointer-events-none');
+        }
+    });
+
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    callBtn.addEventListener('click', () => window.location.href = 'tel:+18335042262');
+    chatBtn.addEventListener('click', () => window.location.href = 'contact.html#chat');
+});
+</script>
 
 <style>
     /* FAB Container Styles */
@@ -96,60 +121,6 @@
         transform: scale(0, 0);
         opacity: 0.3;
         transition: 0s;
-    }
-    
-    /* FAB Submenu Panel */
-    .fab-submenu-panel {
-        background: rgba(31, 41, 55, 0.95);
-        border-radius: 1rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Keyframes for submenu entry/exit */
-    @keyframes fab-panel-in {
-        0% { opacity: 0; transform: translateY(10px) scale(0.95); }
-        100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes fab-panel-out {
-        0% { opacity: 1; transform: translateY(0) scale(1); }
-        100% { opacity: 0; transform: translateY(10px) scale(0.95); }
-    }
-
-    /* Apply animations based on 'show' class */
-    .fab-submenu-panel.show {
-        animation: fab-panel-in 0.3s ease forwards;
-    }
-
-    .fab-submenu-panel:not(.show) {
-        animation: fab-panel-out 0.3s ease forwards;
-    }
-    
-    /* FAB Submenu Items */
-    .fab-submenu-item {
-        display: flex;
-        align-items: center;
-        padding: 0.75rem 1rem;
-        color: #f3f4f6;
-        border-radius: 0.75rem;
-        transition: all 0.2s ease;
-        background: rgba(255, 255, 255, 0.05);
-        margin: 0.25rem;
-        min-width: 120px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .fab-submenu-item:hover {
-        background: rgba(249, 115, 22, 0.15);
-        transform: translateX(2px);
-    }
-    
-    .fab-submenu-item:active {
-        transform: scale(0.98);
-        background: rgba(249, 115, 22, 0.2);
     }
     
     /* Shake animation for attention */
