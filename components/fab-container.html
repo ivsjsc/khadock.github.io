@@ -30,7 +30,7 @@
         <a href="tel:+18335042262" class="rounded-full bg-sky-600 px-4 py-3 text-center text-sm font-semibold text-white shadow transition hover:bg-sky-700">Call Now</a>
     </div>
 </header>
-<div id="fab-container" class="fixed right-4 z-30 flex flex-col items-end space-y-5 bottom-5 md:bottom-3">
+<div id="fab-container" class="fixed right-4 bottom-5 z-30 flex flex-col items-end space-y-4 md:bottom-4">
     
     <!-- Nút Cuộn lên đầu trang -->
     <button id="scroll-to-top-btn" title="Lên đầu trang" aria-label="Lên đầu trang"
@@ -39,26 +39,18 @@
         <i class="fas fa-arrow-up text-lg"></i>
     </button>
 
-    <!-- Nút Gọi điện -->
-    <button id="call-btn" title="Gọi điện" aria-label="Gọi điện"
+    <!-- Nút Liên hệ -->
+    <button id="contact-fab-btn" title="Liên hệ ngay" aria-label="Liên hệ ngay"
             class="fab-item flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
             tabindex="0" role="button">
         <i class="fas fa-phone text-lg"></i>
-    </button>
-
-    <!-- Nút Chat -->
-    <button id="chat-btn" title="Chat" aria-label="Chat"
-            class="fab-item flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
-            tabindex="0" role="button">
-        <i class="fas fa-comment-dots text-lg"></i>
     </button>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const scrollBtn = document.getElementById('scroll-to-top-btn');
-    const callBtn = document.getElementById('call-btn');
-    const chatBtn = document.getElementById('chat-btn');
+    const contactBtn = document.getElementById('contact-fab-btn');
 
     // Hiện nút cuộn lên khi cuộn xuống
     window.addEventListener('scroll', () => {
@@ -70,8 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    callBtn.addEventListener('click', () => window.location.href = 'tel:+18335042262');
-    chatBtn.addEventListener('click', () => window.location.href = 'contact.html#chat');
+    contactBtn.addEventListener('click', () => window.location.href = 'tel:+18335042262');
 });
 </script>
 
