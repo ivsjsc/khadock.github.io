@@ -27,64 +27,6 @@
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const scrollBtn = document.getElementById('scroll-to-top-btn');
-    const contactBtn = document.getElementById('contact-fab-btn');
-    const contactCard = document.getElementById('contact-info-card');
-    const contactWrapper = document.getElementById('contact-fab-wrapper');
-
-    // Hiện nút cuộn lên khi cuộn xuống
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) {
-            scrollBtn.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
-        } else {
-            scrollBtn.classList.add('opacity-0', 'scale-90', 'pointer-events-none');
-        }
-    });
-
-    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    let contactHideTimeout;
-
-    const showContactCard = () => {
-        clearTimeout(contactHideTimeout);
-        contactCard.classList.remove('hidden');
-        requestAnimationFrame(() => {
-            contactCard.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
-            contactCard.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
-        });
-    };
-
-    const hideContactCard = () => {
-        if (contactCard.classList.contains('hidden')) return;
-        contactCard.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-        contactCard.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
-        contactHideTimeout = setTimeout(() => contactCard.classList.add('hidden'), 180);
-    };
-
-    contactBtn.addEventListener('click', (event) => {
-        event.stopPropagation();
-        if (contactCard.classList.contains('hidden')) {
-            showContactCard();
-        } else {
-            hideContactCard();
-        }
-    });
-
-    document.addEventListener('click', (event) => {
-        if (!contactWrapper.contains(event.target)) {
-            hideContactCard();
-        }
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            hideContactCard();
-        }
-    });
-});
-</script>
-
 <style>
     /* FAB Container Styles */
     .fab-item {
