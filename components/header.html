@@ -20,20 +20,15 @@
                         <a href="services.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 transition-colors">All Services</a>
                         <a href="services.html#dock-construction" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 transition-colors">Dock Construction</a>
                         <a href="services.html#remodeling" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 transition-colors">Remodeling & Upgrade</a>
+                        <a href="services.html#repair" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 transition-colors">Repair & Maintenance</a>
                     </div>
                 </div>
             </div>
 
             <a href="projects.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Projects</a>
-            <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">AI Design Studio</a>
+            <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Design</a>
             <a href="about.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">About Us</a>
-            
-            <div class="flex items-center space-x-2">
-                <button id="call-btn" title="Call Us" aria-label="Call Us" class="flex items-center justify-center w-10 h-10 rounded-full bg-sky-500 text-white hover:bg-sky-600 shadow transition duration-300">
-                    <i class="fas fa-phone text-lg"></i>
-                </button>
-                <a href="tel:+18335042262" class="rounded-full bg-sky-600 px-3 py-1 text-sm font-semibold text-white shadow transition hover:bg-sky-700">Call Now</a>
-            </div>
+            <a href="contact.html" class="rounded-full bg-sky-600 px-3 py-1 text-sm font-semibold text-white shadow transition hover:bg-sky-700">Contact Now</a>
         </nav>
         
         <button id="kd-mobile-toggle" class="rounded-lg p-2 lg:hidden hover:bg-slate-200/60" aria-label="Toggle navigation">
@@ -56,11 +51,12 @@
                     <a href="services.html" class="block text-sm text-slate-700 hover:text-sky-600 transition-colors">All Services</a>
                     <a href="services.html#dock-construction" class="block text-sm text-slate-700 hover:text-sky-600 transition-colors">Dock Construction</a>
                     <a href="services.html#remodeling" class="block text-sm text-slate-700 hover:text-sky-600 transition-colors">Remodeling & Upgrade</a>
+                    <a href="services.html#repair" class="block text-sm text-slate-700 hover:text-sky-600 transition-colors">Repair & Maintenance</a>          
                 </div>
             </div>
 
             <a href="projects.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Projects</a>
-            <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">AI Design Studio</a>
+            <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Design</a>
             <a href="about.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">About Us</a>
             <a href="contact.html" class="rounded-full bg-sky-600 px-3 py-2 text-center text-sm font-semibold text-white shadow transition hover:bg-sky-700">Contact Now</a>
         </nav>
@@ -71,6 +67,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const mobileToggle = document.getElementById('kd-mobile-toggle');
     const mobileMenu = document.getElementById('kd-mobile-menu');
+    const servicesToggle = mobileMenu.querySelector('button');
+    const servicesMenu = document.getElementById('mobile-services-menu-content');
 
     mobileToggle.addEventListener('click', () => {
         const isExpanded = mobileMenu.classList.toggle('is-expanded');
@@ -88,9 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    const servicesToggle = mobileMenu.querySelector('button');
-    const servicesMenu = document.getElementById('mobile-services-menu-content');
-    
     servicesToggle.addEventListener('click', () => {
         const isExpanded = servicesToggle.getAttribute('aria-expanded') === 'true';
         servicesToggle.setAttribute('aria-expanded', !isExpanded);
@@ -106,3 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 #kd-mobile-menu.is-expanded {
+    display: flex;
+}
+</style>
