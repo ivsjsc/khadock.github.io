@@ -64,7 +64,7 @@
         <h1 class="text-2xl font-bold text-white mb-8">Dashboard</h1>
         <nav class="flex flex-col gap-3">
             <a href="#" class="sidebar-link p-3 rounded-lg font-semibold flex items-center gap-3 hover:bg-slate-700" data-tab="customers"><i class="fas fa-users fa-fw"></i> Customers</a>
-            <a href="#" class="sidebar-link p-3 rounded-lg font-semibold flex items-center gap-3 hover:bg-slate-700" data-tab="products"><i class="fas fa-box-open fa-fw"></i> Products</a>
+            <a href="#" class="sidebar-link p-3 rounded-lg font-semibold flex items-center gap-3 hover:bg-slate-700" data-tab="items"><i class="fas fa-box-open fa-fw"></i> Items</a>
             <a href="#" class="sidebar-link p-3 rounded-lg font-semibold flex items-center gap-3 hover:bg-slate-700 active" data-tab="invoice-generator"><i class="fas fa-file-invoice fa-fw"></i> Invoice Generator</a>
         </nav>
         <div class="mt-auto">
@@ -103,11 +103,11 @@
             </div>
         </div>
 
-        <!-- Products Tab -->
-        <div id="products" class="tab-content">
+        <!-- Items Tab -->
+        <div id="items" class="tab-content">
             <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-bold text-slate-800">Products</h2>
-                <button onclick="productManager.openModal()" class="btn btn-primary"><i class="fas fa-plus"></i> Add Product</button>
+                <h2 class="text-3xl font-bold text-slate-800">Items</h2>
+                <button onclick="itemManager.openModal()" class="btn btn-primary"><i class="fas fa-plus"></i> Add Item</button>
             </div>
              <div class="bg-white p-6 rounded-lg shadow-md">
                 <table class="w-full text-left">
@@ -118,7 +118,7 @@
                             <th class="p-4">Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="product-table-body"></tbody>
+                    <tbody id="item-table-body"></tbody>
                 </table>
             </div>
         </div>
@@ -182,7 +182,15 @@
                     <textarea id="customerAddress" placeholder="Customer details will appear here..." class="text-gray-600 w-full border rounded px-2 py-1 bg-slate-50" rows="3" readonly></textarea>
                 </div>
             </section>
-            <section class="mt-10"><table class="w-full text-sm text-left text-gray-500"><thead class="text-xs text-gray-700 uppercase bg-gray-100"><tr><th class="px-6 py-3 rounded-l-lg w-1/2">Item</th><th class="px-6 py-3 text-center">Qty</th><th class="px-6 py-3 text-right">Price</th><th class="px-6 py-3 text-right">Total</th><th class="px-2 py-2 no-print rounded-r-lg"></th></tr></thead><tbody id="items-table"></tbody></table></section>
+            <section class="mt-10">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                        <tr><th class="px-6 py-3 rounded-l-lg w-1/2">Item</th><th class="px-6 py-3 text-center">Qty</th><th class="px-6 py-3 text-right">Price</th><th class="px-6 py-3 text-right">Total</th><th class="px-2 py-2 no-print rounded-r-lg"></th></tr>
+                    </thead>
+                    <tbody id="items-table"></tbody>
+                </table>
+                <datalist id="item-datalist"></datalist>
+            </section>
             <div class="mt-4 no-print"><button id="addItemBtn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Item</button></div>
             <section class="mt-6 flex justify-end"><div class="w-full max-w-sm"><div class="flex justify-between py-2"><span class="font-semibold">Subtotal:</span><span id="subtotal" class="font-semibold">$0.00</span></div><div class="flex justify-between items-center py-2"><div class="flex items-center">Tax (<input type="number" id="taxRate" value="0" class="w-16 text-right border rounded px-2 py-1 mx-1">%):</div><span id="taxAmount" class="font-semibold">$0.00</span></div><div class="flex justify-between py-4 border-t mt-2 text-2xl font-bold"><span >Total:</span><span id="totalAmount">$0.00</span></div></div></section>
             <footer class="mt-12"><h4 class="font-semibold text-gray-500 uppercase tracking-wide">Notes</h4><textarea id="notes" class="w-full mt-2 p-2 border rounded" rows="3" placeholder="Thank you for your business!"></textarea></footer>
@@ -195,7 +203,7 @@
             document.getElementById('invoice-generator').innerHTML = invoiceGeneratorHTML;
             this.initTabs();
             customerManager.init();
-            productManager.init();
+            itemManager.init();
             invoiceManager.init();
         },
         initTabs() {
@@ -217,7 +225,7 @@
         exportAllData() {
             const allData = {
                 customers: customerManager.getAll(),
-                products: productManager.getAll(),
+                items: itemManager.getAll(),
                 invoiceDraft: invoiceManager.getDataObject(),
             };
             const dataStr = JSON.stringify(allData, null, 2);
@@ -237,7 +245,7 @@
                     const data = JSON.parse(e.target.result);
                     if (confirm('This will overwrite all existing data. Are you sure?')) {
                         if (data.customers) customerManager.importData(data.customers);
-                        if (data.products) productManager.importData(data.products);
+                        if (data.items) itemManager.importData(data.items);
                         if (data.invoiceDraft) invoiceManager.loadDraft(data.invoiceDraft);
                         alert('Data imported successfully!');
                     }
@@ -320,6 +328,21 @@
                 invoiceManager.populateCustomerSelect(); // Refresh invoice customer list
             }
         },
+        findOrCreate(itemData) {
+            const description = itemData.description?.trim();
+            if (!description) return false;
+
+            const existingItem = this.items.find(i => i.description.toLowerCase() === description.toLowerCase());
+            if (existingItem) return false;
+
+            const newItem = {
+                id: Date.now(),
+                description: description,
+                price: itemData.price || '0.00'
+            };
+            this.items.push(newItem);
+            return true;
+        },
         render() {
             this.tableBody.innerHTML = '';
             this.items.forEach(item => {
@@ -351,11 +374,11 @@
             <td class="p-4"><button class="btn-edit text-blue-600 hover:underline mr-4">Edit</button><button class="btn-delete text-red-600 hover:underline">Delete</button></td>`
     });
     
-    // --- PRODUCT MANAGER ---
-    const productManager = createCrudManager({
-        storageKey: 'crm_products',
-        tableBodyId: 'product-table-body',
-        modalTitle: { add: 'Add New Product', edit: 'Edit Product' },
+    // --- ITEM MANAGER ---
+    const itemManager = createCrudManager({
+        storageKey: 'crm_items',
+        tableBodyId: 'item-table-body',
+        modalTitle: { add: 'Add New Item', edit: 'Edit Item' },
         fields: ['description', 'price'],
         formFields: `
             <label class="block"><span class="text-gray-700">Description</span><input type="text" id="description" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required></label>
@@ -376,23 +399,23 @@
                 docTitle: document.getElementById('documentTitle'),
                 docTypeSelect: document.getElementById('documentTypeSelect'),
                 docNumber: document.getElementById('documentNumber'),
-                customerSelect: document.getElementById('customer-select')
+                customerSelect: document.getElementById('customer-select'),
+                itemDatalist: document.getElementById('item-datalist')
             };
             this.elements.addItemBtn.addEventListener('click', () => this.createItemRow());
             this.elements.taxRate.addEventListener('input', this.updateTotals.bind(this));
             this.elements.docTypeSelect.addEventListener('change', this.updateDocumentType.bind(this));
             this.elements.customerSelect.addEventListener('change', this.handleCustomerSelect.bind(this));
             this.populateCustomerSelect();
+            this.populateItemDatalist();
             this.loadDraft();
         },
         createItemRow(item = { description: '', quantity: 1, price: '0.00' }) {
             const row = document.createElement('tr');
             row.className = 'item-row border-b';
             
-            const productOptions = productManager.getAll().map(p => `<option value="${p.description}">${p.description}</option>`).join('');
-
             row.innerHTML = `
-                <td class="px-6 py-2"><input list="product-datalist" placeholder="Item description" class="description border-0 focus:ring-0 p-0 w-full" value="${item.description}"></td>
+                <td class="px-6 py-2"><input list="item-datalist" placeholder="Item description" class="description border-0 focus:ring-0 p-0 w-full" value="${item.description}"></td>
                 <td class="px-6 py-2"><input type="number" value="${item.quantity}" min="0" class="quantity border-b text-center p-0 w-full"></td>
                 <td class="px-6 py-2"><input type="number" value="${item.price}" min="0" step="0.01" class="price border-b text-right p-0 w-full"></td>
                 <td class="px-6 py-2 text-right font-medium total-cell">$0.00</td>
@@ -401,10 +424,10 @@
             this.elements.itemsTable.appendChild(row);
             
             const descInput = row.querySelector('.description');
-            descInput.addEventListener('change', (e) => { // Use change to fire after selection
-                const selectedProduct = productManager.getAll().find(p => p.description === e.target.value);
-                if (selectedProduct) {
-                    row.querySelector('.price').value = selectedProduct.price;
+            descInput.addEventListener('change', (e) => { // Use 'change' to fire after selection from datalist
+                const selectedItem = itemManager.getAll().find(p => p.description === e.target.value);
+                if (selectedItem) {
+                    row.querySelector('.price').value = selectedItem.price;
                 }
                 this.updateTotals();
             });
@@ -442,6 +465,14 @@
                 this.elements.customerSelect.appendChild(option);
             });
         },
+        populateItemDatalist() {
+            this.elements.itemDatalist.innerHTML = '';
+            itemManager.getAll().forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.description;
+                this.elements.itemDatalist.appendChild(option);
+            });
+        },
         handleCustomerSelect(e) {
             const customerId = e.target.value;
             const customer = customerManager.getAll().find(c => c.id == customerId);
@@ -475,6 +506,21 @@
             };
         },
         saveDraft() {
+            let wasItemListUpdated = false;
+            this.elements.itemsTable.querySelectorAll('.item-row').forEach(row => {
+                const description = row.querySelector('.description').value;
+                const price = row.querySelector('.price').value;
+                if (itemManager.findOrCreate({ description, price })) {
+                    wasItemListUpdated = true;
+                }
+            });
+
+            if (wasItemListUpdated) {
+                itemManager.save();
+                itemManager.render();
+                this.populateItemDatalist();
+            }
+
             localStorage.setItem('crm_invoice_draft', JSON.stringify(this.getDataObject()));
             alert('Draft saved to browser!');
         },
@@ -523,3 +569,4 @@
     </script>
 </body>
 </html>
+
