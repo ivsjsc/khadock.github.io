@@ -1,38 +1,79 @@
-// fab-container.js
-// This script handles the interactivity for the Floating Action Button (FAB).
-// It toggles the visibility of the social media icons when the main FAB button is clicked.
+document.addEventListener('allAppComponentsLoaded', () => {
+    const fabContainer = document.getElementById('fab-container');
+    const contactButton = document.getElementById('contact-fab-btn');
+    const contactCard = document.getElementById('contact-info-card');
+    const contactWrapper = document.getElementById('contact-fab-wrapper');
+    const scrollTopButton = document.getElementById('scroll-to-top-btn');
 
-// Wait for all application components, including fab-container.html, to be loaded.
-document.addEventListener('allAppComponentsLoaded', function() {
-    // Get references to the main FAB button and the container for social icons
-    const mainFabBtn = document.getElementById('mainFabBtn');
-    const socialIconsContainer = document.getElementById('socialIconsContainer');
-    const fabContainer = document.getElementById('fab-container'); // Reference to the entire FAB container
+    if (!fabContainer) {
+        console.error('FAB container not found. Ensure fab-container.html is loaded.');
+        return;
+    }
 
-    // Check if both elements exist to prevent errors
-    if (mainFabBtn && socialIconsContainer && fabContainer) {
-        // Add a click event listener to the main FAB button
-        mainFabBtn.addEventListener('click', function() {
-            // Toggle the 'hidden' class to show/hide the social icons container
-            socialIconsContainer.classList.toggle('hidden');
-            
-            // Optional: Add/remove classes for a more explicit animation if needed
-            // For now, Tailwind's transition classes on the container handle basic fade/slide.
-            // If you want more complex animations (e.g., individual icon reveal),
-            // you would add/remove specific animation classes here.
+    function showContactCard() {
+        if (!contactCard) return;
+        contactCard.classList.remove('hidden');
+        requestAnimationFrame(() => {
+            contactCard.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
+            contactCard.classList.add('opacity-100', 'translate-y-0');
+        });
+    }
+
+    function hideContactCard() {
+        if (!contactCard) return;
+        contactCard.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+        contactCard.classList.remove('opacity-100', 'translate-y-0');
+        setTimeout(() => {
+            if (contactCard.classList.contains('opacity-0')) {
+                contactCard.classList.add('hidden');
+            }
+        }, 180);
+    }
+
+    if (contactButton && contactCard && contactWrapper) {
+        contactButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isHidden = contactCard.classList.contains('hidden') || contactCard.classList.contains('opacity-0');
+            if (isHidden) {
+                showContactCard();
+            } else {
+                hideContactCard();
+            }
         });
 
-        // Add a click event listener to the document to close the social icons
-        // when a click occurs outside the FAB container.
-        document.addEventListener('click', function(event) {
-            // Check if the click target is outside the FAB container AND
-            // if the social icons container is currently visible (not hidden).
-            if (!fabContainer.contains(event.target) && !socialIconsContainer.classList.contains('hidden')) {
-                socialIconsContainer.classList.add('hidden'); // Hide the social icons
+        document.addEventListener('click', (event) => {
+            if (!contactWrapper.contains(event.target)) {
+                hideContactCard();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                hideContactCard();
             }
         });
     } else {
-        // Log an error if the FAB elements are not found, indicating a potential loading issue.
-        console.error('FAB elements (mainFabBtn, socialIconsContainer, or fab-container) not found. Please ensure fab-container.html is loaded correctly.');
+        console.warn('Contact FAB elements missing.');
+    }
+
+    if (scrollTopButton) {
+        const toggleScrollButton = () => {
+            if (window.scrollY > 200) {
+                scrollTopButton.classList.remove('opacity-0', 'pointer-events-none', 'scale-90');
+                scrollTopButton.classList.add('opacity-100', 'scale-100');
+            } else {
+                scrollTopButton.classList.add('opacity-0', 'pointer-events-none', 'scale-90');
+                scrollTopButton.classList.remove('opacity-100', 'scale-100');
+            }
+        };
+
+        toggleScrollButton();
+        window.addEventListener('scroll', toggleScrollButton, { passive: true });
+
+        scrollTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    } else {
+        console.warn('Scroll-to-top FAB button not found.');
     }
 });

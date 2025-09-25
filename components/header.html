@@ -1,26 +1,27 @@
-<header class="fixed inset-x-0 top-0 z-40 border-b border-slate-200 bg-white/60 backdrop-blur-sm">
-    <div class="mx-auto flex h-10 max-w-6xl items-center justify-between px-2">
+<header class="nav-header fixed inset-x-0 top-0 z-40 border-b border-slate-200 bg-white/70 backdrop-blur-sm">
+    <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-3">
         <a href="/" class="flex items-center gap-2">
-            <img src="images/logo/favicon.ico" alt="KhaDock logo" class="h-7 w-7 rounded-md shadow-sm">
-                <div class="leading-tight">
-                    <span class="text-lg font-semibold text-slate-900">KhaDock</span>
-                    <span class="block text-xs tracking-wide text-slate-500">Dock &amp; Home Construction LLC</span>
+            <img src="images/logo/favicon.ico" alt="KhaDock logo" class="h-9 w-9 rounded-md shadow-sm">
+            <div class="leading-tight">
+                <span class="text-lg font-semibold text-slate-900">KhaDock</span>
+                <span class="block text-xs tracking-wide text-slate-500">Dock &amp; Home Construction LLC</span>
             </div>
         </a>
-        <nav class="hidden items-center gap-4 lg:flex">
+
+        <nav class="nav-links hidden items-center gap-5 lg:flex">
             <a href="/" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Home</a>
-            
+
             <div class="relative group">
-                <button type="button" class="text-sm font-medium text-slate-700 transition hover:text-sky-600 flex items-center">
+                <button type="button" class="flex items-center text-sm font-medium text-slate-700 transition hover:text-sky-600">
                     Services
-                    <i class="fas fa-chevron-down text-xs ml-1 transition-transform duration-300 group-hover:rotate-180"></i>
+                    <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
                 </button>
-                <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-95 origin-top">
+                <div class="invisible absolute left-0 mt-2 w-56 origin-top transform rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 transition-all duration-300 group-hover:visible group-hover:scale-100 group-hover:opacity-100">
                     <div class="py-1" role="menu">
-                        <a href="services.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 transition-colors">All Services</a>
-                        <a href="services.html#dock-construction" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 transition-colors">Dock Construction</a>
-                        <a href="services.html#remodeling" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 transition-colors">Remodeling & Upgrade</a>
-                        <a href="services.html#repair" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 transition-colors">Repair & Maintenance</a>
+                        <a href="services.html" class="block px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100">All Services</a>
+                        <a href="services.html#dock-construction" class="block px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100">Dock Construction</a>
+                        <a href="services.html#remodeling" class="block px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100">Remodeling &amp; Upgrade</a>
+                        <a href="services.html#repair" class="block px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100">Repair &amp; Maintenance</a>
                     </div>
                 </div>
             </div>
@@ -28,79 +29,37 @@
             <a href="https://khadock.com/projects.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Projects</a>
             <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Design</a>
             <a href="about.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">About Us</a>
-            <a href="contact.html" class="rounded-full bg-sky-600 px-3 py-1 text-sm font-semibold text-white shadow transition hover:bg-sky-700">Contact Now</a>
+            <a href="contact.html" class="rounded-full bg-sky-600 px-3 py-1.5 text-sm font-semibold text-white shadow transition hover:bg-sky-700">Contact</a>
         </nav>
-        
-        <button id="kd-mobile-toggle" class="rounded-lg p-2 lg:hidden hover:bg-slate-200/60" aria-label="Toggle navigation">
-            <svg class="h-6 w-6 text-slate-800" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+
+        <button id="kd-mobile-toggle" class="rounded-md p-2 transition hover:bg-slate-200/60 lg:hidden" aria-label="Toggle navigation" aria-expanded="false">
+            <svg class="h-6 w-6 text-slate-900" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
         </button>
     </div>
-    
-    <div id="kd-mobile-menu" class="fixed top-10 left-0 w-full bg-white/95 backdrop-blur-sm shadow transition-all duration-300 transform -translate-y-full opacity-0 lg:hidden">
-        <nav class="flex flex-col gap-3 p-4">
-            <a href="/" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Home</a>
-            
-            <div class="relative w-full">
-                <button class="text-sm font-medium text-slate-700 flex items-center justify-between w-full transition hover:text-sky-600" aria-expanded="false" aria-controls="mobile-services-menu-content">
-                    Services
-                    <i class="fas fa-chevron-down text-xs ml-1 transition-transform duration-300"></i>
+
+    <div id="kd-mobile-menu" class="fixed top-14 left-0 w-full translate-y-4 transform opacity-0 pointer-events-none transition-all duration-200 lg:hidden hidden" aria-hidden="true">
+        <nav class="mx-auto flex w-full max-w-md flex-col gap-3 rounded-b-2xl border border-slate-200 bg-white/95 p-4 shadow-xl backdrop-blur">
+            <a href="/" data-mobile-menu-link class="rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-sky-50 hover:text-sky-600">Home</a>
+
+            <div class="w-full">
+                <button id="mobile-services-toggle" class="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-sky-50 hover:text-sky-600" aria-expanded="false" aria-controls="mobile-services-menu-content">
+                    <span>Services</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200" id="mobile-services-icon"></i>
                 </button>
-                <div id="mobile-services-menu-content" class="ml-4 mt-2 flex flex-col space-y-2 max-h-0 overflow-hidden transition-all duration-300">
-                    <a href="services.html" class="block text-sm text-slate-700 hover:text-sky-600 transition-colors">All Services</a>
-                    <a href="services.html#dock-construction" class="block text-sm text-slate-700 hover:text-sky-600 transition-colors">Dock Construction</a>
-                    <a href="services.html#remodeling" class="block text-sm text-slate-700 hover:text-sky-600 transition-colors">Remodeling & Upgrade</a>
-                    <a href="services.html#repair" class="block text-sm text-slate-700 hover:text-sky-600 transition-colors">Repair & Maintenance</a>          
+                <div id="mobile-services-menu-content" class="ml-2 mt-2 flex max-h-0 flex-col gap-2 overflow-hidden rounded-md border border-slate-200/70 bg-slate-50 px-3 py-2 text-sm text-slate-700 transition-all duration-200">
+                    <a href="services.html" data-mobile-menu-link class="block rounded px-2 py-1 transition hover:bg-white hover:text-sky-600">All Services</a>
+                    <a href="services.html#dock-construction" data-mobile-menu-link class="block rounded px-2 py-1 transition hover:bg-white hover:text-sky-600">Dock Construction</a>
+                    <a href="services.html#remodeling" data-mobile-menu-link class="block rounded px-2 py-1 transition hover:bg-white hover:text-sky-600">Remodeling &amp; Upgrade</a>
+                    <a href="services.html#repair" data-mobile-menu-link class="block rounded px-2 py-1 transition hover:bg-white hover:text-sky-600">Repair &amp; Maintenance</a>
                 </div>
             </div>
 
-            <a href="https://khadock.com/projects.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Projects</a>
-            <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Design</a>
-            <a href="about.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">About Us</a>
-            <a href="contact.html" class="rounded-full bg-sky-600 px-3 py-2 text-center text-sm font-semibold text-white shadow transition hover:bg-sky-700">Contact Now</a>
+            <a href="https://khadock.com/projects.html" data-mobile-menu-link class="rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-sky-50 hover:text-sky-600">Projects</a>
+            <a href="design.html" data-mobile-menu-link class="rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-sky-50 hover:text-sky-600">Design</a>
+            <a href="about.html" data-mobile-menu-link class="rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-sky-50 hover:text-sky-600">About Us</a>
+            <a href="contact.html" data-mobile-menu-link class="rounded-md bg-sky-600 px-3 py-2 text-center text-sm font-semibold text-white shadow transition hover:bg-sky-700">Contact</a>
         </nav>
     </div>
 </header>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileToggle = document.getElementById('kd-mobile-toggle');
-    const mobileMenu = document.getElementById('kd-mobile-menu');
-    const servicesToggle = mobileMenu.querySelector('button');
-    const servicesMenu = document.getElementById('mobile-services-menu-content');
-
-    mobileToggle.addEventListener('click', () => {
-        const isExpanded = mobileMenu.classList.toggle('is-expanded');
-        mobileToggle.setAttribute('aria-expanded', isExpanded);
-        
-        mobileMenu.classList.toggle('-translate-y-full', !isExpanded);
-        mobileMenu.classList.toggle('opacity-0', !isExpanded);
-        
-        if (isExpanded) {
-            mobileMenu.style.display = 'flex';
-        } else {
-            setTimeout(() => {
-                mobileMenu.style.display = 'none';
-            }, 300); // Wait for the transition to finish before hiding
-        }
-    });
-
-    servicesToggle.addEventListener('click', () => {
-        const isExpanded = servicesToggle.getAttribute('aria-expanded') === 'true';
-        servicesToggle.setAttribute('aria-expanded', !isExpanded);
-        servicesMenu.classList.toggle('max-h-0');
-        servicesMenu.classList.toggle('max-h-96'); // Use a large enough value to accommodate all items
-    });
-});
-</script>
-<style>
-/* CSS to handle mobile menu visibility and transition */
-#kd-mobile-menu {
-    display: none;
-}
-
-#kd-mobile-menu.is-expanded {
-    display: flex;
-}
-</style>
