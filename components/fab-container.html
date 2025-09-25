@@ -13,7 +13,6 @@
             <a href="https://khadock.com/projects.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Projects</a>
             <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">AI Design</a>
             <a href="contact.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Contact</a>
-            <a href="tel:+18335042262" class="rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-sky-700">Call Now</a>
         </nav>
         <button id="kd-mobile-toggle" class="rounded-lg p-2 lg:hidden hover:bg-slate-200/60" aria-label="Toggle navigation">
             <svg class="h-6 w-6 text-slate-800" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -26,8 +25,7 @@
         <a href="services.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Services</a>
     <a href="https://khadock.com/projects.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Projects</a>
         <a href="design.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">AI Design</a>
-        <a href="contact.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Contact</a>
-        <a href="tel:+18335042262" class="rounded-full bg-sky-600 px-4 py-3 text-center text-sm font-semibold text-white shadow transition hover:bg-sky-700">Call Now</a>
+    <a href="contact.html" class="text-sm font-medium text-slate-700 transition hover:text-sky-600">Contact</a>
     </div>
 </header>
 <div id="fab-container" class="fixed right-4 bottom-5 z-30 flex flex-col items-end space-y-4 md:bottom-4">
@@ -39,18 +37,32 @@
         <i class="fas fa-arrow-up text-lg"></i>
     </button>
 
-    <!-- Nút Liên hệ -->
-    <button id="contact-fab-btn" title="Liên hệ ngay" aria-label="Liên hệ ngay"
-            class="fab-item flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
-            tabindex="0" role="button">
-        <i class="fas fa-phone text-lg"></i>
-    </button>
+    <div id="contact-fab-wrapper" class="relative flex flex-col items-end">
+        <div id="contact-info-card" class="absolute bottom-full right-0 mb-3 hidden w-60 rounded-lg border border-sky-100 bg-white/95 p-3 text-sm text-slate-700 opacity-0 shadow-lg backdrop-blur-sm transition-all duration-200 pointer-events-none translate-y-2">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Contact KhaDock</p>
+            <a href="tel:+18139393989" class="flex items-center gap-2 rounded-md px-2 py-1.5 text-slate-700 transition hover:bg-sky-50 hover:text-sky-700">
+                <i class="fas fa-phone text-sky-500"></i>
+                <span class="font-medium">+1 813-939-3989</span>
+            </a>
+            <a href="mailto:doduykha007@gmail.com" class="mt-1 flex items-center gap-2 rounded-md px-2 py-1.5 text-slate-700 transition hover:bg-sky-50 hover:text-sky-700">
+                <i class="fas fa-envelope text-sky-500"></i>
+                <span class="font-medium">doduykha007@gmail.com</span>
+            </a>
+        </div>
+        <button id="contact-fab-btn" title="Liên hệ ngay" aria-label="Liên hệ ngay"
+                class="fab-item flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
+                tabindex="0" role="button">
+            <i class="fas fa-phone text-lg"></i>
+        </button>
+    </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const scrollBtn = document.getElementById('scroll-to-top-btn');
     const contactBtn = document.getElementById('contact-fab-btn');
+    const contactCard = document.getElementById('contact-info-card');
+    const contactWrapper = document.getElementById('contact-fab-wrapper');
 
     // Hiện nút cuộn lên khi cuộn xuống
     window.addEventListener('scroll', () => {
@@ -62,7 +74,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    contactBtn.addEventListener('click', () => window.location.href = 'tel:+18335042262');
+    let contactHideTimeout;
+
+    const showContactCard = () => {
+        clearTimeout(contactHideTimeout);
+        contactCard.classList.remove('hidden');
+        requestAnimationFrame(() => {
+            contactCard.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
+            contactCard.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        });
+    };
+
+    const hideContactCard = () => {
+        if (contactCard.classList.contains('hidden')) return;
+        contactCard.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        contactCard.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+        contactHideTimeout = setTimeout(() => contactCard.classList.add('hidden'), 180);
+    };
+
+    contactBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        if (contactCard.classList.contains('hidden')) {
+            showContactCard();
+        } else {
+            hideContactCard();
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!contactWrapper.contains(event.target)) {
+            hideContactCard();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            hideContactCard();
+        }
+    });
 });
 </script>
 
