@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function callAIAPI(prompt) {
     // Allow overriding API base via window.KHADOCK_API_BASE if provided
     const base = (window && window.KHADOCK_API_BASE) ? window.KHADOCK_API_BASE : "http://localhost:3001";
-    const apiUrl = `${base}/api/ai-design`;
+    const apiUrl = "https://khadock-ai-server.onrender.com/api/ai-design";
 
         try {
             let response = await fetch(apiUrl, {
