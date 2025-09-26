@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Endpoint for your backend proxy. Adjust if necessary.
-        const backendApiUrl = "http://localhost:3001/api/khadock-gemini-proxy";
+        const backendApiUrl = "https://khadock-ai-server.onrender.com";
 
         // The payload to send to your backend.
         // Your backend will then use this to construct the full request to Gemini.
