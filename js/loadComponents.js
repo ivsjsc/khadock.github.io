@@ -63,7 +63,7 @@ function initializeHeaderFeatures() {
         }
     }
 
-    let currentLanguage = localStorage.getItem('language') || document.documentElement.lang || 'vi';
+    let currentLanguage = localStorage.getItem('language') || document.documentElement.lang || 'en';
     setActiveLangButton(currentLanguage);
 
     if (langViButton) {
@@ -92,7 +92,7 @@ function initializeHeaderFeatures() {
             button.querySelector('i').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         }
         if (button && button.id === 'mobile-dark-mode-toggle' && button.querySelector('span.ml-2')) {
-            button.querySelector('span.ml-2').textContent = isDark ? 'Chế độ Sáng' : 'Chế độ Tối';
+            button.querySelector('span.ml-2').textContent = isDark ? 'Light' : 'Dark';
         }
     }
 
@@ -138,10 +138,10 @@ function initializeFooterFeatures() {
             };
 
             const translations = {
-                processing: getTranslation('newsletter_processing', 'Đang xử lý...'),
-                success: getTranslation('newsletter_success', 'Cảm ơn bạn đã đăng ký! Vui lòng kiểm tra email để xác nhận.'),
-                error: getTranslation('newsletter_error', 'Đã có lỗi xảy ra. Vui lòng thử lại sau.'),
-                invalidEmail: getTranslation('newsletter_invalid_email', 'Vui lòng nhập một địa chỉ email hợp lệ.')
+                processing: getTranslation('newsletter_processing', 'Processing...'),
+                success: getTranslation('newsletter_success', 'Thank you for subscribing! Please check your email to confirm.'),
+                error: getTranslation('newsletter_error', 'An error occurred. Please try again later.'),
+                invalidEmail: getTranslation('newsletter_invalid_email', 'Please enter a valid email address.')
             };
 
             newsletterMessage.textContent = '';

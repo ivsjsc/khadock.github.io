@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Ví dụ route API
 app.post('/api/ai-design', (req, res) => {
-    res.json({ design: "Đây là thiết kế AI của bạn dựa trên prompt." });
+  res.json({ design: "This is your AI-generated design based on the prompt." });
 });
 
 app.post('/api/gemini', async (req, res) => {

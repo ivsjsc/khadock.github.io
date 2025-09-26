@@ -96,7 +96,7 @@ function saveCustomer(event) {
 
     // Kiểm tra các trường bắt buộc
     if (!name || !phone || !code) {
-        alert('Vui lòng điền đầy đủ tên khách hàng, số điện thoại và mã khách hàng.');
+    alert('Please fill in the customer name, phone number and customer code.');
         return;
     }
 
@@ -110,7 +110,7 @@ function saveCustomer(event) {
         // Chế độ thêm mới
         // Kiểm tra trùng mã KH
         if (customers.some(c => c.code === code)) {
-            alert('Mã khách hàng đã tồn tại. Vui lòng chọn mã khác.');
+            alert('Customer code already exists. Please choose a different code.');
             return;
         }
         customers.push({

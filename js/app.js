@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsletterEmail = document.getElementById('newsletter-email');
     const newsletterMessage = document.getElementById('newsletter-message');
 
-    // Khởi tạo AOS (Animate On Scroll)
+    // Initialize AOS (Animate On Scroll)
     if (AOS) {
         AOS.init({
-            duration: 800, // Thời gian animation
-            easing: 'ease-in-out', // Kiểu chuyển động
-            once: true, // Chỉ animate một lần khi cuộn xuống
-            mirror: false // Không animate lại khi cuộn lên
+            duration: 800, // animation duration
+            easing: 'ease-in-out', // easing
+            once: true, // animate only once on scroll
+            mirror: false // don't animate again when scrolling up
         });
     }
 
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Đặt liên kết điều hướng đang hoạt động
+    // Set active navigation link
         const currentPath = window.location.pathname.split('/').pop();
         const navLinks = document.querySelectorAll('nav a');
         navLinks.forEach(link => {
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Đặt mục điều hướng dưới cùng đang hoạt động (cho mobile)
+    // Set active bottom navigation item (mobile)
         const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
         bottomNavItems.forEach(item => {
             const itemPath = item.href.split('/').pop();
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const email = newsletterEmail.value;
 
                 if (!email || !email.includes('@')) {
-                    newsletterMessage.textContent = 'Vui lòng nhập địa chỉ email hợp lệ.';
+                    newsletterMessage.textContent = 'Please enter a valid email address.';
                     newsletterMessage.className = 'mt-2 text-sm text-red-400';
                     return;
                 }
@@ -189,17 +189,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
 
                     if (response.ok) {
-                        newsletterMessage.textContent = 'Cảm ơn bạn đã đăng ký!';
+                        newsletterMessage.textContent = 'Thank you for subscribing!';
                         newsletterMessage.className = 'mt-2 text-sm text-green-400';
                         newsletterEmail.value = '';
                     } else {
                         const errorData = await response.json();
-                        throw new Error(errorData.message || 'Đăng ký không thành công.');
+                        throw new Error(errorData.message || 'Subscription failed.');
                     }
 
                 } catch (error) {
-                    console.error('Lỗi đăng ký nhận tin:', error);
-                    newsletterMessage.textContent = `Đăng ký không thành công: ${error.message}`;
+                    console.error('Newsletter subscription error:', error);
+                    newsletterMessage.textContent = `Subscription failed: ${error.message}`;
                     newsletterMessage.className = 'mt-2 text-sm text-red-400';
                 }
             });
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const items = text.split('\n').filter(line => line.trim() !== '');
                 resultsDiv.innerHTML = '';
                 if (items.length === 0) {
-                    resultsDiv.innerHTML = '<p class="text-slate-400 p-2">Không tìm thấy gợi ý nào.</p>';
+                    resultsDiv.innerHTML = '<p class="text-slate-400 p-2">No suggestions found.</p>';
                 } else {
                     const ul = document.createElement('ul');
                     ul.className = 'space-y-1';
@@ -312,12 +312,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 resultsDiv.style.display = 'block';
             } else {
-                resultsDiv.innerHTML = '<p class="text-slate-400 p-2">Không tìm thấy gợi ý nào.</p>';
+                resultsDiv.innerHTML = '<p class="text-slate-400 p-2">No suggestions found.</p>';
                 resultsDiv.style.display = 'block';
             }
         } catch (error) {
-            console.error('Lỗi gợi ý tìm kiếm:', error);
-            resultsDiv.innerHTML = '<p class="text-red-400 p-2">Lỗi khi tìm nạp gợi ý.</p>';
+            console.error('Search suggestion error:', error);
+            resultsDiv.innerHTML = '<p class="text-red-400 p-2">Error fetching suggestions.</p>';
             resultsDiv.style.display = 'block';
         }
     }

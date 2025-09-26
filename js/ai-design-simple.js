@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (loader) loader.classList.toggle('hidden', !isLoading);
-        if (textEl && isLoading) textEl.textContent = "Đang tạo thiết kế sáng tạo...";
+    if (textEl && isLoading) textEl.textContent = "Creating your design...";
         if (buttonEl) {
             buttonEl.disabled = isLoading;
             buttonEl.classList.toggle('opacity-75', isLoading);
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatDesignText(text, title) {
-        if (!text) return `<p>Không có nội dung để hiển thị.</p>`;
+    if (!text) return `<p>No content to display.</p>`;
         
         // Format the AI response with better styling
         let html = text;
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         response = await fetch(`${fallbackBase}/api/ai-design`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ prompt, targetLanguage: "Vietnamese" })
+                            body: JSON.stringify({ prompt, targetLanguage: "English" })
                         });
                     } catch (e) {
                         // ignore and let error be handled below
@@ -140,9 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 try {
                     errorData = await response.json();
                 } catch (e) {
-                    errorData = { error: response.statusText || 'Lỗi server' };
+                    errorData = { error: response.statusText || 'Server error' };
                 }
-                throw new Error(errorData.error || 'Lỗi kết nối server');
+                throw new Error(errorData.error || 'Server connection error');
             }
 
             const result = await response.json();
@@ -157,13 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Main generate function
     async function generateDesign() {
         if (!inputText || !mainOutputDiv) {
-            console.error("Thiếu elements cần thiết");
+            console.error("Missing required elements");
             return;
         }
 
         const userInput = inputText.value.trim();
         if (!userInput) {
-            displayError('Vui lòng mô tả ý tưởng thiết kế cầu tàu của bạn.');
+              displayError('Please describe your dock design idea.');
             inputText.focus();
             return;
         }
@@ -180,14 +180,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const designText = await callAIAPI(userInput);
             currentDesignText = designText;
             
-            const formattedHtml = formatDesignText(designText, "🎨 Thiết Kế Cầu Tàu Sáng Tạo:");
+            const formattedHtml = formatDesignText(designText, "🎨 Creative Dock Design:");
             displayResult(formattedHtml, mainOutputDiv);
             
             if (outputContainer) outputContainer.classList.remove('hidden');
             if (extraFeaturesContainer) extraFeaturesContainer.classList.remove('hidden');
             
         } catch (error) {
-            displayError(`Lỗi: ${error.message}`);
+            displayError(`Error: ${error.message}`);
             console.error('Error generating design:', error);
         } finally {
             setLoadingState(false, 'main');
@@ -197,20 +197,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Additional features
     async function getMaintenanceTips() {
         if (!currentDesignText) {
-            displayError("Vui lòng tạo thiết kế trước khi xem bảo trì.");
+              displayError("Please create a design before viewing maintenance.");
             return;
         }
         if (!maintenanceOutputDiv) return;
 
         setLoadingState(true, 'maintenance');
-        const maintenancePrompt = `Dựa trên thiết kế cầu tàu này: "${currentDesignText}", hãy cung cấp 4-5 lời khuyên bảo trì cụ thể và quan trọng cho khí hậu Florida. Trình bày dưới dạng danh sách có dấu đầu dòng.`;
+    const maintenancePrompt = `Based on this dock design: "${currentDesignText}", provide 4-5 specific and important maintenance tips for the Florida climate. Present as a bulleted list.`;
 
         try {
             const tipsText = await callAIAPI(maintenancePrompt);
-            const formattedHtml = formatDesignText(tipsText, "🔧 Hướng Dẫn Bảo Trì:");
+            const formattedHtml = formatDesignText(tipsText, "🔧 Maintenance Guide:");
             displayResult(formattedHtml, maintenanceOutputDiv);
         } catch (error) {
-            displayResult(`Lỗi khi lấy thông tin bảo trì: ${error.message}`, maintenanceOutputDiv, "❌ Lỗi Bảo Trì");
+            displayResult(`Error fetching maintenance info: ${error.message}`, maintenanceOutputDiv, "❌ Maintenance Error");
         } finally {
             setLoadingState(false, 'maintenance');
         }
@@ -218,20 +218,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function getAccessorySuggestions() {
         if (!currentDesignText) {
-            displayError("Vui lòng tạo thiết kế trước khi xem phụ kiện.");
+              displayError("Please create a design before viewing accessories.");
             return;
         }
         if (!accessoriesOutputDiv) return;
 
         setLoadingState(true, 'accessories');
-        const accessoryPrompt = `Dựa trên thiết kế cầu tàu này: "${currentDesignText}", hãy đề xuất 4-6 phụ kiện và tiện ích bổ sung phù hợp. Bao gồm cả giá ước tính và lợi ích. Trình bày dưới dạng danh sách.`;
+    const accessoryPrompt = `Based on this dock design: "${currentDesignText}", suggest 4-6 accessories and additional amenities that fit. Include estimated pricing and benefits. Present as a list.`;
 
         try {
             const accessoriesText = await callAIAPI(accessoryPrompt);
-            const formattedHtml = formatDesignText(accessoriesText, "⚡ Phụ Kiện Đề Xuất:");
+            const formattedHtml = formatDesignText(accessoriesText, "⚡ Suggested Accessories:");
             displayResult(formattedHtml, accessoriesOutputDiv);
         } catch (error) {
-            displayResult(`Lỗi khi lấy thông tin phụ kiện: ${error.message}`, accessoriesOutputDiv, "❌ Lỗi Phụ Kiện");
+            displayResult(`Error fetching accessories info: ${error.message}`, accessoriesOutputDiv, "❌ Accessories Error");
         } finally {
             setLoadingState(false, 'accessories');
         }
