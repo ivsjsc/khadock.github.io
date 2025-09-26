@@ -130,6 +130,124 @@
             </div>
         </section>
 
+        <!-- Contact Form Section -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-12" data-aos="fade-up">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Send Us A Message</h2>
+                        <p class="text-lg text-slate-600">
+                            Ready to start your dock project? Fill out the form below and we'll get back to you within 24 hours.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-8 md:p-12 rounded-2xl shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html" class="space-y-6">
+                            <!-- Honeypot field (hidden from users but visible to bots) -->
+                            <div class="hidden">
+                                <label for="bot-field">Don't fill this out if you're human:</label>
+                                <input type="text" name="bot-field" id="bot-field">
+                            </div>
+
+                            <!-- Hidden field to identify form -->
+                            <input type="hidden" name="form-name" value="contact">
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="first-name" class="block text-sm font-semibold text-slate-700 mb-2">First Name *</label>
+                                    <input type="text" id="first-name" name="first-name" required
+                                        class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 bg-white">
+                                </div>
+                                <div>
+                                    <label for="last-name" class="block text-sm font-semibold text-slate-700 mb-2">Last Name *</label>
+                                    <input type="text" id="last-name" name="last-name" required
+                                        class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 bg-white">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">Email Address *</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 bg-white">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone"
+                                        class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 bg-white">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="project-type" class="block text-sm font-semibold text-slate-700 mb-2">Project Type</label>
+                                <select id="project-type" name="project-type"
+                                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 bg-white">
+                                    <option value="">Select a project type</option>
+                                    <option value="dock-construction">New Dock Construction</option>
+                                    <option value="dock-repair">Dock Repair & Maintenance</option>
+                                    <option value="dock-remodeling">Dock Remodeling & Upgrades</option>
+                                    <option value="marina-services">Marina Services</option>
+                                    <option value="consultation">Consultation Only</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="budget" class="block text-sm font-semibold text-slate-700 mb-2">Project Budget</label>
+                                <select id="budget" name="budget"
+                                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 bg-white">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-10k">Under $10,000</option>
+                                    <option value="10k-25k">$10,000 - $25,000</option>
+                                    <option value="25k-50k">$25,000 - $50,000</option>
+                                    <option value="50k-100k">$50,000 - $100,000</option>
+                                    <option value="over-100k">Over $100,000</option>
+                                    <option value="not-sure">Not sure yet</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="timeline" class="block text-sm font-semibold text-slate-700 mb-2">Preferred Timeline</label>
+                                <select id="timeline" name="timeline"
+                                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 bg-white">
+                                    <option value="">Select timeline</option>
+                                    <option value="asap">ASAP</option>
+                                    <option value="1-3-months">1-3 months</option>
+                                    <option value="3-6-months">3-6 months</option>
+                                    <option value="6-12-months">6-12 months</option>
+                                    <option value="planning-phase">Still in planning phase</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-semibold text-slate-700 mb-2">Project Details & Message *</label>
+                                <textarea id="message" name="message" rows="6" required placeholder="Please describe your project, location, specific requirements, and any questions you have..."
+                                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 bg-white resize-vertical"></textarea>
+                            </div>
+
+                            <div class="flex items-start">
+                                <input type="checkbox" id="consent" name="consent" required
+                                    class="mt-1 h-4 w-4 text-sky-600 focus:ring-sky-500 border-slate-300 rounded">
+                                <label for="consent" class="ml-3 text-sm text-slate-600">
+                                    I agree to be contacted by KhaDock regarding my project inquiry. I understand that KhaDock will use my information to provide project estimates and communication. *
+                                </label>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit"
+                                    class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-sky-600 to-sky-700 text-white font-semibold rounded-xl hover:from-sky-700 hover:to-sky-800 focus:ring-4 focus:ring-sky-300 focus:ring-opacity-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Send Message
+                                </button>
+                            </div>
+
+                            <div id="contact-form-message" class="text-center text-sm mt-4"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="py-16 md:py-24 bg-slate-50" data-aos="fade-up">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
@@ -147,6 +265,103 @@
                 </div>
             </div>
         </section>
+            <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('newsletter-form');
+            const msg = document.getElementById('newsletter-message');
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                msg.textContent = '';
+                msg.className = 'mt-2 text-sm';
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn?.textContent || 'Submit';
+                if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+                try {
+                const formData = new FormData(form);
+                const resp = await fetch(form.action, {
+                    method: form.method || 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (resp.ok) {
+                    form.reset();
+                    msg.textContent = "Cảm ơn! Bạn đã đăng ký thành công.";
+                    msg.classList.add('text-green-600');
+                } else {
+                    // Formspree trả lỗi JSON có trường error
+                    const data = await resp.json().catch(() => ({}));
+                    msg.textContent = data.error || "Gửi thất bại — thử lại sau.";
+                    msg.classList.add('text-red-600');
+                }
+                } catch (err) {
+                console.error('Newsletter submit error', err);
+                msg.textContent = "Không thể gửi — kiểm tra kết nối hoặc thử lại sau.";
+                msg.classList.add('text-red-600');
+                } finally {
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalText; }
+                }
+            });
+            });
+
+            // Contact Form Handler
+            document.addEventListener('DOMContentLoaded', () => {
+                const contactForm = document.querySelector('form[name="contact"]');
+                const contactMsg = document.getElementById('contact-form-message');
+                
+                if (!contactForm) return;
+
+                // Optional: Enable AJAX submission instead of redirect
+                // Uncomment the following code if you prefer AJAX submission over redirect
+                /*
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    contactMsg.textContent = '';
+                    contactMsg.className = 'text-center text-sm mt-4';
+
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+
+                    try {
+                        const formData = new FormData(contactForm);
+                        
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        if (response.ok) {
+                            contactForm.reset();
+                            contactMsg.textContent = "Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.";
+                            contactMsg.classList.add('text-green-600');
+                            
+                            // Optional: Scroll to success message
+                            contactMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } else {
+                            throw new Error('Network response was not ok');
+                        }
+                    } catch (error) {
+                        console.error('Contact form error:', error);
+                        contactMsg.textContent = "Sorry, there was an error sending your message. Please try again or contact us directly at 813-939-3989.";
+                        contactMsg.classList.add('text-red-600');
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }
+                });
+                */
+            });
+            </script>
     </main>
 
     <div id="fab-container-placeholder"></div>
@@ -155,7 +370,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/fab-container.js"></script> 
+    <script src="js/fab-container.js"></script>
+    <script src="js/contact-form.js"></script> 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof window.loadAppComponents === 'function') {

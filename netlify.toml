@@ -4,6 +4,13 @@
 [context.production.environment]
   SKIP_FRAMEWORK_DETECTION = "true"
 
+# Form handling configuration
+[forms]
+  # Enable form detection
+  enabled = true
+  # Spam filter settings
+  spam_filter = true
+
 [[redirects]]
   from = "/api/*"
   to = "https://khadock-backend.onrender.com/:splat"
@@ -16,3 +23,9 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Security headers for form pages
+[[headers]]
+  for = "/contact.html"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; frame-src 'self' https://www.google.com; connect-src 'self' https://khadock-backend.onrender.com;"
