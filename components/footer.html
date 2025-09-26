@@ -71,12 +71,24 @@
 
                 <div class="mt-8">
                     <h3 class="text-lg font-semibold text-white mb-5">Subscribe to Our Newsletter</h3>
-                    <form id="newsletter-form" action="https://formspree.io/f/xyzwqdoa" method="POST" class="mt-4">
+                    <!-- Netlify-ready form: keeps JS fallback to /api/subscribe but enables Netlify Forms if deployed there -->
+                    <form id="newsletter-form" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/" class="mt-4">
+                        <!-- Honeypot -->
+                        <div class="hidden">
+                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                        </div>
+                        <input type="hidden" name="form-name" value="newsletter">
+
                         <label for="newsletter-email" class="sr-only">Your Email</label>
                         <input type="email" id="newsletter-email" name="email" placeholder="Your Email" class="w-full px-4 py-2 bg-gray-800 rounded-md text-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none placeholder-gray-500" required>
                         <button type="submit" class="w-full mt-3 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md transition-colors">Subscribe</button>
                     </form>
                     <div id="newsletter-message" class="mt-2 text-sm"></div>
+
+                    <!-- Optional: Add Netlify reCAPTCHA inside the form before submit button:
+                        <div data-netlify-recaptcha="true"></div>
+                         Then enable reCAPTCHA in Netlify dashboard.
+                    -->
                 </div>
             </div>
         </div>
