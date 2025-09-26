@@ -136,24 +136,20 @@
 
         <main id="main-content-area">
             <section class="full-width-image-section h-screen" data-aos="fade-in">
-                <!-- Display a large image -->
                 <div class="relative w-full h-full">
-                    <img
-                        src="images/logo/logo1.jpg"
-                        class="w-full h-full object-cover block absolute inset-0"
-                        alt="KhaDock Logo Banner"
-                        width="1920"
-                        height="1080"
-                    >
-                    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 to-slate-900/70 flex items-center justify-center">
-                        <div class="text-center px-4">
-                            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">KhaDock</h1>
-                            <p class="text-xl md:text-2xl text-white mb-6 max-w-3xl mx-auto drop-shadow-md">Florida's Premier Boat Dock Solutions</p>
-                            <a href="contact.html" class="inline-block bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-300 text-lg">
-                                Contact Us
-                            </a>
-                        </div>
-                    </div>
+                    <picture>
+                        <!-- Desktop/tablet -->
+                        <source srcset="images/logo/logo1.png" media="(min-width: 768px)">
+                        <!-- Mobile (default) -->
+                        <img
+                            src="images/logo/logo1-mobi.png"
+                            class="w-full h-full object-cover block absolute inset-0"
+                            alt="KhaDock Logo Banner"
+                            width="1080"
+                            height="1920"
+                            loading="eager"
+                        >
+                    </picture>
                 </div>
             </section>
 
