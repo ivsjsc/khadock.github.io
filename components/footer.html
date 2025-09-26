@@ -1,8 +1,15 @@
-<footer class="bg-gray-900 text-gray-300 footer-section">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<footer class="bg-gray-900 text-gray-300 footer-section relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <div class="bg-cover bg-center bg-no-repeat w-full h-full opacity-20"
+             style="background-image: url('/path-to-your-desktop-image.jpg');">
+        </div>
+        <div class="md:hidden bg-cover bg-center bg-no-repeat w-full h-full opacity-20"
+             style="background-image: url('/path-to-your-mobile-image.jpg');">
+        </div>
+    </div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             
-            <!-- Column 1: Company Info & Social Media -->
             <div class="space-y-4 pr-4">
                 <a href="index.html" class="inline-block">
                     <h3 class="text-2xl font-bold text-white hover:text-orange-400 transition-colors duration-300">KhaDock.com</h3>
@@ -11,7 +18,7 @@
                     KhaDock.com - Specializing in the design and construction of docks and marinas in Florida.
                 </p>
                 <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">
-                    KHA DOCK &amp; HOME CONSTRUCTION LLC
+                    KHA DOCK & HOME CONSTRUCTION LLC
                 </p>
                 <div class="pt-4">
                     <h4 class="font-semibold text-white mb-3">Connect with us</h4>
@@ -19,7 +26,6 @@
                         <a href="https://www.facebook.com/profile.php?id=61575043076973" target="_blank" rel="noopener noreferrer" aria-label="Visit KhaDock on Facebook" class="text-gray-400 hover:text-orange-500 transition-transform duration-300 hover:scale-110">
                             <i class="fab fa-facebook-f text-2xl"></i>
                         </a>
-                        <!-- Add other social media links here -->
                         <a href="#" aria-label="Visit KhaDock on Instagram" class="text-gray-400 hover:text-orange-500 transition-transform duration-300 hover:scale-110">
                             <i class="fab fa-instagram text-2xl"></i>
                         </a>
@@ -27,7 +33,6 @@
                 </div>
             </div>
 
-            <!-- Column 2: Quick Links -->
             <nav aria-labelledby="quick-links-heading">
                 <h3 id="quick-links-heading" class="text-lg font-semibold text-white mb-5">Quick Links</h3>
                 <ul class="space-y-3 text-sm">
@@ -40,105 +45,53 @@
                 </ul>
             </nav>
 
-            <!-- Column 3: Main Services -->
             <nav aria-labelledby="main-services-heading">
                 <h3 id="main-services-heading" class="text-lg font-semibold text-white mb-5">Main Services</h3>
                 <ul class="space-y-3 text-sm">
                     <li><a href="design.html" class="footer-link">Designs by KhaDock</a></li>
                     <li><a href="services.html#construction" class="footer-link">Dock Construction</a></li>
                     <li><a href="services.html#remodel" class="footer-link">Dock Remodeling</a></li>
-                    <li><a href="services.html#repair" class="footer-link">Repairs &amp; Maintenance</a></li>
+                    <li><a href="services.html#repair" class="footer-link">Repairs & Maintenance</a></li>
                 </ul>
             </nav>
 
-            <!-- Column 4: Contact & Newsletter -->
-            <div>
+            <div class="contact-info">
                 <h3 class="text-lg font-semibold text-white mb-5">Contact Information</h3>
-                <address class="not-italic text-sm space-y-4">
-                    <a href="https://www.google.com/maps/search/?api=1&query=3850+Rollingsford+Cir,+Lakeland,+FL+33810,+USA" target="_blank" rel="noopener noreferrer" class="flex items-start group footer-link">
+                    <a href="https://www.google.com/maps/search/?api=1&query=3850+Rollingsford+Cir,+Lakeland,+FL+33810,+USA" target="_blank" rel="noopener noreferrer" class="flex items-start group footer-link text-white font-semibold">
                         <i class="fas fa-map-marker-alt flex-shrink-0 w-5 text-orange-400 mr-3 mt-1 group-hover:animate-pulse"></i>
                         <span>3850 Rollinsford Cir, Lakeland, FL 33810, USA</span>
                     </a>
-                    <a href="tel:+18139393989" class="flex items-center group footer-link">
+                    <a href="tel:+18139393989" class="flex items-center group footer-link text-white font-semibold">
                         <i class="fas fa-phone-alt flex-shrink-0 w-5 text-orange-400 mr-3 group-hover:animate-pulse"></i>
                         <span>+1 813-939-3989</span>
                     </a>
-                    <a href="mailto:info@khahome.com" class="flex items-center group footer-link">
+                    <a href="mailto:info@khahome.com" class="flex items-center group footer-link text-white">
                         <i class="fas fa-envelope flex-shrink-0 w-5 text-orange-400 mr-3 group-hover:animate-pulse"></i>
                         <span>info@khahome.com</span>
                     </a>
-                </address>
 
                 <div class="mt-8">
                     <h3 class="text-lg font-semibold text-white mb-5">Subscribe to Our Newsletter</h3>
-                    <!-- Netlify-ready form: keeps JS fallback to /api/subscribe but enables Netlify Forms if deployed there -->
                     <form id="newsletter-form" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/" class="mt-4">
-                        <!-- Honeypot -->
                         <div class="hidden">
                             <label>Don't fill this out if you're human: <input name="bot-field"></label>
                         </div>
                         <input type="hidden" name="form-name" value="newsletter">
-
                         <label for="newsletter-email" class="sr-only">Your Email</label>
                         <input type="email" id="newsletter-email" name="email" placeholder="Your Email" class="w-full px-4 py-2 bg-gray-800 rounded-md text-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none placeholder-gray-500" required>
                         <button type="submit" class="w-full mt-3 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md transition-colors">Subscribe</button>
                     </form>
                     <div id="newsletter-message" class="mt-2 text-sm"></div>
-
-                    <!-- Optional: Add Netlify reCAPTCHA inside the form before submit button:
-                        <div data-netlify-recaptcha="true"></div>
-                         Then enable reCAPTCHA in Netlify dashboard.
-                    -->
                 </div>
             </div>
         </div>
 
         <div class="border-t border-gray-800 pt-8 mt-12 text-center text-sm">
-            <p class="text-gray-400 mb-2">© <span id="current-year"></span> KhaDock.com · KHA DOCK &amp; HOME CONSTRUCTION LLC · All rights reserved.</p>
+            <p class="text-gray-400 mb-2">© <span id="current-year"></span> KhaDock.com · KHA DOCK & HOME CONSTRUCTION LLC · All rights reserved.</p>
             <p class="text-gray-500">Designed by <a href="https://ivsacademy.edu.vn/" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:underline transition-colors">IVS Celestech, IVS JSC.</a></p>
         </div>
     </div>
 
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        document.getElementById('newsletter-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            const form = event.target;
-            const email = form.querySelector('#newsletter-email').value;
-            const messageDiv = document.getElementById('newsletter-message');
-
-            messageDiv.textContent = 'Subscribing...';
-            messageDiv.className = 'mt-2 text-sm text-gray-400';
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email: email })
-                });
-
-                if (response.ok) {
-                    messageDiv.textContent = 'Thank you for subscribing!';
-                    messageDiv.className = 'mt-2 text-sm text-green-400';
-                    form.reset(); // Clear the form
-                } else {
-                    const errorData = await response.json();
-                    messageDiv.textContent = errorData.error || 'Something went wrong. Please try again.';
-                    messageDiv.className = 'mt-2 text-sm text-red-400';
-                }
-            } catch (error) {
-                messageDiv.textContent = 'An error occurred. Please try again later.';
-                messageDiv.className = 'mt-2 text-sm text-red-400';
-            }
-        });
-    </script>
-    
-    <!-- Make sure you have Font Awesome included -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
@@ -166,6 +119,57 @@
         .footer-link:hover::before {
             width: 100%;
         }
+        /* Ensure contact info (address/phone/email) is high-contrast and readable */
+        .footer-section .contact-info a,
+        .footer-section .contact-info a span {
+            color: #ffffff !important;
+            opacity: 1 !important;
+            font-weight: 600 !important;
+        }
+        /* Slightly increase size for clarity on small screens */
+        .footer-section .contact-info a span {
+            font-size: 0.98rem;
+            line-height: 1.2;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+        }
     </style>
 </footer>
 
+<script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    document.getElementById('newsletter-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.querySelector('#newsletter-email').value;
+        const messageDiv = document.getElementById('newsletter-message');
+
+        messageDiv.textContent = 'Subscribing...';
+        messageDiv.className = 'mt-2 text-sm text-gray-400';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            });
+
+            if (response.ok) {
+                messageDiv.textContent = 'Thank you for subscribing!';
+                messageDiv.className = 'mt-2 text-sm text-green-400';
+                form.reset();
+            } else {
+                const errorData = await response.json();
+                messageDiv.textContent = errorData.error || 'Something went wrong. Please try again.';
+                messageDiv.className = 'mt-2 text-sm text-red-400';
+            }
+        } catch (error) {
+            messageDiv.textContent = 'An error occurred. Please try again later.';
+            messageDiv.className = 'mt-2 text-sm text-red-400';
+        }
+    });
+</script>
