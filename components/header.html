@@ -9,10 +9,10 @@
         </a>
 
         <nav class="nav-links hidden items-center gap-1 lg:flex">
-            <a href="/" class="text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">Home</a>
+            <a href="/" data-i18n="home" class="text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">Home</a>
 
             <div class="relative group">
-                <button type="button" class="flex items-center text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">
+                <button type="button" data-i18n="services" class="flex items-center text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">
                     Services
                     <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
                 </button>
@@ -26,13 +26,19 @@
                 </div>
             </div>
 
-            <a href="https://khadock.com/projects.html" class="text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">Projects</a>
-            <a href="design.html" class="text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">Design</a>
-            <a href="about.html" class="text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">About Us</a>
+            <a href="https://khadock.com/projects.html" data-i18n="projects" class="text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">Projects</a>
+            <a href="design.html" data-i18n="design" class="text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">Design</a>
+            <a href="about.html" data-i18n="about" class="text-sm font-semibold text-white hover:text-sky-100 px-3 py-2 rounded-md transition-colors">About Us</a>
             
             <div class="ml-4 flex items-center gap-3">
+                <!-- Language toggle buttons -->
+                <div class="flex items-center gap-2 mr-2">
+                    <button id="lang-en" class="text-sm px-2 py-1 rounded-md bg-transparent text-white hover:bg-sky-500/20">EN</button>
+                    <button id="lang-vi" class="text-sm px-2 py-1 rounded-md bg-transparent text-white hover:bg-sky-500/20">VI</button>
+                    <button id="lang-zh" class="text-sm px-2 py-1 rounded-md bg-transparent text-white hover:bg-sky-500/20">中文</button>
+                </div>
                 <a href="https://khahome.com" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-orange-600 px-4 py-2 text-sm font-bold text-white shadow-md transition hover:bg-orange-700 hover:shadow-lg"><span class="italic text-white">KhaHome.com</span></a>
-                <a href="contact.html" class="rounded-lg bg-white px-4 py-2 text-sm font-bold text-sky-600 shadow-md transition hover:bg-slate-100 hover:shadow-lg">Contact</a>
+                <a href="contact.html" data-i18n="contact" class="rounded-lg bg-white px-4 py-2 text-sm font-bold text-sky-600 shadow-md transition hover:bg-slate-100 hover:shadow-lg">Contact</a>
             </div>
         </nav>
 
@@ -45,11 +51,11 @@
 
     <div id="kd-mobile-menu" class="fixed top-16 left-0 w-full translate-y-4 transform opacity-0 pointer-events-none transition-all duration-300 lg:hidden hidden" aria-hidden="true">
         <nav class="mx-auto flex w-full max-w-sm flex-col gap-4 rounded-b-2xl border border-slate-200 bg-white/95 p-5 shadow-xl backdrop-blur">
-            <a href="/" data-mobile-menu-link class="rounded-lg px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-sky-50 hover:text-sky-600">Home</a>
+            <a href="/" data-mobile-menu-link data-i18n="home" class="rounded-lg px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-sky-50 hover:text-sky-600">Home</a>
 
             <div class="w-full">
                 <button id="mobile-services-toggle" class="flex w-full items-center justify-between rounded-lg px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-sky-50 hover:text-sky-600" aria-expanded="false" aria-controls="mobile-services-menu-content">
-                    <span>Services</span>
+                    <span data-i18n="services">Services</span>
                     <i class="fas fa-chevron-down text-xs transition-transform duration-200" id="mobile-services-icon"></i>
                 </button>
                 <div id="mobile-services-menu-content" class="ml-4 mt-2 flex max-h-0 flex-col gap-3 overflow-hidden rounded-lg border border-slate-200/70 bg-slate-50 px-4 py-3 text-base font-semibold text-slate-900 transition-all duration-200">
@@ -60,11 +66,11 @@
                 </div>
             </div>
 
-            <a href="https://khadock.com/projects.html" data-mobile-menu-link class="rounded-lg px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-sky-50 hover:text-sky-600">Projects</a>
-            <a href="design.html" data-mobile-menu-link class="rounded-lg px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-sky-50 hover:text-sky-600">Design</a>
-            <a href="about.html" data-mobile-menu-link class="rounded-lg px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-sky-50 hover:text-sky-600">About Us</a>
+            <a href="https://khadock.com/projects.html" data-mobile-menu-link data-i18n="projects" class="rounded-lg px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-sky-50 hover:text-sky-600">Projects</a>
+            <a href="design.html" data-mobile-menu-link data-i18n="design" class="rounded-lg px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-sky-50 hover:text-sky-600">Design</a>
+            <a href="about.html" data-mobile-menu-link data-i18n="about" class="rounded-lg px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-sky-50 hover:text-sky-600">About Us</a>
             <a href="https://khahome.com" target="_blank" rel="noopener noreferrer" data-mobile-menu-link class="rounded-lg bg-orange-600 px-4 py-3 text-center text-base font-bold text-white shadow-md transition hover:bg-orange-700 hover:shadow-lg"><span class="italic text-white">KhaHome.com</span></a>
-            <a href="contact.html" data-mobile-menu-link class="rounded-lg bg-sky-600 px-4 py-3 text-center text-base font-bold text-white shadow-md transition hover:bg-sky-700">Contact</a>
+            <a href="contact.html" data-mobile-menu-link data-i18n="contact" class="rounded-lg bg-sky-600 px-4 py-3 text-center text-base font-bold text-white shadow-md transition hover:bg-sky-700">Contact</a>
         </nav>
     </div>
 </header>

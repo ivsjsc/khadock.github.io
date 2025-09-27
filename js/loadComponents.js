@@ -39,6 +39,16 @@ async function loadAppComponents(callback) {
     document.dispatchEvent(new CustomEvent('allAppComponentsLoaded'));
 }
 
+// After all components are loaded, initialize features
+document.addEventListener('allAppComponentsLoaded', () => {
+    try {
+        if (typeof initializeHeaderFeatures === 'function') initializeHeaderFeatures();
+        if (typeof initializeFooterFeatures === 'function') initializeFooterFeatures();
+    } catch (err) {
+        console.error('Error initializing components features:', err);
+    }
+});
+
 function initializeHeaderFeatures() {
     const handled = initializeKdMobileMenu();
     if (!handled) {
@@ -48,23 +58,25 @@ function initializeHeaderFeatures() {
 
     const langViButton = document.getElementById('lang-vi');
     const langEnButton = document.getElementById('lang-en');
+    const langZhButton = document.getElementById('lang-zh');
 
     function setActiveLangButton(lang) {
-        if (!langViButton || !langEnButton) return;
-        langViButton.classList.remove('active-lang', 'bg-primary', 'text-white');
-        langEnButton.classList.remove('active-lang', 'bg-primary', 'text-white');
-        langViButton.classList.add('text-neutral-700', 'dark:text-gray-300');
-        langEnButton.classList.add('text-neutral-700', 'dark:text-gray-300');
+        // Remove active styles from available buttons
+        [langViButton, langEnButton, langZhButton].forEach(btn => {
+            if (!btn) return;
+            btn.classList.remove('active-lang', 'bg-primary', 'text-white');
+            btn.classList.add('text-neutral-700', 'dark:text-gray-300');
+        });
 
-        if (lang === 'vi') {
-            langViButton.classList.add('active-lang');
-        } else {
-            langEnButton.classList.add('active-lang');
-        }
+        // Add active styles to the selected language button (if present)
+        if (lang === 'vi' && langViButton) langViButton.classList.add('active-lang');
+        else if (lang === 'zh' && langZhButton) langZhButton.classList.add('active-lang');
+        else if (langEnButton) langEnButton.classList.add('active-lang');
     }
 
     let currentLanguage = localStorage.getItem('language') || document.documentElement.lang || 'en';
     setActiveLangButton(currentLanguage);
+    if (typeof updateLanguage === 'function') updateLanguage(currentLanguage);
 
     if (langViButton) {
         langViButton.addEventListener('click', () => {
@@ -80,6 +92,15 @@ function initializeHeaderFeatures() {
             localStorage.setItem('language', 'en');
             setActiveLangButton('en');
             if (typeof updateLanguage === 'function') updateLanguage('en');
+            else location.reload();
+        });
+    }
+
+    if (langZhButton) {
+        langZhButton.addEventListener('click', () => {
+            localStorage.setItem('language', 'zh');
+            setActiveLangButton('zh');
+            if (typeof updateLanguage === 'function') updateLanguage('zh');
             else location.reload();
         });
     }
@@ -115,6 +136,51 @@ function initializeHeaderFeatures() {
 
     document.dispatchEvent(new Event('headerLoaded'));
 }
+
+// Lightweight in-page translation helper.
+// Elements that should be translated must have a data-i18n="key" attribute.
+function updateLanguage(lang) {
+    const translations = {
+        en: {
+            home: 'Home', services: 'Services', projects: 'Projects', design: 'Design', about: 'About Us', contact: 'Contact', subscribe: 'Subscribe'
+        },
+        vi: {
+            home: 'Trang chủ', services: 'Dịch vụ', projects: 'Dự án', design: 'Thiết kế', about: 'Về chúng tôi', contact: 'Liên hệ', subscribe: 'Đăng ký'
+        },
+        zh: {
+            home: '首页', services: '服务', projects: '项目', design: '设计', about: '关于我们', contact: '联系', subscribe: '订阅'
+        }
+    };
+
+    const map = translations[lang] || translations.en;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (!key) return;
+        const text = map[key];
+        if (text !== undefined) {
+            // Prefer replacing textContent; if HTML needed, site can use data-i18n-html
+            el.textContent = text;
+        }
+    });
+
+    // Support translating placeholders on inputs with data-i18n-placeholder
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(inp => {
+        const key = inp.getAttribute('data-i18n-placeholder');
+        if (!key) return;
+        const text = map[key];
+        if (text !== undefined && inp.placeholder !== undefined) {
+            inp.placeholder = text;
+        }
+    });
+}
+
+// After components load, apply stored language if any
+document.addEventListener('headerLoaded', () => {
+    const saved = localStorage.getItem('language');
+    if (saved) updateLanguage(saved);
+});
 
 function initializeFooterFeatures() {
     const currentYearSpan = document.getElementById('current-year'); // Đã sửa ID ở đây
@@ -361,6 +427,11 @@ function initializeMobileMenu() {
     window.openMobileMenu = openMobileMenu;
     mobileMenuButton.__menuInitialized = true; // Đánh dấu đã khởi tạo
     return true;
+}
+
+// Export function so pages can call loadAppComponents
+if (typeof window !== 'undefined') {
+    window.loadAppComponents = loadAppComponents;
 }
 
 function initializeSubmenuToggles() {

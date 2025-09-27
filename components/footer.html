@@ -56,7 +56,7 @@
             </nav>
 
             <div class="contact-info">
-                <h3 class="text-lg font-semibold text-white mb-5">Contact Information</h3>
+                <h3 class="text-lg font-semibold text-white mb-5" data-i18n="contact">Contact Information</h3>
                     <a href="https://www.google.com/maps/search/?api=1&query=3850+Rollingsford+Cir,+Lakeland,+FL+33810,+USA" target="_blank" rel="noopener noreferrer" class="flex items-start group footer-link text-white font-semibold">
                         <i class="fas fa-map-marker-alt flex-shrink-0 w-5 text-orange-400 mr-3 mt-1 group-hover:animate-pulse"></i>
                         <span>3850 Rollinsford Cir, Lakeland, FL 33810, USA</span>
@@ -71,15 +71,15 @@
                     </a>
 
                 <div class="mt-8">
-                    <h3 class="text-lg font-semibold text-white mb-5">Subscribe to Our Newsletter</h3>
+                    <h3 class="text-lg font-semibold text-white mb-5" data-i18n="subscribe">Subscribe to Our Newsletter</h3>
                     <form id="newsletter-form" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/" class="mt-4">
                         <div class="hidden">
                             <label>Don't fill this out if you're human: <input name="bot-field"></label>
                         </div>
                         <input type="hidden" name="form-name" value="newsletter">
-                        <label for="newsletter-email" class="sr-only">Your Email</label>
-                        <input type="email" id="newsletter-email" name="email" placeholder="Your Email" class="w-full px-4 py-2 bg-gray-800 rounded-md text-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none placeholder-gray-500" required>
-                        <button type="submit" class="w-full mt-3 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md transition-colors">Subscribe</button>
+                        <label for="newsletter-email" class="sr-only" data-i18n="subscribe">Your Email</label>
+                        <input type="email" id="newsletter-email" name="email" placeholder="Your Email" data-i18n-placeholder="subscribe" class="w-full px-4 py-2 bg-gray-800 rounded-md text-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none placeholder-gray-500" required>
+                        <button type="submit" class="w-full mt-3 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md transition-colors" data-i18n="subscribe">Subscribe</button>
                     </form>
                     <div id="newsletter-message" class="mt-2 text-sm"></div>
                 </div>
