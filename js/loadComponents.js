@@ -56,54 +56,66 @@ function initializeHeaderFeatures() {
     }
     highlightActivePage();
 
-    const langViButton = document.getElementById('lang-vi');
-    const langEnButton = document.getElementById('lang-en');
-    const langZhButton = document.getElementById('lang-zh');
+    // New single language toggle UI
+    const langToggle = document.getElementById('lang-toggle');
+    const langMenu = document.getElementById('lang-menu');
+    const langToggleLabel = document.getElementById('lang-toggle-label');
 
-    function setActiveLangButton(lang) {
-        // Remove active styles from available buttons
-        [langViButton, langEnButton, langZhButton].forEach(btn => {
-            if (!btn) return;
-            btn.classList.remove('active-lang', 'bg-primary', 'text-white');
-            btn.classList.add('text-neutral-700', 'dark:text-gray-300');
-        });
-
-        // Add active styles to the selected language button (if present)
-        if (lang === 'vi' && langViButton) langViButton.classList.add('active-lang');
-        else if (lang === 'zh' && langZhButton) langZhButton.classList.add('active-lang');
-        else if (langEnButton) langEnButton.classList.add('active-lang');
+    function openLangMenu() {
+        if (langMenu) {
+            langMenu.classList.remove('hidden');
+            langToggle.setAttribute('aria-expanded', 'true');
+        }
     }
 
+    function closeLangMenu() {
+        if (langMenu) {
+            langMenu.classList.add('hidden');
+            langToggle.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    function setSelectedLanguage(lang) {
+        if (!langToggleLabel) return;
+        const labelMap = { en: 'EN', vi: 'VI', zh: '中文' };
+        langToggleLabel.textContent = labelMap[lang] || 'EN';
+        localStorage.setItem('language', lang);
+        if (typeof updateLanguage === 'function') updateLanguage(lang);
+    }
+
+    // Initialize current language
     let currentLanguage = localStorage.getItem('language') || document.documentElement.lang || 'en';
-    setActiveLangButton(currentLanguage);
-    if (typeof updateLanguage === 'function') updateLanguage(currentLanguage);
+    setSelectedLanguage(currentLanguage);
 
-    if (langViButton) {
-        langViButton.addEventListener('click', () => {
-            localStorage.setItem('language', 'vi');
-            setActiveLangButton('vi');
-            if (typeof updateLanguage === 'function') updateLanguage('vi');
-            else location.reload();
+    if (langToggle) {
+        langToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const expanded = langToggle.getAttribute('aria-expanded') === 'true';
+            if (expanded) closeLangMenu(); else openLangMenu();
         });
     }
 
-    if (langEnButton) {
-        langEnButton.addEventListener('click', () => {
-            localStorage.setItem('language', 'en');
-            setActiveLangButton('en');
-            if (typeof updateLanguage === 'function') updateLanguage('en');
-            else location.reload();
+    // Handle language selection buttons inside the menu
+    document.querySelectorAll('.lang-select').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const chosen = btn.getAttribute('data-lang');
+            if (chosen) {
+                setSelectedLanguage(chosen);
+            }
+            closeLangMenu();
         });
-    }
+    });
 
-    if (langZhButton) {
-        langZhButton.addEventListener('click', () => {
-            localStorage.setItem('language', 'zh');
-            setActiveLangButton('zh');
-            if (typeof updateLanguage === 'function') updateLanguage('zh');
-            else location.reload();
-        });
-    }
+    // Close the menu when clicking outside or pressing Escape
+    document.addEventListener('click', (e) => {
+        if (!langMenu) return;
+        if (!langMenu.contains(e.target) && !langToggle.contains(e.target)) {
+            closeLangMenu();
+        }
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLangMenu();
+    });
 
     const headerDarkModeToggle = document.getElementById('dark-mode-toggle');
     const mobileHeaderDarkModeToggle = document.getElementById('mobile-dark-mode-toggle');
