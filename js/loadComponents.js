@@ -56,67 +56,6 @@ function initializeHeaderFeatures() {
     }
     highlightActivePage();
 
-    // New single language toggle UI
-    const langToggle = document.getElementById('lang-toggle');
-    const langMenu = document.getElementById('lang-menu');
-    const langToggleLabel = document.getElementById('lang-toggle-label');
-
-    function openLangMenu() {
-        if (langMenu) {
-            langMenu.classList.remove('hidden');
-            langToggle.setAttribute('aria-expanded', 'true');
-        }
-    }
-
-    function closeLangMenu() {
-        if (langMenu) {
-            langMenu.classList.add('hidden');
-            langToggle.setAttribute('aria-expanded', 'false');
-        }
-    }
-
-    function setSelectedLanguage(lang) {
-        if (!langToggleLabel) return;
-        const labelMap = { en: 'EN', vi: 'VI', zh: '中文' };
-        langToggleLabel.textContent = labelMap[lang] || 'EN';
-        localStorage.setItem('language', lang);
-        if (typeof updateLanguage === 'function') updateLanguage(lang);
-    }
-
-    // Initialize current language
-    let currentLanguage = localStorage.getItem('language') || document.documentElement.lang || 'en';
-    setSelectedLanguage(currentLanguage);
-
-    if (langToggle) {
-        langToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const expanded = langToggle.getAttribute('aria-expanded') === 'true';
-            if (expanded) closeLangMenu(); else openLangMenu();
-        });
-    }
-
-    // Handle language selection buttons inside the menu
-    document.querySelectorAll('.lang-select').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const chosen = btn.getAttribute('data-lang');
-            if (chosen) {
-                setSelectedLanguage(chosen);
-            }
-            closeLangMenu();
-        });
-    });
-
-    // Close the menu when clicking outside or pressing Escape
-    document.addEventListener('click', (e) => {
-        if (!langMenu) return;
-        if (!langMenu.contains(e.target) && !langToggle.contains(e.target)) {
-            closeLangMenu();
-        }
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLangMenu();
-    });
-
     const headerDarkModeToggle = document.getElementById('dark-mode-toggle');
     const mobileHeaderDarkModeToggle = document.getElementById('mobile-dark-mode-toggle');
 
@@ -155,12 +94,6 @@ function updateLanguage(lang) {
     const translations = {
         en: {
             home: 'Home', services: 'Services', projects: 'Projects', design: 'Design', about: 'About Us', contact: 'Contact', subscribe: 'Subscribe'
-        },
-        vi: {
-            home: 'Trang chủ', services: 'Dịch vụ', projects: 'Dự án', design: 'Thiết kế', about: 'Về chúng tôi', contact: 'Liên hệ', subscribe: 'Đăng ký'
-        },
-        zh: {
-            home: '首页', services: '服务', projects: '项目', design: '设计', about: '关于我们', contact: '联系', subscribe: '订阅'
         }
     };
 
@@ -190,8 +123,8 @@ function updateLanguage(lang) {
 
 // After components load, apply stored language if any
 document.addEventListener('headerLoaded', () => {
-    const saved = localStorage.getItem('language');
-    if (saved) updateLanguage(saved);
+    const saved = localStorage.getItem('language') || 'en';
+    updateLanguage(saved);
 });
 
 function initializeFooterFeatures() {
