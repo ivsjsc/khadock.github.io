@@ -21,7 +21,7 @@ async function loadComponent(placeholderId, filePath) {
     }
 }
 
-async function loadAppComponents(callback) {
+export async function loadAppComponents(callback) {
     // Đã thay đổi đường dẫn từ tuyệt đối sang tương đối
     const HEADER_COMPONENT_URL = 'components/header.html';
     const FOOTER_COMPONENT_URL = 'components/footer.html';
@@ -441,10 +441,6 @@ function initializeMobileMenu() {
     return true;
 }
 
-// Export function so pages can call loadAppComponents
-if (typeof window !== 'undefined') {
-    window.loadAppComponents = loadAppComponents;
-}
 
 function initializeSubmenuToggles() {
     const submenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
@@ -531,8 +527,3 @@ window.addEventListener('resize', function() {
         }
     }
 });
-
-// Xuất hàm loadAppComponents ra window để có thể gọi từ các script khác (ví dụ: index.html)
-if (typeof window !== 'undefined') {
-    window.loadAppComponents = loadAppComponents;
-}

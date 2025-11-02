@@ -10,12 +10,8 @@
     <meta property="og:title" content="About KhaDock - Our Story & Florida's Dock Experts">
     <meta property="og:description" content="KhaDock: Led by the dedicated Mr. Kha Do, we are committed to delivering innovative and high-quality dock solutions across Florida.">
     <meta property="og:image" content="images/logo/logoicon_512.png">
-    <meta property="og:url" content="https://KhaDock.com/about.html">
+    <meta property="og:url" content="/about.html">
     <meta property="og:type" content="website">
-
-    <link rel="icon" href="images/logo/logo.png" type="image/png">
-    <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" crossorigin="anonymous">
 
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logo/logoicon_512.png">
@@ -27,61 +23,6 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: #f1f5f9;
-        }
-        .about-banner-bg {
-             background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/projects/Mr.Jimmy-SaintPetersburg/jimmy-final.webp');
-             background-size: cover;
-             background-position: center;
-        }
-        .text-shadow {
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-        .profile-image-container {
-            width: 220px;
-            height: 220px;
-            overflow: hidden;
-        }
-        .profile-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        @media (min-width: 768px) {
-            .profile-image-container {
-                width: 280px;
-                height: 280px;
-            }
-        }
-        .value-card {
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-        }
-        .value-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.06);
-        }
-        .value-card:hover .value-icon {
-            transform: scale(1.1) rotate(-5deg);
-            color: #0ea5e9;
-        }
-        .value-icon {
-            transition: transform 0.3s ease-out, color 0.3s ease-out;
-        }
-        .feature-item:hover .feature-icon-bg {
-             background-color: #0ea5e9;
-             color: white;
-        }
-        .feature-icon-bg {
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-    </style>
 </head>
 <body class="bg-white text-slate-900 antialiased">
 
@@ -227,7 +168,7 @@
                                 </div>
                             </li>
                             <li class="feature-item flex items-start p-6 bg-slate-50 rounded-xl hover:shadow-lg transition-shadow duration-300">
-                                <div class="feature-icon-bg flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text-xl shadow">
+                                <div class="feature-icon-bg flex-shrink-0 w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mr-5 text.xl shadow">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
                                 <div>
@@ -265,24 +206,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/fab-container.js"></script> 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof window.loadAppComponents === 'function') {
-                window.loadAppComponents();
-            } else {
-                console.error('loadAppComponents function not found on window object.');
-            }
-        });
-
-        AOS.init({
-            offset: 120,
-            duration: 900,
-            easing: 'ease-out-quad',
-            once: true,
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-        });
-    </script>
+    <script src="js/fab-container.js" type="module" defer></script>
+    <script src="js/main.js" type="module" defer></script>
 </body>
 </html>

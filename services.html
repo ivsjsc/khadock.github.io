@@ -8,7 +8,7 @@
     <meta property="og:title" content="Comprehensive Dock Services - KhaDock Florida">
     <meta property="og:description" content="Discover KhaDock's professional dock services: from custom design to durable construction and routine maintenance in Florida.">
     <meta property="og:image" content="images/logo/logoicon_512.png">
-    <meta property="og:url" content="khadock.com/services.html"> <meta property="og:type" content="website">
+    <meta property="og:url" content="/services.html"> <meta property="og:type" content="website">
 
     <link rel="icon" href="images/logo/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,38 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .banner-bg {
-            background-image: url('images/designs/design8.jpg'); /* Placeholder for a relevant banner image */
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            z-index: 1;
-        }
-        .banner-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
-            z-index: -1;
-        }
-        /* Subtle hover effect for images */
-        .service-image {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .service-image:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-    </style>
 </head>
 <body class="bg-white text-slate-900 antialiased font-inter">
 
@@ -176,29 +144,11 @@
     <div id="fab-container-placeholder"></div>
     <div id="footer-placeholder"></div>
     
-    <script src="js/fab-container.js"></script>      
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
+    <script src="js/fab-container.js" type="module" defer></script>
     <script src="js/generateRenovationIdea.js" type="module" defer></script> 
-    <script>
-        // Gọi hàm loadAppComponents sau khi DOM đã sẵn sàng
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof window.loadAppComponents === 'function') {
-                window.loadAppComponents();
-            } else {
-                console.error('loadAppComponents function not found on window object.');
-            }
-        });
-
-        AOS.init({
-            offset: 120,
-            duration: 900,
-            easing: 'ease-out-quad',
-            once: true,
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-        });
-    </script>
+    <script src="js/main.js" type="module" defer></script>
 </body>
 </html>

@@ -1,20 +1,40 @@
 {
   "short_name": "KhaDock",
   "name": "KhaDock - Florida's Premier Boat Dock Solutions",
+  "description": "KhaDock specializes in custom boat dock design, robust construction, professional remodeling, and boat lift installations across Florida. Your trusted marine construction partner.",
   "icons": [
     {
-      "src": "images/logo/logoicon_512.png",
+      "src": "/images/logo/logoicon_192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "images/logo/logoicon_512.png", 
+      "src": "/images/logo/logoicon_512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": "/index.html",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "theme_color": "#0EA5E9",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "shortcuts": [
+    {
+      "name": "Designs",
+      "short_name": "Designs",
+      "description": "View our dock designs",
+      "url": "/design.html",
+      "icons": [{ "src": "/images/logo/logoicon_192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Contact us for a free quote",
+      "url": "/contact.html",
+      "icons": [{ "src": "/images/logo/logoicon_192.png", "sizes": "192x192" }]
+    }
+  ]
 }

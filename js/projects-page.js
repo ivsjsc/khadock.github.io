@@ -33,4 +33,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!filterButtonsContainer) console.warn("Project filters container (#project-filters) not found.");
         if (projectCards.length === 0) console.warn("No project cards (#project-grid .project-card) found.");
     }
+
+    // Lightbox functionality
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    const galleryImages = document.querySelectorAll('.album-grid img, .project-section img');
+
+    galleryImages.forEach(img => {
+        img.addEventListener('click', function() {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
+        });
+    });
+
+    closeBtn.onclick = function() { 
+        modal.style.display = "none";
+    }
+    
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
 });

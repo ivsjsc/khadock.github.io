@@ -8,8 +8,8 @@
 
     <meta property="og:title" content="Contact KhaDock - Florida's Dock Experts">
     <meta property="og:description" content="Connect with KhaDock in Lakeland, FL. Phone: +1 813-939-3989, Email: kha39llc@gmail.com">
-    <meta property="og:image" content="images/logo/logoicon.png">
-    <meta property="og:url" content="https://KhaDock.com/contact.html">
+    <meta property="og:image" content="images/logo/logoicon_512.png">
+    <meta property="og:url" content="/contact.html">
     <meta property="og:type" content="website">
 
     <link rel="icon" href="images/logo/logo.png" type="image/png">
@@ -21,13 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-    </style>
 </head>
 <body class="bg-white text-slate-900 font-inter antialiased">
 
@@ -255,9 +248,10 @@
                 </div>
                 <div class="map-container aspect-w-16 aspect-h-9 rounded-xl shadow-2xl overflow-hidden relative h-[300px] md:h-[450px] lg:h-[550px]">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56318.06449793287!2d-82.03119685654327!3d28.089232569690587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88dd47ef117c4aa1%3A0x4fdbc315af4d1e8c!2sKha%20Dock%20%26%20Homes%20Construction%20LLC!5e0!3m2!1svi!2s!4v1760788376077!5m2!1svi!2s"
-                        style="border:0;"
-                        allowfullscreen=""
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3520.9!2d-82.45!3d28.09!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c6f000000001%3A0x0000000000000001!2s2055%20W%20Bearss%20Ave%2C%20Tampa%2C%20FL%2033618%2C%20USA!5e0!3m2!1sen!2s!4v1678886400000!5m2!1sen!2s"
+                        width="600"
+                        height="450"
+                        allowfullscreen="true"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         title="Location of Kha Dock & Homes Construction LLC on map">
@@ -275,25 +269,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/loadComponents.js" type="module" defer></script>
     <script src="js/app.js" type="module" defer></script>
-    <script src="js/fab-container.js"></script>
-    <script src="js/contact-form.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof window.loadAppComponents === 'function') {
-                window.loadAppComponents();
-            } else {
-                console.error('loadAppComponents function not found on window object.');
-            }
-        });
-
-        AOS.init({
-            offset: 120,
-            duration: 900,
-            easing: 'ease-out-quad',
-            once: true,
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-        });
-    </script>
+    <script src="js/fab-container.js" type="module" defer></script>
+    <script src="js/contact-form.js" type="module" defer></script>
+    <script src="js/main.js" type="module" defer></script>
 </body>
 </html>
