@@ -6,7 +6,9 @@
   "main": "server-simple.js",
   "scripts": {
     "start": "node server-simple.js",
-    "dev": "node --watch server-simple.js"
+    "dev": "node --watch server-simple.js",
+    "deploy": "firebase deploy --only hosting:khadock",
+    "deploy:all": "firebase deploy"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",

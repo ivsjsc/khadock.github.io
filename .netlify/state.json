@@ -1,0 +1,20 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Biên Hòa",
+			"country": {
+				"code": "VN",
+				"name": "Vietnam"
+			},
+			"subdivision": {
+				"code": "39",
+				"name": "Đồng Nai Province"
+			},
+			"timezone": "Asia/Ho_Chi_Minh",
+			"latitude": 10.9413,
+			"longitude": 106.8221,
+			"postalCode": "810000"
+		},
+		"timestamp": 1758897101102
+	}
+}
