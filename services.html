@@ -24,14 +24,105 @@
 
     <div id="header-placeholder"></div>
     <div id="fab-container-placeholder"></div>
+    <div id="fb-root"></div>
 
     <main class="pt-20">
-        <section class="banner-bg text-white py-20 md:py-28" data-aos="fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center bg-black bg-opacity-60 p-8 md:p-10 rounded-lg shadow-xl">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Our Comprehensive Services</h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
-                    Comprehensive solutions for your home and property improvement projects in Florida.
-                </p>
+        <section class="relative isolate overflow-hidden text-white" data-aos="fade-in">
+            <div class="absolute inset-0 services-banner-bg"></div>
+            <div class="absolute inset-0 services-hero-overlay"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 md:py-24">
+                <div class="grid lg:grid-cols-[1.06fr_0.94fr] gap-10 items-center">
+                    <div class="max-w-3xl" data-aos="fade-right" data-aos-delay="120">
+                        <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-sky-100 backdrop-blur-md">
+                            <i class="fas fa-helmet-safety"></i>
+                            Services
+                        </span>
+                        <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                            Design, build, and repair docks that hold up in Florida conditions.
+                        </h1>
+                        <p class="mt-6 text-lg md:text-xl max-w-2xl text-slate-100/90 leading-relaxed">
+                            A complete service line for custom dock design, remodeling, and maintenance with a focus on durability, clean execution, and coastal performance.
+                        </p>
+                        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                            <a href="contact.html" class="inline-flex items-center justify-center bg-white text-sky-700 font-bold py-4 px-8 rounded-xl text-lg shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-sky-50">
+                                Request a Free Quote
+                            </a>
+                            <a href="projects.html" class="inline-flex items-center justify-center border border-white/20 bg-white/10 text-white font-bold py-4 px-8 rounded-xl text-lg backdrop-blur-md shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-white/15">
+                                See Completed Projects
+                            </a>
+                        </div>
+                        <div class="mt-8 flex flex-wrap gap-3 lg:hidden">
+                            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-50 backdrop-blur-md">
+                                <i class="fas fa-drafting-compass text-sky-300"></i>
+                                Custom Design
+                            </span>
+                            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-50 backdrop-blur-md">
+                                <i class="fas fa-hammer text-orange-300"></i>
+                                Remodeling
+                            </span>
+                            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-50 backdrop-blur-md">
+                                <i class="fas fa-screwdriver-wrench text-emerald-300"></i>
+                                Maintenance
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="hidden lg:block" data-aos="fade-left" data-aos-delay="200">
+                        <div class="relative mx-auto max-w-xl">
+                            <div class="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-sky-400/25 blur-3xl"></div>
+                            <div class="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-orange-400/20 blur-3xl"></div>
+                            <div class="relative rounded-[2rem] border border-white/15 bg-slate-950/35 p-6 shadow-[0_30px_80px_rgba(2,6,23,0.45)] backdrop-blur-xl">
+                                <div class="flex items-center justify-between gap-4">
+                                    <div>
+                                        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-sky-200">Service Stack</p>
+                                        <h2 class="mt-2 text-2xl font-bold text-white">From concept to maintenance</h2>
+                                    </div>
+                                    <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-2xl text-sky-300 shadow-lg">
+                                        <i class="fas fa-anchor"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6 space-y-4">
+                                    <div class="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-md">
+                                        <div class="flex items-start gap-4">
+                                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-sky-500/20 text-sky-200">
+                                                <i class="fas fa-drafting-compass"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-white">Custom Dock Design</h3>
+                                                <p class="mt-1 text-sm leading-relaxed text-slate-200/80">Site-aware layouts, 3D concepts, and material choices tailored for coastal properties.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-md">
+                                        <div class="flex items-start gap-4">
+                                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-orange-500/20 text-orange-200">
+                                                <i class="fas fa-hammer"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-white">Remodeling & Upgrades</h3>
+                                                <p class="mt-1 text-sm leading-relaxed text-slate-200/80">Refresh older docks with stronger structure, better usability, and cleaner finishes.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-md">
+                                        <div class="flex items-start gap-4">
+                                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-200">
+                                                <i class="fas fa-screwdriver-wrench"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-white">Repair & Maintenance</h3>
+                                                <p class="mt-1 text-sm leading-relaxed text-slate-200/80">Routine inspections, structural repairs, and upkeep that keep docks ready year-round.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -120,6 +211,8 @@
             </div>
         </section>
 
+        <div id="facebook-updates-placeholder"></div>
+
         <section class="py-20 md:py-32 bg-gradient-to-r from-blue-700 to-sky-800 text-white text-center relative overflow-hidden" data-aos="zoom-in">
             <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0V0h2v36h-2zM0 0h2v36H0V0zm0 36h36v2H0v-2z\'/%3E%3C/g%3E%3C/g%3E%3Csvg%3E');"></div>
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -150,5 +243,6 @@
     <script src="js/fab-container.js" type="module" defer></script>
     <script src="js/generateRenovationIdea.js" type="module" defer></script> 
     <script src="js/main.js" type="module" defer></script>
+    <script src="js/facebook-embeds.js" type="module" defer></script>
 </body>
 </html>

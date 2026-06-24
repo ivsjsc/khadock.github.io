@@ -1,23 +1,23 @@
-async function loadComponent(placeholderId, filePath) {
+async function loadComponent(placeholderId, filePath, required = true) {
+    const placeholder = document.getElementById(placeholderId);
+    if (!placeholder) {
+        if (required) {
+            console.warn(`[Script] Placeholder element with id '${placeholderId}' not found.`);
+        }
+        return;
+    }
+
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
             throw new Error(`Failed to load component from ${filePath}: ${response.statusText}`);
         }
         const html = await response.text();
-        const placeholder = document.getElementById(placeholderId);
-        if (placeholder) {
-            placeholder.innerHTML = html;
-            document.dispatchEvent(new CustomEvent(`${placeholderId}Loaded`, { detail: { placeholderId, filePath } }));
-        } else {
-            console.error(`[Script] Placeholder element with id '${placeholderId}' not found.`);
-        }
+        placeholder.innerHTML = html;
+        document.dispatchEvent(new CustomEvent(`${placeholderId}Loaded`, { detail: { placeholderId, filePath } }));
     } catch (error) {
         console.error(`[Script] Error loading component from ${filePath}:`, error);
-        const placeholder = document.getElementById(placeholderId);
-        if (placeholder) {
-            placeholder.innerHTML = `<p style="color: red;">Error loading component: ${error.message || error}</p>`;
-        }
+        placeholder.innerHTML = `<p style="color: red;">Error loading component: ${error.message || error}</p>`;
     }
 }
 
@@ -26,12 +26,19 @@ export async function loadAppComponents(callback) {
     const HEADER_COMPONENT_URL = 'components/header.html';
     const FOOTER_COMPONENT_URL = 'components/footer.html';
     const FAB_COMPONENT_URL = 'components/fab-container.html';
+    const FACEBOOK_UPDATES_COMPONENT_URL = 'components/facebook-updates.html';
 
-    await Promise.all([
+    const componentLoads = [
         loadComponent('header-placeholder', HEADER_COMPONENT_URL),
         loadComponent('footer-placeholder', FOOTER_COMPONENT_URL),
         loadComponent('fab-container-placeholder', FAB_COMPONENT_URL)
-    ]);
+    ];
+
+    if (document.getElementById('facebook-updates-placeholder')) {
+        componentLoads.push(loadComponent('facebook-updates-placeholder', FACEBOOK_UPDATES_COMPONENT_URL, false));
+    }
+
+    await Promise.all(componentLoads);
 
     if (typeof callback === 'function') {
         callback();
