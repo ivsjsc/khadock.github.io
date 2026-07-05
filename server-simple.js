@@ -180,6 +180,65 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
+// Facebook Fanpage Posts endpoint
+app.get('/api/facebook/posts', async (req, res) => {
+    try {
+        const appId = process.env.FACEBOOK_APP_ID;
+        const appSecret = process.env.FACEBOOK_APP_SECRET;
+        const pageId = process.env.FACEBOOK_PAGE_ID;
+
+        if (!appId || !appSecret || !pageId) {
+            return res.status(500).json({
+                error: 'Facebook credentials not configured. Please check FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, and FACEBOOK_PAGE_ID.'
+            });
+        }
+
+        // Get page access token
+        const tokenResponse = await fetch(
+            `https://graph.facebook.com/oauth/access_token?client_id=${appId}&client_secret=${appSecret}&grant_type=client_credentials`
+        );
+        const tokenData = await tokenResponse.json();
+
+        if (!tokenData.access_token) {
+            throw new Error('Failed to get Facebook access token');
+        }
+
+        const accessToken = tokenData.access_token;
+
+        // Fetch page posts
+        const postsResponse = await fetch(
+            `https://graph.facebook.com/v25.0/${pageId}/posts?access_token=${accessToken}&fields=id,message,created_time,permalink_url,full_picture,type&limit=10&order=reverse_chronological`
+        );
+        const postsData = await postsResponse.json();
+
+        if (postsData.error) {
+            throw new Error(postsData.error.message);
+        }
+
+        // Format posts for frontend
+        const formattedPosts = postsData.data.map(post => ({
+            id: post.id,
+            url: post.permalink_url,
+            message: post.message || '',
+            created_time: post.created_time,
+            full_picture: post.full_picture || null,
+            type: post.type || 'status'
+        }));
+
+        res.json({
+            success: true,
+            posts: formattedPosts,
+            timestamp: new Date().toISOString()
+        });
+
+    } catch (error) {
+        console.error('Facebook API error:', error);
+        res.status(500).json({
+            error: error.message || 'Failed to fetch Facebook posts.'
+        });
+    }
+});
+
 // Serve static files
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));

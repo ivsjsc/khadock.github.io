@@ -1,7 +1,8 @@
 const FACEBOOK_SDK_VERSION = 'v25.0';
 const FACEBOOK_SDK_SRC = `https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=${FACEBOOK_SDK_VERSION}`;
 
-const FACEBOOK_POSTS = [
+// Fallback posts in case API fails
+const FALLBACK_POSTS = [
     {
         url: 'https://www.facebook.com/doduy.kha/videos/983123767977378/',
         label: 'Latest public reel',
@@ -24,6 +25,9 @@ const FACEBOOK_POSTS = [
     }
 ];
 
+let FACEBOOK_POSTS = [];
+let postsLoaded = false;
+
 let facebookSdkPromise = null;
 let observedSection = null;
 let renderedMode = null;
@@ -36,6 +40,33 @@ function escapeHtml(value) {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
+}
+
+async function fetchFacebookPosts() {
+    try {
+        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:3001/api/facebook/posts'
+            : '/api/facebook/posts';
+
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (data.success && data.posts && data.posts.length > 0) {
+            FACEBOOK_POSTS = data.posts.map(post => ({
+                url: post.permalink_url,
+                label: post.message ? post.message.substring(0, 50) + '...' : 'Facebook post',
+                note: new Date(post.created_time).toLocaleDateString()
+            }));
+            postsLoaded = true;
+            console.log('✅ Facebook posts loaded from API:', FACEBOOK_POSTS.length);
+        } else {
+            throw new Error('No posts returned from API');
+        }
+    } catch (error) {
+        console.warn('⚠️ Failed to fetch Facebook posts from API, using fallback:', error.message);
+        FACEBOOK_POSTS = FALLBACK_POSTS;
+        postsLoaded = true;
+    }
 }
 
 function isDesktopViewport() {
@@ -151,6 +182,11 @@ async function renderFacebookSection() {
 
     mobileContainer.innerHTML = '';
     desktopContainer.innerHTML = '';
+
+    // Fetch posts from API if not already loaded
+    if (!postsLoaded) {
+        await fetchFacebookPosts();
+    }
 
     if (mode === 'desktop') {
         desktopContainer.classList.remove('hidden');
