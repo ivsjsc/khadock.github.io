@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node server-simple.js",
     "dev": "node --watch server-simple.js",
+    "build": "echo Static site - no build needed",
     "deploy": "firebase deploy --only hosting:khadock",
     "deploy:all": "firebase deploy"
   },

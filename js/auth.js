@@ -7,6 +7,7 @@ import {
     signOut,
     onAuthStateChanged,
     GoogleAuthProvider,
+    FacebookAuthProvider,
     signInWithPopup
 } from 'firebase/auth';
 
@@ -24,6 +25,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
 // Auth state management
 let currentUser = null;
@@ -102,6 +104,18 @@ async function signInWithGoogle() {
         return { success: true, user: result.user };
     } catch (error) {
         console.error('❌ Google sign in error:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+// Sign in with Facebook
+async function signInWithFacebook() {
+    try {
+        const result = await signInWithPopup(auth, facebookProvider);
+        console.log('✅ Facebook sign in successful:', result.user.email);
+        return { success: true, user: result.user };
+    } catch (error) {
+        console.error('❌ Facebook sign in error:', error);
         return { success: false, error: error.message };
     }
 }
@@ -250,6 +264,13 @@ document.addEventListener('DOMContentLoaded', () => {
             signInWithGoogle();
         }
     });
+    
+    // Facebook sign in
+    document.addEventListener('click', (e) => {
+        if (e.target.matches('[data-auth-facebook]')) {
+            signInWithFacebook();
+        }
+    });
 });
 
 // Export functions for use in other modules
@@ -257,6 +278,7 @@ export {
     signInWithEmail,
     signUpWithEmail,
     signInWithGoogle,
+    signInWithFacebook,
     signOutUser,
     getCurrentUser,
     getAuthToken,
