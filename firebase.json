@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "ivs-tech",
+    "site": "khadock",
     "public": ".",
     "ignore": [
       "firebase.json",
