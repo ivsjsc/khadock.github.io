@@ -1,0 +1,27 @@
+{
+  "name": "khadock-simple",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "KhaDock Simple AI Design Generator",
+  "main": "server-simple.js",
+  "scripts": {
+    "start": "node server-simple.js",
+    "dev": "node --watch server-simple.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "@google/generative-ai": "^0.21.0"
+  },
+  "keywords": [
+    "dock",
+    "design",
+    "ai",
+    "florida",
+    "boats",
+    "construction"
+  ],
+  "author": "KhaDock",
+  "license": "MIT"
+}

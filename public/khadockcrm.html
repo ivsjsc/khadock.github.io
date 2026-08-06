@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="images/logo/logo.png" type="image/png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        html, body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+        }
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar-link.active {
+            background-color: #0284c7;
+            color: white;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-primary { background-color: #2563eb; color: white; }
+        .btn-primary:hover { background-color: #1d4ed8; }
+        .btn-secondary { background-color: #64748b; color: white; }
+        .btn-secondary:hover { background-color: #475569; }
+        .btn-danger { background-color: #dc2626; color: white; }
+        .btn-danger:hover { background-color: #b91c1c; }
+        .btn-success { background-color: #16a34a; color: white; }
+        .btn-success:hover { background-color: #15803d; }
+
+        /* Responsive Table styling */
+        @media (max-width: 767px) {
+            .responsive-table thead {
+                display: none;
+            }
+            .responsive-table tr {
+                display: block;
+                margin-bottom: 1.5rem;
+                border: 1px solid #e2e8f0;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                background-color: white;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            }
+             .responsive-table tr:last-child {
+                margin-bottom: 0;
+            }
+            .responsive-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: right;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid #f1f5f9;
+            }
+            .responsive-table td:last-child {
+                border-bottom: none;
+                padding-top: 1rem;
+            }
+            .responsive-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                text-align: left;
+                padding-right: 1rem;
+                color: #475569;
+            }
+        }
+
+        @media print {
+            @page { size: letter; margin: 0.75in; }
+            body { background-color: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .no-print { display: none !important; }
+            main { margin-left: 0 !important; padding: 0 !important; }
+            #invoice-generator-page {
+                box-shadow: none; margin: 0; max-width: 100%; border-radius: 0; border: none; padding: 0;
+            }
+        }
+        
+    </style>
+</head>
+<body class="relative min-h-screen">
+    
+    <!-- Sidebar Overlay for Mobile -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden no-print"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar fixed inset-y-0 left-0 w-64 bg-slate-800 text-slate-300 p-6 flex-shrink-0 flex flex-col z-30 transform -translate-x-full md:translate-x-0 no-print">
+        <div class="flex justify-between items-center md:hidden mb-4">
+             <h1 class="text-2xl font-bold text-white">Dashboard</h1>
+             <button id="close-sidebar-btn" class="text-2xl text-slate-300 hover:text-white">&times;</button>
+        </div>
+        <h1 class="text-2xl font-bold text-white mb-8 hidden md:block">Dashboard</h1>
+        <nav class="flex flex-col gap-3">
+            <a href="#" class="sidebar-link p-3 rounded-lg font-semibold flex items-center gap-3 hover:bg-slate-700" data-tab="customers"><i class="fas fa-users fa-fw"></i> Customers</a>
+            <a href="#" class="sidebar-link p-3 rounded-lg font-semibold flex items-center gap-3 hover:bg-slate-700" data-tab="items"><i class="fas fa-box-open fa-fw"></i> Items</a>
+            <a href="#" class="sidebar-link p-3 rounded-lg font-semibold flex items-center gap-3 hover:bg-slate-700 active" data-tab="invoice-history"><i class="fas fa-history fa-fw"></i> Invoice & Quote History</a>
+            <a href="#" class="sidebar-link p-3 rounded-lg font-semibold flex items-center gap-3 hover:bg-slate-700" data-tab="invoice-generator"><i class="fas fa-file-invoice fa-fw"></i> Invoice Generator</a>
+            <a href="#" class="sidebar-link p-3 rounded-lg font-semibold flex items-center gap-3 hover:bg-slate-700" data-tab="facebook-fanpage"><i class="fab fa-facebook fa-fw"></i> Facebook Fanpage</a>
+        </nav>
+        <div class="mt-auto">
+            <h2 class="text-lg font-semibold text-white mb-4">Data Backup</h2>
+            <div class="flex flex-col gap-2">
+                <button onclick="app.exportAllData()" class="btn btn-success w-full"><i class="fas fa-download"></i> Export</button>
+                <label class="btn btn-secondary w-full">
+                    <i class="fas fa-upload"></i> Import
+                    <input type="file" id="importFile" class="hidden" accept=".json" onchange="app.importAllData(event)">
+                </label>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Mobile Header -->
+    <header class="md:hidden sticky top-0 bg-white shadow-md p-4 flex justify-between items-center z-10 no-print">
+        <button id="open-sidebar-btn" class="text-2xl text-slate-700">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h2 id="mobile-header-title" class="text-xl font-bold text-slate-800">Invoice History</h2>
+        <div></div> <!-- Spacer -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4 md:p-8 md:ml-64">
+        <!-- Customers Tab -->
+        <div id="customers" class="tab-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-slate-800 hidden md:block">Customers</h2>
+                <button onclick="customerManager.openModal()" class="btn btn-primary w-full md:w-auto"><i class="fas fa-plus"></i> Add Customer</button>
+            </div>
+            <div class="bg-white md:p-6 rounded-lg md:shadow-md">
+                <table class="w-full text-left responsive-table">
+                    <thead><tr class="border-b bg-slate-50"><th class="p-4">Name</th><th class="p-4">Phone</th><th class="p-4">Address</th><th class="p-4">Actions</th></tr></thead>
+                    <tbody id="customer-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Items Tab -->
+        <div id="items" class="tab-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-slate-800 hidden md:block">Items</h2>
+                <button onclick="itemManager.openModal()" class="btn btn-primary w-full md:w-auto"><i class="fas fa-plus"></i> Add Item</button>
+            </div>
+             <div class="bg-white md:p-6 rounded-lg md:shadow-md">
+                <table class="w-full text-left responsive-table">
+                    <thead><tr class="border-b bg-slate-50"><th class="p-4">Description</th><th class="p-4">Unit Price</th><th class="p-4">Actions</th></tr></thead>
+                    <tbody id="item-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Invoice History Tab -->
+        <div id="invoice-history" class="tab-content active">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-slate-800 hidden md:block">Invoice & Quote History</h2>
+                <button onclick="invoiceHistoryManager.createNew()" class="btn btn-primary w-full md:w-auto"><i class="fas fa-plus"></i> Tạo mới</button>
+            </div>
+            <div class="bg-white md:p-6 rounded-lg md:shadow-md">
+                <table class="w-full text-left responsive-table">
+                    <thead>
+                        <tr class="border-b bg-slate-50">
+                            <th class="p-4">Number</th>
+                            <th class="p-4">Type</th>
+                            <th class="p-4">Customer</th>
+                            <th class="p-4">Date</th>
+                            <th class="p-4">Total</th>
+                            <th class="p-4 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoice-history-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Invoice Generator Tab -->
+        <div id="invoice-generator" class="tab-content"></div>
+
+        <!-- Facebook Fanpage Tab -->
+        <div id="facebook-fanpage" class="tab-content">
+            <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 gap-4">
+                <h2 class="text-3xl font-bold text-slate-800 hidden md:block">Facebook Fanpage</h2>
+                <div class="flex flex-wrap items-center gap-3">
+                    <input type="text" id="fbPageId" placeholder="Page ID (e.g., 61575043076973)" class="border rounded-md px-3 py-2 bg-white shadow-sm w-full md:w-64">
+                    <input type="text" id="fbAccessToken" placeholder="Access Token" class="border rounded-md px-3 py-2 bg-white shadow-sm w-full md:w-64">
+                    <button onclick="facebookManager.fetchPosts()" class="btn btn-primary"><i class="fab fa-facebook"></i> Fetch Posts</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div id="fb-posts-container" class="space-y-4">
+                    <div class="text-center text-slate-500 py-8">
+                        <i class="fab fa-facebook text-6xl text-slate-300 mb-4"></i>
+                        <p>Enter your Facebook Page ID and Access Token to fetch posts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Modal -->
+    <div id="modal-template" class="fixed inset-0 z-50 items-center justify-center hidden bg-black bg-opacity-50 p-4">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
+            <div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-bold" id="modal-title"></h3><button id="modal-close-btn" class="text-slate-500 hover:text-slate-800 text-2xl">&times;</button></div>
+            <form id="modal-form">
+                <input type="hidden" id="modal-id-field">
+                <div id="modal-body" class="space-y-4"></div>
+                <div class="mt-8 text-right"><button type="submit" class="btn btn-primary">Save Changes</button></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    const invoiceGeneratorHTML = `
+        <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 no-print gap-4">
+            <h2 class="text-3xl font-bold text-slate-800 hidden md:block">Invoice Generator</h2>
+            <div class="grid grid-cols-2 md:flex md:flex-wrap items-center gap-3">
+                <select id="documentTypeSelect" class="border rounded-md px-3 py-2 bg-white shadow-sm col-span-2">
+                    <option value="INVOICE">Invoice</option>
+                    <option value="QUOTE">Quote</option>
+                    <option value="PROFORMA INVOICE">Proforma Invoice</option>
+                </select>
+                <button onclick="invoiceManager.saveDraft()" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                <button onclick="window.print()" class="btn btn-secondary"><i class="fas fa-print"></i> Print</button>
+                <button onclick="invoiceManager.resetForm()" class="btn btn-danger col-span-2"><i class="fas fa-undo"></i> Reset Form</button>
+            </div>
+        </div>
+        <div id="invoice-generator-page" class="bg-white p-6 md:p-10 rounded-lg shadow-md">
+            <header class="flex flex-col-reverse md:flex-row justify-between items-start pb-8 border-b gap-4">
+                <div class="w-full">
+                    <h2 class="text-3xl md:text-4xl font-bold uppercase text-gray-800" id="documentTitle">INVOICE</h2>
+                    <div class="mt-4 space-y-2 text-gray-600"><div class="flex items-center"><label for="documentNumber" class="font-semibold w-24">Number:</label><input type="text" id="documentNumber" class="border rounded px-2 py-1 flex-1"></div><div class="flex items-center"><label for="documentDate" class="font-semibold w-24">Date:</label><input type="date" id="documentDate" class="border rounded px-2 py-1 flex-1"></div><div class="flex items-center"><label for="dueDate" class="font-semibold w-24">Due Date:</label><input type="date" id="dueDate" class="border rounded px-2 py-1 flex-1"></div></div>
+                </div>
+                    <div class="text-left md:text-right w-full"><input type="text" id="companyName" value="Kha Dock & Homes Construction LLC" class="font-bold text-lg border rounded px-2 py-1 w-full text-left md:text-right"><textarea id="companyAddress" class="text-gray-600 mt-1 w-full text-left md:text-right border rounded px-2 py-1" rows="4">KhaDock.com - KhaHome.com\n+1 813-939-3989\nkhallc3989@gmail.com\n2055 W Bearss Ave, Tampa, FL 33618, USA</textarea></div>
+            </header>
+            <section class="mt-10"><h3 class="font-semibold text-gray-500 uppercase tracking-wide">Bill To</h3><div class="mt-2"><select id="customer-select" class="border rounded px-2 py-1 w-full mb-2"></select><textarea id="customerAddress" placeholder="Customer details will appear here..." class="text-gray-600 w-full border rounded px-2 py-1 bg-slate-50" rows="3" readonly></textarea></div></section>
+            <section class="mt-10"><div class="w-full overflow-x-auto"><table class="w-full text-sm text-left text-gray-500 min-w-[600px]"><thead class="text-xs text-gray-700 uppercase bg-gray-100"><tr><th class="px-4 py-3 rounded-l-lg w-1/2">Item</th><th class="px-4 py-3 text-center">Qty</th><th class="px-4 py-3 text-right">Price</th><th class="px-4 py-3 text-right">Total</th><th class="px-2 py-2 no-print rounded-r-lg"></th></tr></thead><tbody id="items-table"></tbody></table></div><datalist id="item-datalist"></datalist></section>
+            <div class="mt-4 no-print"><button id="addItemBtn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Item</button></div>
+            <section class="mt-6 flex justify-end"><div class="w-full max-w-sm"><div class="flex justify-between py-2"><span class="font-semibold">Subtotal:</span><span id="subtotal" class="font-semibold">$0.00</span></div><div class="flex justify-between items-center py-2"><div class="flex items-center">Tax (<input type="number" id="taxRate" value="0" class="w-16 text-right border rounded px-2 py-1 mx-1">%):</div><span id="taxAmount" class="font-semibold">$0.00</span></div><div class="flex justify-between py-4 border-t mt-2 text-xl md:text-2xl font-bold"><span >Total:</span><span id="totalAmount">$0.00</span></div></div></section>
+            <footer class="mt-12"><h4 class="font-semibold text-gray-500 uppercase tracking-wide">Notes</h4><textarea id="notes" class="w-full mt-2 p-2 border rounded" rows="3" placeholder="Thank you for your business!"></textarea></footer>
+        </div>`;
+    
+    // --- MAIN APP ---
+    const app = {
+        activeTab: 'invoice-history',
+        init() {
+            document.getElementById('invoice-generator').innerHTML = invoiceGeneratorHTML;
+            this.initTabs();
+            this.initMobileMenu();
+            customerManager.init();
+            itemManager.init();
+            invoiceManager.init();
+            invoiceHistoryManager.init();
+            facebookManager.init();
+        },
+        initMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const openBtn = document.getElementById('open-sidebar-btn');
+            const closeBtn = document.getElementById('close-sidebar-btn');
+
+            const openSidebar = () => {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            };
+            const closeSidebar = () => {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            };
+            
+            openBtn.addEventListener('click', openSidebar);
+            closeBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+        },
+        initTabs() {
+            const mobileHeaderTitle = document.getElementById('mobile-header-title');
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const linkEl = e.target.closest('a');
+                    this.activeTab = linkEl.dataset.tab;
+                    this.updateTabs();
+                    mobileHeaderTitle.textContent = linkEl.textContent.trim();
+                    if (window.innerWidth < 768) {
+                        document.getElementById('close-sidebar-btn').click();
+                    }
+                });
+            });
+        },
+        updateTabs() {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(this.activeTab).classList.add('active');
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.classList.toggle('active', link.dataset.tab === this.activeTab);
+            });
+        },
+        exportAllData() {
+            const allData = {
+                customers: customerManager.getAll(),
+                items: itemManager.getAll(),
+                invoices: invoiceHistoryManager.getAll(),
+                invoiceDraft: invoiceManager.getDataObject(),
+            };
+            const dataStr = JSON.stringify(allData, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            const exportFileDefaultName = 'business_data.json';
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        },
+        importAllData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (confirm('This will overwrite all existing data. Are you sure?')) {
+                        if (data.customers) customerManager.importData(data.customers);
+                        if (data.items) itemManager.importData(data.items);
+                        if (data.invoices) invoiceHistoryManager.importData(data.invoices);
+                        if (data.invoiceDraft) invoiceManager.loadDraft(data.invoiceDraft);
+                        alert('Data imported successfully!');
+                    }
+                } catch (error) {
+                    alert('Error: Could not parse the JSON file.');
+                    console.error(error);
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+    };
+
+    // --- GENERIC CRUD MANAGER ---
+    const createCrudManager = (config) => ({
+        items: [],
+        storageKey: config.storageKey,
+        tableBody: document.getElementById(config.tableBodyId),
+        
+        init() {
+            this.load();
+            this.render();
+            document.getElementById('modal-close-btn').addEventListener('click', () => this.closeModal());
+            document.getElementById('modal-template').addEventListener('click', (e) => {
+                if (e.target.id === 'modal-template') this.closeModal();
+            });
+        },
+        load() { this.items = JSON.parse(localStorage.getItem(this.storageKey)) || []; },
+        save() { localStorage.setItem(this.storageKey, JSON.stringify(this.items)); },
+        getAll() { return this.items; },
+        importData(data) {
+            this.items = data;
+            this.save();
+            this.render();
+        },
+        openModal(id = null) {
+            const form = document.getElementById('modal-form');
+            form.reset();
+            document.getElementById('modal-body').innerHTML = config.formFields;
+            document.getElementById('modal-id-field').value = id || '';
+            
+            const item = id ? this.items.find(i => i.id === id) : null;
+            document.getElementById('modal-title').textContent = item ? config.modalTitle.edit : config.modalTitle.add;
+
+            if (item) {
+                config.fields.forEach(field => {
+                    document.getElementById(field).value = item[field];
+                });
+            }
+            document.getElementById('modal-template').classList.remove('hidden');
+            document.getElementById('modal-template').classList.add('flex');
+            form.onsubmit = (e) => { e.preventDefault(); this.handleSubmit(); };
+        },
+        closeModal() {
+            document.getElementById('modal-template').classList.add('hidden');
+            document.getElementById('modal-template').classList.remove('flex');
+        },
+        handleSubmit() {
+            const id = document.getElementById('modal-id-field').value;
+            const itemData = { id: id ? parseInt(id) : Date.now() };
+            config.fields.forEach(field => {
+                itemData[field] = document.getElementById(field).value;
+            });
+            
+            if (id) {
+                this.items = this.items.map(i => i.id === itemData.id ? itemData : i);
+            } else {
+                this.items.push(itemData);
+            }
+            this.save();
+            this.render();
+            if (typeof invoiceManager !== 'undefined' && invoiceManager.populateCustomerSelect) {
+                invoiceManager.populateCustomerSelect();
+                invoiceManager.populateItemDatalist();
+            }
+            this.closeModal();
+        },
+        deleteItem(id) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                this.items = this.items.filter(i => i.id !== id);
+                this.save();
+                this.render();
+                if (typeof invoiceManager !== 'undefined' && invoiceManager.populateCustomerSelect) {
+                    invoiceManager.populateCustomerSelect();
+                    invoiceManager.populateItemDatalist();
+                }
+            }
+        },
+        findOrCreate(itemData) {
+            const description = itemData.description?.trim();
+            if (!description) return false;
+
+            const existingItem = this.items.find(i => i.description.toLowerCase() === description.toLowerCase());
+            if (existingItem) {
+                // Optionally update price if it has changed
+                if (existingItem.price !== itemData.price) {
+                    existingItem.price = itemData.price;
+                    return true; // Indicate that an update happened
+                }
+                return false;
+            }
+
+            const newItem = {
+                id: Date.now(),
+                description: description,
+                price: itemData.price || '0.00'
+            };
+            this.items.push(newItem);
+            return true;
+        },
+        render() {
+            this.tableBody.innerHTML = '';
+            if (this.items.length === 0 && config.emptyMessage) {
+                 this.tableBody.innerHTML = `<tr><td colspan="${config.fields.length + 2}" class="text-center p-8 text-slate-500">${config.emptyMessage}</td></tr>`;
+                 return;
+            }
+            this.items.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = config.renderRow(item);
+                row.querySelector('.btn-edit').addEventListener('click', () => this.openModal(item.id));
+                row.querySelector('.btn-delete').addEventListener('click', () => this.deleteItem(item.id));
+                this.tableBody.appendChild(row);
+            });
+        }
+    });
+
+    // --- CUSTOMER MANAGER ---
+    const customerManager = createCrudManager({
+        storageKey: 'crm_customers',
+        tableBodyId: 'customer-table-body',
+        modalTitle: { add: 'Add Customer', edit: 'Edit Customer' },
+        fields: ['name', 'phone', 'address'],
+        emptyMessage: 'No customers found. Click "Add Customer" to start.',
+        formFields: `
+            <label class="block"><span class="text-gray-700">Full Name</span><input type="text" id="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required></label>
+            <label class="block"><span class="text-gray-700">Phone Number</span><input type="tel" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></label>
+            <label class="block"><span class="text-gray-700">Address</span><textarea id="address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" rows="3"></textarea></label>`,
+        renderRow: (item) => `
+            <td data-label="Name" class="p-4 font-medium text-slate-800">${item.name}</td>
+            <td data-label="Phone" class="p-4 text-slate-600">${item.phone}</td>
+            <td data-label="Address" class="p-4 text-slate-600 truncate max-w-xs">${item.address}</td>
+            <td data-label="Actions" class="p-4"><div class="flex justify-end gap-4"><button class="btn-edit text-blue-600 hover:underline">Edit</button><button class="btn-delete text-red-600 hover:underline">Delete</button></div></td>`
+    });
+    
+    // --- ITEM MANAGER ---
+    const itemManager = createCrudManager({
+        storageKey: 'crm_items',
+        tableBodyId: 'item-table-body',
+        modalTitle: { add: 'Add Item', edit: 'Edit Item' },
+        fields: ['description', 'price'],
+        emptyMessage: 'No items found. Click "Add Item" to start.',
+        formFields: `
+            <label class="block"><span class="text-gray-700">Description</span><input type="text" id="description" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required></label>
+            <label class="block"><span class="text-gray-700">Unit Price</span><input type="number" id="price" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" min="0" step="0.01" required></label>`,
+        renderRow: (item) => `
+            <td data-label="Description" class="p-4 font-medium text-slate-800">${item.description}</td>
+            <td data-label="Unit Price" class="p-4 text-slate-600">${invoiceManager.formatCurrency(parseFloat(item.price))}</td>
+            <td data-label="Actions" class="p-4"><div class="flex justify-end gap-4"><button class="btn-edit text-blue-600 hover:underline">Edit</button><button class="btn-delete text-red-600 hover:underline">Delete</button></div></td>`
+    });
+
+    // --- INVOICE MANAGER ---
+    const invoiceManager = {
+        currentId: null,
+        init() {
+            this.elements = {
+                itemsTable: document.getElementById('items-table'),
+                addItemBtn: document.getElementById('addItemBtn'),
+                taxRate: document.getElementById('taxRate'),
+                docTitle: document.getElementById('documentTitle'),
+                docTypeSelect: document.getElementById('documentTypeSelect'),
+                docNumber: document.getElementById('documentNumber'),
+                customerSelect: document.getElementById('customer-select'),
+                itemDatalist: document.getElementById('item-datalist')
+            };
+            this.elements.addItemBtn.addEventListener('click', () => this.createItemRow());
+            this.elements.taxRate.addEventListener('input', this.updateTotals.bind(this));
+            this.elements.docTypeSelect.addEventListener('change', this.updateDocumentType.bind(this));
+            this.elements.customerSelect.addEventListener('change', this.handleCustomerSelect.bind(this));
+            this.populateCustomerSelect();
+            this.populateItemDatalist();
+            this.loadDraft();
+        },
+        createItemRow(item = { description: '', quantity: 1, price: '0.00' }) {
+            const row = document.createElement('tr');
+            row.className = 'item-row border-b';
+            
+            row.innerHTML = `
+                <td class="px-4 py-2"><input list="item-datalist" placeholder="Item description" class="description border-0 focus:ring-0 p-1 w-full" value="${item.description}"></td>
+                <td class="px-4 py-2"><input type="number" value="${item.quantity}" min="0" class="quantity border-b text-center p-1 w-full"></td>
+                <td class="px-4 py-2"><input type="number" value="${item.price}" min="0" step="0.01" class="price border-b text-right p-1 w-full"></td>
+                <td class="px-4 py-2 text-right font-medium total-cell">$0.00</td>
+                <td class="px-2 py-2 text-center no-print"><button class="delete-item-btn text-red-500 hover:text-red-700 font-bold text-lg">&times;</button></td>
+            `;
+            this.elements.itemsTable.appendChild(row);
+            
+            const descInput = row.querySelector('.description');
+            descInput.addEventListener('change', (e) => {
+                const selectedItem = itemManager.getAll().find(p => p.description === e.target.value);
+                if (selectedItem) {
+                    row.querySelector('.price').value = selectedItem.price;
+                }
+                this.updateTotals();
+            });
+
+            row.querySelectorAll('.quantity, .price').forEach(input => input.addEventListener('input', this.updateTotals.bind(this)));
+            row.querySelector('.delete-item-btn').addEventListener('click', () => { row.remove(); this.updateTotals(); });
+            this.updateTotals();
+        },
+        updateTotals() {
+            let subtotal = 0;
+            this.elements.itemsTable.querySelectorAll('.item-row').forEach(row => {
+                const quantity = parseFloat(row.querySelector('.quantity').value) || 0;
+                const price = parseFloat(row.querySelector('.price').value) || 0;
+                const total = quantity * price;
+                row.querySelector('.total-cell').textContent = this.formatCurrency(total);
+                subtotal += total;
+            });
+            const taxRate = parseFloat(this.elements.taxRate.value) || 0;
+            const taxAmount = subtotal * (taxRate / 100);
+            document.getElementById('subtotal').textContent = this.formatCurrency(subtotal);
+            document.getElementById('taxAmount').textContent = this.formatCurrency(taxAmount);
+            document.getElementById('totalAmount').textContent = this.formatCurrency(subtotal + taxAmount);
+        },
+        formatCurrency: (amount) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount || 0),
+        updateDocumentType() {
+            const select = this.elements.docTypeSelect;
+            this.elements.docTitle.textContent = select.options[select.selectedIndex].text;
+        },
+        populateCustomerSelect() {
+            const customers = customerManager.getAll();
+            this.elements.customerSelect.innerHTML = '<option value="">Select a customer...</option>';
+            customers.forEach(c => {
+                const option = document.createElement('option');
+                option.value = c.id;
+                option.textContent = c.name;
+                this.elements.customerSelect.appendChild(option);
+            });
+        },
+        populateItemDatalist() {
+            this.elements.itemDatalist.innerHTML = '';
+            itemManager.getAll().forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.description;
+                this.elements.itemDatalist.appendChild(option);
+            });
+        },
+        handleCustomerSelect(e) {
+            const customerId = e.target.value;
+            const customer = customerManager.getAll().find(c => c.id == customerId);
+            const addressField = document.getElementById('customerAddress');
+            if (customer) {
+                addressField.value = `${customer.name}\n${customer.phone}\n${customer.address}`;
+            } else {
+                addressField.value = '';
+            }
+        },
+        getDataObject() {
+            const items = [];
+            this.elements.itemsTable.querySelectorAll('.item-row').forEach(row => {
+                const description = row.querySelector('.description').value;
+                if (description) { // Only save rows with a description
+                    items.push({
+                        description: description,
+                        quantity: row.querySelector('.quantity').value,
+                        price: row.querySelector('.price').value,
+                    });
+                }
+            });
+            return {
+                documentType: this.elements.docTypeSelect.value,
+                documentNumber: this.elements.docNumber.value,
+                documentDate: document.getElementById('documentDate').value,
+                dueDate: document.getElementById('dueDate').value,
+                companyName: document.getElementById('companyName').value,
+                companyAddress: document.getElementById('companyAddress').value,
+                customerId: this.elements.customerSelect.value,
+                items: items,
+                taxRate: this.elements.taxRate.value,
+                notes: document.getElementById('notes').value,
+            };
+        },
+        saveDraft() {
+            let wasItemListUpdated = false;
+            this.elements.itemsTable.querySelectorAll('.item-row').forEach(row => {
+                const description = row.querySelector('.description').value;
+                const price = row.querySelector('.price').value;
+                if (description && itemManager.findOrCreate({ description, price })) {
+                    wasItemListUpdated = true;
+                }
+            });
+
+            if (wasItemListUpdated) {
+                itemManager.save();
+                itemManager.render();
+                this.populateItemDatalist();
+            }
+
+            const invoiceData = this.getDataObject();
+            if (this.currentId) {
+                invoiceData.id = this.currentId;
+            }
+            
+            const savedId = invoiceHistoryManager.addOrUpdateInvoice(invoiceData);
+            this.currentId = savedId;
+            
+            alert('Saved successfully!');
+            app.activeTab = 'invoice-history';
+            app.updateTabs();
+            document.getElementById('mobile-header-title').textContent = 'Invoice & Quote History';
+        },
+        loadDraft(data = null) {
+            const docTypeSelect = this.elements.docTypeSelect;
+            docTypeSelect.innerHTML = `
+                <option value="INVOICE">Invoice</option>
+                <option value="QUOTE">Quote</option>
+                <option value="PROFORMA INVOICE">Proforma Invoice</option>
+            `;
+
+            const draftData = data || JSON.parse(localStorage.getItem('crm_invoice_draft'));
+            if (draftData) {
+                docTypeSelect.value = draftData.documentType || 'INVOICE';
+                this.elements.docNumber.value = draftData.documentNumber || '';
+                document.getElementById('documentDate').value = draftData.documentDate || new Date().toISOString().slice(0, 10);
+                document.getElementById('dueDate').value = draftData.dueDate || '';
+                document.getElementById('companyName').value = draftData.companyName || 'Kha Dock & Homes Construction LLC';
+                document.getElementById('companyAddress').value = draftData.companyAddress || '';
+                this.elements.customerSelect.value = draftData.customerId || '';
+                this.elements.customerSelect.dispatchEvent(new Event('change'));
+                this.elements.taxRate.value = draftData.taxRate || '0';
+                document.getElementById('notes').value = draftData.notes || '';
+                this.elements.itemsTable.innerHTML = '';
+                (draftData.items || []).forEach(item => this.createItemRow(item));
+                if (!draftData.items || draftData.items.length === 0) this.createItemRow();
+                this.updateDocumentType();
+                this.updateTotals();
+            } else {
+                 document.getElementById('documentDate').value = new Date().toISOString().slice(0, 10);
+                 this.createItemRow();
+            }
+        },
+        loadInvoice(invoice) {
+            this.currentId = invoice.id;
+            this.loadDraft(invoice);
+        },
+        resetFormSilent() {
+            this.currentId = null;
+            const formPage = document.getElementById('invoice-generator-page');
+            if (formPage) {
+                formPage.querySelectorAll('input, textarea').forEach(el => {
+                    if (el.id.includes('company')) return; // Don't reset company info
+                    if(el.type === 'number') el.value = '0';
+                    else el.value = '';
+                });
+                formPage.querySelector('select').value = '';
+            }
+            if (this.elements && this.elements.itemsTable) {
+                this.elements.itemsTable.innerHTML = '';
+            }
+            this.loadDraft({ items: [] });
+        },
+        resetForm() {
+            if(confirm('Are you sure you want to reset the form? The current draft will be cleared.')) {
+                this.resetFormSilent();
+            }
+        }
+    };
+
+    // --- INVOICE HISTORY MANAGER ---
+    const invoiceHistoryManager = {
+        invoices: [],
+        storageKey: 'crm_invoices',
+        tableBody: null,
+        
+        init() {
+            this.tableBody = document.getElementById('invoice-history-table-body');
+            this.load();
+            this.render();
+        },
+        load() {
+            this.invoices = JSON.parse(localStorage.getItem(this.storageKey)) || [];
+        },
+        save() {
+            localStorage.setItem(this.storageKey, JSON.stringify(this.invoices));
+        },
+        getAll() {
+            return this.invoices;
+        },
+        importData(data) {
+            this.invoices = data;
+            this.save();
+            this.render();
+        },
+        createNew() {
+            invoiceManager.resetFormSilent();
+            app.activeTab = 'invoice-generator';
+            app.updateTabs();
+            document.getElementById('mobile-header-title').textContent = 'Invoice Generator';
+        },
+        editInvoice(id) {
+            const invoice = this.invoices.find(i => i.id === id);
+            if (invoice) {
+                invoiceManager.loadInvoice(invoice);
+                app.activeTab = 'invoice-generator';
+                app.updateTabs();
+                document.getElementById('mobile-header-title').textContent = 'Invoice Generator';
+            }
+        },
+        deleteInvoice(id) {
+            if (confirm('Are you sure you want to delete this document from history?')) {
+                this.invoices = this.invoices.filter(i => i.id !== id);
+                this.save();
+                this.render();
+            }
+        },
+        addOrUpdateInvoice(invoiceData) {
+            this.load();
+            if (invoiceData.id) {
+                this.invoices = this.invoices.map(i => i.id === invoiceData.id ? invoiceData : i);
+            } else {
+                invoiceData.id = Date.now();
+                this.invoices.push(invoiceData);
+            }
+            this.save();
+            this.render();
+            return invoiceData.id;
+        },
+        render() {
+            if (!this.tableBody) return;
+            this.tableBody.innerHTML = '';
+            if (this.invoices.length === 0) {
+                this.tableBody.innerHTML = `<tr><td colspan="6" class="text-center p-8 text-slate-500">No invoices or quotes found. Click "Tạo mới" to start.</td></tr>`;
+                return;
+            }
+            const sortedInvoices = [...this.invoices].sort((a, b) => b.id - a.id);
+            sortedInvoices.forEach(inv => {
+                const customer = customerManager.getAll().find(c => c.id == inv.customerId);
+                const customerName = customer ? customer.name : (inv.customerAddress ? inv.customerAddress.split('\n')[0] : 'N/A');
+                
+                let subtotal = 0;
+                (inv.items || []).forEach(item => {
+                    const quantity = parseFloat(item.quantity) || 0;
+                    const price = parseFloat(item.price) || 0;
+                    subtotal += quantity * price;
+                });
+                const taxRate = parseFloat(inv.taxRate) || 0;
+                const totalAmount = subtotal + (subtotal * (taxRate / 100));
+
+                const row = document.createElement('tr');
+                row.className = 'border-b';
+                row.innerHTML = `
+                    <td data-label="Number" class="p-4 font-medium text-slate-800">${inv.documentNumber || 'N/A'}</td>
+                    <td data-label="Type" class="p-4 text-slate-600"><span class="px-2 py-1 rounded text-xs font-semibold ${
+                        inv.documentType === 'QUOTE' ? 'bg-yellow-100 text-yellow-800' :
+                        inv.documentType === 'PROFORMA INVOICE' ? 'bg-purple-100 text-purple-800' :
+                        'bg-blue-100 text-blue-800'
+                    }">${inv.documentType || 'INVOICE'}</span></td>
+                    <td data-label="Customer" class="p-4 text-slate-600">${customerName}</td>
+                    <td data-label="Date" class="p-4 text-slate-600">${inv.documentDate || 'N/A'}</td>
+                    <td data-label="Total" class="p-4 text-slate-800 font-bold">${invoiceManager.formatCurrency(totalAmount)}</td>
+                    <td data-label="Actions" class="p-4 text-right">
+                        <div class="flex justify-end gap-4">
+                            <button onclick="invoiceHistoryManager.editInvoice(${inv.id})" class="text-blue-600 hover:underline"><i class="fas fa-edit"></i> Edit</button>
+                            <button onclick="invoiceHistoryManager.deleteInvoice(${inv.id})" class="text-red-600 hover:underline"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </td>
+                `;
+                this.tableBody.appendChild(row);
+            });
+        }
+    };
+
+    // --- FACEBOOK FANPAGE MANAGER ---
+    const facebookManager = {
+        storageKey: 'fb_credentials',
+        init() {
+            this.loadCredentials();
+        },
+        loadCredentials() {
+            const credentials = JSON.parse(localStorage.getItem(this.storageKey)) || {};
+            if (credentials.pageId) document.getElementById('fbPageId').value = credentials.pageId;
+            if (credentials.accessToken) document.getElementById('fbAccessToken').value = credentials.accessToken;
+        },
+        saveCredentials() {
+            const credentials = {
+                pageId: document.getElementById('fbPageId').value,
+                accessToken: document.getElementById('fbAccessToken').value
+            };
+            localStorage.setItem(this.storageKey, JSON.stringify(credentials));
+        },
+        async fetchPosts() {
+            const pageId = document.getElementById('fbPageId').value.trim();
+            const accessToken = document.getElementById('fbAccessToken').value.trim();
+            const container = document.getElementById('fb-posts-container');
+
+            if (!pageId || !accessToken) {
+                alert('Please enter both Page ID and Access Token');
+                return;
+            }
+
+            this.saveCredentials();
+
+            container.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    <p class="mt-4 text-slate-600">Fetching posts...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(
+                    `https://graph.facebook.com/v18.0/${pageId}/posts?fields=id,message,created_time,permalink_url,full_picture,likes.summary(true),comments.summary(true),shares&access_token=${accessToken}&limit=10`
+                );
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error.message);
+                }
+
+                this.renderPosts(data.data || []);
+            } catch (error) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-red-600">
+                        <i class="fas fa-exclamation-triangle text-4xl mb-4"></i>
+                        <p class="font-semibold">Error fetching posts</p>
+                        <p class="text-sm mt-2">${error.message}</p>
+                        <p class="text-xs text-slate-500 mt-4">Make sure your Access Token has the correct permissions (pages_read_engagement)</p>
+                    </div>
+                `;
+            }
+        },
+        renderPosts(posts) {
+            const container = document.getElementById('fb-posts-container');
+
+            if (posts.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-slate-500">
+                        <i class="fab fa-facebook text-6xl text-slate-300 mb-4"></i>
+                        <p>No posts found on this page</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = posts.map(post => this.createPostCard(post)).join('');
+        },
+        createPostCard(post) {
+            const date = new Date(post.created_time).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            const likesCount = post.likes?.summary?.total_count || 0;
+            const commentsCount = post.comments?.summary?.total_count || 0;
+            const sharesCount = post.shares?.count || 0;
+
+            return `
+                <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="flex items-start gap-3 mb-3">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-semibold text-slate-800">Facebook Post</p>
+                            <p class="text-sm text-slate-500">${date}</p>
+                        </div>
+                        <a href="${post.permalink_url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            View on Facebook <i class="fas fa-external-link-alt ml-1"></i>
+                        </a>
+                    </div>
+
+                    ${post.full_picture ? `
+                        <div class="mb-3">
+                            <img src="${post.full_picture}" alt="Post image" class="rounded-lg max-h-64 w-auto object-cover cursor-pointer" onclick="window.open('${post.full_picture}', '_blank')">
+                        </div>
+                    ` : ''}
+
+                    ${post.message ? `
+                        <p class="text-slate-700 mb-3 whitespace-pre-wrap">${this.formatMessage(post.message)}</p>
+                    ` : ''}
+
+                    <div class="flex items-center gap-4 text-sm text-slate-500 border-t pt-3">
+                        <span class="flex items-center gap-1">
+                            <i class="fas fa-thumbs-up text-blue-600"></i>
+                            ${likesCount} likes
+                        </span>
+                        <span class="flex items-center gap-1">
+                            <i class="fas fa-comment text-green-600"></i>
+                            ${commentsCount} comments
+                        </span>
+                        ${sharesCount > 0 ? `
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-share text-purple-600"></i>
+                                ${sharesCount} shares
+                            </span>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        },
+        formatMessage(message) {
+            // Truncate very long messages
+            if (message.length > 500) {
+                return message.substring(0, 500) + '...';
+            }
+            return message;
+        }
+    };
+
+    // --- INITIALIZE APP ---
+    document.addEventListener('DOMContentLoaded', () => {
+        app.init();
+    });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+############################
+# Secrets and credentials  #
+############################
+# Firebase/GCP service accounts
+firebase-service-account.json
+serviceAccount*.json
+
+# Env files
+.env
+.env.*
+*.env
+
+# Keys and certs
+*.pem
+*.p12
+
+# Firebase service account (contains sensitive credentials)
+firebase-service-account.json
+
+############################
+# Dependencies & builds    #
+############################
+node_modules/
+dist/
+build/
+.parcel-cache/
+.cache/
+
+############################
+# Logs                     #
+############################
+logs/
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+############################
+# Editor/OS cruft          #
+############################
+.vscode/
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# Local Netlify folder (removed - now using Firebase)
+# .netlify

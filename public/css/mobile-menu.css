@@ -1,0 +1,23 @@
+/* Styling for Mobile Menu */
+
+/* Mobile Menu Panel */
+#mobile-menu-panel {
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+#mobile-menu-panel.active {
+  transform: translateX(0);
+}
+
+/* Bottom Navigation styles removed */
+
+/* Fix for body scrolling when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Menu Item Styling */
+#mobile-menu-panel .mobile-submenu-toggle:focus {
+  outline: none;
+}

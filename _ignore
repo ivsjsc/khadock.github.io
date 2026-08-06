@@ -1,0 +1,2 @@
+# Ignore large video files exceeding Cloudflare Pages 25MB limit
+videos/project-mrjimmy.mp4
